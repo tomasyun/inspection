@@ -6,7 +6,7 @@ Widget buildView(
     RepairRecord state, Dispatch dispatch, ViewService viewService) {
   return GestureDetector(
     onTap: () {
-//      dispatch(RecordActionCreator.onAction());
+//      dispatch(RecordItemActionCreator.onAction());
     },
     child: Container(
       width: double.infinity,

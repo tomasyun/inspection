@@ -1,4 +1,5 @@
 import 'package:fish_redux/fish_redux.dart';
+import 'package:inspection/device/keep/adapter/adapter.dart';
 
 import 'effect.dart';
 import 'reducer.dart';
@@ -14,7 +15,7 @@ class KeepPage extends Page<KeepState, Map<String, dynamic>> {
           reducer: buildReducer(),
           view: buildView,
           dependencies: Dependencies<KeepState>(
-              adapter: null, slots: <String, Dependent<KeepState>>{}),
-          middleware: <Middleware<KeepState>>[],
+            adapter: KeepRecordAdapter(),
+          ),
         );
 }

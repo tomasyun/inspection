@@ -6,7 +6,7 @@ import 'action.dart';
 
 Effect<RepairRecord> buildEffect() {
   return combineEffects(<Object, Effect<RepairRecord>>{
-    RecordAction.action: _onAction,
+    RecordItemAction.action: _onAction,
   });
 }
 

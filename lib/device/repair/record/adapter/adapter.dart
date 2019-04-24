@@ -1,11 +1,11 @@
 import 'package:fish_redux/fish_redux.dart';
-import 'package:inspection/device/repair/record/list_item/component.dart';
+import 'package:inspection/device/repair/record/item/component.dart';
 import 'package:inspection/device/repair/record/state.dart';
 
 class RepairRecordAdapter extends DynamicFlowAdapter<RecordState> {
   RepairRecordAdapter()
       : super(
-          pool: <String, Component<Object>>{'record': RecordComponent()},
+          pool: <String, Component<Object>>{'record': RecordItemComponent()},
           connector: _RepairRecordConnector(),
         );
 }
