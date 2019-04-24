@@ -1,9 +1,9 @@
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart';
+import 'package:inspection/device/page.dart';
 import 'package:inspection/entity/nav_item.dart';
 import 'package:inspection/func/page.dart';
 import 'package:inspection/global/index_will_pop.dart';
-import 'package:inspection/home/page.dart';
 import 'package:inspection/mine/page.dart';
 import 'package:inspection/qrscan/page.dart';
 
@@ -27,7 +27,8 @@ class IndexPageState extends State<IndexPageWidget>
    * 存储的四个页面，和Fragment一样
    */
   var _list = <Widget>[
-    HomePage().buildPage(null),
+//    HomePage().buildPage(null),
+    DevicePage().buildPage(null),
     FunctionPage().buildPage(null),
     QRScanPage().buildPage(null),
     MinePage().buildPage(null)

@@ -5,16 +5,16 @@ import 'reducer.dart';
 import 'state.dart';
 import 'view.dart';
 
-//设备保养记录
-class KeepPage extends Page<KeepState, Map<String, dynamic>> {
-  KeepPage()
+//维修记录
+class RecordPage extends Page<RecordState, Map<String, dynamic>> {
+  RecordPage()
       : super(
           initState: initState,
           effect: buildEffect(),
           reducer: buildReducer(),
           view: buildView,
-          dependencies: Dependencies<KeepState>(
-              adapter: null, slots: <String, Dependent<KeepState>>{}),
-          middleware: <Middleware<KeepState>>[],
+          dependencies: Dependencies<RecordState>(
+              adapter: null, slots: <String, Dependent<RecordState>>{}),
+          middleware: <Middleware<RecordState>>[],
         );
 }
