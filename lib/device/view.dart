@@ -1,8 +1,8 @@
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart';
-import 'package:inspection/device/breakdown/repair/record/page.dart';
 import 'package:inspection/device/info/page.dart';
 import 'package:inspection/device/keep/page.dart';
+import 'package:inspection/device/repair/record/page.dart';
 
 import 'state.dart';
 

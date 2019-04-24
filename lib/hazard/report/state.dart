@@ -1,12 +1,12 @@
 import 'package:fish_redux/fish_redux.dart';
 
-class ReportState implements Cloneable<ReportState> {
+class HazardReportState implements Cloneable<HazardReportState> {
   @override
-  ReportState clone() {
-    return ReportState();
+  HazardReportState clone() {
+    return HazardReportState();
   }
 }
 
-ReportState initState(Map<String, dynamic> args) {
-  return ReportState();
+HazardReportState initState(Map<String, dynamic> args) {
+  return HazardReportState();
 }

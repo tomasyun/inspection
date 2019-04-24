@@ -4,6 +4,6 @@ import 'package:flutter/material.dart';
 import 'state.dart';
 
 Widget buildView(
-    HazardReportState state, Dispatch dispatch, ViewService viewService) {
+    RectifyReportState state, Dispatch dispatch, ViewService viewService) {
   return Container();
 }

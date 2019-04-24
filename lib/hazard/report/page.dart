@@ -5,16 +5,15 @@ import 'reducer.dart';
 import 'state.dart';
 import 'view.dart';
 
-//隐患上报
-class ReportPage extends Page<ReportState, Map<String, dynamic>> {
-  ReportPage()
+class HazardReportPage extends Page<HazardReportState, Map<String, dynamic>> {
+  HazardReportPage()
       : super(
           initState: initState,
           effect: buildEffect(),
           reducer: buildReducer(),
           view: buildView,
-          dependencies: Dependencies<ReportState>(
-              adapter: null, slots: <String, Dependent<ReportState>>{}),
-          middleware: <Middleware<ReportState>>[],
+          dependencies: Dependencies<HazardReportState>(
+              adapter: null, slots: <String, Dependent<HazardReportState>>{}),
+          middleware: <Middleware<HazardReportState>>[],
         );
 }

@@ -1,33 +1,26 @@
-class RepairRecItem {
+class RepairRecord {
   String state;
   String desc;
   String name;
   String date;
   String depart;
-  String applyer;
+  String applicant;
 
-  RepairRecItem(
-      {String state,
-      String desc,
-      String name,
-      String date,
-      String depart,
-      String applyer}) {
-    this.state = state;
-    this.desc = desc;
-    this.name = name;
-    this.date = date;
-    this.depart = depart;
-    this.applyer = applyer;
-  }
+  RepairRecord(
+      {this.state,
+      this.desc,
+      this.name,
+      this.date,
+      this.depart,
+      this.applicant});
 
-  RepairRecItem.fromJson(Map<String, dynamic> json) {
+  RepairRecord.fromJson(Map<String, dynamic> json) {
     state = json['state'];
     desc = json['desc'];
     name = json['name'];
     date = json['date'];
     depart = json['depart'];
-    applyer = json['applyer'];
+    applicant = json['applicant'];
   }
 
   Map<String, dynamic> toJson() {
@@ -37,7 +30,7 @@ class RepairRecItem {
     data['name'] = this.name;
     data['date'] = this.date;
     data['depart'] = this.depart;
-    data['applyer'] = this.applyer;
+    data['applicant'] = this.applicant;
     return data;
   }
 }
