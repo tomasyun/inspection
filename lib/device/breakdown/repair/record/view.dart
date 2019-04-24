@@ -8,6 +8,7 @@ Widget buildView(
   ListAdapter listAdapter = viewService.buildAdapter();
   return Container(
     child: ListView.builder(
+      padding: EdgeInsets.only(bottom: 50.0),
       itemBuilder: listAdapter.itemBuilder,
       itemCount: listAdapter.itemCount,
     ),
