@@ -12,6 +12,7 @@ Reducer<RecordState> buildReducer() {
 }
 
 RecordState _onAction(RecordState state, Action action) {
-  final RecordState newState = state.clone();
+  RecordState newState = state.clone();
+  newState.datalist = action.payload;
   return newState;
 }

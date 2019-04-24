@@ -1,4 +1,5 @@
 import 'package:fish_redux/fish_redux.dart';
+import 'package:inspection/device/breakdown/repair/record/list_adapter/adapter.dart';
 
 import 'effect.dart';
 import 'reducer.dart';
@@ -9,12 +10,10 @@ import 'view.dart';
 class RecordPage extends Page<RecordState, Map<String, dynamic>> {
   RecordPage()
       : super(
-          initState: initState,
-          effect: buildEffect(),
-          reducer: buildReducer(),
-          view: buildView,
-          dependencies: Dependencies<RecordState>(
-              adapter: null, slots: <String, Dependent<RecordState>>{}),
-          middleware: <Middleware<RecordState>>[],
-        );
+            initState: initState,
+            effect: buildEffect(),
+            reducer: buildReducer(),
+            view: buildView,
+            dependencies:
+                Dependencies<RecordState>(adapter: RepairRecordAdapter()));
 }

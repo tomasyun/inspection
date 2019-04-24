@@ -5,9 +5,11 @@ import 'state.dart';
 
 Widget buildView(
     RecordState state, Dispatch dispatch, ViewService viewService) {
+  ListAdapter listAdapter = viewService.buildAdapter();
   return Container(
-    child: Center(
-      child: Text('维修记录'),
+    child: ListView.builder(
+      itemBuilder: listAdapter.itemBuilder,
+      itemCount: listAdapter.itemCount,
     ),
   );
 }
