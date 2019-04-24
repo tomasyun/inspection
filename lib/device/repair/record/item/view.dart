@@ -22,12 +22,12 @@ Widget buildView(
             padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 10.0),
             child: Column(
               children: <Widget>[
-                _buildItem(title: '进度状态:', result: '${state.state}'),
-                _buildItem(title: '设备名称:', result: '${state.name}'),
-                _buildItem(title: '故障描述:', result: '${state.desc}'),
-                _buildItem(title: '上报时间:', result: '${state.date}'),
-                _buildItem(title: '申请部门:', result: '${state.depart}'),
-                _buildItem(title: '申请人:', result: '${state.applicant}')
+                _buildItem(title: '进度状态 :', result: '${state.state}'),
+                _buildItem(title: '设备名称 :', result: '${state.name}'),
+                _buildItem(title: '故障描述 :', result: '${state.desc}'),
+                _buildItem(title: '上报时间 :', result: '${state.date}'),
+                _buildItem(title: '申请部门 :', result: '${state.depart}'),
+                _buildItem(title: '申请人 :', result: '${state.applicant}')
               ],
             ),
           )
