@@ -22,8 +22,8 @@ Widget buildView(KeepRecord state, Dispatch dispatch, ViewService viewService) {
             child: Column(
               children: <Widget>[
                 _buildItem(title: '保养时间 :', result: '${state.date}'),
-                _buildItem(title: '包养人 :', result: '${state.keeper}'),
-                _buildItem(title: '包养状态 :', result: '${state.state}'),
+                _buildItem(title: '保养人 :', result: '${state.keeper}'),
+                _buildItem(title: '保养状态 :', result: '${state.state}'),
                 _buildItem(title: '备注 :', result: '${state.remark}'),
               ],
             ),

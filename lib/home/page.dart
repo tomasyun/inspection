@@ -13,8 +13,8 @@ class HomePage extends Page<HomeState, Map<String, dynamic>> {
           effect: buildEffect(),
           reducer: buildReducer(),
           view: buildView,
-          dependencies: Dependencies<HomeState>(
-              adapter: null, slots: <String, Dependent<HomeState>>{}),
-          middleware: <Middleware<HomeState>>[],
+//          dependencies: Dependencies<HomeState>(
+//              adapter: null, slots: <String, Dependent<HomeState>>{}),
+//          middleware: <Middleware<HomeState>>[],
         );
 }

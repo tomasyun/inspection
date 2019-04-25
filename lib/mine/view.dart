@@ -65,5 +65,6 @@ Widget buildView(MineState state, Dispatch dispatch, ViewService viewService) {
           ),
           preferredSize: Size.fromHeight(200.0)),
     ),
+    body: SingleChildScrollView(),
   );
 }

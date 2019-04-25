@@ -5,5 +5,92 @@ import 'state.dart';
 
 Widget buildView(
     FunctionState state, Dispatch dispatch, ViewService viewService) {
-  return Container();
+  return Scaffold(
+    appBar: AppBar(
+      title: Text(
+        '功能',
+        style: TextStyle(fontSize: 18.0, color: Colors.black),
+      ),
+      centerTitle: true,
+      backgroundColor: Colors.grey[100],
+    ),
+    body: SingleChildScrollView(
+      child: Container(
+        padding: EdgeInsets.symmetric(horizontal: 15.0),
+        width: double.infinity,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            _buildLabel(label: '设备管理'),
+            Container(
+              margin: EdgeInsets.only(top: 20.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: <Widget>[
+                  _buildFuncItem(asset: 'images/ic_avatar.png', title: '设备扫码'),
+                  _buildFuncItem(asset: 'images/ic_avatar.png', title: '设备预警'),
+                  _buildFuncItem(asset: 'images/ic_avatar.png', title: '设备报修')
+                ],
+              ),
+            ),
+            _buildLabel(label: '隐患与查看'),
+            Container(
+              margin: EdgeInsets.only(top: 20.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: <Widget>[
+                  _buildFuncItem(asset: 'images/ic_avatar.png', title: '隐患上报'),
+                  _buildFuncItem(asset: 'images/ic_avatar.png', title: '隐患查看'),
+                  _buildFuncItem(asset: '', title: ''),
+                ],
+              ),
+            ),
+            _buildLabel(label: '检查计划'),
+            Container(
+              margin: EdgeInsets.only(top: 20.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: <Widget>[
+                  _buildFuncItem(asset: 'images/ic_avatar.png', title: '检查计划'),
+                  _buildFuncItem(asset: 'images/ic_avatar.png', title: '我的任务'),
+                  _buildFuncItem(asset: '', title: '')
+                ],
+              ),
+            )
+          ],
+        ),
+      ),
+    ),
+  );
+}
+
+Widget _buildLabel({String label}) {
+  return Container(
+    margin: EdgeInsets.only(top: 30.0),
+    child: Text(
+      label,
+      style: TextStyle(
+          fontSize: 14.0, color: Colors.black, fontWeight: FontWeight.bold),
+    ),
+  );
+}
+
+Widget _buildFuncItem({String asset, String title}) {
+  return Column(
+    crossAxisAlignment: CrossAxisAlignment.center,
+    children: <Widget>[
+      Image.asset(
+        asset,
+        width: 60.0,
+        height: 60.0,
+      ),
+      Container(
+        margin: EdgeInsets.only(top: 10.0),
+        child: Text(
+          title,
+          style: TextStyle(fontSize: 13.0, color: Colors.black),
+        ),
+      )
+    ],
+  );
 }

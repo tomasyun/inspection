@@ -8,11 +8,11 @@ import 'state.dart';
 
 Effect<QRScanState> buildEffect() {
   return combineEffects(<Object, Effect<QRScanState>>{
-    Lifecycle.initState: _onAction,
+    QRScanAction.scanQRCode: _onFunctionScanQRCode
   });
 }
 
-void _onAction(Action action, Context<QRScanState> ctx) async {
+void _onFunctionScanQRCode(Action action, Context<QRScanState> ctx) async {
   debugPrint("scan touched");
   try {
     String qrResult = await BarcodeScanner.scan();
