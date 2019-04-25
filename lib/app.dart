@@ -4,9 +4,10 @@ import 'package:inspection/index/page.dart';
 
 Widget createApp() {
   AbstractRoutes routes = HybridRoutes(routes: <AbstractRoutes>[
-    PageRoutes(pages: <String, Page<Object, dynamic>>{'index': IndexPage()})
+    PageRoutes(pages: <String, Page<Object, dynamic>>{
+      'index': IndexPage(),
+    })
   ]);
-
   return MaterialApp(
     title: 'inspection',
     theme: ThemeData(primaryColor: Colors.blue),

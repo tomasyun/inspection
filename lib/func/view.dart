@@ -1,5 +1,6 @@
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart';
+import 'package:inspection/func/action.dart';
 
 import 'state.dart';
 
@@ -27,7 +28,13 @@ Widget buildView(
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
-                  _buildFuncItem(asset: 'images/ic_avatar.png', title: '设备扫码'),
+                  GestureDetector(
+                    onTap: () {
+                      dispatch(FunctionActionCreator.onDeviceScanQRCode());
+                    },
+                    child: _buildFuncItem(
+                        asset: 'images/ic_avatar.png', title: '设备扫码'),
+                  ),
                   _buildFuncItem(asset: 'images/ic_avatar.png', title: '设备预警'),
                   _buildFuncItem(asset: 'images/ic_avatar.png', title: '设备报修')
                 ],
