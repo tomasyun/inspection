@@ -47,7 +47,13 @@ Widget buildView(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
                   _buildFuncItem(asset: 'images/ic_avatar.png', title: '隐患上报'),
-                  _buildFuncItem(asset: 'images/ic_avatar.png', title: '隐患查看'),
+                  GestureDetector(
+                    onTap: () {
+                      dispatch(FunctionActionCreator.onHazardReview());
+                    },
+                    child: _buildFuncItem(
+                        asset: 'images/ic_avatar.png', title: '隐患查看'),
+                  ),
                   _buildFuncItem(asset: '', title: ''),
                 ],
               ),

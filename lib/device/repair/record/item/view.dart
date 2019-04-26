@@ -16,7 +16,7 @@ Widget buildView(
           Container(
             width: double.infinity,
             color: Colors.grey[100],
-            height: 20.0,
+            height: 10.0,
           ),
           Container(
             padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 10.0),

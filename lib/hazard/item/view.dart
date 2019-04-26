@@ -1,8 +1,9 @@
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart';
-import 'package:inspection/entity/keep_record.dart';
+import 'package:inspection/entity/hazard_model.dart';
 
-Widget buildView(KeepRecord state, Dispatch dispatch, ViewService viewService) {
+Widget buildView(
+    HazardModel state, Dispatch dispatch, ViewService viewService) {
   return GestureDetector(
     onTap: () {
 //      dispatch(RecordItemActionCreator.onAction());
@@ -21,10 +22,11 @@ Widget buildView(KeepRecord state, Dispatch dispatch, ViewService viewService) {
             padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 10.0),
             child: Column(
               children: <Widget>[
-                _buildItem(title: '保养时间 :', result: '${state.date}'),
-                _buildItem(title: '保养人 :', result: '${state.keeper}'),
-                _buildItem(title: '保养状态 :', result: '${state.state}'),
-                _buildItem(title: '备注 :', result: '${state.remark}'),
+                _buildItem(title: '隐患描述 :', result: '${state.desc}'),
+                _buildItem(title: '责任部门 :', result: '${state.depart}'),
+                _buildItem(title: '发现时间 :', result: '${state.data}'),
+                _buildItem(title: '隐患状态 :', result: '${state.state}'),
+                _buildItem(title: '整改人 :', result: '${state.rectifier}'),
               ],
             ),
           )
