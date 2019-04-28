@@ -6,12 +6,13 @@ import 'state.dart';
 Reducer<WarningState> buildReducer() {
   return asReducer(
     <Object, Reducer<WarningState>>{
-      WarningAction.action: _onAction,
+      WarningAction.init: _onAction,
     },
   );
 }
 
 WarningState _onAction(WarningState state, Action action) {
-  final WarningState newState = state.clone();
+  WarningState newState = state.clone();
+  newState.list = action.payload;
   return newState;
 }
