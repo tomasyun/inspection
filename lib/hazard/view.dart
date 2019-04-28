@@ -9,7 +9,7 @@ Widget buildView(
   return Scaffold(
     appBar: AppBar(
       title: Text(
-        '隐患',
+        '隐患记录',
         style: TextStyle(fontSize: 18.0, color: Colors.black),
       ),
       centerTitle: true,

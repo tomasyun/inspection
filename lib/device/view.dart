@@ -31,8 +31,11 @@ class DevicePageState extends State<DevicePageWidget>
     return Scaffold(
       appBar: AppBar(
         leading: Container(),
-        title: Text('设备信息'),
-        backgroundColor: Colors.blue,
+        title: Text(
+          '设备信息',
+          style: TextStyle(color: Colors.black),
+        ),
+        backgroundColor: Colors.white,
         centerTitle: true,
         bottom: TabBar(
           tabs: <Widget>[
@@ -47,8 +50,8 @@ class DevicePageState extends State<DevicePageWidget>
             )
           ],
           controller: _controller,
-          labelColor: Colors.white,
-          indicatorColor: Colors.blue,
+          labelColor: Colors.black,
+          indicatorColor: Colors.black,
           indicatorSize: TabBarIndicatorSize.label,
         ),
       ),

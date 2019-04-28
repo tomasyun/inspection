@@ -4,6 +4,7 @@ import 'package:inspection/device/page.dart';
 import 'package:inspection/device/repair/report/page.dart';
 import 'package:inspection/hazard/page.dart';
 import 'package:inspection/hazard/recheck/report/page.dart';
+import 'package:inspection/hazard/report/page.dart';
 
 import 'action.dart';
 import 'state.dart';
@@ -38,7 +39,11 @@ void _onBrokenReport(Action action, Context<FunctionState> ctx) {
   }));
 }
 
-void _onHazardReport(Action action, Context<FunctionState> ctx) {}
+void _onHazardReport(Action action, Context<FunctionState> ctx) {
+  Navigator.of(ctx.context).push(MaterialPageRoute(builder: (context) {
+    return HazardReportPage().buildPage(null);
+  }));
+}
 
 void _onHazardReview(Action action, Context<FunctionState> ctx) {
   Navigator.of(ctx.context).push(MaterialPageRoute(builder: (context) {

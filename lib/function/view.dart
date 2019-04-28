@@ -1,6 +1,6 @@
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart';
-import 'package:inspection/func/action.dart';
+import 'package:inspection/function/action.dart';
 
 import 'state.dart';
 
@@ -22,7 +22,6 @@ Widget buildView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            _buildLabel(label: '设备管理'),
             Container(
               margin: EdgeInsets.only(top: 20.0),
               child: Row(
@@ -46,13 +45,18 @@ Widget buildView(
                 ],
               ),
             ),
-            _buildLabel(label: '隐患与查看'),
             Container(
               margin: EdgeInsets.only(top: 20.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
-                  _buildFuncItem(asset: 'images/ic_avatar.png', title: '隐患上报'),
+                  GestureDetector(
+                    onTap: () {
+                      dispatch(FunctionActionCreator.onHazardReport());
+                    },
+                    child: _buildFuncItem(
+                        asset: 'images/ic_avatar.png', title: '隐患上报'),
+                  ),
                   GestureDetector(
                     onTap: () {
                       dispatch(FunctionActionCreator.onHazardReview());
@@ -64,7 +68,6 @@ Widget buildView(
                 ],
               ),
             ),
-            _buildLabel(label: '检查计划'),
             Container(
               margin: EdgeInsets.only(top: 20.0),
               child: Row(
@@ -89,16 +92,16 @@ Widget buildView(
   );
 }
 
-Widget _buildLabel({String label}) {
-  return Container(
-    margin: EdgeInsets.only(top: 30.0),
-    child: Text(
-      label,
-      style: TextStyle(
-          fontSize: 14.0, color: Colors.black, fontWeight: FontWeight.bold),
-    ),
-  );
-}
+//Widget _buildLabel({String label}) {
+//  return Container(
+//    margin: EdgeInsets.only(top: 30.0),
+//    child: Text(
+//      label,
+//      style: TextStyle(
+//          fontSize: 14.0, color: Colors.black, fontWeight: FontWeight.bold),
+//    ),
+//  );
+//}
 
 Widget _buildFuncItem({String asset, String title}) {
   return Column(
