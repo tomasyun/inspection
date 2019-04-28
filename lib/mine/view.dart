@@ -9,13 +9,20 @@ Widget buildView(MineState state, Dispatch dispatch, ViewService viewService) {
     appBar: AppBar(
       title: Text(
         '个人中心',
-        style: TextStyle(fontSize: 18.0),
+        style: TextStyle(fontSize: 18.0, color: Colors.black),
       ),
-      backgroundColor: Colors.blue,
+      backgroundColor: Colors.white,
       centerTitle: true,
-      bottom: PreferredSize(
-          child: Container(
-            margin: EdgeInsets.only(left: 25.0, bottom: 25.0),
+    ),
+    body: SingleChildScrollView(
+      child: Column(
+        children: <Widget>[
+          Container(
+            margin: EdgeInsets.symmetric(horizontal: 15.0, vertical: 30.0),
+            padding: EdgeInsets.symmetric(vertical: 40.0, horizontal: 15.0),
+            decoration: BoxDecoration(
+                color: Colors.blue,
+                borderRadius: BorderRadius.all(Radius.circular(15.0))),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
@@ -48,28 +55,35 @@ Widget buildView(MineState state, Dispatch dispatch, ViewService viewService) {
                       Container(
                         margin: EdgeInsets.only(top: 5.0),
                         child: Text(
-                          '生产部',
-                          style: TextStyle(fontSize: 16.0, color: Colors.white),
-                        ),
-                      ),
-                      Container(
-                        margin: EdgeInsets.only(top: 5.0),
-                        child: Text(
-                          '陕西缔科网络科技有限公司',
+                          '电力工人',
                           style: TextStyle(fontSize: 16.0, color: Colors.white),
                         ),
                       ),
                     ],
                   ),
-                )
+                ),
+                Expanded(
+                  child: Container(
+                    alignment: AlignmentDirectional.centerEnd,
+                    child: RaisedButton(
+                      child: Text(
+                        '个人信息',
+                        style: TextStyle(fontSize: 13.0, color: Colors.blue),
+                      ),
+                      onPressed: () {},
+                      color: Colors.white,
+                      shape: RoundedRectangleBorder(
+                          borderRadius:
+                              BorderRadius.all(Radius.circular(20.0))),
+                      padding:
+                          EdgeInsets.symmetric(vertical: 8.0, horizontal: 25.0),
+                    ),
+                  ),
+                  flex: 1,
+                ),
               ],
             ),
           ),
-          preferredSize: Size.fromHeight(130.0)),
-    ),
-    body: SingleChildScrollView(
-      child: Column(
-        children: <Widget>[
           _buildMineNavigatorItem(asset: 'images/ic_avatar.png', title: '我的任务'),
           _buildMineNavigatorItem(asset: 'images/ic_avatar.png', title: '我的上报'),
           _buildMineNavigatorItem(asset: 'images/ic_avatar.png', title: '我的整改'),

@@ -8,12 +8,15 @@ import 'view.dart';
 class RecheckReportPage extends Page<RecheckReportState, Map<String, dynamic>> {
   RecheckReportPage()
       : super(
-          initState: initState,
-          effect: buildEffect(),
-          reducer: buildReducer(),
-          view: buildView,
-          dependencies: Dependencies<RecheckReportState>(
-              adapter: null, slots: <String, Dependent<RecheckReportState>>{}),
-          middleware: <Middleware<RecheckReportState>>[],
-        );
+            initState: initState,
+            effect: buildEffect(),
+            reducer: buildReducer(),
+            view: buildView,
+            dependencies: Dependencies<RecheckReportState>(
+                adapter: null,
+                slots: <String, Dependent<RecheckReportState>>{
+                }),
+            middleware: <Middleware<RecheckReportState>>[
+            ],);
+
 }

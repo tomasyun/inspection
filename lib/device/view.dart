@@ -30,6 +30,7 @@ class DevicePageState extends State<DevicePageWidget>
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: Container(),
         title: Text('设备信息'),
         backgroundColor: Colors.blue,
         centerTitle: true,

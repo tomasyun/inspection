@@ -36,7 +36,13 @@ Widget buildView(
                         asset: 'images/ic_avatar.png', title: '设备扫码'),
                   ),
                   _buildFuncItem(asset: 'images/ic_avatar.png', title: '设备预警'),
-                  _buildFuncItem(asset: 'images/ic_avatar.png', title: '设备报修')
+                  GestureDetector(
+                    onTap: () {
+                      dispatch(FunctionActionCreator.onBrokenReport());
+                    },
+                    child: _buildFuncItem(
+                        asset: 'images/ic_avatar.png', title: '设备报修'),
+                  )
                 ],
               ),
             ),
@@ -66,7 +72,13 @@ Widget buildView(
                 children: <Widget>[
                   _buildFuncItem(asset: 'images/ic_avatar.png', title: '检查计划'),
                   _buildFuncItem(asset: 'images/ic_avatar.png', title: '我的任务'),
-                  _buildFuncItem(asset: '', title: '')
+                  GestureDetector(
+                    onTap: () {
+                      dispatch(FunctionActionCreator.onHazardRecheck());
+                    },
+                    child: _buildFuncItem(
+                        asset: 'images/ic_avatar.png', title: '隐患复查'),
+                  )
                 ],
               ),
             )

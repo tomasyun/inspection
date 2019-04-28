@@ -9,7 +9,8 @@ enum FunctionAction {
   hazardReport,
   hazardReview,
   inspectionPlan,
-  task
+  task,
+  hazardRecheck,
 }
 
 class FunctionActionCreator {
@@ -43,5 +44,9 @@ class FunctionActionCreator {
 
   static Action onMineTask() {
     return Action(FunctionAction.task);
+  }
+
+  static Action onHazardRecheck() {
+    return Action(FunctionAction.hazardRecheck);
   }
 }
