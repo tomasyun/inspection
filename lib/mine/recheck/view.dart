@@ -5,5 +5,15 @@ import 'state.dart';
 
 Widget buildView(
     RecheckState state, Dispatch dispatch, ViewService viewService) {
-  return Container();
+  return Scaffold(
+    appBar: AppBar(
+      title: Text(
+        '我的复查',
+        style: TextStyle(fontSize: 18.0, color: Colors.black),
+      ),
+      backgroundColor: Colors.white,
+      centerTitle: true,
+    ),
+    body: Container(),
+  );
 }

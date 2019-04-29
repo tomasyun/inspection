@@ -5,5 +5,15 @@ import 'state.dart';
 
 Widget buildView(
     ReportState state, Dispatch dispatch, ViewService viewService) {
-  return Container();
+  return Scaffold(
+    appBar: AppBar(
+      title: Text(
+        '我的上报',
+        style: TextStyle(fontSize: 18.0, color: Colors.black),
+      ),
+      centerTitle: true,
+      backgroundColor: Colors.white,
+    ),
+    body: Container(),
+  );
 }

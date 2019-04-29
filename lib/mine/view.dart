@@ -1,5 +1,6 @@
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart';
+import 'package:inspection/mine/action.dart';
 
 import 'state.dart';
 
@@ -70,7 +71,9 @@ Widget buildView(MineState state, Dispatch dispatch, ViewService viewService) {
                         '个人信息',
                         style: TextStyle(fontSize: 13.0, color: Colors.blue),
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        dispatch(MineActionCreator.onSkipUserInfo());
+                      },
                       color: Colors.white,
                       shape: RoundedRectangleBorder(
                           borderRadius:
@@ -84,12 +87,46 @@ Widget buildView(MineState state, Dispatch dispatch, ViewService viewService) {
               ],
             ),
           ),
-          _buildMineNavigatorItem(asset: 'images/ic_avatar.png', title: '我的任务'),
-          _buildMineNavigatorItem(asset: 'images/ic_avatar.png', title: '我的上报'),
-          _buildMineNavigatorItem(asset: 'images/ic_avatar.png', title: '我的整改'),
-          _buildMineNavigatorItem(asset: 'images/ic_avatar.png', title: '我的复查'),
-          _buildMineNavigatorItem(asset: 'images/ic_avatar.png', title: '密码修改'),
-          _buildMineNavigatorItem(asset: 'images/ic_avatar.png', title: '版本更新'),
+          GestureDetector(
+            onTap: () {
+              dispatch(MineActionCreator.onSkipMineTask());
+            },
+            child: _buildMineNavigatorItem(
+                asset: 'images/ic_avatar.png', title: '我的任务'),
+          ),
+          GestureDetector(
+            onTap: () {
+              dispatch(MineActionCreator.onSkipMineReport());
+            },
+            child: _buildMineNavigatorItem(
+                asset: 'images/ic_avatar.png', title: '我的上报'),
+          ),
+          GestureDetector(
+            onTap: () {
+              dispatch(MineActionCreator.onSkipMineRectify());
+            },
+            child: _buildMineNavigatorItem(
+                asset: 'images/ic_avatar.png', title: '我的整改'),
+          ),
+          GestureDetector(
+            onTap: () {
+              dispatch(MineActionCreator.onSkipMineRecheck());
+            },
+            child: _buildMineNavigatorItem(
+                asset: 'images/ic_avatar.png', title: '我的复查'),
+          ),
+          GestureDetector(
+            onTap: () {
+              dispatch(MineActionCreator.onSkipMineUpdatePassword());
+            },
+            child: _buildMineNavigatorItem(
+                asset: 'images/ic_avatar.png', title: '密码修改'),
+          ),
+          GestureDetector(
+            onTap: () {},
+            child: _buildMineNavigatorItem(
+                asset: 'images/ic_avatar.png', title: '版本更新'),
+          )
         ],
       ),
     ),

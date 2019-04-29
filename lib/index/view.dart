@@ -5,7 +5,6 @@ import 'package:inspection/function/page.dart';
 import 'package:inspection/global/index_will_pop.dart';
 import 'package:inspection/home/page.dart';
 import 'package:inspection/mine/page.dart';
-import 'package:inspection/qrscan/page.dart';
 
 import 'state.dart';
 
@@ -30,7 +29,7 @@ class IndexPageState extends State<IndexPageWidget>
     HomePage().buildPage(null),
 //    DevicePage().buildPage(null),
     FunctionPage().buildPage(null),
-    QRScanPage().buildPage(null),
+//    QRScanPage().buildPage(null),
     MinePage().buildPage(null)
   ];
 
@@ -45,11 +44,21 @@ class IndexPageState extends State<IndexPageWidget>
   /*
    * 根据索引获得对应的normal或是press的icon
    */
-  Image getTabIcon(int curIndex) {
+  Widget getTabIcon(int curIndex) {
     if (curIndex == _currentIndex) {
-      return tabImages[curIndex][1];
+      return Container(
+        margin: EdgeInsets.only(bottom: 5.0),
+        child: tabImages[curIndex][1],
+        width: 28.0,
+        height: 28.0,
+      );
     }
-    return tabImages[curIndex][0];
+    return Container(
+      margin: EdgeInsets.only(bottom: 5.0),
+      child: tabImages[curIndex][0],
+      width: 28.0,
+      height: 28.0,
+    );
   }
 
   void initIcon() {
@@ -62,10 +71,10 @@ class IndexPageState extends State<IndexPageWidget>
         getTabImage("images/ic_home_normal.png"),
         getTabImage("images/ic_home_press.png")
       ],
-      [
-        getTabImage("images/ic_home_normal.png"),
-        getTabImage("images/ic_home_press.png")
-      ],
+//      [
+//        getTabImage("images/ic_home_normal.png"),
+//        getTabImage("images/ic_home_press.png")
+//      ],
       [
         getTabImage("images/ic_home_normal.png"),
         getTabImage("images/ic_home_press.png")
@@ -77,37 +86,47 @@ class IndexPageState extends State<IndexPageWidget>
   Widget build(BuildContext context) {
     initIcon();
     var bottomNavigationBar = new BottomNavigationBar(
-        items: <NavItem>[
-          NavItem(
-            icon: getTabIcon(0),
-            title: Text('首页'),
-            vsync: this,
+      items: <NavItem>[
+        NavItem(
+          icon: getTabIcon(0),
+          title: Text(
+            '首页',
+            style: TextStyle(color: Colors.black, fontSize: 15.0),
           ),
-          NavItem(
-            icon: getTabIcon(1),
-            title: Text('功能'),
-            vsync: this,
+          vsync: this,
+        ),
+        NavItem(
+          icon: getTabIcon(1),
+          title: Text(
+            '功能',
+            style: TextStyle(color: Colors.black, fontSize: 15.0),
           ),
-          NavItem(
-            icon: getTabIcon(2),
-            title: Text('扫码'),
-            vsync: this,
+          vsync: this,
+        ),
+//          NavItem(
+//            icon: getTabIcon(2),
+//            title: Text('扫码'),
+//            vsync: this,
+//          ),
+        NavItem(
+          icon: getTabIcon(2),
+          title: Text(
+            '我的',
+            style: TextStyle(color: Colors.black, fontSize: 15.0),
           ),
-          NavItem(
-            icon: getTabIcon(3),
-            title: Text('我的'),
-            vsync: this,
-          ),
-        ].map((item) => item.item).toList(),
-        currentIndex: _currentIndex,
-        fixedColor: Colors.red,
-        //设置显示的模式
-        type: BottomNavigationBarType.fixed,
-        onTap: (int index) {
-          setState(() {
-            _currentIndex = index;
-          });
+          vsync: this,
+        ),
+      ].map((item) => item.item).toList(),
+      currentIndex: _currentIndex,
+      fixedColor: Colors.red,
+      //设置显示的模式
+      type: BottomNavigationBarType.fixed,
+      onTap: (int index) {
+        setState(() {
+          _currentIndex = index;
         });
+      },
+    );
 
     return IndexWillPop(
       child: Scaffold(
