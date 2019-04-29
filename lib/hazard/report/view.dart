@@ -28,7 +28,7 @@ class HazardReportS extends State<HazardReportPage> {
       ),
       body: SingleChildScrollView(
         child: Container(
-          margin: EdgeInsets.all(15.0),
+          padding: EdgeInsets.all(15.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
