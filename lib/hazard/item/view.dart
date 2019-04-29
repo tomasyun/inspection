@@ -1,12 +1,13 @@
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart';
 import 'package:inspection/entity/hazard_model.dart';
+import 'package:inspection/hazard/item/action.dart';
 
 Widget buildView(
     HazardModel state, Dispatch dispatch, ViewService viewService) {
   return GestureDetector(
     onTap: () {
-//      dispatch(RecordItemActionCreator.onAction());
+      dispatch(HazardItemActionCreator.onSkipInfo());
     },
     child: Container(
       width: double.infinity,
