@@ -96,6 +96,21 @@ Widget buildView(
                   )
                 ],
               ),
+            ),
+            Container(
+              margin: EdgeInsets.only(top: 20.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: <Widget>[
+                  GestureDetector(
+                    onTap: () {
+                      dispatch(FunctionActionCreator.onRectifyReport());
+                    },
+                    child: _buildFuncItem(
+                        asset: 'images/ic_avatar.png', title: '整改上报'),
+                  )
+                ],
+              ),
             )
           ],
         ),

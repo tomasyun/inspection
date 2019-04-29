@@ -6,6 +6,7 @@ import 'package:inspection/device/warning/page.dart';
 import 'package:inspection/hazard/page.dart';
 import 'package:inspection/hazard/recheck/report/page.dart';
 import 'package:inspection/hazard/rectify/apply/page.dart';
+import 'package:inspection/hazard/rectify/report/page.dart';
 import 'package:inspection/hazard/report/page.dart';
 
 import 'action.dart';
@@ -22,7 +23,8 @@ Effect<FunctionState> buildEffect() {
     FunctionAction.inspectionPlan: _onInspectionPlan,
     FunctionAction.task: _onMineTask,
     FunctionAction.hazardRecheck: _onHazardRecheck,
-    FunctionAction.costApply: _onCostApply
+    FunctionAction.costApply: _onCostApply,
+    FunctionAction.rectifyReport: _onRectifyReport
   });
 }
 
@@ -71,5 +73,11 @@ void _onHazardRecheck(Action action, Context<FunctionState> ctx) {
 void _onCostApply(Action action, Context<FunctionState> ctx) {
   Navigator.of(ctx.context).push(MaterialPageRoute(builder: (context) {
     return CostApplyPage().buildPage(null);
+  }));
+}
+
+void _onRectifyReport(Action action, Context<FunctionState> ctx) {
+  Navigator.of(ctx.context).push(MaterialPageRoute(builder: (context) {
+    return RectifyReportPage().buildPage(null);
   }));
 }

@@ -5,5 +5,15 @@ import 'state.dart';
 
 Widget buildView(
     RectifyReportState state, Dispatch dispatch, ViewService viewService) {
-  return Container();
+  return Scaffold(
+    appBar: AppBar(
+      title: Text(
+        '整改上报',
+        style: TextStyle(fontSize: 18.0, color: Colors.black),
+      ),
+      centerTitle: true,
+      backgroundColor: Colors.white,
+    ),
+    body: Container(),
+  );
 }

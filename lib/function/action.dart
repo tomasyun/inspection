@@ -11,7 +11,8 @@ enum FunctionAction {
   inspectionPlan,
   task,
   hazardRecheck,
-  costApply
+  costApply,
+  rectifyReport,
 }
 
 class FunctionActionCreator {
@@ -53,5 +54,9 @@ class FunctionActionCreator {
 
   static Action onCostApply() {
     return Action(FunctionAction.costApply);
+  }
+
+  static Action onRectifyReport() {
+    return Action(FunctionAction.rectifyReport);
   }
 }
