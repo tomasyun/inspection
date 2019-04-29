@@ -29,6 +29,74 @@ Widget buildView(HomeState state, Dispatch dispatch, ViewService viewService) {
               ),
             ),
             Container(
+              margin: EdgeInsets.only(top: 20.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: <Widget>[
+                  Container(
+                    child: Column(
+                      children: <Widget>[
+                        Container(
+                          child: Image.asset(
+                            'images/ic_avatar.png',
+                            width: 80.0,
+                            height: 80.0,
+                          ),
+                        ),
+                        Container(
+                          child: Text(
+                            '设备扫码',
+                            style:
+                                TextStyle(fontSize: 14.0, color: Colors.black),
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                  Container(
+                    child: Column(
+                      children: <Widget>[
+                        Container(
+                          child: Image.asset(
+                            'images/ic_avatar.png',
+                            width: 80.0,
+                            height: 80.0,
+                          ),
+                        ),
+                        Container(
+                          child: Text(
+                            '隐患上报',
+                            style:
+                                TextStyle(fontSize: 14.0, color: Colors.black),
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                  Container(
+                    child: Column(
+                      children: <Widget>[
+                        Container(
+                          child: Image.asset(
+                            'images/ic_avatar.png',
+                            width: 80.0,
+                            height: 80.0,
+                          ),
+                        ),
+                        Container(
+                          child: Text(
+                            '设备预警',
+                            style:
+                                TextStyle(fontSize: 14.0, color: Colors.black),
+                          ),
+                        )
+                      ],
+                    ),
+                  )
+                ],
+              ),
+            ),
+            Container(
               alignment: AlignmentDirectional.center,
               decoration: BoxDecoration(
                   color: Colors.white,
