@@ -2,9 +2,12 @@ import 'package:fish_redux/fish_redux.dart';
 
 class FilterState implements Cloneable<FilterState> {
   String flag;
+  List<String> levels;
   @override
   FilterState clone() {
-    return FilterState()..flag = flag;
+    return FilterState()
+      ..flag = flag
+      ..levels = levels;
   }
 }
 
