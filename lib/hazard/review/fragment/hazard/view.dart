@@ -6,7 +6,6 @@ import 'state.dart';
 Widget buildView(
     HazardInfoFragState state, Dispatch dispatch, ViewService viewService) {
   return Container(
-    padding: EdgeInsets.only(bottom: 60.0),
     child: SingleChildScrollView(
       child: Container(
         padding:

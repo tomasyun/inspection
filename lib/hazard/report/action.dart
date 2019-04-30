@@ -1,10 +1,18 @@
 import 'package:fish_redux/fish_redux.dart';
 
 //TODO replace with your own action
-enum HazardReportAction { action }
+enum HazardReportAction { action, level, type }
 
 class HazardReportActionCreator {
   static Action onAction() {
     return const Action(HazardReportAction.action);
+  }
+
+  static Action onLevelSkipFilter() {
+    return Action(HazardReportAction.level);
+  }
+
+  static Action onTypeSkipFilter() {
+    return Action(HazardReportAction.type);
   }
 }
