@@ -67,8 +67,13 @@ Widget buildView(HomeState state, Dispatch dispatch, ViewService viewService) {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
-                  _buildContainerItem(
-                      asset: 'images/ic_avatar.png', title: '设备扫码'),
+                  GestureDetector(
+                    onTap: () {
+                      dispatch(HomeActionCreator.onScanQRCode());
+                    },
+                    child: _buildContainerItem(
+                        asset: 'images/ic_avatar.png', title: '设备扫码'),
+                  ),
                   GestureDetector(
                     onTap: () {
                       dispatch(HomeActionCreator.onHazardReport());
