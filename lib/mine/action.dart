@@ -9,7 +9,7 @@ enum MineAction {
   rectify,
   recheck,
   updatePassword,
-  update
+  update,
 }
 
 class MineActionCreator {

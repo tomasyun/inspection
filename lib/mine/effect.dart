@@ -19,7 +19,7 @@ Effect<MineState> buildEffect() {
     MineAction.rectify: _onSkipMineRectify,
     MineAction.recheck: _onSkipMineRecheck,
     MineAction.updatePassword: _onSkipUpdatePassword,
-    MineAction.update: _onSkipUpdate
+    MineAction.update: _onSkipUpdate,
   });
 }
 

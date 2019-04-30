@@ -2,7 +2,6 @@ import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart';
 import 'package:inspection/banner/banner.dart';
 import 'package:inspection/global/marquee.dart';
-import 'package:inspection/global/toast.dart';
 import 'package:inspection/home/action.dart';
 
 import 'state.dart';
@@ -20,7 +19,8 @@ Widget buildView(HomeState state, Dispatch dispatch, ViewService viewService) {
       actions: <Widget>[
         GestureDetector(
           onTap: () {
-            AppToast.showToast('这里是通知入口');
+//            AppToast.showToast('这里是通知入口');
+            dispatch(HomeActionCreator.onSkipNoticePage());
           },
           child: Container(
             padding: EdgeInsets.all(15.0),

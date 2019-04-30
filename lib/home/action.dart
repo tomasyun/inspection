@@ -2,7 +2,7 @@ import 'package:fish_redux/fish_redux.dart';
 import 'package:inspection/entity/banner_model.dart';
 
 //TODO replace with your own action
-enum HomeAction { banner, action, scan, hazardReport, breakdownReport }
+enum HomeAction { banner, action, scan, hazardReport, breakdownReport, notice }
 
 class HomeActionCreator {
   static Action onAction() {
@@ -23,5 +23,9 @@ class HomeActionCreator {
 
   static Action onBreakDownReport() {
     return Action(HomeAction.breakdownReport);
+  }
+
+  static Action onSkipNoticePage() {
+    return Action(HomeAction.notice);
   }
 }

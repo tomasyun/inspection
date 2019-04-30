@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:inspection/device/repair/report/page.dart';
 import 'package:inspection/entity/banner_model.dart';
 import 'package:inspection/hazard/report/page.dart';
+import 'package:inspection/notice/page.dart';
 
 import 'action.dart';
 import 'state.dart';
@@ -13,11 +14,18 @@ Effect<HomeState> buildEffect() {
     Lifecycle.initState: _init,
     HomeAction.scan: _onScanQRCode,
     HomeAction.hazardReport: _onHazardReport,
-    HomeAction.breakdownReport: _onBreakDownReport
+    HomeAction.breakdownReport: _onBreakDownReport,
+    HomeAction.notice: _onSkipNoticePage
   });
 }
 
 void _onAction(Action action, Context<HomeState> ctx) {}
+
+void _onSkipNoticePage(Action action, Context<HomeState> ctx) {
+  Navigator.of(ctx.context).push(MaterialPageRoute(builder: (context) {
+    return NoticePage().buildPage(null);
+  }));
+}
 
 void _onScanQRCode(Action action, Context<HomeState> ctx) {}
 
