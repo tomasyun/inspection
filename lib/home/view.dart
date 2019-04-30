@@ -29,6 +29,27 @@ Widget buildView(HomeState state, Dispatch dispatch, ViewService viewService) {
               ),
             ),
             Container(
+              alignment: AlignmentDirectional.center,
+              decoration: BoxDecoration(
+                  color: Colors.white,
+                  boxShadow: [
+                    BoxShadow(
+                        color: Colors.grey[800],
+                        blurRadius: 10.0,
+                        offset: Offset(0.0, 2.0),
+                        spreadRadius: -9.0)
+                  ],
+                  borderRadius: BorderRadius.all(Radius.circular(25.0))),
+              width: double.infinity,
+              height: 40.0,
+              margin: EdgeInsets.only(top: 30.0),
+              child: MarqueeText(
+                '陕西缔科网络科技有限公司',
+                speed: 10.0,
+                gap: 100.0,
+              ),
+            ),
+            Container(
               margin: EdgeInsets.only(top: 20.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -96,27 +117,6 @@ Widget buildView(HomeState state, Dispatch dispatch, ViewService viewService) {
                 ],
               ),
             ),
-            Container(
-              alignment: AlignmentDirectional.center,
-              decoration: BoxDecoration(
-                  color: Colors.white,
-                  boxShadow: [
-                    BoxShadow(
-                        color: Colors.grey[800],
-                        blurRadius: 10.0,
-                        offset: Offset(0.0, 2.0),
-                        spreadRadius: -9.0)
-                  ],
-                  borderRadius: BorderRadius.all(Radius.circular(25.0))),
-              width: double.infinity,
-              height: 40.0,
-              margin: EdgeInsets.only(top: 30.0),
-              child: MarqueeText(
-                '陕西缔科网络科技有限公司',
-                speed: 10.0,
-                gap: 100.0,
-              ),
-            )
           ],
         ),
       ),

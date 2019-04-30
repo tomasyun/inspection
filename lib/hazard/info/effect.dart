@@ -1,10 +1,10 @@
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart';
-import 'package:inspection/global/toast.dart';
 import 'package:inspection/hazard/recheck/report/page.dart';
 import 'package:inspection/hazard/rectify/apply/page.dart';
 import 'package:inspection/hazard/rectify/info/page.dart';
 import 'package:inspection/hazard/rectify/report/page.dart';
+import 'package:inspection/hazard/review/page.dart';
 
 import 'action.dart';
 import 'state.dart';
@@ -47,5 +47,7 @@ void _onSkipRecheckReport(Action action, Context<HazardInfoState> ctx) {
 }
 
 void _onSkipHazardAllInfo(Action action, Context<HazardInfoState> ctx) {
-  AppToast.showToast('等待实现');
+  Navigator.of(ctx.context).push(MaterialPageRoute(builder: (content) {
+    return ReviewPage().buildPage(null);
+  }));
 }
