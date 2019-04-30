@@ -99,6 +99,11 @@ class RecheckReportS extends State<RecheckReportPage> {
                     ),
                   ],
                 ),
+              ),
+              Container(
+                alignment: AlignmentDirectional.center,
+                margin: EdgeInsets.only(top: 50.0),
+                child: _buildRaisedButton(),
               )
             ],
           ),
@@ -106,4 +111,19 @@ class RecheckReportS extends State<RecheckReportPage> {
       ),
     );
   }
+}
+
+Widget _buildRaisedButton() {
+  return RaisedButton(
+      onPressed: () {},
+      child: Text(
+        '提交',
+        style: TextStyle(color: Colors.black, fontSize: 14.0),
+      ),
+      color: Colors.white,
+      padding:
+          EdgeInsets.only(top: 15.0, bottom: 15.0, left: 150.0, right: 150.0),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(10.0),
+      ));
 }

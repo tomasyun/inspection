@@ -112,7 +112,7 @@ class HazardReportS extends State<HazardReportPage> {
                   children: <Widget>[
                     Container(
                       child: Text(
-                        '申请人',
+                        '隐患等级',
                         style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 14.0,
@@ -139,7 +139,7 @@ class HazardReportS extends State<HazardReportPage> {
                   children: <Widget>[
                     Container(
                       child: Text(
-                        '申请人',
+                        '隐患类型',
                         style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 14.0,

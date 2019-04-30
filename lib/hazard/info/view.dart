@@ -20,11 +20,11 @@ Widget buildView(
       children: <Widget>[
         buildBottomNavigatorJudge(dispatch: dispatch, state: state.state),
         Container(
-          padding:
-              EdgeInsets.only(top: 15.0, left: 15.0, right: 15.0, bottom: 60),
+          padding: EdgeInsets.only(bottom: 60),
           child: SingleChildScrollView(
             child: Container(
-              padding: EdgeInsets.only(bottom: 50.0),
+              padding: EdgeInsets.only(
+                  top: 15.0, left: 15.0, right: 15.0, bottom: 60),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
@@ -134,7 +134,7 @@ Widget _buildGridView() {
     crossAxisCount: 3,
     children: list,
     crossAxisSpacing: 5.0,
-    padding: EdgeInsets.symmetric(vertical: 10.0),
+    padding: EdgeInsets.symmetric(vertical: 15.0),
     physics: NeverScrollableScrollPhysics(),
   );
 }

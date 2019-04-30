@@ -40,13 +40,13 @@ class DevicePageState extends State<DevicePageWidget>
         bottom: TabBar(
           tabs: <Widget>[
             Tab(
-              text: "设备信息",
+              text: '设备信息',
             ),
             Tab(
-              text: "维修记录",
+              text: '维修记录',
             ),
             Tab(
-              text: "保养记录",
+              text: '保养记录',
             )
           ],
           controller: _controller,
