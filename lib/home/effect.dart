@@ -1,5 +1,8 @@
 import 'package:fish_redux/fish_redux.dart';
+import 'package:flutter/material.dart';
+import 'package:inspection/device/repair/report/page.dart';
 import 'package:inspection/entity/banner_model.dart';
+import 'package:inspection/hazard/report/page.dart';
 
 import 'action.dart';
 import 'state.dart';
@@ -7,11 +10,28 @@ import 'state.dart';
 Effect<HomeState> buildEffect() {
   return combineEffects(<Object, Effect<HomeState>>{
     HomeAction.action: _onAction,
-    Lifecycle.initState: _init
+    Lifecycle.initState: _init,
+    HomeAction.scan: _onScanQRCode,
+    HomeAction.hazardReport: _onHazardReport,
+    HomeAction.breakdownReport: _onBreakDownReport
   });
 }
 
 void _onAction(Action action, Context<HomeState> ctx) {}
+
+void _onScanQRCode(Action action, Context<HomeState> ctx) {}
+
+void _onHazardReport(Action action, Context<HomeState> ctx) {
+  Navigator.of(ctx.context).push(MaterialPageRoute(builder: (content) {
+    return HazardReportPage().buildPage(null);
+  }));
+}
+
+void _onBreakDownReport(Action action, Context<HomeState> ctx) {
+  Navigator.of(ctx.context).push(MaterialPageRoute(builder: (content) {
+    return ReportPage().buildPage(null);
+  }));
+}
 
 void _init(Action action, Context<HomeState> ctx) {
   List<BannerModel> list = [

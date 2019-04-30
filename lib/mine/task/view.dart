@@ -1,5 +1,6 @@
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart';
+import 'package:inspection/widget/state_view.dart' as stateView;
 
 import 'state.dart';
 
@@ -13,6 +14,8 @@ Widget buildView(TaskState state, Dispatch dispatch, ViewService viewService) {
       centerTitle: true,
       backgroundColor: Colors.white,
     ),
-    body: Container(),
+    body: Container(
+      child: stateView.blackPage(),
+    ),
   );
 }

@@ -2,6 +2,8 @@ import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart';
 import 'package:inspection/banner/banner.dart';
 import 'package:inspection/global/marquee.dart';
+import 'package:inspection/global/toast.dart';
+import 'package:inspection/home/action.dart';
 
 import 'state.dart';
 
@@ -15,6 +17,17 @@ Widget buildView(HomeState state, Dispatch dispatch, ViewService viewService) {
       ),
       centerTitle: true,
       backgroundColor: Colors.white,
+      actions: <Widget>[
+        GestureDetector(
+          onTap: () {
+            AppToast.showToast('这里是通知入口');
+          },
+          child: Container(
+            padding: EdgeInsets.all(15.0),
+            child: Icon(Icons.notifications, color: Colors.red),
+          ),
+        )
+      ],
     ),
     body: SingleChildScrollView(
       child: Container(
@@ -54,72 +67,59 @@ Widget buildView(HomeState state, Dispatch dispatch, ViewService viewService) {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
-                  Container(
-                    child: Column(
-                      children: <Widget>[
-                        Container(
-                          child: Image.asset(
-                            'images/ic_avatar.png',
-                            width: 80.0,
-                            height: 80.0,
-                          ),
-                        ),
-                        Container(
-                          child: Text(
-                            '设备扫码',
-                            style:
-                                TextStyle(fontSize: 14.0, color: Colors.black),
-                          ),
-                        )
-                      ],
-                    ),
+                  _buildContainerItem(
+                      asset: 'images/ic_avatar.png', title: '设备扫码'),
+                  GestureDetector(
+                    onTap: () {
+                      dispatch(HomeActionCreator.onHazardReport());
+                    },
+                    child: _buildContainerItem(
+                        asset: 'images/ic_avatar.png', title: '隐患上报'),
                   ),
-                  Container(
-                    child: Column(
-                      children: <Widget>[
-                        Container(
-                          child: Image.asset(
-                            'images/ic_avatar.png',
-                            width: 80.0,
-                            height: 80.0,
-                          ),
-                        ),
-                        Container(
-                          child: Text(
-                            '隐患上报',
-                            style:
-                                TextStyle(fontSize: 14.0, color: Colors.black),
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
-                  Container(
-                    child: Column(
-                      children: <Widget>[
-                        Container(
-                          child: Image.asset(
-                            'images/ic_avatar.png',
-                            width: 80.0,
-                            height: 80.0,
-                          ),
-                        ),
-                        Container(
-                          child: Text(
-                            '设备预警',
-                            style:
-                                TextStyle(fontSize: 14.0, color: Colors.black),
-                          ),
-                        )
-                      ],
-                    ),
+                  GestureDetector(
+                    onTap: () {
+                      dispatch(HomeActionCreator.onBreakDownReport());
+                    },
+                    child: _buildContainerItem(
+                        asset: 'images/ic_avatar.png', title: '设备报修'),
                   )
                 ],
               ),
             ),
+            Container(
+              child: Row(
+                children: <Widget>[
+                  Container(
+                    child: Text(''),
+                  )
+                ],
+              ),
+            )
           ],
         ),
       ),
+    ),
+  );
+}
+
+Widget _buildContainerItem({String asset, String title}) {
+  return Container(
+    child: Column(
+      children: <Widget>[
+        Container(
+          child: Image.asset(
+            asset,
+            width: 80.0,
+            height: 80.0,
+          ),
+        ),
+        Container(
+          child: Text(
+            title,
+            style: TextStyle(fontSize: 14.0, color: Colors.black),
+          ),
+        )
+      ],
     ),
   );
 }
