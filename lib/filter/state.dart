@@ -6,7 +6,8 @@ class FilterState implements Cloneable<FilterState> {
   String flag;
   List<String> levels;
   List<String> types;
-  String selected;
+  List<String> departs;
+  List<String> applicants;
 
   @override
   FilterState clone() {
@@ -15,12 +16,17 @@ class FilterState implements Cloneable<FilterState> {
       ..flag = flag
       ..levels = levels
       ..types = types
-      ..selected = selected;
+      ..departs = departs
+      ..applicants = applicants;
   }
 }
 
 FilterState initState(Map<String, dynamic> args) {
   FilterState state = FilterState();
   state.flag = args['flag'];
+  state.levels = [];
+  state.types = [];
+  state.departs = [];
+  state.applicants = [];
   return state;
 }

@@ -27,6 +27,10 @@ Widget _buildFilterTitle({String flag, String content = ''}) {
     content = '隐患等级';
   } else if (flag == 'type') {
     content = '隐患类型';
+  } else if (flag == 'depart') {
+    content = '责任部门';
+  } else if (flag == 'applicant') {
+    content = '申请人';
   }
   return Text(
     content,
@@ -75,6 +79,16 @@ Widget _buildFlow({FilterState state}) {
     return Flow(
       delegate: FilterFlowDelegate(EdgeInsets.all(5.0)),
       children: _buildFlowData(state: state, list: state.types),
+    );
+  } else if (state.flag == 'depart') {
+    return Flow(
+      delegate: FilterFlowDelegate(EdgeInsets.all(5.0)),
+      children: _buildFlowData(state: state, list: state.departs),
+    );
+  } else if (state.flag == 'applicant') {
+    return Flow(
+      delegate: FilterFlowDelegate(EdgeInsets.all(5.0)),
+      children: _buildFlowData(state: state, list: state.applicants),
     );
   } else {
     return stateView.blackPage();

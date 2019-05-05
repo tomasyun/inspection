@@ -9,7 +9,9 @@ Reducer<FilterState> buildReducer() {
       FilterAction.action: _onAction,
       FilterAction.levels: _onGetLevels,
       FilterAction.types: _onGetTypes,
-      FilterAction.context: _onInitContext
+      FilterAction.context: _onInitContext,
+      FilterAction.departs: _onGetDeparts,
+      FilterAction.applicants: _onGetApplicants
     },
   );
 }
@@ -28,6 +30,18 @@ FilterState _onGetLevels(FilterState state, Action action) {
 FilterState _onGetTypes(FilterState state, Action action) {
   FilterState newState = state.clone();
   newState.types = action.payload;
+  return newState;
+}
+
+FilterState _onGetDeparts(FilterState state, Action action) {
+  FilterState newState = state.clone();
+  newState.departs = action.payload;
+  return newState;
+}
+
+FilterState _onGetApplicants(FilterState state, Action action) {
+  FilterState newState = state.clone();
+  newState.applicants = action.payload;
   return newState;
 }
 

@@ -1,5 +1,6 @@
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart';
+import 'package:inspection/device/repair/report/action.dart';
 
 import 'state.dart';
 
@@ -47,58 +48,84 @@ Widget buildView(
                             BorderSide(color: Colors.grey, width: 0.5))),
               ),
             ),
-            Container(
-              margin: EdgeInsets.only(top: 20.0),
-              width: double.infinity,
-              padding: EdgeInsets.symmetric(vertical: 15.0, horizontal: 20.0),
-              color: Colors.white,
-              child: Row(
-                children: <Widget>[
-                  Container(
-                    child: Text(
-                      '选择责任部门',
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 14.0,
-                          color: Colors.black),
-                    ),
-                  ),
-                  Container(
-                    child: Expanded(
-                      child: Container(
-                        alignment: AlignmentDirectional.centerEnd,
-                        child: Icon(Icons.keyboard_arrow_right),
+            GestureDetector(
+              onTap: () {
+                dispatch(ReportActionCreator.onDepartSkipFilter());
+              },
+              child: Container(
+                margin: EdgeInsets.only(top: 20.0),
+                width: double.infinity,
+                padding: EdgeInsets.symmetric(vertical: 15.0, horizontal: 20.0),
+                color: Colors.white,
+                child: Row(
+                  children: <Widget>[
+                    Container(
+                      child: Text(
+                        '选择责任部门',
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 14.0,
+                            color: Colors.black),
                       ),
                     ),
-                  )
-                ],
+                    Container(
+                      margin: EdgeInsets.only(left: 20.0),
+                      child: Text(
+                        state.departRst,
+                        style:
+                            TextStyle(fontSize: 13.0, color: Colors.lightBlue),
+                      ),
+                    ),
+                    Container(
+                      child: Expanded(
+                        child: Container(
+                          alignment: AlignmentDirectional.centerEnd,
+                          child: Icon(Icons.keyboard_arrow_right),
+                        ),
+                      ),
+                    )
+                  ],
+                ),
               ),
             ),
-            Container(
-              margin: EdgeInsets.only(top: 20.0),
-              width: double.infinity,
-              padding: EdgeInsets.symmetric(vertical: 15.0, horizontal: 20.0),
-              color: Colors.white,
-              child: Row(
-                children: <Widget>[
-                  Container(
-                    child: Text(
-                      '申请人',
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 14.0,
-                          color: Colors.black),
-                    ),
-                  ),
-                  Container(
-                    child: Expanded(
-                      child: Container(
-                        alignment: AlignmentDirectional.centerEnd,
-                        child: Icon(Icons.keyboard_arrow_right),
+            GestureDetector(
+              onTap: () {
+                dispatch(ReportActionCreator.onApplicantSkipFilter());
+              },
+              child: Container(
+                margin: EdgeInsets.only(top: 20.0),
+                width: double.infinity,
+                padding: EdgeInsets.symmetric(vertical: 15.0, horizontal: 20.0),
+                color: Colors.white,
+                child: Row(
+                  children: <Widget>[
+                    Container(
+                      child: Text(
+                        '申请人',
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 14.0,
+                            color: Colors.black),
                       ),
                     ),
-                  )
-                ],
+                    Container(
+                      margin: EdgeInsets.only(left: 20.0),
+                      child: Text(
+                        state.applicantRst,
+                        style:
+                            TextStyle(fontSize: 13.0, color: Colors.lightBlue),
+                      ),
+                    ),
+                    Container(
+                      child: Expanded(
+                        child: Container(
+                          alignment: AlignmentDirectional.centerEnd,
+                          child: Icon(Icons.keyboard_arrow_right),
+                        ),
+                      ),
+                    )
+                  ],
+                ),
               ),
             ),
             Container(
