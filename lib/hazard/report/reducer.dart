@@ -8,24 +8,31 @@ Reducer<HazardReportState> buildReducer() {
     <Object, Reducer<HazardReportState>>{
       HazardReportAction.action: _onAction,
       HazardReportAction.levelRst: _onGetLevelRst,
-      HazardReportAction.typeRst: _onGetTypeRst
+      HazardReportAction.typeRst: _onGetTypeRst,
+      HazardReportAction.images: _onPickImages
     },
   );
 }
 
 HazardReportState _onAction(HazardReportState state, Action action) {
-  final HazardReportState newState = state.clone();
+  HazardReportState newState = state.clone();
+  return newState;
+}
+
+HazardReportState _onPickImages(HazardReportState state, Action action) {
+  HazardReportState newState = state.clone();
+  newState.assets = action.payload;
   return newState;
 }
 
 HazardReportState _onGetLevelRst(HazardReportState state, Action action) {
-  final HazardReportState newState = state.clone();
+  HazardReportState newState = state.clone();
   newState.levelRst = action.payload;
   return newState;
 }
 
 HazardReportState _onGetTypeRst(HazardReportState state, Action action) {
-  final HazardReportState newState = state.clone();
+  HazardReportState newState = state.clone();
   newState.typeRst = action.payload;
   return newState;
 }

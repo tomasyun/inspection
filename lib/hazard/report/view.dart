@@ -1,6 +1,7 @@
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart';
 import 'package:inspection/hazard/report/action.dart';
+import 'package:multi_image_picker/multi_image_picker.dart';
 
 import 'state.dart';
 
@@ -211,16 +212,28 @@ Widget buildView(
                     fontWeight: FontWeight.bold),
               ),
             ),
-            Container(
-              margin: EdgeInsets.only(top: 20.0),
-              child: Icon(
-                Icons.add,
-                color: Colors.grey[100],
-                size: 80.0,
+            GestureDetector(
+              onTap: () {
+                dispatch(HazardReportActionCreator.onAddAttachmentClick());
+              },
+              child: Container(
+                margin: EdgeInsets.only(top: 20.0),
+                child: Icon(
+                  Icons.add,
+                  color: Colors.grey[100],
+                  size: 80.0,
+                ),
+                width: 100.0,
+                height: 100.0,
+                color: Colors.grey,
               ),
-              width: 100.0,
-              height: 100.0,
-              color: Colors.grey,
+            ),
+            Container(
+              margin: EdgeInsets.only(top: 10.0),
+              child: _buildGridView(state: state),
+              constraints: BoxConstraints.tightFor(
+                  width: double.infinity,
+                  height: state.assets.length > 0 ? 110.0 : 0.0),
             ),
             Container(
               alignment: AlignmentDirectional.center,
@@ -231,6 +244,21 @@ Widget buildView(
         ),
       ),
     ),
+  );
+}
+
+Widget _buildGridView({HazardReportState state}) {
+  return GridView.count(
+    crossAxisCount: 3,
+    crossAxisSpacing: 5.0,
+    children: List.generate(state.assets.length, (index) {
+      Asset asset = state.assets[index];
+      return AssetThumb(
+        asset: asset,
+        width: 100,
+        height: 100,
+      );
+    }),
   );
 }
 

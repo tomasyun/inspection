@@ -16,6 +16,7 @@ dependencies:
   fluttertoast: ^3.0.1
   dio: 2.1.2
   barcode_scan: ^0.0.4
+  multi_image_picker: ^4.2.1
 
 dev_dependencies:
 

@@ -42,9 +42,10 @@ Widget buildView(
               ),
             ),
             Container(
+              margin: EdgeInsets.only(top: 15.0),
               child: _buildGridView(),
               constraints: BoxConstraints.tightFor(
-                  width: double.infinity, height: 120.0),
+                  width: double.infinity, height: 100.0),
             ),
             _buildHazardInfoItem(title: '责任部门 :', content: '陕西缔科网络科技有限公司'),
             _buildHazardInfoItem(title: '责任人 :', content: '贠拓'),
@@ -112,7 +113,6 @@ Widget _buildGridView() {
     crossAxisCount: 3,
     children: list,
     crossAxisSpacing: 5.0,
-    padding: EdgeInsets.symmetric(vertical: 15.0),
     physics: NeverScrollableScrollPhysics(),
   );
 }

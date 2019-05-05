@@ -39,9 +39,10 @@ Widget buildView(
           ),
         ),
         Container(
+          margin: EdgeInsets.only(top: 15.0),
           child: _buildGridView(),
           constraints:
-              BoxConstraints.tightFor(width: double.infinity, height: 120.0),
+              BoxConstraints.tightFor(width: double.infinity, height: 100.0),
         ),
         _buildHazardInfoItem(title: '复查时间 :', content: '2019-06-08'),
         _buildHazardInfoItem(title: '复查意见 :', content: '通过'),
@@ -102,7 +103,6 @@ Widget _buildGridView() {
     crossAxisCount: 3,
     children: list,
     crossAxisSpacing: 5.0,
-    padding: EdgeInsets.symmetric(vertical: 15.0),
     physics: NeverScrollableScrollPhysics(),
   );
 }
