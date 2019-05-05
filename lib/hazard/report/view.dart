@@ -116,7 +116,7 @@ Widget buildView(
                     Container(
                       margin: EdgeInsets.only(left: 20.0),
                       child: Text(
-                        '等级',
+                        state.levelRst,
                         style:
                             TextStyle(fontSize: 13.0, color: Colors.lightBlue),
                       ),
@@ -156,7 +156,7 @@ Widget buildView(
                     Container(
                       margin: EdgeInsets.only(left: 20.0),
                       child: Text(
-                        '类型',
+                        state.typeRst,
                         style:
                             TextStyle(fontSize: 13.0, color: Colors.lightBlue),
                       ),

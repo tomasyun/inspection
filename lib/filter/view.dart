@@ -1,6 +1,7 @@
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart';
 import 'package:inspection/widget/filter_flow_delegate.dart';
+import 'package:inspection/widget/state_view.dart' as stateView;
 
 import 'state.dart';
 
@@ -15,11 +16,8 @@ Widget buildView(
       centerTitle: true,
     ),
     body: Container(
-      padding: EdgeInsets.only(left: 15.0, right: 15.0, top: 150.0),
-      child: Flow(
-        delegate: FilterFlowDelegate(EdgeInsets.all(5.0)),
-        children: _buildFlowData(state.levels),
-      ),
+      padding: EdgeInsets.only(left: 15.0, right: 15.0, top: 15.0),
+      child: _buildFlow(state: state),
     ),
   );
 }
@@ -37,12 +35,14 @@ Widget _buildFilterTitle({String flag, String content = ''}) {
   );
 }
 
-Widget _buildFlowItem(String item) {
+Widget _buildFlowItem({FilterState state, String item}) {
   return GestureDetector(
-    onTap: () {},
+    onTap: () {
+      Navigator.of(state.context).pop(item);
+    },
     child: Container(
-      height: 50.0,
-      padding: EdgeInsets.fromLTRB(15.0, 0, 15.0, 0),
+      height: 40.0,
+      padding: EdgeInsets.fromLTRB(5.0, 0, 5.0, 0),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.all(Radius.circular(15.0)),
@@ -52,10 +52,7 @@ Widget _buildFlowItem(String item) {
         children: <Widget>[
           Text(
             item,
-            style: TextStyle(
-                fontSize: 16.0,
-                fontWeight: FontWeight.bold,
-                color: Colors.black),
+            style: TextStyle(fontSize: 14.0, color: Colors.black),
             textAlign: TextAlign.center,
           )
         ],
@@ -64,6 +61,22 @@ Widget _buildFlowItem(String item) {
   );
 }
 
-List<Widget> _buildFlowData(List<String> list) {
-  return list.map((item) => _buildFlowItem(item)).toList();
+List<Widget> _buildFlowData({FilterState state, List<String> list}) {
+  return list.map((item) => _buildFlowItem(state: state, item: item)).toList();
+}
+
+Widget _buildFlow({FilterState state}) {
+  if (state.flag == 'level') {
+    return Flow(
+      delegate: FilterFlowDelegate(EdgeInsets.all(5.0)),
+      children: _buildFlowData(state: state, list: state.levels),
+    );
+  } else if (state.flag == 'type') {
+    return Flow(
+      delegate: FilterFlowDelegate(EdgeInsets.all(5.0)),
+      children: _buildFlowData(state: state, list: state.types),
+    );
+  } else {
+    return stateView.blackPage();
+  }
 }

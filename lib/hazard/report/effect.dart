@@ -16,15 +16,27 @@ Effect<HazardReportState> buildEffect() {
 void _onAction(Action action, Context<HazardReportState> ctx) {}
 
 void _onLevelSkipFilter(Action action, Context<HazardReportState> ctx) {
-  Navigator.of(ctx.context).push(MaterialPageRoute(builder: (context) {
+  Future future =
+      Navigator.of(ctx.context).push(MaterialPageRoute(builder: (context) {
     Map<String, dynamic> map = {'flag': 'level'};
     return FilterPage().buildPage(map);
   }));
+  future.then((value) {
+    if (value != null) {
+      ctx.dispatch(HazardReportActionCreator.onGetLevelRst(value));
+    }
+  });
 }
 
 void _onTypeSkipFilter(Action action, Context<HazardReportState> ctx) {
-  Navigator.of(ctx.context).push(MaterialPageRoute(builder: (context) {
+  Future future =
+      Navigator.of(ctx.context).push(MaterialPageRoute(builder: (context) {
     Map<String, dynamic> map = {'flag': 'type'};
     return FilterPage().buildPage(map);
   }));
+  future.then((value) {
+    if (value != null) {
+      ctx.dispatch(HazardReportActionCreator.onGetTypeRst(value));
+    }
+  });
 }

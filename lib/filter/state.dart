@@ -1,13 +1,21 @@
 import 'package:fish_redux/fish_redux.dart';
+import 'package:flutter/material.dart';
 
 class FilterState implements Cloneable<FilterState> {
+  BuildContext context;
   String flag;
   List<String> levels;
+  List<String> types;
+  String selected;
+
   @override
   FilterState clone() {
     return FilterState()
+      ..context = context
       ..flag = flag
-      ..levels = levels;
+      ..levels = levels
+      ..types = types
+      ..selected = selected;
   }
 }
 
