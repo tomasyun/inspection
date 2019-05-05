@@ -6,6 +6,7 @@ import 'package:multi_image_picker/multi_image_picker.dart';
 
 Widget buildView(
     RecheckReportState state, Dispatch dispatch, ViewService viewService) {
+  int value = 0;
   return Scaffold(
     backgroundColor: Colors.grey[100],
     appBar: AppBar(
@@ -82,25 +83,26 @@ Widget buildView(
                   width: double.infinity,
                   height: state.assets.length > 0 ? 110.0 : 0.0),
             ),
-            Container(
-              margin: EdgeInsets.only(top: 20.0),
-              width: double.infinity,
-              padding: EdgeInsets.symmetric(vertical: 15.0, horizontal: 20.0),
-              color: Colors.white,
-              child: Row(
-                children: <Widget>[
-                  Container(
-                    child: Text(
-                      '复查意见',
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 14.0,
-                          color: Colors.black),
-                    ),
-                  ),
-                ],
-              ),
-            ),
+//            Container(
+//              margin: EdgeInsets.only(top: 20.0),
+//              width: double.infinity,
+//              padding: EdgeInsets.symmetric(vertical: 15.0, horizontal: 20.0),
+//              color: Colors.white,
+//              child: Column(
+//                crossAxisAlignment: CrossAxisAlignment.start,
+//                children: <Widget>[
+//                  Container(
+//                    child: Text(
+//                      '复查意见',
+//                      style: TextStyle(
+//                          fontWeight: FontWeight.bold,
+//                          fontSize: 14.0,
+//                          color: Colors.black),
+//                    ),
+//                  ),
+//                ],
+//              ),
+//            ),
             Container(
               alignment: AlignmentDirectional.center,
               margin: EdgeInsets.only(top: 50.0),

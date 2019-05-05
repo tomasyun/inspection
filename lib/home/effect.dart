@@ -1,12 +1,10 @@
-import 'package:barcode_scan/barcode_scan.dart';
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:inspection/device/repair/report/page.dart';
 import 'package:inspection/entity/banner_model.dart';
 import 'package:inspection/hazard/report/page.dart';
+import 'package:inspection/mine/task/inspection/page.dart';
 import 'package:inspection/notice/page.dart';
-import 'package:inspection/qrscan/action.dart';
 
 import 'action.dart';
 import 'state.dart';
@@ -30,21 +28,26 @@ void _onSkipNoticePage(Action action, Context<HomeState> ctx) {
   }));
 }
 
-void _onScanQRCode(Action action, Context<HomeState> ctx) async {
-  try {
-    String qrResult = await BarcodeScanner.scan();
-    ctx.dispatch(QRScanActionCreator.onAction(qrResult));
-  } on PlatformException catch (ex) {
-    if (ex.code == BarcodeScanner.CameraAccessDenied) {
-      ctx.dispatch(QRScanActionCreator.onAction("The permission was denied."));
-    } else {
-      ctx.dispatch(QRScanActionCreator.onAction("unknown error ocurred $ex"));
-    }
-  } on FormatException {
-    ctx.dispatch(QRScanActionCreator.onAction("Scan canceled, try again !"));
-  } catch (e) {
-    ctx.dispatch(QRScanActionCreator.onAction("Unknown error $e"));
-  }
+//void _onScanQRCode(Action action, Context<HomeState> ctx) async {
+//  try {
+//    String qrResult = await BarcodeScanner.scan();
+//  } on PlatformException catch (ex) {
+//    if (ex.code == BarcodeScanner.CameraAccessDenied) {
+//     ("The permission was denied.");
+//    } else {
+//     ("unknown error ocurred $ex");
+//    }
+//  } on FormatException {
+//    ("Scan canceled, try again !");
+//  } catch (e) {
+//   ("Unknown error $e");
+//  }
+//}
+
+void _onScanQRCode(Action action, Context<HomeState> ctx) {
+  Navigator.of(ctx.context).push(MaterialPageRoute(builder: (content) {
+    return InspectionTaskPage().buildPage(null);
+  }));
 }
 
 void _onHazardReport(Action action, Context<HomeState> ctx) {

@@ -92,7 +92,7 @@ Widget buildView(MineState state, Dispatch dispatch, ViewService viewService) {
               dispatch(MineActionCreator.onSkipMineTask());
             },
             child: _buildMineNavigatorItem(
-                asset: 'images/ic_avatar.png', title: '我的任务'),
+                asset: 'images/ic_avatar.png', title: '代办任务'),
           ),
           GestureDetector(
             onTap: () {

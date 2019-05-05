@@ -1,6 +1,6 @@
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart';
-import 'package:inspection/device/page.dart';
+import 'package:inspection/device/info/page.dart';
 import 'package:inspection/device/repair/report/page.dart';
 import 'package:inspection/device/warning/page.dart';
 import 'package:inspection/hazard/page.dart';
@@ -32,7 +32,7 @@ void _onAction(Action action, Context<FunctionState> ctx) {}
 
 void _onDeviceScanQRCode(Action action, Context<FunctionState> ctx) {
   Navigator.of(ctx.context).push(MaterialPageRoute(builder: (context) {
-    return DevicePage().buildPage(null);
+    return InfoPage().buildPage(null);
   }));
 }
 

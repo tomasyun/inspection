@@ -32,7 +32,7 @@ Widget buildView(
                       dispatch(FunctionActionCreator.onDeviceScanQRCode());
                     },
                     child: _buildFuncItem(
-                        asset: 'images/ic_avatar.png', title: '设备扫码'),
+                        asset: 'images/ic_avatar.png', title: '设备信息'),
                   ),
                   GestureDetector(
                     onTap: () {

@@ -20,6 +20,7 @@ Widget buildView(
       children: <Widget>[
         buildBottomNavigatorJudge(dispatch: dispatch, state: state.state),
         Container(
+          height: double.infinity,
           padding: EdgeInsets.only(bottom: 60),
           child: SingleChildScrollView(
             child: Container(

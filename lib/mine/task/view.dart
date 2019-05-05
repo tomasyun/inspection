@@ -8,7 +8,7 @@ Widget buildView(TaskState state, Dispatch dispatch, ViewService viewService) {
   return Scaffold(
     appBar: AppBar(
       title: Text(
-        '我的任务',
+        '代办任务',
         style: TextStyle(fontSize: 18.0, color: Colors.black),
       ),
       centerTitle: true,
