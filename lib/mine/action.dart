@@ -8,8 +8,7 @@ enum MineAction {
   report,
   rectify,
   recheck,
-  updatePassword,
-  update,
+  setting,
 }
 
 class MineActionCreator {
@@ -37,11 +36,7 @@ class MineActionCreator {
     return Action(MineAction.recheck);
   }
 
-  static Action onSkipMineUpdatePassword() {
-    return Action(MineAction.updatePassword);
-  }
-
-  static Action onSkipMineUpdate() {
-    return Action(MineAction.update);
+  static Action onSkipSetting() {
+    return Action(MineAction.setting);
   }
 }

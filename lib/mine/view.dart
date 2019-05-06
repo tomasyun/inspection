@@ -14,6 +14,20 @@ Widget buildView(MineState state, Dispatch dispatch, ViewService viewService) {
       ),
       backgroundColor: Colors.white,
       centerTitle: true,
+      actions: <Widget>[
+        GestureDetector(
+          onTap: () {
+            dispatch(MineActionCreator.onSkipSetting());
+          },
+          child: Container(
+            padding: EdgeInsets.all(10.0),
+            child: Icon(
+              Icons.settings,
+              color: Colors.red,
+            ),
+          ),
+        )
+      ],
     ),
     body: SingleChildScrollView(
       child: Column(
@@ -115,18 +129,6 @@ Widget buildView(MineState state, Dispatch dispatch, ViewService viewService) {
             child: _buildMineNavigatorItem(
                 asset: 'images/ic_avatar.png', title: '我的复查'),
           ),
-          GestureDetector(
-            onTap: () {
-              dispatch(MineActionCreator.onSkipMineUpdatePassword());
-            },
-            child: _buildMineNavigatorItem(
-                asset: 'images/ic_avatar.png', title: '密码修改'),
-          ),
-          GestureDetector(
-            onTap: () {},
-            child: _buildMineNavigatorItem(
-                asset: 'images/ic_avatar.png', title: '版本更新'),
-          )
         ],
       ),
     ),

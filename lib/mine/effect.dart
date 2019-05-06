@@ -5,7 +5,7 @@ import 'package:inspection/mine/recheck/page.dart';
 import 'package:inspection/mine/rectify/page.dart';
 import 'package:inspection/mine/report/page.dart';
 import 'package:inspection/mine/task/page.dart';
-import 'package:inspection/mine/updatepassword/page.dart';
+import 'package:inspection/setting/page.dart';
 
 import 'action.dart';
 import 'state.dart';
@@ -18,8 +18,7 @@ Effect<MineState> buildEffect() {
     MineAction.report: _onSkipMineReport,
     MineAction.rectify: _onSkipMineRectify,
     MineAction.recheck: _onSkipMineRecheck,
-    MineAction.updatePassword: _onSkipUpdatePassword,
-    MineAction.update: _onSkipUpdate,
+    MineAction.setting: _onSkipSetting,
   });
 }
 
@@ -55,10 +54,8 @@ void _onSkipMineRecheck(Action action, Context<MineState> ctx) {
   }));
 }
 
-void _onSkipUpdatePassword(Action action, Context<MineState> ctx) {
+void _onSkipSetting(Action action, Context<MineState> ctx) {
   Navigator.of(ctx.context).push(MaterialPageRoute(builder: (context) {
-    return UpdatePasswordPage().buildPage(null);
+    return SettingPage().buildPage(null);
   }));
 }
-
-void _onSkipUpdate(Action action, Context<MineState> ctx) {}
