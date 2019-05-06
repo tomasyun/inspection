@@ -41,13 +41,6 @@ Widget buildView(
                     child: _buildFuncItem(
                         asset: 'images/ic_avatar.png', title: '设备预警'),
                   ),
-                  GestureDetector(
-                    onTap: () {
-                      dispatch(FunctionActionCreator.onBrokenReport());
-                    },
-                    child: _buildFuncItem(
-                        asset: 'images/ic_avatar.png', title: '设备报修'),
-                  )
                 ],
               ),
             ),
@@ -58,25 +51,11 @@ Widget buildView(
                 children: <Widget>[
                   GestureDetector(
                     onTap: () {
-                      dispatch(FunctionActionCreator.onHazardReport());
-                    },
-                    child: _buildFuncItem(
-                        asset: 'images/ic_avatar.png', title: '隐患上报'),
-                  ),
-                  GestureDetector(
-                    onTap: () {
                       dispatch(FunctionActionCreator.onHazardReview());
                     },
                     child: _buildFuncItem(
                         asset: 'images/ic_avatar.png', title: '隐患查看'),
                   ),
-                  GestureDetector(
-                    onTap: () {
-                      dispatch(FunctionActionCreator.onCostApply());
-                    },
-                    child: _buildFuncItem(
-                        asset: 'images/ic_avatar.png', title: '费用申请'),
-                  )
                 ],
               ),
             ),
@@ -86,32 +65,9 @@ Widget buildView(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
                   _buildFuncItem(asset: 'images/ic_avatar.png', title: '检查计划'),
-                  _buildFuncItem(asset: 'images/ic_avatar.png', title: '我的任务'),
-                  GestureDetector(
-                    onTap: () {
-                      dispatch(FunctionActionCreator.onHazardRecheck());
-                    },
-                    child: _buildFuncItem(
-                        asset: 'images/ic_avatar.png', title: '隐患复查'),
-                  )
                 ],
               ),
             ),
-            Container(
-              margin: EdgeInsets.only(top: 20.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: <Widget>[
-                  GestureDetector(
-                    onTap: () {
-                      dispatch(FunctionActionCreator.onRectifyReport());
-                    },
-                    child: _buildFuncItem(
-                        asset: 'images/ic_avatar.png', title: '整改上报'),
-                  )
-                ],
-              ),
-            )
           ],
         ),
       ),
