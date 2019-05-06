@@ -1,6 +1,5 @@
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart';
-import 'package:inspection/widget/state_view.dart' as stateView;
 
 import 'state.dart';
 
@@ -20,7 +19,59 @@ Widget buildView(
       backgroundColor: Colors.white,
     ),
     body: Container(
-      child: stateView.blackPage(),
+      padding: EdgeInsets.all(15.0),
+      child: Column(
+        children: <Widget>[
+          _buildContainer(
+              title1: '用户名', title2: '${state.model.userName}', maxLines: 2),
+          _buildContainer(
+              edge: EdgeInsets.only(top: 15.0),
+              title1: '姓名',
+              title2: '${state.model.name}',
+              maxLines: 2),
+          _buildContainer(
+              edge: EdgeInsets.only(top: 15.0),
+              title1: '所在单位',
+              title2: '${state.model.company}',
+              maxLines: 2),
+          _buildContainer(
+              edge: EdgeInsets.only(top: 15.0),
+              title1: '所在部门',
+              title2: '${state.model.depart}',
+              maxLines: 2),
+        ],
+      ),
+    ),
+  );
+}
+
+Widget _buildContainer(
+    {EdgeInsetsGeometry edge, String title1, String title2, int maxLines}) {
+  return Container(
+    margin: edge,
+    child: Row(
+      children: <Widget>[
+        Expanded(
+          flex: 3,
+          child: Text(
+            title1,
+            style: TextStyle(
+              fontSize: 14.0,
+              color: Colors.black,
+            ),
+            textAlign: TextAlign.left,
+          ),
+        ),
+        Expanded(
+          flex: 7,
+          child: Text(
+            title2,
+            style: TextStyle(fontSize: 14.0, color: Colors.black54),
+            textAlign: TextAlign.right,
+            maxLines: maxLines,
+          ),
+        )
+      ],
     ),
   );
 }

@@ -6,7 +6,6 @@ import 'package:multi_image_picker/multi_image_picker.dart';
 
 Widget buildView(
     RecheckReportState state, Dispatch dispatch, ViewService viewService) {
-  int value = 0;
   return Scaffold(
     backgroundColor: Colors.grey[100],
     appBar: AppBar(

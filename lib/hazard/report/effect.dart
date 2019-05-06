@@ -21,7 +21,22 @@ Effect<HazardReportState> buildEffect() {
 void _onAction(Action action, Context<HazardReportState> ctx) {}
 
 void _onReport(Action action, Context<HazardReportState> ctx) {
-  AppToast.showToast('暂未实现');
+//  AppToast.showToast('暂未实现');
+  if (ctx.state.deviceNoController.text.isEmpty) {
+    AppToast.showToast('设备编号不能为空');
+  } else if (ctx.state.locationController.text.isEmpty) {
+    AppToast.showToast('请填写隐患具体位置');
+  } else if (ctx.state.levelRst == '等级') {
+    AppToast.showToast('请选择隐患等级');
+  } else if (ctx.state.typeRst == '类型') {
+    AppToast.showToast('请选择隐患类型');
+  } else if (ctx.state.decsController.text.isEmpty) {
+    AppToast.showToast('请填写隐患描述');
+  } else if (ctx.state.assets.isEmpty) {
+    AppToast.showToast('请上传相关附件');
+  } else {
+    AppToast.showToast('暂未实现');
+  }
 }
 
 void _onAddAttachmentClick(

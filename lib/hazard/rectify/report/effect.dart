@@ -17,7 +17,14 @@ Effect<RectifyReportState> buildEffect() {
 void _onAction(Action action, Context<RectifyReportState> ctx) {}
 
 void _onReport(Action action, Context<RectifyReportState> ctx) {
-  AppToast.showToast('暂未实现');
+//  AppToast.showToast('暂未实现');
+  if (ctx.state.controller.text.isEmpty) {
+    AppToast.showToast('请填写整改情况');
+  } else if (ctx.state.assets.isEmpty) {
+    AppToast.showToast('请上传相关附件');
+  } else {
+    AppToast.showToast('暂未实现');
+  }
 }
 
 void _onAddAttachmentClick(

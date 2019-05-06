@@ -12,13 +12,27 @@ Effect<ReportState> buildEffect() {
     ReportAction.depart: _onDepartSkipFilter,
     ReportAction.applicant: _onApplicantSkipFilter,
     ReportAction.report: _onReport,
+    ReportAction.goBack: _onGoBack,
   });
 }
 
 void _onAction(Action action, Context<ReportState> ctx) {}
 
+Future<bool> _onGoBack(Action action, Context<ReportState> ctx) {
+  return Future<bool>.value(true);
+}
+
 void _onReport(Action action, Context<ReportState> ctx) {
-  AppToast.showToast('暂未实现');
+//  AppToast.showToast('暂未实现');
+  if (ctx.state.controller.text.isEmpty) {
+    AppToast.showToast('请填写故障描述');
+  } else if (ctx.state.departRst == '选择责任部门') {
+    AppToast.showToast('请选择责任部门');
+  } else if (ctx.state.applicantRst == '申请人') {
+    AppToast.showToast('请选择申请人');
+  } else {
+    AppToast.showToast('暂未实现');
+  }
 }
 
 void _onDepartSkipFilter(Action action, Context<ReportState> ctx) {

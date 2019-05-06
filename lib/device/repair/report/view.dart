@@ -16,7 +16,10 @@ Widget buildView(
       backgroundColor: Colors.white,
       centerTitle: true,
     ),
-    body: SingleChildScrollView(
+    body:
+//    WillPopScope(
+//        child:
+        SingleChildScrollView(
       child: Container(
         padding: EdgeInsets.all(15.0),
         child: Column(
@@ -42,7 +45,7 @@ Widget buildView(
                 cursorColor: Colors.grey,
                 style: TextStyle(fontSize: 14.0, color: Colors.black),
                 decoration: InputDecoration(
-                    hintText: "",
+                    hintText: "请输入故障描述",
                     border: OutlineInputBorder(
                         borderSide:
                             BorderSide(color: Colors.grey, width: 0.5))),
@@ -137,6 +140,10 @@ Widget buildView(
         ),
       ),
     ),
+//        onWillPop: () {
+//          dispatch(ReportActionCreator.onGoBack());
+//        }
+//        ),
   );
 }
 

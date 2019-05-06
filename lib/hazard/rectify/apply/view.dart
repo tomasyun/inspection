@@ -36,6 +36,7 @@ Widget buildView(
                 ),
                 Expanded(
                   child: TextField(
+                    controller: state.costController,
                     keyboardType: TextInputType.text,
                     maxLines: 1,
                     cursorWidth: 2.0,
@@ -71,6 +72,7 @@ Widget buildView(
           Container(
             margin: EdgeInsets.only(top: 10.0),
             child: TextField(
+              controller: state.decsController,
               maxLength: 50,
               keyboardType: TextInputType.text,
               maxLines: 6,

@@ -35,6 +35,7 @@ Widget buildView(
               Container(
                 margin: EdgeInsets.only(top: 20.0),
                 child: TextField(
+                  controller: state.controller,
                   maxLength: 50,
                   keyboardType: TextInputType.text,
                   maxLines: 6,

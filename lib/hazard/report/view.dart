@@ -40,6 +40,7 @@ Widget buildView(
                   ),
                   Expanded(
                     child: TextField(
+                      controller: state.deviceNoController,
                       keyboardType: TextInputType.text,
                       maxLines: 1,
                       cursorWidth: 2.0,
@@ -78,6 +79,7 @@ Widget buildView(
                   ),
                   Expanded(
                     child: TextField(
+                      controller: state.locationController,
                       keyboardType: TextInputType.text,
                       cursorWidth: 2.0,
                       cursorColor: Colors.grey,
@@ -188,6 +190,7 @@ Widget buildView(
             Container(
               margin: EdgeInsets.only(top: 20.0),
               child: TextField(
+                controller: state.decsController,
                 maxLength: 50,
                 keyboardType: TextInputType.text,
                 maxLines: 10,
@@ -195,7 +198,7 @@ Widget buildView(
                 cursorColor: Colors.grey,
                 style: TextStyle(fontSize: 14.0, color: Colors.black),
                 decoration: InputDecoration(
-                    hintText: "",
+                    hintText: "请输入隐患描述",
                     border: OutlineInputBorder(
                         borderSide:
                             BorderSide(color: Colors.grey, width: 0.5))),

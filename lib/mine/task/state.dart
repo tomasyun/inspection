@@ -1,9 +1,11 @@
 import 'package:fish_redux/fish_redux.dart';
+import 'package:inspection/entity/todos_model.dart';
 
 class TaskState implements Cloneable<TaskState> {
+  ToDosModel model;
   @override
   TaskState clone() {
-    return TaskState();
+    return TaskState()..model = model;
   }
 }
 
