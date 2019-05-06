@@ -24,7 +24,7 @@ void _onSkipUpgradePassword(Action action, Context<SettingState> ctx) {
 }
 
 void _onUpgradeVersion(Action action, Context<SettingState> ctx) {
-  AppToast.showToast('暂未实现');
+  AppToast.showToast('当前版本为最新版本');
 }
 
 void _onLogout(Action action, Context<SettingState> ctx) {

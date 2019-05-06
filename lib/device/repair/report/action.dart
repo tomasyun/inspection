@@ -1,7 +1,7 @@
 import 'package:fish_redux/fish_redux.dart';
 
 //TODO replace with your own action
-enum ReportAction { action, depart, applicant, departRst, applicantRst }
+enum ReportAction { action, depart, applicant, departRst, applicantRst, report }
 
 class ReportActionCreator {
   static Action onAction() {
@@ -22,5 +22,9 @@ class ReportActionCreator {
 
   static Action onGetApplicantRst(String applicantRst) {
     return Action(ReportAction.applicantRst, payload: applicantRst);
+  }
+
+  static Action onReport() {
+    return Action(ReportAction.report);
   }
 }

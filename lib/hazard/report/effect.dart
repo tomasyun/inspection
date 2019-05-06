@@ -2,6 +2,7 @@ import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:inspection/filter/page.dart';
+import 'package:inspection/global/toast.dart';
 import 'package:multi_image_picker/multi_image_picker.dart';
 
 import 'action.dart';
@@ -12,11 +13,17 @@ Effect<HazardReportState> buildEffect() {
     HazardReportAction.action: _onAction,
     HazardReportAction.level: _onLevelSkipFilter,
     HazardReportAction.type: _onTypeSkipFilter,
-    HazardReportAction.addAttachment: _onAddAttachmentClick
+    HazardReportAction.addAttachment: _onAddAttachmentClick,
+    HazardReportAction.report: _onReport,
   });
 }
 
 void _onAction(Action action, Context<HazardReportState> ctx) {}
+
+void _onReport(Action action, Context<HazardReportState> ctx) {
+  AppToast.showToast('暂未实现');
+}
+
 void _onAddAttachmentClick(
     Action action, Context<HazardReportState> ctx) async {
   List<Asset> assets = [];

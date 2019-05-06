@@ -1,5 +1,6 @@
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart';
+import 'package:inspection/hazard/rectify/apply/action.dart';
 
 import 'state.dart';
 
@@ -85,7 +86,7 @@ Widget buildView(
           Container(
             alignment: AlignmentDirectional.center,
             margin: EdgeInsets.only(top: 50.0),
-            child: _buildRaisedButton(),
+            child: _buildRaisedButton(dispatch: dispatch),
           )
         ],
       ),
@@ -93,9 +94,11 @@ Widget buildView(
   );
 }
 
-Widget _buildRaisedButton() {
+Widget _buildRaisedButton({Dispatch dispatch}) {
   return RaisedButton(
-      onPressed: () {},
+      onPressed: () {
+        dispatch(CostApplyActionCreator.onReport());
+      },
       child: Text(
         '提交',
         style: TextStyle(color: Colors.black, fontSize: 14.0),

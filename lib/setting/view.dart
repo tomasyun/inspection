@@ -33,7 +33,7 @@ Widget buildView(
             },
             child: _buildMineNavigatorItem(
                 asset: 'images/ic_avatar.png',
-                title: '版本更新',
+                title: '检查版本',
                 edge: EdgeInsets.only(top: 10.0)),
           ),
           Container(

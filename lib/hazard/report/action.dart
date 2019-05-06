@@ -9,7 +9,8 @@ enum HazardReportAction {
   levelRst,
   typeRst,
   images,
-  addAttachment
+  addAttachment,
+  report,
 }
 
 class HazardReportActionCreator {
@@ -39,5 +40,9 @@ class HazardReportActionCreator {
 
   static Action onPickImages(List<Asset> assets) {
     return Action(HazardReportAction.images, payload: assets);
+  }
+
+  static Action onReport() {
+    return Action(HazardReportAction.report);
   }
 }

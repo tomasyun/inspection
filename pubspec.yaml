@@ -17,6 +17,7 @@ dependencies:
   dio: 2.1.2
   barcode_scan: ^0.0.4
   multi_image_picker: ^4.2.1
+  rflutter_alert: ^1.0.2
 
 dev_dependencies:
 

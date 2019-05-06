@@ -84,7 +84,7 @@ Widget buildView(
               Container(
                 alignment: AlignmentDirectional.center,
                 margin: EdgeInsets.only(top: 50.0),
-                child: _buildRaisedButton(),
+                child: _buildRaisedButton(dispatch: dispatch),
               )
             ],
           )),
@@ -107,9 +107,11 @@ Widget _buildGridView({RectifyReportState state}) {
   );
 }
 
-Widget _buildRaisedButton() {
+Widget _buildRaisedButton({Dispatch dispatch}) {
   return RaisedButton(
-      onPressed: () {},
+      onPressed: () {
+        dispatch(RectifyReportActionCreator.onReport());
+      },
       child: Text(
         '上报',
         style: TextStyle(color: Colors.black, fontSize: 14.0),

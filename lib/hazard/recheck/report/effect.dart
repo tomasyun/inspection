@@ -1,5 +1,6 @@
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/services.dart';
+import 'package:inspection/global/toast.dart';
 import 'package:multi_image_picker/multi_image_picker.dart';
 
 import 'action.dart';
@@ -9,10 +10,16 @@ Effect<RecheckReportState> buildEffect() {
   return combineEffects(<Object, Effect<RecheckReportState>>{
     RecheckReportAction.action: _onAction,
     RecheckReportAction.addAttachment: _onAddAttachmentClick,
+    RecheckReportAction.report: _onReport,
   });
 }
 
 void _onAction(Action action, Context<RecheckReportState> ctx) {}
+
+void _onReport(Action action, Context<RecheckReportState> ctx) {
+  AppToast.showToast('暂未实现');
+}
+
 void _onAddAttachmentClick(
     Action action, Context<RecheckReportState> ctx) async {
   List<Asset> assets = [];

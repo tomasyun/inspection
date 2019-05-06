@@ -1,56 +1,43 @@
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart';
+import 'package:inspection/mine/updatepassword/action.dart';
 
 import 'state.dart';
 
 Widget buildView(
     UpdatePasswordState state, Dispatch dispatch, ViewService viewService) {
-  return UpdatePasswordPageWidget();
-}
-
-class UpdatePasswordPageWidget extends StatefulWidget {
-  @override
-  State<StatefulWidget> createState() => UpdatePasswordPageState();
-}
-
-class UpdatePasswordPageState extends State<UpdatePasswordPageWidget> {
-  TextEditingController _oldPasswordController = TextEditingController();
-  TextEditingController _newPasswordController = TextEditingController();
-  TextEditingController _againPasswordController = TextEditingController();
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          '密码修改',
-          style: TextStyle(fontSize: 18.0, color: Colors.black),
-        ),
-        centerTitle: true,
-        backgroundColor: Colors.white,
+  return Scaffold(
+    appBar: AppBar(
+      title: Text(
+        '密码修改',
+        style: TextStyle(fontSize: 18.0, color: Colors.black),
       ),
-      body: Container(
-        child: Column(
-          children: <Widget>[
-            _buildContainer(null, '原密码', '请输入原密码', _oldPasswordController),
-            _buildContainer(EdgeInsets.only(top: 1.0), '新密码', '请输入新密码',
-                _newPasswordController),
-            _buildContainer(EdgeInsets.only(top: 1.0), '确认密码', '请再次输入新密码',
-                _againPasswordController),
-            Container(
-              margin: EdgeInsets.only(top: 100.0),
-              child: _buildRaisedButton(),
-            )
-          ],
-        ),
+      centerTitle: true,
+      backgroundColor: Colors.white,
+    ),
+    body: Container(
+      child: Column(
+        children: <Widget>[
+          _buildContainer(null, '原密码', '请输入原密码', state.oldPasswordController),
+          _buildContainer(EdgeInsets.only(top: 1.0), '新密码', '请输入新密码',
+              state.newPasswordController),
+          _buildContainer(EdgeInsets.only(top: 1.0), '确认密码', '请再次输入新密码',
+              state.againPasswordController),
+          Container(
+            margin: EdgeInsets.only(top: 100.0),
+            child: _buildRaisedButton(dispatch: dispatch),
+          )
+        ],
       ),
-    );
-  }
+    ),
+  );
 }
 
-Widget _buildRaisedButton() {
+Widget _buildRaisedButton({Dispatch dispatch}) {
   return RaisedButton(
-      onPressed: () {},
+      onPressed: () {
+        dispatch(UpdatePasswordActionCreator.onUpdate());
+      },
       child: Text(
         '确认修改',
         style: TextStyle(color: Colors.black, fontSize: 14.0),
