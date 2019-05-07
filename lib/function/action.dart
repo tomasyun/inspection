@@ -5,14 +5,8 @@ enum FunctionAction {
   action,
   scanQRCode,
   warning,
-  brokenReport,
-  hazardReport,
   hazardReview,
   inspectionPlan,
-  task,
-  hazardRecheck,
-  costApply,
-  rectifyReport,
 }
 
 class FunctionActionCreator {
@@ -28,35 +22,11 @@ class FunctionActionCreator {
     return Action(FunctionAction.warning);
   }
 
-  static Action onBrokenReport() {
-    return Action(FunctionAction.brokenReport);
-  }
-
-  static Action onHazardReport() {
-    return Action(FunctionAction.hazardReport);
-  }
-
   static Action onHazardReview() {
     return Action(FunctionAction.hazardReview);
   }
 
   static Action onInspectionPlan() {
     return Action(FunctionAction.inspectionPlan);
-  }
-
-  static Action onMineTask() {
-    return Action(FunctionAction.task);
-  }
-
-  static Action onHazardRecheck() {
-    return Action(FunctionAction.hazardRecheck);
-  }
-
-  static Action onCostApply() {
-    return Action(FunctionAction.costApply);
-  }
-
-  static Action onRectifyReport() {
-    return Action(FunctionAction.rectifyReport);
   }
 }

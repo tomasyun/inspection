@@ -21,6 +21,7 @@ Widget buildView(LoginState state, Dispatch dispatch, ViewService viewService) {
         children: <Widget>[
           Container(
             child: TextField(
+              controller: state.userNameController,
               keyboardType: TextInputType.text,
               style: TextStyle(fontSize: 15, color: Colors.black),
               decoration: InputDecoration(
@@ -34,6 +35,7 @@ Widget buildView(LoginState state, Dispatch dispatch, ViewService viewService) {
           Container(
             margin: EdgeInsets.only(top: 15.0),
             child: TextField(
+              controller: state.passwordController,
               keyboardType: TextInputType.text,
               style: TextStyle(fontSize: 15, color: Colors.black),
               decoration: InputDecoration(
