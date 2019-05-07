@@ -8,12 +8,19 @@ Reducer<HomeState> buildReducer() {
     <Object, Reducer<HomeState>>{
       HomeAction.action: _onAction,
       HomeAction.banner: _initBannerData,
+      HomeAction.getModels: _onGetHomeModels,
     },
   );
 }
 
 HomeState _onAction(HomeState state, Action action) {
   final HomeState newState = state.clone();
+  return newState;
+}
+
+HomeState _onGetHomeModels(HomeState state, Action action) {
+  HomeState newState = state.clone();
+  newState.model = action.payload;
   return newState;
 }
 

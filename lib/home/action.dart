@@ -1,8 +1,18 @@
 import 'package:fish_redux/fish_redux.dart';
 import 'package:inspection/entity/banner_model.dart';
+import 'package:inspection/entity/home_model.dart';
 
 //TODO replace with your own action
-enum HomeAction { banner, action, scan, hazardReport, breakdownReport, notice }
+enum HomeAction {
+  banner,
+  action,
+  scan,
+  hazardReport,
+  breakdownReport,
+  notice,
+  more,
+  getModels,
+}
 
 class HomeActionCreator {
   static Action onAction() {
@@ -11,6 +21,10 @@ class HomeActionCreator {
 
   static Action initBannerData(List<BannerModel> list) {
     return Action(HomeAction.banner, payload: list);
+  }
+
+  static Action onGetHomeModels(HomeModel model) {
+    return Action(HomeAction.getModels, payload: model);
   }
 
   static Action onScanQRCode() {
@@ -27,5 +41,9 @@ class HomeActionCreator {
 
   static Action onSkipNoticePage() {
     return Action(HomeAction.notice);
+  }
+
+  static Action onClickMoreBtn() {
+    return Action(HomeAction.more);
   }
 }

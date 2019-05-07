@@ -28,21 +28,29 @@ Widget buildView(TaskState state, Dispatch dispatch, ViewService viewService) {
 
 List<Widget> _buildToDoWidgets(TaskState state, ToDosModel model) {
   List<Widget> list = [];
-  model.rectify.map((rectify) {
-    list.add(_rectify(state, rectify));
-  }).toList();
+  if (model.rectify != null) {
+    model.rectify.map((rectify) {
+      list.add(_rectify(state, rectify));
+    }).toList();
+  }
 
-  model.recheck.map((recheck) {
-    list.add(_recheck(state, recheck));
-  }).toList();
+  if (model.recheck != null) {
+    model.recheck.map((recheck) {
+      list.add(_recheck(state, recheck));
+    }).toList();
+  }
 
-  model.keep.map((keep) {
-    list.add(_keep(keep));
-  }).toList();
+  if (model.keep != null) {
+    model.keep.map((keep) {
+      list.add(_keep(keep));
+    }).toList();
+  }
 
-  model.inspect.map((inspect) {
-    list.add(_inspect(inspect));
-  }).toList();
+  if (model.inspect != null) {
+    model.inspect.map((inspect) {
+      list.add(_inspect(inspect));
+    }).toList();
+  }
   return list;
 }
 
@@ -172,23 +180,23 @@ Widget _inspect(Inspect inspect) {
                     _buildItem(title: '状态 :', result: '${inspect.state}'),
                   ],
                 ),
+              ),
+              GestureDetector(
+                onTap: () {},
+                child: Container(
+                  alignment: AlignmentDirectional.center,
+                  color: Colors.blue,
+                  width: double.infinity,
+                  height: 50.0,
+                  child: Text(
+                    '去扫码',
+                    style: TextStyle(fontSize: 14.0, color: Colors.white),
+                  ),
+                ),
               )
             ],
           ),
         ),
-        GestureDetector(
-          onTap: () {},
-          child: Container(
-            alignment: AlignmentDirectional.center,
-            color: Colors.blue,
-            width: double.infinity,
-            height: 50.0,
-            child: Text(
-              '去扫码',
-              style: TextStyle(fontSize: 14.0, color: Colors.white),
-            ),
-          ),
-        )
       ],
     ),
   );

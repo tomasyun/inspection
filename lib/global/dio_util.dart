@@ -1,11 +1,12 @@
 import "package:dio/dio.dart";
+import 'package:inspection/global/sharedpreferences.dart';
 
 //定义一个网络请求出错的回调
 typedef NetworkError(String errorMsg);
 typedef NetworkSuccess(Map<String, dynamic> data);
 
 class DioUtil {
-  static const String baseUrl = "";
+  static const String BASE_URL = "";
   static const String TYPE_GET = "get";
   static const String TYPE_POST = "post";
   Dio dio; //一般一个应用中只有一个dio实例
@@ -18,7 +19,7 @@ class DioUtil {
   DioUtil._internal() {
     // 初始化
     if (dio == null) {
-      BaseOptions options = new BaseOptions(baseUrl: baseUrl);
+      BaseOptions options = new BaseOptions(baseUrl: BASE_URL);
       dio = new Dio(options);
     }
   }
@@ -67,16 +68,21 @@ class DioUtil {
       NetworkSuccess onSuccess,
       NetworkError onError}) async {
     try {
+      //请求Header里加token
+      String token;
+      await SpUtils().getString("token").then((value) {
+        token = value;
+      });
+      options = Options(headers: {"Authorization": token});
       Response response;
       if (type == TYPE_GET) {
         response = await dio.get(url,
             queryParameters: data, options: options, cancelToken: cancelToken);
       } else if (type == TYPE_POST) {
-        response = await dio.post(url, data: data);
+        response = await dio.post(url, options: options, data: data);
       }
       print("response:statusCode:$response");
       print("response:${response.statusCode}");
-
       if (response.statusCode != 200) {
         var errorMsg = "网络请求错误，状态码:${response.statusCode}";
         return new Future.error(errorMsg);

@@ -40,7 +40,8 @@ void _onGetToDos(Action action, Context<TaskState> ctx) {
   ];
 
   List<Inspect> inspect = [
-    Inspect(name: '日常检查', pic: '贠拓', depart: '陕西缔科网络科技有限公司', state: '待检查')
+    Inspect(name: '日常检查', pic: '贠拓', depart: '陕西缔科网络科技有限公司', state: '待检查'),
+    Inspect(name: '日常检查', pic: '高大陆', depart: '通昱消防', state: '待检查')
   ];
   ToDosModel model = ToDosModel(
       rectify: rectify, recheck: recheck, keep: keep, inspect: inspect);
