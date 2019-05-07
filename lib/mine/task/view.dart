@@ -1,6 +1,7 @@
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart';
 import 'package:inspection/entity/todos_model.dart';
+import 'package:inspection/hazard/info/page.dart';
 
 import 'state.dart';
 
@@ -18,21 +19,21 @@ Widget buildView(TaskState state, Dispatch dispatch, ViewService viewService) {
       child: Container(
         padding: EdgeInsets.only(bottom: 50.0),
         child: Column(
-          children: _buildToDoWidgets(dispatch, state.model),
+          children: _buildToDoWidgets(state, state.model),
         ),
       ),
     ),
   );
 }
 
-List<Widget> _buildToDoWidgets(Dispatch dispatch, ToDosModel model) {
+List<Widget> _buildToDoWidgets(TaskState state, ToDosModel model) {
   List<Widget> list = [];
   model.rectify.map((rectify) {
-    list.add(_rectify(rectify));
+    list.add(_rectify(state, rectify));
   }).toList();
 
   model.recheck.map((recheck) {
-    list.add(_recheck(recheck));
+    list.add(_recheck(state, recheck));
   }).toList();
 
   model.keep.map((keep) {
@@ -40,15 +41,18 @@ List<Widget> _buildToDoWidgets(Dispatch dispatch, ToDosModel model) {
   }).toList();
 
   model.inspect.map((inspect) {
-    list.add(_inspect(inspect, dispatch));
+    list.add(_inspect(inspect));
   }).toList();
   return list;
 }
 
-Widget _recheck(Recheck recheck) {
+Widget _recheck(TaskState state, Recheck recheck) {
   return GestureDetector(
     onTap: () {
-//      dispatch(RecordItemActionCreator.onAction());
+      Navigator.of(state.context).push(MaterialPageRoute(builder: (content) {
+        Map<String, dynamic> map = {'state': recheck.state};
+        return HazardInfoPage().buildPage(map);
+      }));
     },
     child: Container(
       width: double.infinity,
@@ -78,10 +82,13 @@ Widget _recheck(Recheck recheck) {
   );
 }
 
-Widget _rectify(Rectify rectify) {
+Widget _rectify(TaskState state, Rectify rectify) {
   return GestureDetector(
     onTap: () {
-//      dispatch(RecordItemActionCreator.onAction());
+      Navigator.of(state.context).push(MaterialPageRoute(builder: (content) {
+        Map<String, dynamic> map = {'state': rectify.state};
+        return HazardInfoPage().buildPage(map);
+      }));
     },
     child: Container(
       width: double.infinity,
@@ -113,9 +120,7 @@ Widget _rectify(Rectify rectify) {
 
 Widget _keep(Keep keep) {
   return GestureDetector(
-    onTap: () {
-//      dispatch(RecordItemActionCreator.onAction());
-    },
+    onTap: () {},
     child: Container(
       width: double.infinity,
       color: Colors.white,
@@ -143,7 +148,7 @@ Widget _keep(Keep keep) {
   );
 }
 
-Widget _inspect(Inspect inspect, Dispatch dispatch) {
+Widget _inspect(Inspect inspect) {
   return Container(
     child: Column(
       children: <Widget>[
@@ -171,14 +176,17 @@ Widget _inspect(Inspect inspect, Dispatch dispatch) {
             ],
           ),
         ),
-        Container(
-          alignment: AlignmentDirectional.center,
-          color: Colors.blue,
-          width: double.infinity,
-          height: 50.0,
-          child: Text(
-            '去扫码',
-            style: TextStyle(fontSize: 14.0, color: Colors.white),
+        GestureDetector(
+          onTap: () {},
+          child: Container(
+            alignment: AlignmentDirectional.center,
+            color: Colors.blue,
+            width: double.infinity,
+            height: 50.0,
+            child: Text(
+              '去扫码',
+              style: TextStyle(fontSize: 14.0, color: Colors.white),
+            ),
           ),
         )
       ],

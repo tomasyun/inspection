@@ -14,6 +14,7 @@ Effect<TaskState> buildEffect() {
 void _onAction(Action action, Context<TaskState> ctx) {}
 
 void _onGetToDos(Action action, Context<TaskState> ctx) {
+  ctx.state.context = ctx.context;
   List<Rectify> rectify = [
     Rectify(
         desc: '车间地面留有设备机油',
