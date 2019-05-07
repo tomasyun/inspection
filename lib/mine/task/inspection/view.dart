@@ -1,5 +1,6 @@
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart';
+import 'package:inspection/widget/state_view.dart' as stateView;
 import 'package:inspection/widget/switch_button.dart';
 
 import 'state.dart';
@@ -15,13 +16,26 @@ Widget buildView(
       centerTitle: true,
       backgroundColor: Colors.white,
     ),
-    body: Container(
-      padding: EdgeInsets.all(15.0),
-      child: Column(
-        children: _buildAllTaskList(state.tasks),
-      ),
-    ),
+    body: _buildInspectionTaskBody(state),
+
+//      Container(
+//        child: stateView.blackPage(),
+//      )
   );
+}
+
+Widget _buildInspectionTaskBody(InspectionTaskState state) {
+  if (state.tasks.isEmpty) {
+    return Container(
+      child: stateView.blackPage(),
+    );
+  } else {
+    return Container(
+        padding: EdgeInsets.all(15.0),
+        child: Column(
+          children: _buildAllTaskList(state.tasks),
+        ));
+  }
 }
 
 List<Widget> _buildAllTaskList(List<String> list) {

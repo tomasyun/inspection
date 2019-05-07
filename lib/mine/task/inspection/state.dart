@@ -9,5 +9,7 @@ class InspectionTaskState implements Cloneable<InspectionTaskState> {
 }
 
 InspectionTaskState initState(Map<String, dynamic> args) {
-  return InspectionTaskState();
+  InspectionTaskState state = InspectionTaskState();
+  state.tasks = [];
+  return state;
 }
