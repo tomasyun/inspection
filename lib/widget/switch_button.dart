@@ -7,10 +7,14 @@ import 'package:inspection/widget/switch_button_printer.dart';
 // ignore: must_be_immutable
 class SwitchButton extends StatefulWidget {
   SwitchButton(
-      {Key key, this.size = const Size(50.0, 30.0), this.isOpen = true})
+      {Key key,
+      this.size = const Size(50.0, 30.0),
+      this.isOpen = true,
+      this.callback})
       : super(key: key);
   Size size;
   bool isOpen;
+  VoidCallback callback;
 
   @override
   State createState() => new _SwitchButtonState();
@@ -34,6 +38,9 @@ class _SwitchButtonState extends State<SwitchButton>
     } else {}
     setState(() {
       widget.isOpen = !widget.isOpen;
+      if (!widget.isOpen) {
+        widget.callback();
+      }
     });
   }
 
