@@ -1,9 +1,10 @@
 import 'package:fish_redux/fish_redux.dart';
 
 class InspectionTaskState implements Cloneable<InspectionTaskState> {
+  List<String> tasks;
   @override
   InspectionTaskState clone() {
-    return InspectionTaskState();
+    return InspectionTaskState()..tasks = tasks;
   }
 }
 
