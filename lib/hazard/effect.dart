@@ -1,4 +1,6 @@
 import 'package:fish_redux/fish_redux.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_picker/Picker.dart';
 import 'package:inspection/entity/hazard_model.dart';
 
 import 'action.dart';
@@ -8,10 +10,33 @@ Effect<HazardState> buildEffect() {
   return combineEffects(<Object, Effect<HazardState>>{
     Lifecycle.initState: _initHazardListData,
     HazardAction.action: _onAction,
+    HazardAction.selectDate: _onSelectDate,
   });
 }
 
 void _onAction(Action action, Context<HazardState> ctx) {}
+
+void _onSelectDate(Action action, Context<HazardState> ctx) {
+  new Picker(
+          adapter: new DateTimePickerAdapter(
+              type: PickerDateTimeType.kYMD,
+              isNumberMonth: true,
+              yearSuffix: "年",
+              monthSuffix: "月",
+              daySuffix: "日"),
+          onConfirm: (Picker picker, List value) {
+            print(picker.adapter.text);
+          },
+          cancelText: '取消',
+          confirmText: '确定',
+          hideHeader: true,
+          confirmTextStyle: TextStyle(fontSize: 14.0),
+          cancelTextStyle: TextStyle(fontSize: 14.0),
+          onSelect: (Picker picker, int index, List<int> selecteds) {})
+      .showDialog(ctx.context);
+}
+
+void _onSearchEndDate(Action action, Context<HazardState> ctx) {}
 
 void _initHazardListData(Action action, Context<HazardState> ctx) {
   List<HazardModel> list = [
