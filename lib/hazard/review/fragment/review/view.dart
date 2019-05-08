@@ -31,7 +31,7 @@ Widget buildView(
         Container(
           margin: EdgeInsets.only(top: 15.0),
           child: Text(
-            '整改附件 :',
+            '复查附件 :',
             style: TextStyle(
                 fontSize: 14.0,
                 color: Colors.black,

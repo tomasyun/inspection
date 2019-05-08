@@ -149,7 +149,7 @@ Widget buildBottomNavigatorJudge(
     GestureTapCallback callback2}) {
   if (state == '待整改') {
     title1 = '整改费用申请';
-    title2 = '去整改';
+    title2 = '整改上报';
     callback1 = () {
       dispatch(HazardInfoActionCreator.onSkipRectifyCostApply());
     };
@@ -164,7 +164,7 @@ Widget buildBottomNavigatorJudge(
         callback2: callback2);
   } else if (state == '待复查') {
     title1 = '查看整改信息';
-    title2 = '去复查';
+    title2 = '复查上报';
     callback1 = () {
       dispatch(HazardInfoActionCreator.onSkipRectifyInfo());
     };
