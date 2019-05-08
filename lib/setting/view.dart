@@ -17,7 +17,7 @@ Widget buildView(
       backgroundColor: Colors.white,
     ),
     body: Container(
-      padding: EdgeInsets.all(15.0),
+      padding: EdgeInsets.symmetric(vertical: 15.0),
       child: Column(
         children: <Widget>[
           GestureDetector(

@@ -96,7 +96,6 @@ Widget buildView(HomeState state, Dispatch dispatch, ViewService viewService) {
             Container(
               padding: EdgeInsets.all(15.0),
               margin: EdgeInsets.only(top: 30.0),
-              color: Colors.white,
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
@@ -120,7 +119,7 @@ Widget buildView(HomeState state, Dispatch dispatch, ViewService viewService) {
                         alignment: AlignmentDirectional.topEnd,
                         child: Text(
                           '更多',
-                          style: TextStyle(fontSize: 14.0, color: Colors.black),
+                          style: TextStyle(fontSize: 14.0, color: Colors.red),
                         ),
                       ),
                     ),
