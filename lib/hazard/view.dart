@@ -80,7 +80,12 @@ Widget buildView(
                           fontWeight: FontWeight.bold),
                     ),
                   ),
-                  _buildSearchItem(label: '隐患状态', value: '', callback: () {}),
+                  _buildSearchItem(
+                      label: '隐患状态',
+                      value: '',
+                      callback: () {
+                        dispatch(HazardActionCreator.onSelectState());
+                      }),
                 ],
               ),
             ),

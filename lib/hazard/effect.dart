@@ -11,10 +11,32 @@ Effect<HazardState> buildEffect() {
     Lifecycle.initState: _initHazardListData,
     HazardAction.action: _onAction,
     HazardAction.selectDate: _onSelectDate,
+    HazardAction.selectState: _onSelectState,
   });
 }
 
 void _onAction(Action action, Context<HazardState> ctx) {}
+
+void _onSelectState(Action action, Context<HazardState> ctx) {
+  Picker(
+      adapter:
+          PickerDataAdapter<String>(pickerdata: ['待整改', '待复查', '待审批', '已完成']),
+//      onCancel: () {
+//        Navigator.pop(ctx.context);
+//      },
+      hideHeader: true,
+      title: Text(
+        '选择状态',
+        style: TextStyle(fontSize: 15.0, color: Colors.black),
+      ),
+      cancelText: '取消',
+      confirmText: '确定',
+      confirmTextStyle: TextStyle(fontSize: 14.0),
+      cancelTextStyle: TextStyle(fontSize: 14.0),
+      onConfirm: (Picker picker, List value) {
+        print(picker.getSelectedValues()[0]);
+      }).showDialog(ctx.context);
+}
 
 void _onSelectDate(Action action, Context<HazardState> ctx) {
   new Picker(
@@ -35,8 +57,6 @@ void _onSelectDate(Action action, Context<HazardState> ctx) {
           onSelect: (Picker picker, int index, List<int> selecteds) {})
       .showDialog(ctx.context);
 }
-
-void _onSearchEndDate(Action action, Context<HazardState> ctx) {}
 
 void _initHazardListData(Action action, Context<HazardState> ctx) {
   List<HazardModel> list = [
