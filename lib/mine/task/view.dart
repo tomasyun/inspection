@@ -63,30 +63,30 @@ Widget _recheck(TaskState state, Recheck recheck) {
       }));
     },
     child: Container(
-      width: double.infinity,
-      color: Colors.white,
-      child: Column(
-        children: <Widget>[
-          Container(
-            width: double.infinity,
-            color: Colors.grey[100],
-            height: 10.0,
+        margin: EdgeInsets.all(15.0),
+        width: double.infinity,
+        decoration: BoxDecoration(
+          color: Colors.white,
+          boxShadow: [
+            BoxShadow(
+                color: Colors.grey[800],
+                blurRadius: 10.0,
+                offset: Offset(0.0, 2.0),
+                spreadRadius: -9.0)
+          ],
+          borderRadius: BorderRadius.all(Radius.circular(15.0)),
+        ),
+        child: Container(
+          child: Column(
+            children: <Widget>[
+              _buildItem(title: '隐患描述 :', result: '${recheck.desc}'),
+              _buildItem(title: '责任部门 :', result: '${recheck.depart}'),
+              _buildItem(title: '复查时间 :', result: '${recheck.date}'),
+              _buildItem(title: '复查人 :', result: '${recheck.rechecker}'),
+              _buildItem(title: '隐患状态 :', result: '${recheck.state}'),
+            ],
           ),
-          Container(
-            padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 10.0),
-            child: Column(
-              children: <Widget>[
-                _buildItem(title: '隐患描述 :', result: '${recheck.desc}'),
-                _buildItem(title: '责任部门 :', result: '${recheck.depart}'),
-                _buildItem(title: '复查时间 :', result: '${recheck.date}'),
-                _buildItem(title: '复查人 :', result: '${recheck.rechecker}'),
-                _buildItem(title: '隐患状态 :', result: '${recheck.state}'),
-              ],
-            ),
-          )
-        ],
-      ),
-    ),
+        )),
   );
 }
 
@@ -99,30 +99,30 @@ Widget _rectify(TaskState state, Rectify rectify) {
       }));
     },
     child: Container(
-      width: double.infinity,
-      color: Colors.white,
-      child: Column(
-        children: <Widget>[
-          Container(
-            width: double.infinity,
-            color: Colors.grey[100],
-            height: 10.0,
+        margin: EdgeInsets.all(15.0),
+        width: double.infinity,
+        decoration: BoxDecoration(
+          color: Colors.white,
+          boxShadow: [
+            BoxShadow(
+                color: Colors.grey[800],
+                blurRadius: 10.0,
+                offset: Offset(0.0, 2.0),
+                spreadRadius: -9.0)
+          ],
+          borderRadius: BorderRadius.all(Radius.circular(15.0)),
+        ),
+        child: Container(
+          child: Column(
+            children: <Widget>[
+              _buildItem(title: '隐患描述 :', result: '${rectify.desc}'),
+              _buildItem(title: '责任部门 :', result: '${rectify.depart}'),
+              _buildItem(title: '发现时间 :', result: '${rectify.date}'),
+              _buildItem(title: '隐患状态 :', result: '${rectify.state}'),
+              _buildItem(title: '整改人 :', result: '${rectify.rectifier}'),
+            ],
           ),
-          Container(
-            padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 10.0),
-            child: Column(
-              children: <Widget>[
-                _buildItem(title: '隐患描述 :', result: '${rectify.desc}'),
-                _buildItem(title: '责任部门 :', result: '${rectify.depart}'),
-                _buildItem(title: '发现时间 :', result: '${rectify.date}'),
-                _buildItem(title: '隐患状态 :', result: '${rectify.state}'),
-                _buildItem(title: '整改人 :', result: '${rectify.rectifier}'),
-              ],
-            ),
-          )
-        ],
-      ),
-    ),
+        )),
   );
 }
 
@@ -130,29 +130,29 @@ Widget _keep(Keep keep) {
   return GestureDetector(
     onTap: () {},
     child: Container(
-      width: double.infinity,
-      color: Colors.white,
-      child: Column(
-        children: <Widget>[
-          Container(
-            width: double.infinity,
-            color: Colors.grey[100],
-            height: 10.0,
+        margin: EdgeInsets.all(15.0),
+        width: double.infinity,
+        decoration: BoxDecoration(
+          color: Colors.white,
+          boxShadow: [
+            BoxShadow(
+                color: Colors.grey[800],
+                blurRadius: 10.0,
+                offset: Offset(0.0, 2.0),
+                spreadRadius: -9.0)
+          ],
+          borderRadius: BorderRadius.all(Radius.circular(15.0)),
+        ),
+        child: Container(
+          child: Column(
+            children: <Widget>[
+              _buildItem(title: '保养时间 :', result: '${keep.date}'),
+              _buildItem(title: '保养人 :', result: '${keep.keeper}'),
+              _buildItem(title: '保养状态 :', result: '${keep.state}'),
+              _buildItem(title: '备注 :', result: '${keep.remark}'),
+            ],
           ),
-          Container(
-            padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 10.0),
-            child: Column(
-              children: <Widget>[
-                _buildItem(title: '保养时间 :', result: '${keep.date}'),
-                _buildItem(title: '保养人 :', result: '${keep.keeper}'),
-                _buildItem(title: '保养状态 :', result: '${keep.state}'),
-                _buildItem(title: '备注 :', result: '${keep.remark}'),
-              ],
-            ),
-          )
-        ],
-      ),
-    ),
+        )),
   );
 }
 
@@ -161,17 +161,22 @@ Widget _inspect(Inspect inspect) {
     child: Column(
       children: <Widget>[
         Container(
+          margin: EdgeInsets.all(15.0),
           width: double.infinity,
-          color: Colors.white,
+          decoration: BoxDecoration(
+            color: Colors.white,
+            boxShadow: [
+              BoxShadow(
+                  color: Colors.grey[800],
+                  blurRadius: 10.0,
+                  offset: Offset(0.0, 2.0),
+                  spreadRadius: -9.0)
+            ],
+            borderRadius: BorderRadius.all(Radius.circular(15.0)),
+          ),
           child: Column(
             children: <Widget>[
               Container(
-                width: double.infinity,
-                color: Colors.grey[100],
-                height: 10.0,
-              ),
-              Container(
-                padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 10.0),
                 child: Column(
                   children: <Widget>[
                     _buildItem(title: '设备名称 :', result: '${inspect.name}'),
@@ -203,8 +208,7 @@ Widget _inspect(Inspect inspect) {
 }
 
 Widget _buildItem({String title, String result}) {
-  return Padding(
-    padding: EdgeInsets.all(8.0),
+  return Container(
     child: Row(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: <Widget>[
@@ -217,17 +221,16 @@ Widget _buildItem({String title, String result}) {
                 fontWeight: FontWeight.bold),
             textAlign: TextAlign.right,
           ),
-          flex: 2,
+          flex: 3,
         ),
         Expanded(
-          child: Container(),
-          flex: 1,
-        ),
-        Expanded(
-          child: Text(
-            result,
-            style: TextStyle(fontSize: 14),
-            textAlign: TextAlign.left,
+          child: Container(
+            margin: EdgeInsets.only(left: 30.0),
+            child: Text(
+              result,
+              style: TextStyle(fontSize: 14),
+              textAlign: TextAlign.left,
+            ),
           ),
           flex: 7,
         )

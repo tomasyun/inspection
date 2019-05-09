@@ -12,10 +12,10 @@ Widget buildView(
     appBar: AppBar(
       title: Text(
         '检查内容',
-        style: TextStyle(fontSize: 18.0, color: Colors.black),
+        style: TextStyle(fontSize: 18.0, color: Colors.white),
       ),
       centerTitle: true,
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.blue,
     ),
     body: _buildInspectionTaskBody(dispatch, state),
   );
@@ -56,17 +56,14 @@ List<Widget> _buildAllTaskList(Dispatch dispatch, List<String> list) {
 
 Widget _buildInspectionTaskItem(Dispatch dispatch, String content) {
   return Container(
-    padding: EdgeInsets.symmetric(vertical: 15.0),
+    margin: EdgeInsets.only(top: 15.0),
     width: double.infinity,
     child: Row(
       children: <Widget>[
         Container(
           child: Text(
             content,
-            style: TextStyle(
-                fontSize: 14.0,
-                fontWeight: FontWeight.bold,
-                color: Colors.black),
+            style: TextStyle(fontSize: 14.0, color: Colors.black),
           ),
         ),
         Expanded(
@@ -84,6 +81,7 @@ Widget _buildInspectionTaskItem(Dispatch dispatch, String content) {
                 ),
                 SwitchButton(
                   isOpen: true,
+                  size: Size(60.0, 25.0),
                   callback: () {
                     dispatch(InspectionTaskActionCreator.onShowBottomSheet());
                   },

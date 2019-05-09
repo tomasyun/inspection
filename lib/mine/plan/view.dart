@@ -10,10 +10,10 @@ Widget buildView(
     appBar: AppBar(
       title: Text(
         '计划管理',
-        style: TextStyle(fontSize: 18.0, color: Colors.black),
+        style: TextStyle(fontSize: 18.0, color: Colors.white),
       ),
       centerTitle: true,
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.blue,
     ),
     body: Container(
       child: stateView.blackPage(),

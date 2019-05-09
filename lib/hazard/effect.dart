@@ -54,7 +54,7 @@ void _onSelectDate(Action action, Context<HazardState> ctx) {
           hideHeader: true,
           confirmTextStyle: TextStyle(fontSize: 14.0),
           cancelTextStyle: TextStyle(fontSize: 14.0),
-          onSelect: (Picker picker, int index, List<int> selecteds) {})
+          onSelect: (Picker picker, int index, List<int> selected) {})
       .showDialog(ctx.context);
 }
 

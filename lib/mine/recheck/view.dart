@@ -10,9 +10,9 @@ Widget buildView(
     appBar: AppBar(
       title: Text(
         '我的复查',
-        style: TextStyle(fontSize: 18.0, color: Colors.black),
+        style: TextStyle(fontSize: 18.0, color: Colors.white),
       ),
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.blue,
       centerTitle: true,
     ),
     body: Container(

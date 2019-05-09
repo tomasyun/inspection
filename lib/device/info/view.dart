@@ -10,9 +10,9 @@ Widget buildView(InfoState state, Dispatch dispatch, ViewService viewService) {
     appBar: AppBar(
       title: Text(
         '设备信息',
-        style: TextStyle(fontSize: 18.0, color: Colors.black),
+        style: TextStyle(fontSize: 18.0, color: Colors.white),
       ),
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.blue,
       centerTitle: true,
     ),
     body: Stack(

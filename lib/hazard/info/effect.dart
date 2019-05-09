@@ -1,6 +1,6 @@
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart';
-import 'package:inspection/hazard/recheck/report/page.dart';
+import 'package:inspection/hazard/recheck/page.dart';
 import 'package:inspection/hazard/rectify/apply/page.dart';
 import 'package:inspection/hazard/rectify/info/page.dart';
 import 'package:inspection/hazard/rectify/report/page.dart';

@@ -11,10 +11,10 @@ Widget buildView(
     appBar: AppBar(
       title: Text(
         '设置',
-        style: TextStyle(fontSize: 18.0, color: Colors.black),
+        style: TextStyle(fontSize: 18.0, color: Colors.white),
       ),
       centerTitle: true,
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.blue,
     ),
     body: Container(
       padding: EdgeInsets.symmetric(vertical: 15.0),

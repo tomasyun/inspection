@@ -1,7 +1,7 @@
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart';
-import 'package:inspection/hazard/recheck/report/action.dart';
-import 'package:inspection/hazard/recheck/report/state.dart';
+import 'package:inspection/hazard/recheck/action.dart';
+import 'package:inspection/hazard/recheck/state.dart';
 import 'package:multi_image_picker/multi_image_picker.dart';
 
 Widget buildView(
@@ -11,9 +11,9 @@ Widget buildView(
     appBar: AppBar(
       title: Text(
         '隐患复查',
-        style: TextStyle(fontSize: 18.0, color: Colors.black),
+        style: TextStyle(fontSize: 18.0, color: Colors.white),
       ),
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.blue,
       centerTitle: true,
     ),
     body: SingleChildScrollView(

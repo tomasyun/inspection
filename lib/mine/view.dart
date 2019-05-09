@@ -10,9 +10,9 @@ Widget buildView(MineState state, Dispatch dispatch, ViewService viewService) {
     appBar: AppBar(
       title: Text(
         '个人中心',
-        style: TextStyle(fontSize: 18.0, color: Colors.black),
+        style: TextStyle(fontSize: 18.0, color: Colors.white),
       ),
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.blue,
       centerTitle: true,
       actions: <Widget>[
         GestureDetector(
@@ -23,7 +23,7 @@ Widget buildView(MineState state, Dispatch dispatch, ViewService viewService) {
             padding: EdgeInsets.all(10.0),
             child: Icon(
               Icons.settings,
-              color: Colors.red,
+              color: Colors.white,
             ),
           ),
         )
@@ -52,6 +52,7 @@ Widget buildView(MineState state, Dispatch dispatch, ViewService viewService) {
                       image: '',
                     ),
                   ),
+                  color: Colors.white,
                 ),
                 Container(
                   margin: EdgeInsets.only(left: 30.0),

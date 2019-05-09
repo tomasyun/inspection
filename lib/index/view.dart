@@ -68,16 +68,16 @@ class IndexPageState extends State<IndexPageWidget>
         getTabImage("images/ic_home_press.png")
       ],
       [
-        getTabImage("images/ic_home_normal.png"),
-        getTabImage("images/ic_home_press.png")
+        getTabImage("images/ic_fun_normal.png"),
+        getTabImage("images/ic_fun_press.png")
       ],
 //      [
 //        getTabImage("images/ic_home_normal.png"),
 //        getTabImage("images/ic_home_press.png")
 //      ],
       [
-        getTabImage("images/ic_home_normal.png"),
-        getTabImage("images/ic_home_press.png")
+        getTabImage("images/ic_mine_normal.png"),
+        getTabImage("images/ic_mine_press.png")
       ],
     ];
   }

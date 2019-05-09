@@ -35,6 +35,15 @@ flutter:
    - images/ic_blank.png
    - images/ic_net_miss.png
    - images/img_splash.png
+   - images/ic_fun_normal.png
+   - images/ic_fun_press.png
+   - images/ic_mine_normal.png
+   - images/ic_mine_press.png
+   - images/ic_announce.png
+   - images/ic_notice.png
+   - images/ic_dev_scan.png
+   - images/ic_repair_report.png
+   - images/ic_hazard_report.png
   #  - images/a_dot_burr.jpeg
   #  - images/a_dot_ham.jpeg
 

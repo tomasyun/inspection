@@ -7,13 +7,14 @@ import 'state.dart';
 Widget buildView(
     FunctionState state, Dispatch dispatch, ViewService viewService) {
   return Scaffold(
+    backgroundColor: Colors.grey[100],
     appBar: AppBar(
       title: Text(
         '功能',
-        style: TextStyle(fontSize: 18.0, color: Colors.black),
+        style: TextStyle(fontSize: 18.0, color: Colors.white),
       ),
       centerTitle: true,
-      backgroundColor: Colors.grey[100],
+      backgroundColor: Colors.blue,
     ),
     body: SingleChildScrollView(
       child: Container(

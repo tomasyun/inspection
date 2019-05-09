@@ -25,17 +25,17 @@ Widget buildView(
           _buildContainer(
               title1: '用户名', title2: '${state.model.userName}', maxLines: 2),
           _buildContainer(
-              edge: EdgeInsets.only(top: 15.0),
+              edge: EdgeInsets.only(top: 10.0),
               title1: '姓名',
               title2: '${state.model.name}',
               maxLines: 2),
           _buildContainer(
-              edge: EdgeInsets.only(top: 15.0),
+              edge: EdgeInsets.only(top: 10.0),
               title1: '所在单位',
               title2: '${state.model.company}',
               maxLines: 2),
           _buildContainer(
-              edge: EdgeInsets.only(top: 15.0),
+              edge: EdgeInsets.only(top: 10.0),
               title1: '所在部门',
               title2: '${state.model.depart}',
               maxLines: 2),
@@ -56,9 +56,9 @@ Widget _buildContainer(
           child: Text(
             title1,
             style: TextStyle(
-              fontSize: 14.0,
-              color: Colors.black,
-            ),
+                fontSize: 14.0,
+                color: Colors.black,
+                fontWeight: FontWeight.bold),
             textAlign: TextAlign.left,
           ),
         ),

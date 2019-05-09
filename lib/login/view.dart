@@ -10,10 +10,10 @@ Widget buildView(LoginState state, Dispatch dispatch, ViewService viewService) {
     appBar: AppBar(
       title: Text(
         '登录',
-        style: TextStyle(fontSize: 18.0, color: Colors.black),
+        style: TextStyle(fontSize: 18.0, color: Colors.white),
       ),
       centerTitle: true,
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.blue,
     ),
     body: Container(
       margin: EdgeInsets.symmetric(horizontal: 30, vertical: 30.0),
