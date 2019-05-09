@@ -11,18 +11,18 @@ import 'package:multi_image_picker/multi_image_picker.dart';
 typedef NetworkError(String errorMsg);
 typedef NetworkSuccess(Map<String, dynamic> data);
 
-class DioUtil {
-  static const String BASE_URL = "";
+class HttpUtil {
+  static const String BASE_URL = "http://192.168.10.19:8085/";
   static const String TYPE_GET = "get";
   static const String TYPE_POST = "post";
   Dio dio; //一般一个应用中只有一个dio实例
 // 工厂模式
-  factory DioUtil() => _getInstance();
+  factory HttpUtil() => _getInstance();
 
-  static DioUtil get instance => _getInstance();
-  static DioUtil _instance;
+  static HttpUtil get instance => _getInstance();
+  static HttpUtil _instance;
 
-  DioUtil._internal() {
+  HttpUtil._internal() {
     // 初始化
     if (dio == null) {
       BaseOptions options = new BaseOptions(baseUrl: BASE_URL);
@@ -30,9 +30,9 @@ class DioUtil {
     }
   }
 
-  static DioUtil _getInstance() {
+  static HttpUtil _getInstance() {
     if (_instance == null) {
-      _instance = new DioUtil._internal();
+      _instance = new HttpUtil._internal();
     }
     return _instance;
   }
@@ -50,16 +50,22 @@ class DioUtil {
   //get方法
   //返回一个map的future类型
   Future get(String url,
-      {Map data, Options options, NetworkError onError}) async {
+      {Map data,
+      Options options,
+      NetworkError onError,
+      bool isLogin = false}) async {
     return _request(url, TYPE_GET,
-        data: data, options: options, onError: onError);
+        data: data, options: options, onError: onError, isLogin: isLogin);
   }
 
   //post方法
   Future post(String url,
-      {Map data, Options options, NetworkError onError}) async {
+      {Map data,
+      Options options,
+      NetworkError onError,
+      bool isLogin = false}) async {
     return _request(url, TYPE_POST,
-        data: data, options: options, onError: onError);
+        data: data, options: options, onError: onError, isLogin: isLogin);
   }
 
   //多部分上传（包括图片、参数）
@@ -87,14 +93,16 @@ class DioUtil {
   }
 
   Future _request(String url, String type,
-      {Map data, Options options, NetworkError onError}) async {
+      {Map data, Options options, NetworkError onError, bool isLogin}) async {
     try {
       //请求Header里加token
-      String token;
-      await SpUtils().getString("token").then((value) {
-        token = value;
-      });
-      options = Options(headers: {"Authorization": token});
+      if (!isLogin) {
+        String token;
+        await SpUtils().getString("token").then((value) {
+          token = value;
+        });
+        options = Options(headers: {"Authorization": token});
+      }
       Response response;
       if (type == TYPE_GET) {
         response = await dio.get(url, queryParameters: data, options: options);

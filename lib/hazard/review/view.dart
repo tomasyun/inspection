@@ -32,10 +32,10 @@ class ReviewPageState extends State<ReviewPageWidget>
       appBar: AppBar(
         title: Text(
           '隐患查看',
-          style: TextStyle(fontSize: 18.0, color: Colors.black),
+          style: TextStyle(fontSize: 18.0, color: Colors.white),
         ),
         centerTitle: true,
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.blue,
         bottom: TabBar(
           tabs: <Widget>[
             Tab(

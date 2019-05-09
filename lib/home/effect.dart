@@ -89,14 +89,14 @@ void _init(Action action, Context<HomeState> ctx) {
   ];
   ctx.dispatch(HomeActionCreator.initBannerData(list));
 
-//  List<Rectify> rectify = [
-//    Rectify(
-//        desc: '车间地面留有设备机油',
-//        depart: '缔科研发部',
-//        date: '2019-08-08',
-//        state: '待整改',
-//        rectifier: '高大陆')
-//  ];
+  List<Rectify> rectify = [
+    Rectify(
+        desc: '车间地面留有设备机油',
+        depart: '缔科研发部',
+        date: '2019-08-08',
+        state: '待整改',
+        rectifier: '高大陆')
+  ];
   List<Recheck> recheck = [
     Recheck(
         desc: '办公室墙面掉皮',
@@ -119,7 +119,7 @@ void _init(Action action, Context<HomeState> ctx) {
 
 //  Todos todo =
 //      Todos(recheck: recheck, rectify: rectify, keep: keep, inspect: inspect);
-  Todos todo = Todos(recheck: recheck, inspect: inspect);
+  Todos todo = Todos(recheck: recheck, inspect: inspect, rectify: rectify);
 
   HomeModel model = HomeModel(banner: [], todos: todo, notice: '');
   ctx.dispatch(HomeActionCreator.onGetHomeModels(model));

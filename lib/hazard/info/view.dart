@@ -18,7 +18,6 @@ Widget buildView(
     body: Stack(
       alignment: AlignmentDirectional.bottomCenter,
       children: <Widget>[
-        buildBottomNavigatorJudge(dispatch: dispatch, state: state.state),
         Container(
           height: double.infinity,
           padding: EdgeInsets.only(bottom: 60),
@@ -80,6 +79,7 @@ Widget buildView(
             ),
           ),
         ),
+        buildBottomNavigatorJudge(dispatch: dispatch, state: state.state),
       ],
     ),
   );
@@ -211,7 +211,7 @@ Widget buildBottomNavigatorDouble(
             onTap: callback1,
             child: Container(
               alignment: AlignmentDirectional.center,
-              color: Colors.red,
+              color: Colors.blue,
               height: double.infinity,
               child: Text(
                 title1,
@@ -252,7 +252,7 @@ Widget buildBottomNavigatorSingle({
       height: 60.0,
       width: double.infinity,
       alignment: AlignmentDirectional.center,
-      color: Colors.red,
+      color: Colors.blue,
       child: Text(
         title,
         style: TextStyle(color: Colors.white),

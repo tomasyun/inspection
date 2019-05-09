@@ -49,7 +49,7 @@ Widget buildBottomNavigator(Dispatch dispatch) {
             },
             child: Container(
               alignment: AlignmentDirectional.center,
-              color: Colors.red,
+              color: Colors.blue,
               height: double.infinity,
               child: Text(
                 '维修记录',

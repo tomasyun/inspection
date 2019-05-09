@@ -12,10 +12,10 @@ Widget buildView(
     appBar: AppBar(
       title: Text(
         '隐患记录',
-        style: TextStyle(fontSize: 18.0, color: Colors.black),
+        style: TextStyle(fontSize: 18.0, color: Colors.white),
       ),
       centerTitle: true,
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.blue,
       actions: <Widget>[
         GestureDetector(
           onTap: () {
@@ -26,7 +26,7 @@ Widget buildView(
             alignment: AlignmentDirectional.center,
             child: Text(
               '查询',
-              style: TextStyle(color: Colors.black, fontSize: 15.0),
+              style: TextStyle(color: Colors.white, fontSize: 15.0),
             ),
           ),
         )
@@ -41,8 +41,8 @@ Widget buildView(
       child: Stack(
         alignment: AlignmentDirectional.bottomStart,
         children: <Widget>[
-          buildBottomNavigatorDouble(title1: '查询', title2: '重置'),
           Container(
+            color: Colors.grey[100],
             height: double.infinity,
             child: Container(
               child: Column(
@@ -71,7 +71,7 @@ Widget buildView(
                         dispatch(HazardActionCreator.onSelectDate());
                       }),
                   Container(
-                    margin: EdgeInsets.only(top: 30.0, left: 15.0, right: 15.0),
+                    margin: EdgeInsets.only(top: 20.0, left: 15.0, right: 15.0),
                     child: Text(
                       '按隐患状态查询',
                       style: TextStyle(
@@ -89,7 +89,8 @@ Widget buildView(
                 ],
               ),
             ),
-          )
+          ),
+          buildBottomNavigatorDouble(title1: '查询', title2: '重置'),
         ],
       ),
     ),
@@ -112,7 +113,7 @@ Widget buildBottomNavigatorDouble(
             onTap: callback1,
             child: Container(
               alignment: AlignmentDirectional.center,
-              color: Colors.red,
+              color: Colors.blue,
               height: double.infinity,
               child: Text(
                 title1,
@@ -146,7 +147,7 @@ Widget _buildSearchItem({String label, String value, VoidCallback callback}) {
   return GestureDetector(
     onTap: callback,
     child: Container(
-      margin: EdgeInsets.only(top: 20.0),
+      margin: EdgeInsets.only(top: 10.0),
       width: double.infinity,
       padding: EdgeInsets.symmetric(vertical: 15.0, horizontal: 25.0),
       color: Colors.white,

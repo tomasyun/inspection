@@ -12,11 +12,11 @@ Widget buildView(
         '个人信息',
         style: TextStyle(
           fontSize: 18.0,
-          color: Colors.black,
+          color: Colors.white,
         ),
       ),
       centerTitle: true,
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.blue,
     ),
     body: Container(
       padding: EdgeInsets.all(15.0),
