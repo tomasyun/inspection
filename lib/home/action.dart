@@ -10,8 +10,9 @@ enum HomeAction {
   hazardReport,
   breakdownReport,
   notice,
-  more,
+  moreTask,
   getModels,
+  moreNotice
 }
 
 class HomeActionCreator {
@@ -43,7 +44,11 @@ class HomeActionCreator {
     return Action(HomeAction.notice);
   }
 
-  static Action onClickMoreBtn() {
-    return Action(HomeAction.more);
+  static Action onSkipMoreTask() {
+    return Action(HomeAction.moreTask);
+  }
+
+  static Action onSkipMoreNotice() {
+    return Action(HomeAction.moreNotice);
   }
 }

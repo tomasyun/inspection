@@ -63,25 +63,25 @@ void _initHazardListData(Action action, Context<HazardState> ctx) {
     HazardModel(
         desc: '焊接车间,地面留油',
         depart: '缔科研发部',
-        data: '2019-05-02',
+        date: '2019-05-02',
         state: '待整改',
         rectifier: '贠拓'),
     HazardModel(
         desc: '焊接车间,地面留油',
         depart: '通昱行政部',
-        data: '2019-05-02',
+        date: '2019-05-02',
         state: '待复查',
         rectifier: '高大陆'),
     HazardModel(
         desc: '挡风玻璃有裂痕',
         depart: '通昱行政部',
-        data: '2019-05-02',
+        date: '2019-05-02',
         state: '待审批',
         rectifier: '黄骁'),
     HazardModel(
         desc: '焊接车间,地面留油',
         depart: '通昱行政部',
-        data: '2019-05-02',
+        date: '2019-05-02',
         state: '已完成',
         rectifier: '王婷'),
   ];

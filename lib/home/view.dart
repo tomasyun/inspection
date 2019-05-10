@@ -84,24 +84,29 @@ Widget buildView(HomeState state, Dispatch dispatch, ViewService viewService) {
                     flex: 8,
                   ),
                   Expanded(
-                    child: Container(
-                      margin: EdgeInsets.only(left: 10.0),
-                      child: Row(
-                        children: <Widget>[
-                          Container(
-                            width: 1.0,
-                            height: 10.0,
-                            color: Colors.black45,
-                            margin: EdgeInsets.only(top: 3.0),
-                          ),
-                          Container(
-                            margin: EdgeInsets.only(left: 5.0),
-                            child: Text(
-                              '更多',
-                              style: TextStyle(color: Colors.black45),
+                    child: GestureDetector(
+                      onTap: () {
+                        dispatch(HomeActionCreator.onSkipNoticePage());
+                      },
+                      child: Container(
+                        margin: EdgeInsets.only(left: 10.0),
+                        child: Row(
+                          children: <Widget>[
+                            Container(
+                              width: 1.0,
+                              height: 10.0,
+                              color: Colors.black45,
+                              margin: EdgeInsets.only(top: 3.0),
                             ),
-                          )
-                        ],
+                            Container(
+                              margin: EdgeInsets.only(left: 5.0),
+                              child: Text(
+                                '更多',
+                                style: TextStyle(color: Colors.black45),
+                              ),
+                            )
+                          ],
+                        ),
                       ),
                     ),
                     flex: 2,
@@ -167,7 +172,7 @@ Widget buildView(HomeState state, Dispatch dispatch, ViewService viewService) {
                   Expanded(
                     child: GestureDetector(
                       onTap: () {
-                        dispatch(HomeActionCreator.onClickMoreBtn());
+                        dispatch(HomeActionCreator.onSkipMoreTask());
                       },
                       child: Container(
                         child: Row(

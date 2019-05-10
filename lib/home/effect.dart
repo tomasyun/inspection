@@ -19,13 +19,20 @@ Effect<HomeState> buildEffect() {
     HomeAction.hazardReport: _onHazardReport,
     HomeAction.breakdownReport: _onBreakDownReport,
     HomeAction.notice: _onSkipNoticePage,
-    HomeAction.more: _onClickMoreBtn,
+    HomeAction.moreTask: _onSkipMoreTask,
+    HomeAction.moreNotice: _onSkipMoreNotice,
   });
 }
 
 void _onAction(Action action, Context<HomeState> ctx) {}
 
-void _onClickMoreBtn(Action action, Context<HomeState> ctx) {
+void _onSkipMoreNotice(Action action, Context<HomeState> ctx) {
+  Navigator.of(ctx.context).push(MaterialPageRoute(builder: (context) {
+    return NoticePage().buildPage(null);
+  }));
+}
+
+void _onSkipMoreTask(Action action, Context<HomeState> ctx) {
   Navigator.of(ctx.context).push(MaterialPageRoute(builder: (context) {
     return TaskPage().buildPage(null);
   }));
