@@ -40,12 +40,6 @@ List<Widget> _buildToDoWidgets(TaskState state, ToDosModel model) {
     }).toList();
   }
 
-  if (model.keep != null) {
-    model.keep.map((keep) {
-      list.add(_keep(keep));
-    }).toList();
-  }
-
   if (model.inspect != null) {
     model.inspect.map((inspect) {
       list.add(_inspect(inspect));
@@ -55,104 +49,177 @@ List<Widget> _buildToDoWidgets(TaskState state, ToDosModel model) {
 }
 
 Widget _recheck(TaskState state, Recheck recheck) {
-  return GestureDetector(
-    onTap: () {
-      Navigator.of(state.context).push(MaterialPageRoute(builder: (content) {
-        Map<String, dynamic> map = {'state': recheck.state};
-        return HazardInfoPage().buildPage(map);
-      }));
-    },
+  return Container(
+    margin: EdgeInsets.all(15.0),
+    width: double.infinity,
+    decoration: BoxDecoration(
+      color: Colors.white,
+      boxShadow: [
+        BoxShadow(
+            color: Colors.grey[800],
+            blurRadius: 10.0,
+            offset: Offset(0.0, 2.0),
+            spreadRadius: -9.0)
+      ],
+      borderRadius: BorderRadius.all(Radius.circular(15.0)),
+    ),
     child: Container(
-        margin: EdgeInsets.all(15.0),
-        width: double.infinity,
-        decoration: BoxDecoration(
-          color: Colors.white,
-          boxShadow: [
-            BoxShadow(
-                color: Colors.grey[800],
-                blurRadius: 10.0,
-                offset: Offset(0.0, 2.0),
-                spreadRadius: -9.0)
-          ],
-          borderRadius: BorderRadius.all(Radius.circular(15.0)),
-        ),
-        child: Container(
-          child: Column(
-            children: <Widget>[
-              _buildItem(title: '隐患描述 :', result: '${recheck.desc}'),
-              _buildItem(title: '责任部门 :', result: '${recheck.depart}'),
-              _buildItem(title: '复查时间 :', result: '${recheck.date}'),
-              _buildItem(title: '复查人 :', result: '${recheck.rechecker}'),
-              _buildItem(title: '隐患状态 :', result: '${recheck.state}'),
-            ],
+      padding: EdgeInsets.all(15.0),
+      child: Column(
+        children: <Widget>[
+          _buildItemHeader(title: '火灾报警控制器', result: '待复查'),
+          Container(
+            margin: EdgeInsets.only(top: 10.0),
+            width: double.infinity,
+            color: Colors.black12,
+            height: 0.5,
           ),
-        )),
+          Container(
+            child: Row(
+              children: <Widget>[
+                Expanded(
+                    flex: 8,
+                    child: Column(
+                      children: <Widget>[
+                        _buildItem(title: '位置 :', result: '${recheck.date}'),
+                        _buildItem(
+                            title: '隐患描述 :', result: '${recheck.depart}'),
+                        _buildItem(
+                            title: '隐患类型 :', result: '${recheck.depart}'),
+                        _buildItem(title: '编号 :', result: '${recheck.depart}'),
+                      ],
+                    )),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: <Widget>[
+                      Container(
+                        margin: EdgeInsets.only(top: 20.0),
+                        child: Text(
+                          '重大隐患',
+                          style: TextStyle(color: Colors.red, fontSize: 14.0),
+                          textAlign: TextAlign.right,
+                        ),
+                      ),
+                      Container(
+                        margin: EdgeInsets.only(top: 45.0),
+                        child: RaisedButton(
+                          color: Colors.green,
+                          onPressed: () {
+                            Navigator.of(state.context)
+                                .push(MaterialPageRoute(builder: (content) {
+                              Map<String, dynamic> map = {
+                                'state': recheck.state
+                              };
+                              return HazardInfoPage().buildPage(map);
+                            }));
+                          },
+                          shape: RoundedRectangleBorder(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(20.0))),
+                          child: Text(
+                            '去复查',
+                            style:
+                                TextStyle(color: Colors.white, fontSize: 13.0),
+                          ),
+                          padding: EdgeInsets.symmetric(
+                              vertical: 3.0, horizontal: 5.0),
+                        ),
+                      ),
+                    ],
+                  ),
+                  flex: 2,
+                )
+              ],
+            ),
+          ),
+        ],
+      ),
+    ),
   );
 }
 
 Widget _rectify(TaskState state, Rectify rectify) {
-  return GestureDetector(
-    onTap: () {
-      Navigator.of(state.context).push(MaterialPageRoute(builder: (content) {
-        Map<String, dynamic> map = {'state': rectify.state};
-        return HazardInfoPage().buildPage(map);
-      }));
-    },
-    child: Container(
-        margin: EdgeInsets.all(15.0),
-        width: double.infinity,
-        decoration: BoxDecoration(
-          color: Colors.white,
-          boxShadow: [
-            BoxShadow(
-                color: Colors.grey[800],
-                blurRadius: 10.0,
-                offset: Offset(0.0, 2.0),
-                spreadRadius: -9.0)
-          ],
-          borderRadius: BorderRadius.all(Radius.circular(15.0)),
+  return Container(
+    padding: EdgeInsets.all(10.0),
+    margin: EdgeInsets.all(15.0),
+    width: double.infinity,
+    decoration: BoxDecoration(
+      color: Colors.white,
+      boxShadow: [
+        BoxShadow(
+            color: Colors.grey[800],
+            blurRadius: 10.0,
+            offset: Offset(0.0, 2.0),
+            spreadRadius: -9.0)
+      ],
+      borderRadius: BorderRadius.all(Radius.circular(15.0)),
+    ),
+    child: Column(
+      children: <Widget>[
+        _buildItemHeader(title: '火灾报警控制器', result: '待整改'),
+        Container(
+          margin: EdgeInsets.only(top: 10.0),
+          width: double.infinity,
+          color: Colors.black12,
+          height: 0.5,
         ),
-        child: Container(
-          child: Column(
+        Container(
+          child: Row(
             children: <Widget>[
-              _buildItem(title: '隐患描述 :', result: '${rectify.desc}'),
-              _buildItem(title: '责任部门 :', result: '${rectify.depart}'),
-              _buildItem(title: '发现时间 :', result: '${rectify.date}'),
-              _buildItem(title: '隐患状态 :', result: '${rectify.state}'),
-              _buildItem(title: '整改人 :', result: '${rectify.rectifier}'),
+              Expanded(
+                  flex: 8,
+                  child: Column(
+                    children: <Widget>[
+                      _buildItem(title: '位置 :', result: '${rectify.date}'),
+                      _buildItem(title: '隐患描述 :', result: '${rectify.depart}'),
+                      _buildItem(title: '隐患类型 :', result: '${rectify.depart}'),
+                      _buildItem(title: '编号 :', result: '${rectify.depart}'),
+                    ],
+                  )),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: <Widget>[
+                    Container(
+                      margin: EdgeInsets.only(top: 20.0),
+                      child: Text(
+                        '重大隐患',
+                        style: TextStyle(color: Colors.red, fontSize: 14.0),
+                        textAlign: TextAlign.right,
+                      ),
+                    ),
+                    Container(
+                      margin: EdgeInsets.only(top: 45.0),
+                      child: RaisedButton(
+                        color: Colors.green,
+                        onPressed: () {
+                          Navigator.of(state.context)
+                              .push(MaterialPageRoute(builder: (content) {
+                            Map<String, dynamic> map = {'state': rectify.state};
+                            return HazardInfoPage().buildPage(map);
+                          }));
+                        },
+                        shape: RoundedRectangleBorder(
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(20.0))),
+                        child: Text(
+                          '待整改',
+                          style: TextStyle(color: Colors.white, fontSize: 13.0),
+                        ),
+                        padding: EdgeInsets.symmetric(
+                            vertical: 3.0, horizontal: 5.0),
+                      ),
+                    ),
+                  ],
+                ),
+                flex: 2,
+              )
             ],
           ),
-        )),
-  );
-}
-
-Widget _keep(Keep keep) {
-  return GestureDetector(
-    onTap: () {},
-    child: Container(
-        margin: EdgeInsets.all(15.0),
-        width: double.infinity,
-        decoration: BoxDecoration(
-          color: Colors.white,
-          boxShadow: [
-            BoxShadow(
-                color: Colors.grey[800],
-                blurRadius: 10.0,
-                offset: Offset(0.0, 2.0),
-                spreadRadius: -9.0)
-          ],
-          borderRadius: BorderRadius.all(Radius.circular(15.0)),
         ),
-        child: Container(
-          child: Column(
-            children: <Widget>[
-              _buildItem(title: '保养时间 :', result: '${keep.date}'),
-              _buildItem(title: '保养人 :', result: '${keep.keeper}'),
-              _buildItem(title: '保养状态 :', result: '${keep.state}'),
-              _buildItem(title: '备注 :', result: '${keep.remark}'),
-            ],
-          ),
-        )),
+      ],
+    ),
   );
 }
 
@@ -161,6 +228,7 @@ Widget _inspect(Inspect inspect) {
     child: Column(
       children: <Widget>[
         Container(
+          padding: EdgeInsets.all(10.0),
           margin: EdgeInsets.all(15.0),
           width: double.infinity,
           decoration: BoxDecoration(
@@ -176,29 +244,51 @@ Widget _inspect(Inspect inspect) {
           ),
           child: Column(
             children: <Widget>[
+              _buildItemHeader(title: '火灾报警控制器', result: '待检查'),
               Container(
-                child: Column(
+                margin: EdgeInsets.only(top: 10.0),
+                width: double.infinity,
+                color: Colors.black12,
+                height: 0.5,
+              ),
+              Container(
+                child: Row(
                   children: <Widget>[
-                    _buildItem(title: '设备名称 :', result: '${inspect.name}'),
-                    _buildItem(title: '责任人 :', result: '${inspect.pic}'),
-                    _buildItem(title: '责任部门 :', result: '${inspect.depart}'),
-                    _buildItem(title: '状态 :', result: '${inspect.state}'),
+                    Expanded(
+                        flex: 8,
+                        child: Column(
+                          children: <Widget>[
+                            _buildItem(
+                                title: '位置 :', result: '${inspect.depart}'),
+                            _buildItem(
+                                title: '编号 :', result: '${inspect.depart}'),
+                            _buildItem(
+                                title: '设备类型 :', result: '${inspect.pic}'),
+                          ],
+                        )),
+                    Expanded(
+                      child: Container(
+                        margin: EdgeInsets.only(top: 50.0),
+                        child: RaisedButton(
+                          shape: RoundedRectangleBorder(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(20.0))),
+                          color: Colors.green,
+                          onPressed: () {},
+                          child: Text(
+                            '扫一扫',
+                            style:
+                                TextStyle(color: Colors.white, fontSize: 13.0),
+                          ),
+                          padding: EdgeInsets.symmetric(
+                              vertical: 3.0, horizontal: 5.0),
+                        ),
+                      ),
+                      flex: 2,
+                    )
                   ],
                 ),
               ),
-              GestureDetector(
-                onTap: () {},
-                child: Container(
-                  alignment: AlignmentDirectional.center,
-                  color: Colors.blue,
-                  width: double.infinity,
-                  height: 50.0,
-                  child: Text(
-                    '去扫码',
-                    style: TextStyle(fontSize: 14.0, color: Colors.white),
-                  ),
-                ),
-              )
             ],
           ),
         ),
@@ -209,30 +299,64 @@ Widget _inspect(Inspect inspect) {
 
 Widget _buildItem({String title, String result}) {
   return Container(
+    margin: EdgeInsets.only(top: 10.0),
     child: Row(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: <Widget>[
         Expanded(
-          child: Text(
-            title,
-            style: TextStyle(
-                fontSize: 14.0,
-                color: Colors.black,
-                fontWeight: FontWeight.bold),
-            textAlign: TextAlign.right,
+          child: Container(
+            child: Text(
+              title,
+              style: TextStyle(
+                  fontSize: 14.0,
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold),
+              textAlign: TextAlign.left,
+            ),
           ),
           flex: 3,
         ),
         Expanded(
           child: Container(
-            margin: EdgeInsets.only(left: 30.0),
             child: Text(
               result,
-              style: TextStyle(fontSize: 14),
+              style: TextStyle(fontSize: 14.0),
               textAlign: TextAlign.left,
             ),
           ),
           flex: 7,
+        ),
+      ],
+    ),
+  );
+}
+
+Widget _buildItemHeader({String title, String result}) {
+  return Container(
+    child: Row(
+      children: <Widget>[
+        Expanded(
+          child: Container(
+            child: Text(
+              title,
+              style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black,
+                  fontSize: 16.0),
+              maxLines: 1,
+            ),
+          ),
+          flex: 4,
+        ),
+        Expanded(
+          child: Container(
+            alignment: AlignmentDirectional.topEnd,
+            child: Text(
+              result,
+              style: TextStyle(color: Colors.black45, fontSize: 14.0),
+            ),
+          ),
+          flex: 6,
         )
       ],
     ),
