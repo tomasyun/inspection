@@ -24,8 +24,8 @@ class HazardReportState implements Cloneable<HazardReportState> {
 
 HazardReportState initState(Map<String, dynamic> args) {
   HazardReportState state = HazardReportState();
-  state.levelRst = '等级';
-  state.typeRst = '类型';
+  state.levelRst = '请选择';
+  state.typeRst = '请选择';
   state.assets = [];
   state.deviceNoController = TextEditingController();
   state.locationController = TextEditingController();

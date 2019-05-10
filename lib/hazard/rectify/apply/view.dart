@@ -7,6 +7,7 @@ import 'state.dart';
 Widget buildView(
     CostApplyState state, Dispatch dispatch, ViewService viewService) {
   return Scaffold(
+    backgroundColor: Colors.grey[100],
     appBar: AppBar(
       title: Text(
         '整改费用申请',
@@ -16,16 +17,16 @@ Widget buildView(
       backgroundColor: Colors.blue,
     ),
     body: Container(
-      padding: EdgeInsets.all(15.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Container(
+            padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 15.0),
+            color: Colors.white,
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
                 Container(
-                  margin: EdgeInsets.only(right: 15.0),
                   child: Text(
                     '整改金额',
                     style: TextStyle(
@@ -39,30 +40,26 @@ Widget buildView(
                     controller: state.costController,
                     keyboardType: TextInputType.text,
                     maxLines: 1,
+                    textAlign: TextAlign.right,
                     cursorWidth: 2.0,
                     cursorColor: Colors.grey,
                     style: TextStyle(fontSize: 14.0, color: Colors.black),
                     decoration: InputDecoration(
                       contentPadding: EdgeInsets.symmetric(
                           vertical: 10.0, horizontal: 10.0),
-                      hintText: "请输入整改所需费用金额",
-                      border: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.grey)),
+                      hintText: '请填写',
+                      border: OutlineInputBorder(borderSide: BorderSide.none),
                     ),
                   ),
                 ),
-                Container(
-                  margin: EdgeInsets.only(left: 15.0),
-                  child: Text('万元'),
-                )
               ],
             ),
           ),
           Container(
-            margin: EdgeInsets.only(top: 20.0),
+            padding: EdgeInsets.all(15.0),
             alignment: AlignmentDirectional.topStart,
             child: Text(
-              '申请费用说明(200字以内)',
+              '申请说明(200字以内)',
               style: TextStyle(
                   fontSize: 14.0,
                   color: Colors.black,
@@ -70,24 +67,24 @@ Widget buildView(
             ),
           ),
           Container(
-            margin: EdgeInsets.only(top: 10.0),
+            color: Colors.white,
             child: TextField(
               controller: state.decsController,
               maxLength: 50,
               keyboardType: TextInputType.text,
               maxLines: 6,
-              cursorWidth: 2.0,
+              cursorWidth: 1.0,
               cursorColor: Colors.grey,
               style: TextStyle(fontSize: 14.0, color: Colors.black),
               decoration: InputDecoration(
-                  hintText: "请输入费用申请缘由",
-                  border: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.grey, width: 0.5))),
+                  hintText: '填写申请说明',
+                  contentPadding: EdgeInsets.all(15.0),
+                  border: OutlineInputBorder(borderSide: BorderSide.none)),
             ),
           ),
           Container(
             alignment: AlignmentDirectional.center,
-            margin: EdgeInsets.only(top: 50.0),
+            margin: EdgeInsets.only(top: 150.0),
             child: _buildRaisedButton(dispatch: dispatch),
           )
         ],

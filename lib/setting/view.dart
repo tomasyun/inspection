@@ -99,7 +99,7 @@ Widget _buildRaisedButton({Dispatch dispatch}) {
       '退出登录',
       style: TextStyle(color: Colors.red, fontSize: 14.0),
     ),
-    color: Colors.blue,
+    color: Colors.white,
     padding:
         EdgeInsets.only(top: 15.0, bottom: 15.0, left: 135.0, right: 135.0),
 //      shape: RoundedRectangleBorder(

@@ -18,7 +18,7 @@ class ReportState implements Cloneable<ReportState> {
 ReportState initState(Map<String, dynamic> args) {
   ReportState state = ReportState();
   state.controller = TextEditingController();
-  state.departRst = '选择责任部门';
-  state.applicantRst = '申请人';
+  state.departRst = '请选择';
+  state.applicantRst = '请选择';
   return state;
 }

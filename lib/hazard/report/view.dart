@@ -8,7 +8,7 @@ import 'state.dart';
 Widget buildView(
     HazardReportState state, Dispatch dispatch, ViewService viewService) {
   return Scaffold(
-    backgroundColor: Colors.grey[100],
+    backgroundColor: Colors.white,
     appBar: AppBar(
       title: Text(
         '隐患上报',
@@ -19,12 +19,100 @@ Widget buildView(
     ),
     body: SingleChildScrollView(
       child: Container(
-        padding:
-            EdgeInsets.only(top: 15.0, right: 15.0, left: 15.0, bottom: 50.0),
+        padding: EdgeInsets.only(top: 20.0, bottom: 50.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
+            GestureDetector(
+              onTap: () {
+                dispatch(HazardReportActionCreator.onLevelSkipFilter());
+              },
+              child: Container(
+                width: double.infinity,
+                padding: EdgeInsets.symmetric(horizontal: 15.0, vertical: 15.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Container(
+                      child: Text(
+                        '分类',
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 14.0,
+                            color: Colors.black),
+                      ),
+                    ),
+                    Expanded(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: <Widget>[
+                          Container(
+                            margin: EdgeInsets.only(left: 25.0),
+                            child: Text(
+                              state.levelRst,
+                              style:
+                                  TextStyle(fontSize: 13.0, color: Colors.red),
+                            ),
+                          ),
+                          Container(
+                            alignment: AlignmentDirectional.centerEnd,
+                            child: Icon(Icons.keyboard_arrow_right),
+                          ),
+                        ],
+                      ),
+                    )
+                  ],
+                ),
+              ),
+            ),
             Container(
+              width: double.infinity,
+              height: 0.5,
+              margin: EdgeInsets.symmetric(horizontal: 15.0),
+              color: Colors.black45,
+            ),
+            Container(
+              padding: EdgeInsets.symmetric(horizontal: 15.0, vertical: 10.0),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  Container(
+                    margin: EdgeInsets.only(right: 15.0),
+                    child: Text(
+                      '位置',
+                      style: TextStyle(
+                          fontSize: 14.0,
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                  Expanded(
+                    child: TextField(
+                      textAlign: TextAlign.right,
+                      controller: state.locationController,
+                      keyboardType: TextInputType.text,
+                      cursorWidth: 2.0,
+                      cursorColor: Colors.grey,
+                      style: TextStyle(fontSize: 14.0, color: Colors.black),
+                      decoration: InputDecoration(
+                          contentPadding: EdgeInsets.symmetric(
+                              vertical: 10.0, horizontal: 10.0),
+                          hintText: '隐患具体位置',
+                          border:
+                              OutlineInputBorder(borderSide: BorderSide.none)),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Container(
+              width: double.infinity,
+              height: 0.5,
+              margin: EdgeInsets.symmetric(horizontal: 15.0),
+              color: Colors.black45,
+            ),
+            Container(
+              padding: EdgeInsets.symmetric(horizontal: 15.0, vertical: 10.0),
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
@@ -40,6 +128,7 @@ Widget buildView(
                   ),
                   Expanded(
                     child: TextField(
+                      textAlign: TextAlign.right,
                       controller: state.deviceNoController,
                       keyboardType: TextInputType.text,
                       maxLines: 1,
@@ -47,129 +136,62 @@ Widget buildView(
                       cursorColor: Colors.grey,
                       style: TextStyle(fontSize: 14.0, color: Colors.black),
                       decoration: InputDecoration(
-                        contentPadding: EdgeInsets.symmetric(
-                            vertical: 10.0, horizontal: 10.0),
-                        hintText: "在此手动输入设备编号",
-                        border: OutlineInputBorder(
-                            borderSide: BorderSide(color: Colors.grey)),
-                      ),
+                          contentPadding: EdgeInsets.symmetric(
+                              vertical: 10.0, horizontal: 10.0),
+                          hintText: "手输/扫码",
+                          border:
+                              OutlineInputBorder(borderSide: BorderSide.none)),
                     ),
                   ),
                   Container(
-                    margin: EdgeInsets.only(left: 15.0),
+                    margin: EdgeInsets.only(left: 10.0),
                     child: Icon(Icons.camera_alt),
                   )
                 ],
               ),
             ),
             Container(
-              margin: EdgeInsets.only(top: 15.0),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: <Widget>[
-                  Container(
-                    margin: EdgeInsets.only(right: 15.0),
-                    child: Text(
-                      '隐患位置',
-                      style: TextStyle(
-                          fontSize: 14.0,
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold),
-                    ),
-                  ),
-                  Expanded(
-                    child: TextField(
-                      controller: state.locationController,
-                      keyboardType: TextInputType.text,
-                      cursorWidth: 2.0,
-                      cursorColor: Colors.grey,
-                      style: TextStyle(fontSize: 14.0, color: Colors.black),
-                      decoration: InputDecoration(
-                        contentPadding: EdgeInsets.symmetric(
-                            vertical: 10.0, horizontal: 10.0),
-                        hintText: "隐患具体位置",
-                        border: OutlineInputBorder(
-                            borderSide: BorderSide(color: Colors.grey)),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
+              width: double.infinity,
+              height: 0.5,
+              margin: EdgeInsets.symmetric(horizontal: 15.0),
+              color: Colors.black45,
             ),
             GestureDetector(
               onTap: () {
                 dispatch(HazardReportActionCreator.onLevelSkipFilter());
               },
               child: Container(
-                margin: EdgeInsets.only(top: 20.0),
                 width: double.infinity,
-                padding: EdgeInsets.symmetric(vertical: 15.0, horizontal: 20.0),
-                color: Colors.white,
+                padding: EdgeInsets.symmetric(horizontal: 15.0, vertical: 15.0),
                 child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     Container(
                       child: Text(
-                        '隐患等级',
+                        '等级',
                         style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 14.0,
                             color: Colors.black),
                       ),
                     ),
-                    Container(
-                      margin: EdgeInsets.only(left: 20.0),
-                      child: Text(
-                        state.levelRst,
-                        style:
-                            TextStyle(fontSize: 13.0, color: Colors.lightBlue),
-                      ),
-                    ),
-                    Container(
-                      child: Expanded(
-                        child: Container(
-                          alignment: AlignmentDirectional.centerEnd,
-                          child: Icon(Icons.keyboard_arrow_right),
-                        ),
-                      ),
-                    )
-                  ],
-                ),
-              ),
-            ),
-            GestureDetector(
-              onTap: () {
-                dispatch(HazardReportActionCreator.onTypeSkipFilter());
-              },
-              child: Container(
-                margin: EdgeInsets.only(top: 20.0),
-                width: double.infinity,
-                padding: EdgeInsets.symmetric(vertical: 15.0, horizontal: 20.0),
-                color: Colors.white,
-                child: Row(
-                  children: <Widget>[
-                    Container(
-                      child: Text(
-                        '隐患类型',
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 14.0,
-                            color: Colors.black),
-                      ),
-                    ),
-                    Container(
-                      margin: EdgeInsets.only(left: 20.0),
-                      child: Text(
-                        state.typeRst,
-                        style:
-                            TextStyle(fontSize: 13.0, color: Colors.lightBlue),
-                      ),
-                    ),
-                    Container(
-                      child: Expanded(
-                        child: Container(
-                          alignment: AlignmentDirectional.centerEnd,
-                          child: Icon(Icons.keyboard_arrow_right),
-                        ),
+                    Expanded(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: <Widget>[
+                          Container(
+                            margin: EdgeInsets.only(left: 25.0),
+                            child: Text(
+                              state.levelRst,
+                              style:
+                                  TextStyle(fontSize: 13.0, color: Colors.red),
+                            ),
+                          ),
+                          Container(
+                            alignment: AlignmentDirectional.centerEnd,
+                            child: Icon(Icons.keyboard_arrow_right),
+                          ),
+                        ],
                       ),
                     )
                   ],
@@ -177,10 +199,58 @@ Widget buildView(
               ),
             ),
             Container(
-              margin: EdgeInsets.only(top: 30.0),
+              width: double.infinity,
+              height: 0.5,
+              margin: EdgeInsets.symmetric(horizontal: 15.0),
+              color: Colors.black45,
+            ),
+            GestureDetector(
+              onTap: () {
+                dispatch(HazardReportActionCreator.onTypeSkipFilter());
+              },
+              child: Container(
+                width: double.infinity,
+                padding: EdgeInsets.symmetric(vertical: 15.0, horizontal: 15.0),
+                child: Row(
+                  children: <Widget>[
+                    Container(
+                      child: Text(
+                        '类型',
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 14.0,
+                            color: Colors.black),
+                      ),
+                    ),
+                    Expanded(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: <Widget>[
+                          Container(
+                            margin: EdgeInsets.only(left: 25.0),
+                            child: Text(
+                              state.typeRst,
+                              style:
+                                  TextStyle(fontSize: 13.0, color: Colors.red),
+                            ),
+                          ),
+                          Container(
+                            alignment: AlignmentDirectional.centerEnd,
+                            child: Icon(Icons.keyboard_arrow_right),
+                          ),
+                        ],
+                      ),
+                    )
+                  ],
+                ),
+              ),
+            ),
+            Container(
+              color: Colors.grey[100],
               alignment: AlignmentDirectional.topStart,
+              padding: EdgeInsets.symmetric(vertical: 15.0, horizontal: 15.0),
               child: Text(
-                '隐患描述(200字以内)',
+                '描述(200字以内)',
                 style: TextStyle(
                     fontSize: 14.0,
                     color: Colors.black,
@@ -188,27 +258,26 @@ Widget buildView(
               ),
             ),
             Container(
-              margin: EdgeInsets.only(top: 20.0),
               child: TextField(
                 controller: state.decsController,
                 maxLength: 50,
                 keyboardType: TextInputType.text,
                 maxLines: 10,
-                cursorWidth: 2.0,
+                cursorWidth: 1.0,
                 cursorColor: Colors.grey,
                 style: TextStyle(fontSize: 14.0, color: Colors.black),
                 decoration: InputDecoration(
                     hintText: "请输入隐患描述",
-                    border: OutlineInputBorder(
-                        borderSide:
-                            BorderSide(color: Colors.grey, width: 0.5))),
+                    contentPadding: EdgeInsets.all(15.0),
+                    border: OutlineInputBorder(borderSide: BorderSide.none)),
               ),
             ),
             Container(
-              margin: EdgeInsets.only(top: 30.0),
+              color: Colors.grey[100],
+              padding: EdgeInsets.symmetric(horizontal: 15.0, vertical: 15.0),
               alignment: AlignmentDirectional.topStart,
               child: Text(
-                '复查附件(最多可上传3张)',
+                '附件(最多可上传3张)',
                 style: TextStyle(
                     fontSize: 14.0,
                     color: Colors.black,
@@ -220,7 +289,7 @@ Widget buildView(
                 dispatch(HazardReportActionCreator.onAddAttachmentClick());
               },
               child: Container(
-                margin: EdgeInsets.only(top: 20.0),
+                margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 15.0),
                 child: Icon(
                   Icons.add,
                   color: Colors.grey[100],
@@ -232,7 +301,7 @@ Widget buildView(
               ),
             ),
             Container(
-              margin: EdgeInsets.only(top: 10.0),
+              margin: EdgeInsets.symmetric(horizontal: 15.0),
               child: _buildGridView(state: state),
               constraints: BoxConstraints.tightFor(
                   width: double.infinity,

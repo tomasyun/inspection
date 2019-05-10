@@ -20,61 +20,74 @@ Widget buildView(
       children: <Widget>[
         Container(
           height: double.infinity,
-          padding: EdgeInsets.only(bottom: 60),
           child: SingleChildScrollView(
             child: Container(
+              color: Colors.grey[100],
               padding: EdgeInsets.only(
-                  top: 15.0, left: 15.0, right: 15.0, bottom: 60),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Container(
-                    child: Text(
-                      '隐患描述 :',
-                      style: TextStyle(
+                  top: 15.0, left: 15.0, right: 15.0, bottom: 100.0),
+              child: Container(
+                padding: EdgeInsets.all(15.0),
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    boxShadow: [
+                      BoxShadow(
+                          color: Colors.grey[800],
+                          blurRadius: 10.0,
+                          offset: Offset(0.0, 3.0),
+                          spreadRadius: -3.0)
+                    ],
+                    borderRadius: BorderRadius.all(Radius.circular(15.0))),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Container(
+                      child: Text(
+                        '描述 :',
+                        style: TextStyle(
+                            fontSize: 14.0,
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                    Container(
+                      padding: EdgeInsets.symmetric(
+                          vertical: 15.0, horizontal: 10.0),
+                      child: Text(
+                        '西安市高新区丈八一路汇鑫IBC B座1005,办公室墙面墙皮脱落',
+                        style: TextStyle(
                           fontSize: 14.0,
                           color: Colors.black,
-                          fontWeight: FontWeight.bold),
+                        ),
+                      ),
                     ),
-                  ),
-                  Container(
-                    padding:
-                        EdgeInsets.symmetric(vertical: 10.0, horizontal: 15.0),
-                    margin: EdgeInsets.only(top: 15.0),
-                    child: Text(
-                      '西安市高新区丈八一路汇鑫IBC B座1005,办公室墙面墙皮脱落',
-                      style: TextStyle(
-                          fontSize: 14.0,
-                          color: Colors.black,
-                          letterSpacing: 2),
+                    _buildHazardInfoItem(title: '设备名称', content: '火灾报警控制器'),
+                    _buildHazardInfoItem(title: '设备编号', content: '001'),
+                    _buildHazardInfoItem(title: '等级', content: 'A级隐患'),
+                    _buildHazardInfoItem(title: '类型', content: '消防栓表面裂纹'),
+                    _buildHazardInfoItem(title: '整改人', content: '高大陆'),
+                    _buildHazardInfoItem(title: '整改类型', content: '限期整改'),
+                    _buildHazardInfoItem(title: '责任人', content: '贠拓'),
+                    _buildHazardInfoItem(
+                        title: '责任部门', content: '陕西缔科网络科技有限公司'),
+                    _buildHazardInfoItem(title: '上报时间', content: '2019-06-23'),
+                    Container(
+                      margin: EdgeInsets.only(top: 15.0),
+                      child: Text(
+                        '附件 :',
+                        style: TextStyle(
+                            fontSize: 14.0,
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold),
+                      ),
                     ),
-                  ),
-                  Container(
-                    margin: EdgeInsets.only(top: 15.0),
-                    child: Text(
-                      '隐患附件 :',
-                      style: TextStyle(
-                          fontSize: 14.0,
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold),
+                    Container(
+                      margin: EdgeInsets.only(top: 15.0),
+                      child: _buildGridView(),
+                      constraints: BoxConstraints.tightFor(
+                          width: double.infinity, height: 90.0),
                     ),
-                  ),
-                  Container(
-                    margin: EdgeInsets.only(top: 15.0),
-                    child: _buildGridView(),
-                    constraints: BoxConstraints.tightFor(
-                        width: double.infinity, height: 100.0),
-                  ),
-                  _buildHazardInfoItem(
-                      title: '责任部门: ', content: '陕西缔科网络科技有限公司'),
-                  _buildHazardInfoItem(title: '责任人: ', content: '贠拓'),
-                  _buildHazardInfoItem(title: '隐患等级: ', content: 'A级隐患'),
-                  _buildHazardInfoItem(title: '隐患类型: ', content: '消防栓表面裂纹'),
-                  _buildHazardInfoItem(title: '隐患来源: ', content: '年久失修'),
-                  _buildHazardInfoItem(title: '整改类型: ', content: '限期整改'),
-                  _buildHazardInfoItem(title: '整改期限: ', content: '2019-09-06'),
-                  _buildHazardInfoItem(title: '整改人: ', content: '高大陆'),
-                ],
+                  ],
+                ),
               ),
             ),
           ),
@@ -87,7 +100,7 @@ Widget buildView(
 
 Widget _buildHazardInfoItem({String title, String content}) {
   return Container(
-    padding: EdgeInsets.symmetric(vertical: 15.0),
+    margin: EdgeInsets.only(top: 15.0),
     child: Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
@@ -98,6 +111,7 @@ Widget _buildHazardInfoItem({String title, String content}) {
                 fontSize: 14.0,
                 fontWeight: FontWeight.bold,
                 color: Colors.black),
+            textAlign: TextAlign.left,
           ),
           flex: 3,
         ),
@@ -105,6 +119,7 @@ Widget _buildHazardInfoItem({String title, String content}) {
           child: Text(
             content,
             style: TextStyle(fontSize: 14.0, color: Colors.black),
+            textAlign: TextAlign.right,
           ),
           flex: 7,
         )
@@ -143,50 +158,50 @@ Widget _buildGridView() {
 Widget buildBottomNavigatorJudge(
     {Dispatch dispatch,
     String state,
-    String title1 = '',
-    String title2 = '',
-    GestureTapCallback callback1,
-    GestureTapCallback callback2}) {
+    String leftLabel = '',
+    String rightLabel = '',
+    GestureTapCallback leftChecked,
+    GestureTapCallback rightChecked}) {
   if (state == '待整改') {
-    title1 = '整改费用申请';
-    title2 = '整改上报';
-    callback1 = () {
+    leftLabel = '整改费用申请';
+    rightLabel = '整改上报';
+    leftChecked = () {
       dispatch(HazardInfoActionCreator.onSkipRectifyCostApply());
     };
-    callback2 = () {
+    rightChecked = () {
       dispatch(HazardInfoActionCreator.onSkipRectifyReport());
     };
     return buildBottomNavigatorDouble(
         dispatch: dispatch,
-        title1: title1,
-        title2: title2,
-        callback1: callback1,
-        callback2: callback2);
+        leftLabel: leftLabel,
+        rightLabel: rightLabel,
+        leftChecked: leftChecked,
+        rightChecked: rightChecked);
   } else if (state == '待复查') {
-    title1 = '查看整改信息';
-    title2 = '复查上报';
-    callback1 = () {
+    leftLabel = '查看整改信息';
+    rightLabel = '复查上报';
+    leftChecked = () {
       dispatch(HazardInfoActionCreator.onSkipRectifyInfo());
     };
-    callback2 = () {
+    rightChecked = () {
       dispatch(HazardInfoActionCreator.onSkipRecheckReport());
     };
     return buildBottomNavigatorDouble(
         dispatch: dispatch,
-        title1: title1,
-        title2: title2,
-        callback1: callback1,
-        callback2: callback2);
+        leftLabel: leftLabel,
+        rightLabel: rightLabel,
+        leftChecked: leftChecked,
+        rightChecked: rightChecked);
   } else if (state == '待审批') {
-    title1 = '整改费用正在审批中';
-    callback1 = () {};
-    return buildBottomNavigatorSingle(title: title1, callback: callback1);
+    leftLabel = '整改费用正在审批中';
+    leftChecked = () {};
+    return buildBottomNavigatorSingle(title: leftLabel, callback: leftChecked);
   } else if (state == '已完成') {
-    title1 = '查看所有隐患信息';
-    callback1 = () {
+    leftLabel = '查看所有隐患信息';
+    leftChecked = () {
       dispatch(HazardInfoActionCreator.onSkipHazardAllInfo());
     };
-    return buildBottomNavigatorSingle(title: title1, callback: callback1);
+    return buildBottomNavigatorSingle(title: leftLabel, callback: leftChecked);
   } else {
     return Container(
       height: 0.0,
@@ -196,10 +211,10 @@ Widget buildBottomNavigatorJudge(
 
 Widget buildBottomNavigatorDouble(
     {Dispatch dispatch,
-    String title1 = '',
-    String title2 = '',
-    GestureTapCallback callback1,
-    GestureTapCallback callback2}) {
+    String leftLabel = '',
+    String rightLabel = '',
+    VoidCallback leftChecked,
+    VoidCallback rightChecked}) {
   return Container(
     height: 60.0,
     width: double.infinity,
@@ -207,32 +222,40 @@ Widget buildBottomNavigatorDouble(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: <Widget>[
         Expanded(
-          child: GestureDetector(
-            onTap: callback1,
-            child: Container(
-              alignment: AlignmentDirectional.center,
-              color: Colors.blue,
-              height: double.infinity,
+          child: Container(
+            alignment: AlignmentDirectional.center,
+            color: Colors.grey[100],
+            height: double.infinity,
+            child: RaisedButton(
+              color: Colors.orange,
+              onPressed: leftChecked,
               child: Text(
-                title1,
-                style: TextStyle(color: Colors.white),
-                textAlign: TextAlign.center,
+                leftLabel,
+                style: TextStyle(fontSize: 14.0, color: Colors.white),
               ),
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(10.0))),
+              padding: EdgeInsets.only(
+                  left: 35.0, right: 35.0, top: 15.0, bottom: 15.0),
             ),
           ),
         ),
         Expanded(
-          child: GestureDetector(
-            onTap: callback2,
-            child: Container(
-              alignment: AlignmentDirectional.center,
-              color: Colors.grey,
-              height: double.infinity,
+          child: Container(
+            alignment: AlignmentDirectional.center,
+            color: Colors.grey[100],
+            height: double.infinity,
+            child: RaisedButton(
+              color: Colors.green,
+              onPressed: rightChecked,
               child: Text(
-                title2,
-                style: TextStyle(color: Colors.white),
-                textAlign: TextAlign.center,
+                rightLabel,
+                style: TextStyle(fontSize: 14.0, color: Colors.white),
               ),
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(10.0))),
+              padding: EdgeInsets.only(
+                  left: 50.0, right: 50.0, top: 15.0, bottom: 15.0),
             ),
           ),
         )
@@ -246,18 +269,22 @@ Widget buildBottomNavigatorSingle({
   String title = '',
   GestureTapCallback callback,
 }) {
-  return GestureDetector(
-    onTap: callback,
-    child: Container(
-      height: 60.0,
-      width: double.infinity,
-      alignment: AlignmentDirectional.center,
-      color: Colors.blue,
+  return Container(
+    height: 60.0,
+    width: double.infinity,
+    alignment: AlignmentDirectional.center,
+    color: Colors.grey[100],
+    child: RaisedButton(
+      color: Colors.orange,
+      onPressed: callback,
       child: Text(
         title,
-        style: TextStyle(color: Colors.white),
-        textAlign: TextAlign.center,
+        style: TextStyle(fontSize: 14.0, color: Colors.white),
       ),
+      shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(Radius.circular(10.0))),
+      padding:
+          EdgeInsets.only(left: 100.0, right: 100.0, top: 15.0, bottom: 15.0),
     ),
   );
 }

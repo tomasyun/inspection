@@ -18,11 +18,11 @@ Widget buildView(
     ),
     body: SingleChildScrollView(
       child: Container(
-        padding: EdgeInsets.all(15.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Container(
+              padding: EdgeInsets.all(15.0),
               alignment: AlignmentDirectional.topStart,
               child: Text(
                 '复查情况(200字以内)',
@@ -33,23 +33,23 @@ Widget buildView(
               ),
             ),
             Container(
-              margin: EdgeInsets.only(top: 20.0),
+              color: Colors.white,
               child: TextField(
                 controller: state.controller,
                 maxLength: 50,
                 keyboardType: TextInputType.text,
                 maxLines: 6,
-                cursorWidth: 2.0,
+                cursorWidth: 1.0,
                 cursorColor: Colors.grey,
                 style: TextStyle(fontSize: 14.0, color: Colors.black),
                 decoration: InputDecoration(
-                    hintText: "请输入复查情况",
-                    border: OutlineInputBorder(
-                        borderSide:
-                            BorderSide(color: Colors.grey, width: 0.5))),
+                    hintText: "复查情况",
+                    contentPadding: EdgeInsets.all(15.0),
+                    border: OutlineInputBorder(borderSide: BorderSide.none)),
               ),
             ),
             Container(
+              padding: EdgeInsets.all(15.0),
               alignment: AlignmentDirectional.topStart,
               child: Text(
                 '复查附件(最多可上传3张)',
@@ -59,20 +59,23 @@ Widget buildView(
                     fontWeight: FontWeight.bold),
               ),
             ),
-            GestureDetector(
-              onTap: () {
-                dispatch(RecheckReportActionCreator.onAddAttachment());
-              },
-              child: Container(
-                margin: EdgeInsets.only(top: 20.0),
-                child: Icon(
-                  Icons.add,
-                  color: Colors.grey[100],
-                  size: 80.0,
+            Container(
+              color: Colors.white,
+              padding: EdgeInsets.all(15.0),
+              child: GestureDetector(
+                onTap: () {
+                  dispatch(RecheckReportActionCreator.onAddAttachment());
+                },
+                child: Container(
+                  color: Colors.grey,
+                  child: Icon(
+                    Icons.add,
+                    color: Colors.grey[100],
+                    size: 80.0,
+                  ),
+                  width: 100.0,
+                  height: 100.0,
                 ),
-                width: 100.0,
-                height: 100.0,
-                color: Colors.grey,
               ),
             ),
             Container(

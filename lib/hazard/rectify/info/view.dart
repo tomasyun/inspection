@@ -6,6 +6,7 @@ import 'state.dart';
 Widget buildView(
     RectifyInfoState state, Dispatch dispatch, ViewService viewService) {
   return Scaffold(
+    backgroundColor: Colors.grey[100],
     appBar: AppBar(
       title: Text(
         '整改信息',
@@ -14,51 +15,50 @@ Widget buildView(
       centerTitle: true,
       backgroundColor: Colors.blue,
     ),
-    body: SingleChildScrollView(
-      child: Container(
-        padding:
-            EdgeInsets.only(top: 15.0, left: 15.0, right: 15.0, bottom: 60),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            Container(
-              child: Text(
-                '整改描述 :',
-                style: TextStyle(
-                    fontSize: 14.0,
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold),
-              ),
+    body: Container(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Container(
+            width: double.infinity,
+            padding: EdgeInsets.all(15.0),
+            child: Text(
+              '整改情况',
+              style: TextStyle(
+                  fontSize: 14.0,
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold),
             ),
-            Container(
-              padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 15.0),
-              margin: EdgeInsets.only(top: 15.0),
-              child: Text(
-                '西安市高新区丈八一路汇鑫IBC B座1005,办公室墙面重新打底粉刷',
-                style: TextStyle(
-                    fontSize: 14.0, color: Colors.black, letterSpacing: 2),
-              ),
+          ),
+          Container(
+            padding: EdgeInsets.all(15.0),
+            color: Colors.white,
+            child: Text(
+              '西安市高新区丈八一路汇鑫IBC B座1005,办公室墙面重新打底粉刷',
+              style: TextStyle(
+                  fontSize: 14.0, color: Colors.black, letterSpacing: 2),
             ),
-            Container(
-              margin: EdgeInsets.only(top: 15.0),
-              child: Text(
-                '整改附件 :',
-                style: TextStyle(
-                    fontSize: 14.0,
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold),
-              ),
+          ),
+          Container(
+            padding: EdgeInsets.all(15.0),
+            child: Text(
+              '整改附件',
+              style: TextStyle(
+                  fontSize: 14.0,
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold),
             ),
-            Container(
-              margin: EdgeInsets.only(top: 15.0),
-              child: _buildGridView(),
-              constraints: BoxConstraints.tightFor(
-                  width: double.infinity, height: 100.0),
-            ),
-            _buildHazardInfoItem(title: '复查人 :', content: '高大陆'),
-            _buildHazardInfoItem(title: '复查期限 :', content: '2019-06-08'),
-          ],
-        ),
+          ),
+          Container(
+            padding: EdgeInsets.all(15.0),
+            color: Colors.white,
+            child: _buildGridView(),
+            constraints:
+                BoxConstraints.tightFor(width: double.infinity, height: 130.0),
+          ),
+          _buildHazardInfoItem(title: '整改人', content: '高大陆'),
+          _buildHazardInfoItem(title: '负责部门', content: '陕西缔科网络科技有限公司'),
+        ],
       ),
     ),
   );
@@ -66,7 +66,9 @@ Widget buildView(
 
 Widget _buildHazardInfoItem({String title, String content}) {
   return Container(
-    padding: EdgeInsets.symmetric(vertical: 15.0),
+    color: Colors.white,
+    margin: EdgeInsets.only(top: 15.0),
+    padding: EdgeInsets.all(15.0),
     child: Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
