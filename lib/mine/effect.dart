@@ -1,8 +1,7 @@
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart';
+import 'package:inspection/mine/hazard/page.dart';
 import 'package:inspection/mine/profile/page.dart';
-import 'package:inspection/mine/recheck/page.dart';
-import 'package:inspection/mine/rectify/page.dart';
 import 'package:inspection/mine/report/page.dart';
 import 'package:inspection/mine/task/page.dart';
 import 'package:inspection/setting/page.dart';
@@ -16,13 +15,18 @@ Effect<MineState> buildEffect() {
     MineAction.userInfo: _onSkipUserInfo,
     MineAction.task: _onSkipMineTask,
     MineAction.report: _onSkipMineReport,
-    MineAction.rectify: _onSkipMineRectify,
-    MineAction.recheck: _onSkipMineRecheck,
     MineAction.setting: _onSkipSetting,
+    MineAction.hazardHistory: _onSkipHazardHistory,
   });
 }
 
 void _onAction(Action action, Context<MineState> ctx) {}
+
+void _onSkipHazardHistory(Action action, Context<MineState> ctx) {
+  Navigator.of(ctx.context).push(MaterialPageRoute(builder: (context) {
+    return HazardHistoryPage().buildPage(null);
+  }));
+}
 
 void _onSkipUserInfo(Action action, Context<MineState> ctx) {
   Navigator.of(ctx.context).push(MaterialPageRoute(builder: (context) {
@@ -38,19 +42,7 @@ void _onSkipMineTask(Action action, Context<MineState> ctx) {
 
 void _onSkipMineReport(Action action, Context<MineState> ctx) {
   Navigator.of(ctx.context).push(MaterialPageRoute(builder: (context) {
-    return ReportPage().buildPage(null);
-  }));
-}
-
-void _onSkipMineRectify(Action action, Context<MineState> ctx) {
-  Navigator.of(ctx.context).push(MaterialPageRoute(builder: (context) {
-    return RectifyPage().buildPage(null);
-  }));
-}
-
-void _onSkipMineRecheck(Action action, Context<MineState> ctx) {
-  Navigator.of(ctx.context).push(MaterialPageRoute(builder: (context) {
-    return RecheckPage().buildPage(null);
+    return ReportRecordPage().buildPage(null);
   }));
 }
 

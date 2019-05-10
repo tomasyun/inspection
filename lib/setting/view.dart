@@ -92,17 +92,18 @@ Widget _buildMineNavigatorItem(
 
 Widget _buildRaisedButton({Dispatch dispatch}) {
   return RaisedButton(
-      onPressed: () {
-        dispatch(SettingActionCreator.onLogout());
-      },
-      child: Text(
-        '退出登录',
-        style: TextStyle(color: Colors.white, fontSize: 14.0),
-      ),
-      color: Colors.blue,
-      padding:
-          EdgeInsets.only(top: 15.0, bottom: 15.0, left: 135.0, right: 135.0),
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(10.0),
-      ));
+    onPressed: () {
+      dispatch(SettingActionCreator.onLogout());
+    },
+    child: Text(
+      '退出登录',
+      style: TextStyle(color: Colors.red, fontSize: 14.0),
+    ),
+    color: Colors.blue,
+    padding:
+        EdgeInsets.only(top: 15.0, bottom: 15.0, left: 135.0, right: 135.0),
+//      shape: RoundedRectangleBorder(
+//        borderRadius: BorderRadius.circular(10.0),
+//      )
+  );
 }

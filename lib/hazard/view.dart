@@ -11,7 +11,7 @@ Widget buildView(
     key: state.scaffoldKey,
     appBar: AppBar(
       title: Text(
-        '隐患记录',
+        '隐患管理',
         style: TextStyle(fontSize: 18.0, color: Colors.white),
       ),
       centerTitle: true,

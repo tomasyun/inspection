@@ -1,7 +1,6 @@
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart';
 import 'package:inspection/entity/hazard_model.dart';
-import 'package:inspection/hazard/item/action.dart';
 
 Widget buildView(
     HazardModel state, Dispatch dispatch, ViewService viewService) {
@@ -58,9 +57,7 @@ Widget buildView(
                       margin: EdgeInsets.only(top: 45.0),
                       child: RaisedButton(
                         color: Colors.green,
-                        onPressed: () {
-                          dispatch(HazardItemActionCreator.onSkipInfo());
-                        },
+                        onPressed: () {},
                         shape: RoundedRectangleBorder(
                             borderRadius:
                                 BorderRadius.all(Radius.circular(20.0))),

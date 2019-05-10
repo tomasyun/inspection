@@ -19,8 +19,7 @@ void _onAction(Action action, Context<HazardState> ctx) {}
 
 void _onSelectState(Action action, Context<HazardState> ctx) {
   Picker(
-      adapter:
-          PickerDataAdapter<String>(pickerdata: ['待整改', '待复查', '待审批', '已完成']),
+      adapter: PickerDataAdapter<String>(pickerdata: ['待整改', '待复查', '待审批']),
 //      onCancel: () {
 //        Navigator.pop(ctx.context);
 //      },

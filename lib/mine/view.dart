@@ -33,11 +33,8 @@ Widget buildView(MineState state, Dispatch dispatch, ViewService viewService) {
       child: Column(
         children: <Widget>[
           Container(
-            margin: EdgeInsets.symmetric(horizontal: 15.0, vertical: 30.0),
             padding: EdgeInsets.symmetric(vertical: 40.0, horizontal: 15.0),
-            decoration: BoxDecoration(
-                color: Colors.blue,
-                borderRadius: BorderRadius.all(Radius.circular(15.0))),
+            color: Colors.blue,
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
@@ -114,21 +111,14 @@ Widget buildView(MineState state, Dispatch dispatch, ViewService viewService) {
               dispatch(MineActionCreator.onSkipMineReport());
             },
             child: _buildMineNavigatorItem(
-                asset: 'images/ic_avatar.png', title: '我的上报'),
+                asset: 'images/ic_avatar.png', title: '上报记录'),
           ),
           GestureDetector(
             onTap: () {
-              dispatch(MineActionCreator.onSkipMineRectify());
+              dispatch(MineActionCreator.onSkipHazardHistory());
             },
             child: _buildMineNavigatorItem(
-                asset: 'images/ic_avatar.png', title: '我的整改'),
-          ),
-          GestureDetector(
-            onTap: () {
-              dispatch(MineActionCreator.onSkipMineRecheck());
-            },
-            child: _buildMineNavigatorItem(
-                asset: 'images/ic_avatar.png', title: '我的复查'),
+                asset: 'images/ic_avatar.png', title: '历史隐患'),
           ),
         ],
       ),

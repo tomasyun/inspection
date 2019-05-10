@@ -6,9 +6,8 @@ enum MineAction {
   userInfo,
   task,
   report,
-  rectify,
-  recheck,
   setting,
+  hazardHistory,
 }
 
 class MineActionCreator {
@@ -28,15 +27,11 @@ class MineActionCreator {
     return Action(MineAction.report);
   }
 
-  static Action onSkipMineRectify() {
-    return Action(MineAction.rectify);
-  }
-
-  static Action onSkipMineRecheck() {
-    return Action(MineAction.recheck);
-  }
-
   static Action onSkipSetting() {
     return Action(MineAction.setting);
+  }
+
+  static Action onSkipHazardHistory() {
+    return Action(MineAction.hazardHistory);
   }
 }

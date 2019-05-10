@@ -55,7 +55,7 @@ Widget buildView(
                       dispatch(FunctionActionCreator.onHazardReview());
                     },
                     child: _buildFuncItem(
-                        asset: 'images/ic_avatar.png', title: '隐患查看'),
+                        asset: 'images/ic_avatar.png', title: '隐患管理'),
                   ),
                 ],
               ),

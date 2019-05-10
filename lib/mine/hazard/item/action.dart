@@ -1,10 +1,10 @@
 import 'package:fish_redux/fish_redux.dart';
 
 //TODO replace with your own action
-enum RecheckAction { action }
+enum HistoryItemAction { action }
 
-class RecheckActionCreator {
+class HistoryItemActionCreator {
   static Action onAction() {
-    return const Action(RecheckAction.action);
+    return const Action(HistoryItemAction.action);
   }
 }

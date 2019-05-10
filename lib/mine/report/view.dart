@@ -5,12 +5,15 @@ import 'package:inspection/widget/state_view.dart' as stateView;
 import 'state.dart';
 
 Widget buildView(
-    ReportState state, Dispatch dispatch, ViewService viewService) {
+    ReportRecordState state, Dispatch dispatch, ViewService viewService) {
   return Scaffold(
     appBar: AppBar(
       title: Text(
-        '我的上报',
-        style: TextStyle(fontSize: 18.0, color: Colors.white),
+        '上报记录',
+        style: TextStyle(
+          fontSize: 18.0,
+          color: Colors.white,
+        ),
       ),
       centerTitle: true,
       backgroundColor: Colors.blue,
