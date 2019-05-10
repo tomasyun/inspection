@@ -147,7 +147,7 @@ Widget _buildSearchItem({String label, String value, VoidCallback callback}) {
   return GestureDetector(
     onTap: callback,
     child: Container(
-      margin: EdgeInsets.only(top: 10.0),
+      margin: EdgeInsets.only(top: 5.0),
       width: double.infinity,
       padding: EdgeInsets.symmetric(vertical: 15.0, horizontal: 25.0),
       color: Colors.white,

@@ -7,7 +7,7 @@ import 'state.dart';
 Widget buildView(
     FunctionState state, Dispatch dispatch, ViewService viewService) {
   return Scaffold(
-    backgroundColor: Colors.grey[100],
+    backgroundColor: Colors.white,
     appBar: AppBar(
       title: Text(
         '功能',
@@ -24,7 +24,7 @@ Widget buildView(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Container(
-              margin: EdgeInsets.only(top: 20.0),
+              margin: EdgeInsets.only(top: 100.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
@@ -40,28 +40,20 @@ Widget buildView(
                       dispatch(FunctionActionCreator.onDeviceWarning());
                     },
                     child: _buildFuncItem(
-                        asset: 'images/ic_avatar.png', title: '设备预警'),
+                        asset: 'images/ic_dev_warning.png', title: '设备预警'),
                   ),
-                ],
-              ),
-            ),
-            Container(
-              margin: EdgeInsets.only(top: 20.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: <Widget>[
                   GestureDetector(
                     onTap: () {
                       dispatch(FunctionActionCreator.onHazardReview());
                     },
                     child: _buildFuncItem(
-                        asset: 'images/ic_avatar.png', title: '隐患管理'),
+                        asset: 'images/ic_hazard_review.png', title: '隐患管理'),
                   ),
                 ],
               ),
             ),
             Container(
-              margin: EdgeInsets.only(top: 20.0),
+              margin: EdgeInsets.only(top: 50.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
@@ -70,7 +62,17 @@ Widget buildView(
                       dispatch(FunctionActionCreator.onInspectionPlan());
                     },
                     child: _buildFuncItem(
-                        asset: 'images/ic_avatar.png', title: '检查计划'),
+                        asset: 'images/ic_plan_review.png', title: '计划查询'),
+                  ),
+                  GestureDetector(
+                    onTap: () {},
+                    child: _buildFuncItem(
+                        asset: 'images/ic_mine_plan.png', title: '我的计划'),
+                  ),
+                  GestureDetector(
+                    onTap: () {},
+                    child: _buildFuncItem(
+                        asset: 'images/ic_safe_analyse.png', title: '安全分析'),
                   )
                 ],
               ),

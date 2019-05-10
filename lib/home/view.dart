@@ -124,7 +124,7 @@ Widget buildView(HomeState state, Dispatch dispatch, ViewService viewService) {
                       dispatch(HomeActionCreator.onScanQRCode());
                     },
                     child: _buildContainerItem(
-                        asset: 'images/ic_dev_scan.png', title: '设备扫码'),
+                        asset: 'images/ic_scan.png', title: '设备扫码'),
                   ),
                   GestureDetector(
                     onTap: () {
