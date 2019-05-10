@@ -52,12 +52,11 @@ Widget buildView(LoginState state, Dispatch dispatch, ViewService viewService) {
                 onPressed: () {
                   dispatch(LoginActionCreator.onLogin());
                 },
-                color: Colors.red,
+                color: Colors.blue,
                 child: Text(
                   "立即登录",
                   style: TextStyle(fontSize: 14.0, color: Colors.white),
                 ),
-                textColor: Colors.white,
                 padding:
                     EdgeInsets.only(right: 120, left: 120, top: 15, bottom: 15),
                 shape: RoundedRectangleBorder(

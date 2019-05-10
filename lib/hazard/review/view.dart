@@ -49,8 +49,8 @@ class ReviewPageState extends State<ReviewPageWidget>
             )
           ],
           controller: _controller,
-          labelColor: Colors.black,
-          indicatorColor: Colors.black,
+          labelColor: Colors.white,
+          indicatorColor: Colors.white,
           indicatorSize: TabBarIndicatorSize.label,
         ),
       ),

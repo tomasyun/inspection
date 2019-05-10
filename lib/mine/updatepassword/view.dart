@@ -40,9 +40,9 @@ Widget _buildRaisedButton({Dispatch dispatch}) {
       },
       child: Text(
         '确认修改',
-        style: TextStyle(color: Colors.black, fontSize: 14.0),
+        style: TextStyle(color: Colors.white, fontSize: 14.0),
       ),
-      color: Colors.white,
+      color: Colors.blue,
       padding:
           EdgeInsets.only(top: 15.0, bottom: 15.0, left: 130.0, right: 130.0),
       shape: RoundedRectangleBorder(
