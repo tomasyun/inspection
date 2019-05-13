@@ -59,7 +59,7 @@ Widget buildView(HomeState state, Dispatch dispatch, ViewService viewService) {
                         color: Colors.grey[800],
                         blurRadius: 10.0,
                         offset: Offset(0.0, 2.0),
-                        spreadRadius: -9.0)
+                        spreadRadius: -3.0)
                   ],
                   borderRadius: BorderRadius.all(Radius.circular(25.0))),
               width: double.infinity,
@@ -267,7 +267,7 @@ Widget _recheck(HomeState state, Recheck recheck) {
             color: Colors.grey[800],
             blurRadius: 10.0,
             offset: Offset(0.0, 2.0),
-            spreadRadius: -9.0)
+            spreadRadius: -3.0)
       ],
       borderRadius: BorderRadius.all(Radius.circular(15.0)),
     ),
@@ -289,12 +289,10 @@ Widget _recheck(HomeState state, Recheck recheck) {
                     flex: 8,
                     child: Column(
                       children: <Widget>[
-                        _buildItem(title: '位置 :', result: '${recheck.date}'),
-                        _buildItem(
-                            title: '隐患描述 :', result: '${recheck.depart}'),
-                        _buildItem(
-                            title: '隐患类型 :', result: '${recheck.depart}'),
-                        _buildItem(title: '编号 :', result: '${recheck.depart}'),
+                        _buildItem(title: '位置', result: '${recheck.date}'),
+                        _buildItem(title: '隐患描述', result: '${recheck.depart}'),
+                        _buildItem(title: '隐患类型', result: '${recheck.depart}'),
+                        _buildItem(title: '编号', result: '${recheck.depart}'),
                       ],
                     )),
                 Expanded(
@@ -359,7 +357,7 @@ Widget _rectify(HomeState state, Rectify rectify) {
             color: Colors.grey[800],
             blurRadius: 10.0,
             offset: Offset(0.0, 2.0),
-            spreadRadius: -9.0)
+            spreadRadius: -3.0)
       ],
       borderRadius: BorderRadius.all(Radius.circular(15.0)),
     ),
@@ -379,10 +377,10 @@ Widget _rectify(HomeState state, Rectify rectify) {
                   flex: 8,
                   child: Column(
                     children: <Widget>[
-                      _buildItem(title: '位置 :', result: '${rectify.date}'),
-                      _buildItem(title: '隐患描述 :', result: '${rectify.depart}'),
-                      _buildItem(title: '隐患类型 :', result: '${rectify.depart}'),
-                      _buildItem(title: '编号 :', result: '${rectify.depart}'),
+                      _buildItem(title: '位置', result: '${rectify.date}'),
+                      _buildItem(title: '隐患描述', result: '${rectify.depart}'),
+                      _buildItem(title: '隐患类型', result: '${rectify.depart}'),
+                      _buildItem(title: '编号', result: '${rectify.depart}'),
                     ],
                   )),
               Expanded(
@@ -446,7 +444,7 @@ Widget _inspect(Inspect inspect) {
                   color: Colors.grey[800],
                   blurRadius: 10.0,
                   offset: Offset(0.0, 2.0),
-                  spreadRadius: -9.0)
+                  spreadRadius: -3.0)
             ],
             borderRadius: BorderRadius.all(Radius.circular(15.0)),
           ),
@@ -467,11 +465,10 @@ Widget _inspect(Inspect inspect) {
                         child: Column(
                           children: <Widget>[
                             _buildItem(
-                                title: '位置 :', result: '${inspect.depart}'),
+                                title: '位置', result: '${inspect.depart}'),
                             _buildItem(
-                                title: '编号 :', result: '${inspect.depart}'),
-                            _buildItem(
-                                title: '设备类型 :', result: '${inspect.pic}'),
+                                title: '编号', result: '${inspect.depart}'),
+                            _buildItem(title: '设备类型', result: '${inspect.pic}'),
                           ],
                         )),
                     Expanded(

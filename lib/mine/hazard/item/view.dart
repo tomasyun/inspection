@@ -16,7 +16,7 @@ Widget buildView(
             color: Colors.grey[800],
             blurRadius: 10.0,
             offset: Offset(0.0, 2.0),
-            spreadRadius: -9.0)
+            spreadRadius: -3.0)
       ],
       borderRadius: BorderRadius.all(Radius.circular(15.0)),
     ),
@@ -36,10 +36,10 @@ Widget buildView(
                   flex: 8,
                   child: Column(
                     children: <Widget>[
-                      _buildItem(title: '位置 :', result: '${state.state}'),
-                      _buildItem(title: '隐患描述 :', result: '${state.desc}'),
-                      _buildItem(title: '隐患类型 :', result: '${state.depart}'),
-                      _buildItem(title: '编号 :', result: '${state.date}'),
+                      _buildItem(title: '位置', result: '${state.state}'),
+                      _buildItem(title: '隐患描述', result: '${state.desc}'),
+                      _buildItem(title: '隐患类型', result: '${state.depart}'),
+                      _buildItem(title: '编号', result: '${state.date}'),
                     ],
                   )),
               Expanded(

@@ -6,54 +6,69 @@ import 'state.dart';
 Widget buildView(
     ReviewInfoFragState state, Dispatch dispatch, ViewService viewService) {
   return Container(
-    padding: EdgeInsets.only(top: 15.0, left: 15.0, right: 15.0, bottom: 60),
-    child: Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        Container(
-          child: Text(
-            '复查情况 :',
-            style: TextStyle(
-                fontSize: 14.0,
-                color: Colors.black,
-                fontWeight: FontWeight.bold),
-          ),
+    color: Colors.grey[100],
+    child: SingleChildScrollView(
+      child: Container(
+        margin: EdgeInsets.all(15.0),
+        padding: EdgeInsets.all(15.0),
+        decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.all(Radius.circular(15.0)),
+            boxShadow: [
+              BoxShadow(
+                  color: Colors.grey[800],
+                  blurRadius: 10.0,
+                  offset: Offset(0.0, 3.0),
+                  spreadRadius: -3.0),
+            ]),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Container(
+              child: Text(
+                '复查情况',
+                style: TextStyle(
+                    fontSize: 14.0,
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold),
+              ),
+            ),
+            Container(
+              padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
+              margin: EdgeInsets.only(top: 10.0),
+              child: Text(
+                '西安市高新区丈八一路汇鑫IBC B座1005,办公室墙面重新打底粉刷',
+                style: TextStyle(fontSize: 14.0, color: Colors.black),
+              ),
+            ),
+            _buildHazardInfoItem(title: '复查时间', content: '2019-06-08'),
+            _buildHazardInfoItem(title: '复查意见', content: '通过'),
+            Container(
+              margin: EdgeInsets.only(top: 10.0),
+              child: Text(
+                '复查附件',
+                style: TextStyle(
+                    fontSize: 14.0,
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold),
+              ),
+            ),
+            Container(
+              margin: EdgeInsets.only(top: 10.0),
+              child: _buildGridView(),
+              constraints:
+                  BoxConstraints.tightFor(width: double.infinity, height: 90.0),
+            ),
+          ],
         ),
-        Container(
-          padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 15.0),
-          margin: EdgeInsets.only(top: 15.0),
-          child: Text(
-            '西安市高新区丈八一路汇鑫IBC B座1005,办公室墙面重新打底粉刷',
-            style: TextStyle(
-                fontSize: 14.0, color: Colors.black, letterSpacing: 2),
-          ),
-        ),
-        Container(
-          margin: EdgeInsets.only(top: 15.0),
-          child: Text(
-            '复查附件 :',
-            style: TextStyle(
-                fontSize: 14.0,
-                color: Colors.black,
-                fontWeight: FontWeight.bold),
-          ),
-        ),
-        Container(
-          margin: EdgeInsets.only(top: 15.0),
-          child: _buildGridView(),
-          constraints:
-              BoxConstraints.tightFor(width: double.infinity, height: 100.0),
-        ),
-        _buildHazardInfoItem(title: '复查时间 :', content: '2019-06-08'),
-        _buildHazardInfoItem(title: '复查意见 :', content: '通过'),
-      ],
+      ),
     ),
   );
 }
 
 Widget _buildHazardInfoItem({String title, String content}) {
   return Container(
-    padding: EdgeInsets.symmetric(vertical: 15.0),
+    padding: EdgeInsets.symmetric(vertical: 10.0),
     child: Row(
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.start,
