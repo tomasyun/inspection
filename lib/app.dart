@@ -11,7 +11,7 @@ Widget createApp() {
   return MaterialApp(
     title: 'inspection',
     theme: ThemeData(primaryColor: Colors.blue),
-    debugShowCheckedModeBanner: false,
+    debugShowCheckedModeBanner: true,
     home: routes.buildPage('splash', null),
     onGenerateRoute: (RouteSettings settings) {
       return MaterialPageRoute(builder: (BuildContext context) {

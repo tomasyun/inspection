@@ -31,7 +31,7 @@ void _onLogin(Action action, Context<LoginState> ctx) {
       .then((model) {
     if (model.code == 0) {
       SpUtils sp = SpUtils();
-      sp.putString('token', 'Bearer ${model.data.token}');
+      sp.putString('token', 'Bearer' + ' ${model.data.token}');
       sp.putString('name', '${model.data.name}');
       sp.putString('company', '${model.data.company}');
       sp.putString('avatar', '${model.data.icon}');

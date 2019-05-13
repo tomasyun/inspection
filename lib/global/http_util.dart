@@ -4,17 +4,17 @@ import 'package:connectivity/connectivity.dart';
 import "package:dio/dio.dart";
 import 'package:http/http.dart' as http;
 import 'package:http_parser/http_parser.dart';
-import 'package:inspection/global/sharedpreferences.dart';
+import 'package:inspection/global/toast.dart';
 import 'package:multi_image_picker/multi_image_picker.dart';
 
 //定义一个网络请求出错的回调
-typedef NetworkError(String errorMsg);
+typedef NetworkError();
 typedef NetworkSuccess(Map<String, dynamic> data);
 
 class HttpUtil {
-  static const String BASE_URL = "http://192.168.10.19:8085/";
-  static const String TYPE_GET = "get";
-  static const String TYPE_POST = "post";
+  static const String BASE_URL = 'http://192.168.10.19:8080/';
+  static const String TYPE_GET = 'get';
+  static const String TYPE_POST = 'post';
   Dio dio; //一般一个应用中只有一个dio实例
 // 工厂模式
   factory HttpUtil() => _getInstance();
@@ -26,7 +26,17 @@ class HttpUtil {
     // 初始化
     if (dio == null) {
       BaseOptions options = new BaseOptions(baseUrl: BASE_URL);
-      dio = new Dio(options);
+      dio = Dio(options);
+      (dio.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate =
+          (client) {
+        // config the http client
+        client.findProxy = (uri) {
+          //proxy all request to localhost:8888
+          return "PROXY 192.168.10.24:8888";
+        };
+        // you can also create a new HttpClient to dio
+        // return new HttpClient();
+      };
     }
   }
 
@@ -49,23 +59,25 @@ class HttpUtil {
 
   //get方法
   //返回一个map的future类型
-  Future get(String url,
-      {Map data,
-      Options options,
-      NetworkError onError,
-      bool isLogin = false}) async {
+  Future get(
+    String url, {
+    Map data,
+    Options options,
+    NetworkError onError,
+  }) async {
     return _request(url, TYPE_GET,
-        data: data, options: options, onError: onError, isLogin: isLogin);
+        data: data, options: options, onError: onError);
   }
 
   //post方法
-  Future post(String url,
-      {Map data,
-      Options options,
-      NetworkError onError,
-      bool isLogin = false}) async {
+  Future post(
+    String url, {
+    Map data,
+    Options options,
+    NetworkError onError,
+  }) async {
     return _request(url, TYPE_POST,
-        data: data, options: options, onError: onError, isLogin: isLogin);
+        data: data, options: options, onError: onError);
   }
 
   //多部分上传（包括图片、参数）
@@ -73,7 +85,6 @@ class HttpUtil {
       {List<Asset> assets, Map<String, String> map, String url}) async {
     Uri uri = Uri.parse(url);
     http.MultipartRequest request = http.MultipartRequest("POST", uri);
-
     if (assets != null && assets.isNotEmpty)
       for (int i = 0; i < assets.length; i++) {
         ByteData byteData = await assets[i].requestOriginal();
@@ -93,16 +104,8 @@ class HttpUtil {
   }
 
   Future _request(String url, String type,
-      {Map data, Options options, NetworkError onError, bool isLogin}) async {
+      {Map data, Options options, NetworkError onError}) async {
     try {
-      //请求Header里加token
-      if (!isLogin) {
-        String token;
-        await SpUtils().getString("token").then((value) {
-          token = value;
-        });
-        options = Options(headers: {"Authorization": token});
-      }
       Response response;
       if (type == TYPE_GET) {
         response = await dio.get(url, queryParameters: data, options: options);
@@ -116,7 +119,9 @@ class HttpUtil {
         return response.data;
       }
     } catch (e) {
-      onError(e.toString());
+      onError = () {
+        AppToast.showToast(e.toString());
+      };
     }
   }
 }

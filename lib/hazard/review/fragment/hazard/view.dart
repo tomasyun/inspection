@@ -19,7 +19,7 @@ Widget buildView(
                   color: Colors.grey[800],
                   blurRadius: 10.0,
                   offset: Offset(0.0, 3.0),
-                  spreadRadius: -3.0),
+                  spreadRadius: -7.0),
             ]),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,

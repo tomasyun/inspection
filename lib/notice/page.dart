@@ -1,4 +1,5 @@
 import 'package:fish_redux/fish_redux.dart';
+import 'package:inspection/notice/adapter/adapter.dart';
 
 import 'effect.dart';
 import 'reducer.dart';
@@ -14,7 +15,7 @@ class NoticePage extends Page<NoticeState, Map<String, dynamic>> {
           reducer: buildReducer(),
           view: buildView,
           dependencies: Dependencies<NoticeState>(
-              adapter: null, slots: <String, Dependent<NoticeState>>{}),
-          middleware: <Middleware<NoticeState>>[],
+            adapter: NoticeAdapter(),
+          ),
         );
 }

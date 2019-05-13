@@ -34,7 +34,7 @@ Widget buildView(
                           color: Colors.grey[800],
                           blurRadius: 10.0,
                           offset: Offset(0.0, 3.0),
-                          spreadRadius: -3.0)
+                          spreadRadius: -7.0)
                     ],
                     borderRadius: BorderRadius.all(Radius.circular(15.0))),
                 child: Column(
@@ -160,8 +160,8 @@ Widget buildBottomNavigatorJudge(
     String state,
     String leftLabel = '',
     String rightLabel = '',
-    GestureTapCallback leftChecked,
-    GestureTapCallback rightChecked}) {
+    VoidCallback leftChecked,
+    VoidCallback rightChecked}) {
   if (state == '待整改') {
     leftLabel = '整改费用申请';
     rightLabel = '整改上报';

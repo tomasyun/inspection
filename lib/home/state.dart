@@ -19,5 +19,7 @@ class HomeState implements Cloneable<HomeState> {
 }
 
 HomeState initState(Map<String, dynamic> args) {
-  return HomeState();
+  HomeState state = HomeState();
+  state.model = HomeModel();
+  return state;
 }

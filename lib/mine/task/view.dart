@@ -2,6 +2,7 @@ import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart';
 import 'package:inspection/entity/todos_model.dart';
 import 'package:inspection/hazard/info/page.dart';
+import 'package:inspection/mine/task/action.dart';
 
 import 'state.dart';
 
@@ -19,14 +20,16 @@ Widget buildView(TaskState state, Dispatch dispatch, ViewService viewService) {
       child: Container(
         padding: EdgeInsets.only(bottom: 50.0),
         child: Column(
-          children: _buildToDoWidgets(state, state.model),
+          children: _buildToDoWidgets(
+              state: state, model: state.model, dispatch: dispatch),
         ),
       ),
     ),
   );
 }
 
-List<Widget> _buildToDoWidgets(TaskState state, ToDosModel model) {
+List<Widget> _buildToDoWidgets(
+    {TaskState state, ToDosModel model, Dispatch dispatch}) {
   List<Widget> list = [];
   if (model.rectify != null) {
     model.rectify.map((rectify) {
@@ -42,7 +45,7 @@ List<Widget> _buildToDoWidgets(TaskState state, ToDosModel model) {
 
   if (model.inspect != null) {
     model.inspect.map((inspect) {
-      list.add(_inspect(inspect));
+      list.add(_inspect(inspect, dispatch));
     }).toList();
   }
   return list;
@@ -59,7 +62,7 @@ Widget _recheck(TaskState state, Recheck recheck) {
             color: Colors.grey[800],
             blurRadius: 10.0,
             offset: Offset(0.0, 2.0),
-            spreadRadius: -3.0)
+            spreadRadius: -7.0)
       ],
       borderRadius: BorderRadius.all(Radius.circular(15.0)),
     ),
@@ -149,7 +152,7 @@ Widget _rectify(TaskState state, Rectify rectify) {
             color: Colors.grey[800],
             blurRadius: 10.0,
             offset: Offset(0.0, 2.0),
-            spreadRadius: -3.0)
+            spreadRadius: -7.0)
       ],
       borderRadius: BorderRadius.all(Radius.circular(15.0)),
     ),
@@ -221,7 +224,7 @@ Widget _rectify(TaskState state, Rectify rectify) {
   );
 }
 
-Widget _inspect(Inspect inspect) {
+Widget _inspect(Inspect inspect, Dispatch dispatch) {
   return Container(
     child: Column(
       children: <Widget>[
@@ -236,7 +239,7 @@ Widget _inspect(Inspect inspect) {
                   color: Colors.grey[800],
                   blurRadius: 10.0,
                   offset: Offset(0.0, 2.0),
-                  spreadRadius: -3.0)
+                  spreadRadius: -7.0)
             ],
             borderRadius: BorderRadius.all(Radius.circular(15.0)),
           ),
@@ -271,7 +274,9 @@ Widget _inspect(Inspect inspect) {
                               borderRadius:
                                   BorderRadius.all(Radius.circular(20.0))),
                           color: Colors.green,
-                          onPressed: () {},
+                          onPressed: () {
+                            dispatch(TaskActionCreator.onScanQRCode());
+                          },
                           child: Text(
                             '扫一扫',
                             style:

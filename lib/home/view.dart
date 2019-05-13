@@ -59,7 +59,7 @@ Widget buildView(HomeState state, Dispatch dispatch, ViewService viewService) {
                         color: Colors.grey[800],
                         blurRadius: 10.0,
                         offset: Offset(0.0, 2.0),
-                        spreadRadius: -3.0)
+                        spreadRadius: -7.0)
                   ],
                   borderRadius: BorderRadius.all(Radius.circular(25.0))),
               width: double.infinity,
@@ -202,7 +202,7 @@ Widget buildView(HomeState state, Dispatch dispatch, ViewService viewService) {
             ),
             Container(
               child: Column(
-                children: _buildToDoWidgets(state, state.model),
+                children: _buildToDoWidgets(state: state, dispatch: dispatch),
               ),
             )
           ],
@@ -234,29 +234,33 @@ Widget _buildContainerItem({String asset, String title}) {
   );
 }
 
-List<Widget> _buildToDoWidgets(HomeState state, HomeModel model) {
+List<Widget> _buildToDoWidgets({HomeState state, Dispatch dispatch}) {
   List<Widget> list = [];
-  if (model.todos.rectify != null) {
-    model.todos.rectify.map((rectify) {
-      list.add(_rectify(state, rectify));
+  //待整改
+  List<Repair> repair = state.model.data.todos.repair;
+  if (repair != null && repair.isNotEmpty) {
+    repair.map((item) {
+      list.add(_rectify(state, item));
     }).toList();
   }
-
-  if (model.todos.recheck != null) {
-    model.todos.recheck.map((recheck) {
-      list.add(_recheck(state, recheck));
+//待复查
+  List<Review> review = state.model.data.todos.review;
+  if (review != null && review.isNotEmpty) {
+    review.map((item) {
+      list.add(_recheck(state, item));
     }).toList();
   }
-
-  if (model.todos.inspect != null) {
-    model.todos.inspect.map((inspect) {
-      list.add(_inspect(inspect));
+//待巡检
+  List<Recheck> recheck = state.model.data.todos.recheck;
+  if (recheck != null && recheck.isNotEmpty) {
+    recheck.map((item) {
+      list.add(_inspect(item, dispatch));
     }).toList();
   }
   return list;
 }
 
-Widget _recheck(HomeState state, Recheck recheck) {
+Widget _recheck(HomeState state, Review review) {
   return Container(
     margin: EdgeInsets.all(15.0),
     width: double.infinity,
@@ -267,7 +271,7 @@ Widget _recheck(HomeState state, Recheck recheck) {
             color: Colors.grey[800],
             blurRadius: 10.0,
             offset: Offset(0.0, 2.0),
-            spreadRadius: -3.0)
+            spreadRadius: -7.0)
       ],
       borderRadius: BorderRadius.all(Radius.circular(15.0)),
     ),
@@ -275,7 +279,7 @@ Widget _recheck(HomeState state, Recheck recheck) {
       padding: EdgeInsets.all(15.0),
       child: Column(
         children: <Widget>[
-          _buildItemHeader(title: '火灾报警控制器', result: '待复查'),
+          _buildItemHeader(title: '${review.equipmentName}', result: '待复查'),
           Container(
             margin: EdgeInsets.only(top: 10.0),
             width: double.infinity,
@@ -289,10 +293,14 @@ Widget _recheck(HomeState state, Recheck recheck) {
                     flex: 8,
                     child: Column(
                       children: <Widget>[
-                        _buildItem(title: '位置', result: '${recheck.date}'),
-                        _buildItem(title: '隐患描述', result: '${recheck.depart}'),
-                        _buildItem(title: '隐患类型', result: '${recheck.depart}'),
-                        _buildItem(title: '编号', result: '${recheck.depart}'),
+                        _buildItem(
+                            title: '位置', result: '${review.dangerAddress}'),
+                        _buildItem(
+                            title: '隐患描述', result: '${review.dangerRemark}'),
+                        _buildItem(
+                            title: '隐患类型', result: '${review.dangerType}'),
+                        _buildItem(
+                            title: '编号', result: '${review.equipmentCode}'),
                       ],
                     )),
                 Expanded(
@@ -314,9 +322,7 @@ Widget _recheck(HomeState state, Recheck recheck) {
                           onPressed: () {
                             Navigator.of(state.context)
                                 .push(MaterialPageRoute(builder: (content) {
-                              Map<String, dynamic> map = {
-                                'state': recheck.state
-                              };
+                              Map<String, dynamic> map = {'state': '待复查'};
                               return HazardInfoPage().buildPage(map);
                             }));
                           },
@@ -345,7 +351,7 @@ Widget _recheck(HomeState state, Recheck recheck) {
   );
 }
 
-Widget _rectify(HomeState state, Rectify rectify) {
+Widget _rectify(HomeState state, Repair rectify) {
   return Container(
     padding: EdgeInsets.all(10.0),
     margin: EdgeInsets.all(15.0),
@@ -357,13 +363,13 @@ Widget _rectify(HomeState state, Rectify rectify) {
             color: Colors.grey[800],
             blurRadius: 10.0,
             offset: Offset(0.0, 2.0),
-            spreadRadius: -3.0)
+            spreadRadius: -7.0)
       ],
       borderRadius: BorderRadius.all(Radius.circular(15.0)),
     ),
     child: Column(
       children: <Widget>[
-        _buildItemHeader(title: '火灾报警控制器', result: '待整改'),
+        _buildItemHeader(title: '${rectify.equipmentName}', result: '待整改'),
         Container(
           margin: EdgeInsets.only(top: 10.0),
           width: double.infinity,
@@ -377,10 +383,14 @@ Widget _rectify(HomeState state, Rectify rectify) {
                   flex: 8,
                   child: Column(
                     children: <Widget>[
-                      _buildItem(title: '位置', result: '${rectify.date}'),
-                      _buildItem(title: '隐患描述', result: '${rectify.depart}'),
-                      _buildItem(title: '隐患类型', result: '${rectify.depart}'),
-                      _buildItem(title: '编号', result: '${rectify.depart}'),
+                      _buildItem(
+                          title: '位置', result: '${rectify.dangerAddress}'),
+                      _buildItem(
+                          title: '隐患描述', result: '${rectify.dangerRemark}'),
+                      _buildItem(
+                          title: '隐患类型', result: '${rectify.dangerType}'),
+                      _buildItem(
+                          title: '编号', result: '${rectify.equipmentCode}'),
                     ],
                   )),
               Expanded(
@@ -402,7 +412,7 @@ Widget _rectify(HomeState state, Rectify rectify) {
                         onPressed: () {
                           Navigator.of(state.context)
                               .push(MaterialPageRoute(builder: (content) {
-                            Map<String, dynamic> map = {'state': rectify.state};
+                            Map<String, dynamic> map = {'state': '待整改'};
                             return HazardInfoPage().buildPage(map);
                           }));
                         },
@@ -429,7 +439,7 @@ Widget _rectify(HomeState state, Rectify rectify) {
   );
 }
 
-Widget _inspect(Inspect inspect) {
+Widget _inspect(Recheck inspect, Dispatch dispatch) {
   return Container(
     child: Column(
       children: <Widget>[
@@ -444,13 +454,14 @@ Widget _inspect(Inspect inspect) {
                   color: Colors.grey[800],
                   blurRadius: 10.0,
                   offset: Offset(0.0, 2.0),
-                  spreadRadius: -3.0)
+                  spreadRadius: -7.0)
             ],
             borderRadius: BorderRadius.all(Radius.circular(15.0)),
           ),
           child: Column(
             children: <Widget>[
-              _buildItemHeader(title: '火灾报警控制器', result: '待检查'),
+              _buildItemHeader(
+                  title: '${inspect.equipmentName}', result: '待检查'),
               Container(
                 margin: EdgeInsets.only(top: 10.0),
                 width: double.infinity,
@@ -465,10 +476,13 @@ Widget _inspect(Inspect inspect) {
                         child: Column(
                           children: <Widget>[
                             _buildItem(
-                                title: '位置', result: '${inspect.depart}'),
+                                title: '位置', result: '${inspect.installArea}'),
                             _buildItem(
-                                title: '编号', result: '${inspect.depart}'),
-                            _buildItem(title: '设备类型', result: '${inspect.pic}'),
+                                title: '编号',
+                                result: '${inspect.equipmentCode}'),
+                            _buildItem(
+                                title: '设备类型',
+                                result: '${inspect.equipmentType}'),
                           ],
                         )),
                     Expanded(
@@ -479,7 +493,9 @@ Widget _inspect(Inspect inspect) {
                               borderRadius:
                                   BorderRadius.all(Radius.circular(20.0))),
                           color: Colors.green,
-                          onPressed: () {},
+                          onPressed: () {
+                            dispatch(HomeActionCreator.onScanQRCode());
+                          },
                           child: Text(
                             '扫一扫',
                             style:

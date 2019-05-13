@@ -7,10 +7,8 @@ class BannerModel extends BannerItem {
   BannerModel({this.link, this.desc});
 
   @override
-  // TODO: implement title
   get title => desc;
 
   @override
-  // TODO: implement url
   get url => link;
 }

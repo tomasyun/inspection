@@ -2,7 +2,7 @@ import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart';
 import 'package:inspection/device/repair/report/page.dart';
 import 'package:inspection/entity/banner_model.dart';
-import 'package:inspection/entity/home_model.dart';
+import 'package:inspection/global/dico_http.dart';
 import 'package:inspection/hazard/report/page.dart';
 import 'package:inspection/mine/task/inspection/page.dart';
 import 'package:inspection/mine/task/page.dart';
@@ -95,39 +95,33 @@ void _init(Action action, Context<HomeState> ctx) {
         desc: '冷静冷静，这也太有爱了吧'),
   ];
   ctx.dispatch(HomeActionCreator.initBannerData(list));
-
-  List<Rectify> rectify = [
-    Rectify(
-        desc: '车间地面留有设备机油',
-        depart: '缔科研发部',
-        date: '2019-08-08',
-        state: '待整改',
-        rectifier: '高大陆')
-  ];
-  List<Recheck> recheck = [
-    Recheck(
-        desc: '办公室墙面掉皮',
-        depart: '通昱消防',
-        date: '2019-06-06',
-        rechecker: '黄骁',
-        state: '待复查')
-  ];
-//  List<Keep> keep = [
-//    Keep(
-//        state: '待保养',
-//        remark: '新时代中国青年要勇于砥砺奋斗。奋斗是青春最亮丽的底色',
-//        keeper: '王婷',
-//        date: '2019-05-25')
+//
+//  List<Rectify> rectify = [
+//    Rectify(
+//        desc: '车间地面留有设备机油',
+//        depart: '缔科研发部',
+//        date: '2019-08-08',
+//        state: '待整改',
+//        rectifier: '高大陆')
 //  ];
-
-  List<Inspect> inspect = [
-    Inspect(name: '日常检查', pic: '贠拓', depart: '陕西缔科网络科技有限公司', state: '待检查'),
-  ];
-
-//  Todos todo =
-//      Todos(recheck: recheck, rectify: rectify, keep: keep, inspect: inspect);
-  Todos todo = Todos(recheck: recheck, inspect: inspect, rectify: rectify);
-
-  HomeModel model = HomeModel(banner: [], todos: todo, notice: '');
-  ctx.dispatch(HomeActionCreator.onGetHomeModels(model));
+//  List<Recheck> recheck = [
+//    Recheck(
+//        desc: '办公室墙面掉皮',
+//        depart: '通昱消防',
+//        date: '2019-06-06',
+//        rechecker: '黄骁',
+//        state: '待复查')
+//  ];
+//
+//  List<Inspect> inspect = [
+//    Inspect(name: '日常检查', pic: '贠拓', depart: '陕西缔科网络科技有限公司', state: '待检查'),
+//  ];
+//
+//  Todos todo = Todos(recheck: recheck, inspect: inspect, rectify: rectify);
+//
+//  HomeModel model = HomeModel(banner: [], todos: todo, notice: '');
+//  ctx.dispatch(HomeActionCreator.onGetHomeModels(model));
+  DicoHttpRepository.homeRequest().then((model) {
+    ctx.dispatch(HomeActionCreator.onGetHomeModels(model));
+  });
 }
