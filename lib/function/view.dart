@@ -65,12 +65,16 @@ Widget buildView(
                         asset: 'images/ic_plan_review.png', title: '计划查询'),
                   ),
                   GestureDetector(
-                    onTap: () {},
+                    onTap: () {
+                      dispatch(FunctionActionCreator.onSkipMinePlan());
+                    },
                     child: _buildFuncItem(
                         asset: 'images/ic_mine_plan.png', title: '我的计划'),
                   ),
                   GestureDetector(
-                    onTap: () {},
+                    onTap: () {
+                      dispatch(FunctionActionCreator.onSkipSaveAnalyse());
+                    },
                     child: _buildFuncItem(
                         asset: 'images/ic_safe_analyse.png', title: '安全分析'),
                   )

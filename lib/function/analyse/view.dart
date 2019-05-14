@@ -5,11 +5,11 @@ import 'package:inspection/widget/state_view.dart' as stateView;
 import 'state.dart';
 
 Widget buildView(
-    InspectPlanState state, Dispatch dispatch, ViewService viewService) {
+    SaveAnalyseState state, Dispatch dispatch, ViewService viewService) {
   return Scaffold(
     appBar: AppBar(
       title: Text(
-        '计划管理',
+        '安全分析',
         style: TextStyle(fontSize: 18.0, color: Colors.white),
       ),
       centerTitle: true,

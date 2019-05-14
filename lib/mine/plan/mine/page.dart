@@ -5,15 +5,15 @@ import 'reducer.dart';
 import 'state.dart';
 import 'view.dart';
 
-class InspectPlanPage extends Page<InspectPlanState, Map<String, dynamic>> {
-  InspectPlanPage()
+class MinePlanPage extends Page<MinePlanState, Map<String, dynamic>> {
+  MinePlanPage()
       : super(
           initState: initState,
           effect: buildEffect(),
           reducer: buildReducer(),
           view: buildView,
-          dependencies: Dependencies<InspectPlanState>(
-              adapter: null, slots: <String, Dependent<InspectPlanState>>{}),
-          middleware: <Middleware<InspectPlanState>>[],
+          dependencies: Dependencies<MinePlanState>(
+              adapter: null, slots: <String, Dependent<MinePlanState>>{}),
+          middleware: <Middleware<MinePlanState>>[],
         );
 }

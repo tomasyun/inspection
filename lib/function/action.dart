@@ -7,6 +7,8 @@ enum FunctionAction {
   warning,
   hazardReview,
   inspectionPlan,
+  minePlan,
+  analyse,
 }
 
 class FunctionActionCreator {
@@ -28,5 +30,13 @@ class FunctionActionCreator {
 
   static Action onInspectionPlan() {
     return Action(FunctionAction.inspectionPlan);
+  }
+
+  static Action onSkipMinePlan() {
+    return Action(FunctionAction.minePlan);
+  }
+
+  static Action onSkipSaveAnalyse() {
+    return Action(FunctionAction.analyse);
   }
 }

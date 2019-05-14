@@ -1,7 +1,6 @@
 import 'package:fish_redux/fish_redux.dart';
-
-import 'action.dart';
-import 'state.dart';
+import 'package:inspection/mine/plan/manage/action.dart';
+import 'package:inspection/mine/plan/manage/state.dart';
 
 Effect<InspectPlanState> buildEffect() {
   return combineEffects(<Object, Effect<InspectPlanState>>{
