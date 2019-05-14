@@ -73,17 +73,17 @@ class Banner {
 }
 
 class Todos {
-  List<Repair> repair;
+  List<Rectify> rectify;
   List<Review> review;
-  List<Recheck> recheck;
+  List<Inspect> inspect;
 
-  Todos({this.repair, this.review, this.recheck});
+  Todos({this.rectify, this.review, this.inspect});
 
   Todos.fromJson(Map<String, dynamic> json) {
-    if (json['repair'] != null) {
-      repair = new List<Repair>();
-      json['repair'].forEach((v) {
-        repair.add(new Repair.fromJson(v));
+    if (json['rectify'] != null) {
+      rectify = new List<Rectify>();
+      json['rectify'].forEach((v) {
+        rectify.add(new Rectify.fromJson(v));
       });
     }
     if (json['review'] != null) {
@@ -92,51 +92,54 @@ class Todos {
         review.add(new Review.fromJson(v));
       });
     }
-    if (json['recheck'] != null) {
-      recheck = new List<Recheck>();
-      json['recheck'].forEach((v) {
-        recheck.add(new Recheck.fromJson(v));
+    if (json['inspect'] != null) {
+      inspect = new List<Inspect>();
+      json['inspect'].forEach((v) {
+        inspect.add(new Inspect.fromJson(v));
       });
     }
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    if (this.repair != null) {
-      data['repair'] = this.repair.map((v) => v.toJson()).toList();
+    if (this.rectify != null) {
+      data['rectify'] = this.rectify.map((v) => v.toJson()).toList();
     }
     if (this.review != null) {
       data['review'] = this.review.map((v) => v.toJson()).toList();
     }
-    if (this.recheck != null) {
-      data['recheck'] = this.recheck.map((v) => v.toJson()).toList();
+    if (this.inspect != null) {
+      data['inspect'] = this.inspect.map((v) => v.toJson()).toList();
     }
     return data;
   }
 }
 
-class Repair {
+class Rectify {
   String dangerRemark;
   String dangerAddress;
   String dangerType;
   String todoType;
   String equipmentCode;
+  String dangerLevel;
   String equipmentName;
 
-  Repair(
+  Rectify(
       {this.dangerRemark,
       this.dangerAddress,
       this.dangerType,
       this.todoType,
       this.equipmentCode,
+      this.dangerLevel,
       this.equipmentName});
 
-  Repair.fromJson(Map<String, dynamic> json) {
+  Rectify.fromJson(Map<String, dynamic> json) {
     dangerRemark = json['dangerRemark'];
     dangerAddress = json['dangerAddress'];
     dangerType = json['dangerType'];
     todoType = json['todoType'];
     equipmentCode = json['equipmentCode'];
+    dangerLevel = json['dangerLevel'];
     equipmentName = json['equipmentName'];
   }
 
@@ -147,6 +150,7 @@ class Repair {
     data['dangerType'] = this.dangerType;
     data['todoType'] = this.todoType;
     data['equipmentCode'] = this.equipmentCode;
+    data['dangerLevel'] = this.dangerLevel;
     data['equipmentName'] = this.equipmentName;
     return data;
   }
@@ -158,6 +162,7 @@ class Review {
   String dangerType;
   String todoType;
   String equipmentCode;
+  String dangerLevel;
   String equipmentName;
 
   Review(
@@ -166,6 +171,7 @@ class Review {
       this.dangerType,
       this.todoType,
       this.equipmentCode,
+      this.dangerLevel,
       this.equipmentName});
 
   Review.fromJson(Map<String, dynamic> json) {
@@ -174,6 +180,7 @@ class Review {
     dangerType = json['dangerType'];
     todoType = json['todoType'];
     equipmentCode = json['equipmentCode'];
+    dangerLevel = json['dangerLevel'];
     equipmentName = json['equipmentName'];
   }
 
@@ -184,26 +191,27 @@ class Review {
     data['dangerType'] = this.dangerType;
     data['todoType'] = this.todoType;
     data['equipmentCode'] = this.equipmentCode;
+    data['dangerLevel'] = this.dangerLevel;
     data['equipmentName'] = this.equipmentName;
     return data;
   }
 }
 
-class Recheck {
+class Inspect {
   String installArea;
   String equipmentCode;
   String equipmentName;
   String equipmentType;
   int status;
 
-  Recheck(
+  Inspect(
       {this.installArea,
       this.equipmentCode,
       this.equipmentName,
       this.equipmentType,
       this.status});
 
-  Recheck.fromJson(Map<String, dynamic> json) {
+  Inspect.fromJson(Map<String, dynamic> json) {
     installArea = json['installArea'];
     equipmentCode = json['equipmentCode'];
     equipmentName = json['equipmentName'];

@@ -9,7 +9,7 @@ Widget buildView(MineState state, Dispatch dispatch, ViewService viewService) {
     backgroundColor: Colors.grey[100],
     appBar: AppBar(
       title: Text(
-        '个人中心',
+        '我的',
         style: TextStyle(fontSize: 18.0, color: Colors.white),
       ),
       backgroundColor: Colors.blue,
@@ -38,18 +38,13 @@ Widget buildView(MineState state, Dispatch dispatch, ViewService viewService) {
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
-                Container(
-                  child: ClipOval(
-                    child: FadeInImage.assetNetwork(
-                      placeholder: 'images/ic_avatar.png',
-                      //预览图
-                      fit: BoxFit.cover,
-                      width: 60.0,
-                      height: 60.0,
-                      image: '',
-                    ),
-                  ),
-                  color: Colors.white,
+                FadeInImage.assetNetwork(
+                  placeholder: 'images/ic_avatar.png',
+                  //预览图
+                  fit: BoxFit.cover,
+                  width: 60.0,
+                  height: 60.0,
+                  image: '',
                 ),
                 Container(
                   margin: EdgeInsets.only(left: 30.0),
@@ -78,20 +73,22 @@ Widget buildView(MineState state, Dispatch dispatch, ViewService viewService) {
                 Expanded(
                   child: Container(
                     alignment: AlignmentDirectional.centerEnd,
-                    child: RaisedButton(
-                      child: Text(
-                        '个人信息',
-                        style: TextStyle(fontSize: 13.0, color: Colors.blue),
-                      ),
-                      onPressed: () {
+                    child: GestureDetector(
+                      onTap: () {
                         dispatch(MineActionCreator.onSkipUserInfo());
                       },
-                      color: Colors.white,
-                      shape: RoundedRectangleBorder(
-                          borderRadius:
-                              BorderRadius.all(Radius.circular(20.0))),
-                      padding:
-                          EdgeInsets.symmetric(vertical: 8.0, horizontal: 25.0),
+                      child: Container(
+                        padding: EdgeInsets.symmetric(
+                            vertical: 10.0, horizontal: 20.0),
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(20.0))),
+                        child: Text(
+                          '基本信息',
+                          style: TextStyle(fontSize: 14.0, color: Colors.blue),
+                        ),
+                      ),
                     ),
                   ),
                   flex: 1,
@@ -104,21 +101,21 @@ Widget buildView(MineState state, Dispatch dispatch, ViewService viewService) {
               dispatch(MineActionCreator.onSkipMineTask());
             },
             child: _buildMineNavigatorItem(
-                asset: 'images/ic_avatar.png', title: '代办任务'),
+                asset: 'images/ic_todo_task.png', title: '代办任务'),
           ),
           GestureDetector(
             onTap: () {
               dispatch(MineActionCreator.onSkipMineReport());
             },
             child: _buildMineNavigatorItem(
-                asset: 'images/ic_avatar.png', title: '上报记录'),
+                asset: 'images/ic_mine_report.png', title: '上报记录'),
           ),
           GestureDetector(
             onTap: () {
               dispatch(MineActionCreator.onSkipHazardHistory());
             },
             child: _buildMineNavigatorItem(
-                asset: 'images/ic_avatar.png', title: '历史隐患'),
+                asset: 'images/ic_history_hazard.png', title: '历史隐患'),
           ),
         ],
       ),
@@ -136,10 +133,12 @@ Widget _buildMineNavigatorItem({String asset, String title}) {
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-              Image.asset(
-                asset,
-                width: 40.0,
-                height: 40.0,
+              Container(
+                child: Image.asset(
+                  asset,
+                  width: 45.0,
+                  height: 45.0,
+                ),
               ),
               Container(
                 margin: EdgeInsets.only(left: 10.0),

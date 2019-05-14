@@ -60,16 +60,14 @@ class BannerState extends State<BannerWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return ClipRRect(
-      borderRadius: BorderRadius.all(Radius.circular(15.0)),
-      child: Container(
-          height: widget.height.toDouble(),
-          child: Stack(
-            children: <Widget>[
-              viewPager(),
-              tips(),
-            ],
-          )),
+    return Container(
+      height: widget.height.toDouble(),
+      child: Stack(
+        children: <Widget>[
+          viewPager(),
+          tips(),
+        ],
+      ),
     );
   }
 
@@ -79,26 +77,19 @@ class BannerState extends State<BannerWidget> {
       controller: controller,
       onPageChanged: onPageChanged,
       itemBuilder: (context, index) {
-        return Container(
-          padding: EdgeInsets.symmetric(horizontal: 2.0),
-          child: InkWell(
-              onTap: () {
-                if (widget.onPress != null) {
-                  widget.onPress(selectIndex, widget.entity[selectIndex]);
-                }
-              },
-              child: widget.build == null
-                  ? ClipRRect(
-                      borderRadius: BorderRadius.all(Radius.circular(15.0)),
-                      child: FadeInImage.assetNetwork(
-                          placeholder: "images/app_def.png",
-                          image:
-                              widget.entity[index % widget.entity.length].url,
-                          fit: BoxFit.fill),
-                    )
-                  : widget.build(
-                      index, widget.entity[index % widget.entity.length])),
-        );
+        return InkWell(
+            onTap: () {
+              if (widget.onPress != null) {
+                widget.onPress(selectIndex, widget.entity[selectIndex]);
+              }
+            },
+            child: widget.build == null
+                ? FadeInImage.assetNetwork(
+                    placeholder: "images/app_def.png",
+                    image: widget.entity[index % widget.entity.length].url,
+                    fit: BoxFit.fill)
+                : widget.build(
+                    index, widget.entity[index % widget.entity.length]));
       },
     );
   }

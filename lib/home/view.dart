@@ -21,7 +21,6 @@ Widget buildView(HomeState state, Dispatch dispatch, ViewService viewService) {
       actions: <Widget>[
         GestureDetector(
           onTap: () {
-//            AppToast.showToast('这里是通知入口');
             dispatch(HomeActionCreator.onSkipNoticePage());
           },
           child: Container(
@@ -41,12 +40,20 @@ Widget buildView(HomeState state, Dispatch dispatch, ViewService viewService) {
         child: Column(
           children: <Widget>[
             Container(
-              margin: EdgeInsets.all(15.0),
-              child: BannerWidget(
-                entity: state.banners,
-                delayTime: 500,
-                duration: 1000,
-              ),
+              child: state.banners.isNotEmpty
+                  ? BannerWidget(
+                      entity: state.banners,
+                      delayTime: 500,
+                      duration: 1000,
+                    )
+                  : Container(
+                      height: 180.0,
+                      width: double.infinity,
+                      child: Image.asset(
+                        'images/app_def.png',
+                        fit: BoxFit.fill,
+                      ),
+                    ),
             ),
             Container(
               margin: EdgeInsets.all(15.0),
@@ -76,7 +83,11 @@ Widget buildView(HomeState state, Dispatch dispatch, ViewService viewService) {
                     child: Container(
                       margin: EdgeInsets.only(left: 15.0),
                       child: MarqueeText(
-                        '陕西缔科网络科技有限公司',
+                        state.model != null &&
+                                state.model.data != null &&
+                                state.model.data.notice != null
+                            ? state.model.data.notice
+                            : '',
                         speed: 10.0,
                         gap: 100.0,
                       ),
@@ -138,7 +149,7 @@ Widget buildView(HomeState state, Dispatch dispatch, ViewService viewService) {
                       dispatch(HomeActionCreator.onBreakDownReport());
                     },
                     child: _buildContainerItem(
-                        asset: 'images/ic_repair_report.png', title: '设备维修'),
+                        asset: 'images/ic_repair_report.png', title: '维修上报'),
                   )
                 ],
               ),
@@ -201,10 +212,13 @@ Widget buildView(HomeState state, Dispatch dispatch, ViewService viewService) {
               ),
             ),
             Container(
-              child: Column(
-                children: _buildToDoWidgets(state: state, dispatch: dispatch),
-              ),
-            )
+                child: Column(
+              children: state.model != null &&
+                      state.model.data != null &&
+                      state.model.data.todos != null
+                  ? _buildToDoWidgets(state: state, dispatch: dispatch)
+                  : [],
+            ))
           ],
         ),
       ),
@@ -235,32 +249,114 @@ Widget _buildContainerItem({String asset, String title}) {
 }
 
 List<Widget> _buildToDoWidgets({HomeState state, Dispatch dispatch}) {
-  List<Widget> list = [];
-  //待整改
-  List<Repair> repair = state.model.data.todos.repair;
-  if (repair != null && repair.isNotEmpty) {
-    repair.map((item) {
-      list.add(_rectify(state, item));
+  Todos todo = state.model.data.todos;
+  List<Widget> widgets = [];
+  if (todo.rectify != null && todo.rectify.isNotEmpty) {
+    todo.rectify.map((item) {
+      widgets.add(inflateRectify(state, item));
     }).toList();
   }
-//待复查
-  List<Review> review = state.model.data.todos.review;
-  if (review != null && review.isNotEmpty) {
-    review.map((item) {
-      list.add(_recheck(state, item));
+  if (todo.review != null && todo.review.isNotEmpty) {
+    todo.review.map((item) {
+      widgets.add(inflateRecheck(state, item));
     }).toList();
   }
-//待巡检
-  List<Recheck> recheck = state.model.data.todos.recheck;
-  if (recheck != null && recheck.isNotEmpty) {
-    recheck.map((item) {
-      list.add(_inspect(item, dispatch));
+  if (todo.inspect != null && todo.inspect.isNotEmpty) {
+    todo.inspect.map((item) {
+      widgets.add(inflateInspect(item, dispatch));
     }).toList();
   }
-  return list;
+  return widgets;
 }
 
-Widget _recheck(HomeState state, Review review) {
+Widget inflateRectify(HomeState state, Rectify rectify) {
+  return Container(
+    padding: EdgeInsets.all(10.0),
+    margin: EdgeInsets.all(15.0),
+    width: double.infinity,
+    decoration: BoxDecoration(
+      color: Colors.white,
+      boxShadow: [
+        BoxShadow(
+            color: Colors.grey[800],
+            blurRadius: 10.0,
+            offset: Offset(0.0, 2.0),
+            spreadRadius: -7.0)
+      ],
+      borderRadius: BorderRadius.all(Radius.circular(15.0)),
+    ),
+    child: Column(
+      children: <Widget>[
+        commonHeader(title: '${rectify.equipmentName}', result: '待整改'),
+        Container(
+          margin: EdgeInsets.only(top: 10.0),
+          width: double.infinity,
+          color: Colors.black12,
+          height: 0.5,
+        ),
+        Container(
+          child: Row(
+            children: <Widget>[
+              Expanded(
+                  flex: 8,
+                  child: Column(
+                    children: <Widget>[
+                      commonRow(
+                          title: '位置', result: '${rectify.dangerAddress}'),
+                      commonRow(
+                          title: '隐患描述', result: '${rectify.dangerRemark}'),
+                      commonRow(title: '隐患类型', result: '${rectify.dangerType}'),
+                      commonRow(
+                          title: '编号', result: '${rectify.equipmentCode}'),
+                    ],
+                  )),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: <Widget>[
+                    Container(
+                      margin: EdgeInsets.only(top: 20.0),
+                      child: Text(
+                        rectify.dangerLevel,
+                        style: TextStyle(color: Colors.red, fontSize: 14.0),
+                        textAlign: TextAlign.right,
+                      ),
+                    ),
+                    Container(
+                      margin: EdgeInsets.only(top: 45.0),
+                      child: RaisedButton(
+                        color: Colors.green,
+                        onPressed: () {
+                          Navigator.of(state.context)
+                              .push(MaterialPageRoute(builder: (content) {
+                            Map<String, dynamic> map = {'state': '待整改'};
+                            return HazardInfoPage().buildPage(map);
+                          }));
+                        },
+                        shape: RoundedRectangleBorder(
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(20.0))),
+                        child: Text(
+                          '待整改',
+                          style: TextStyle(color: Colors.white, fontSize: 13.0),
+                        ),
+                        padding: EdgeInsets.symmetric(
+                            vertical: 3.0, horizontal: 5.0),
+                      ),
+                    ),
+                  ],
+                ),
+                flex: 2,
+              )
+            ],
+          ),
+        ),
+      ],
+    ),
+  );
+}
+
+Widget inflateRecheck(HomeState state, Review review) {
   return Container(
     margin: EdgeInsets.all(15.0),
     width: double.infinity,
@@ -279,7 +375,7 @@ Widget _recheck(HomeState state, Review review) {
       padding: EdgeInsets.all(15.0),
       child: Column(
         children: <Widget>[
-          _buildItemHeader(title: '${review.equipmentName}', result: '待复查'),
+          commonHeader(title: '${review.equipmentName}', result: '待复查'),
           Container(
             margin: EdgeInsets.only(top: 10.0),
             width: double.infinity,
@@ -293,13 +389,13 @@ Widget _recheck(HomeState state, Review review) {
                     flex: 8,
                     child: Column(
                       children: <Widget>[
-                        _buildItem(
+                        commonRow(
                             title: '位置', result: '${review.dangerAddress}'),
-                        _buildItem(
+                        commonRow(
                             title: '隐患描述', result: '${review.dangerRemark}'),
-                        _buildItem(
+                        commonRow(
                             title: '隐患类型', result: '${review.dangerType}'),
-                        _buildItem(
+                        commonRow(
                             title: '编号', result: '${review.equipmentCode}'),
                       ],
                     )),
@@ -310,7 +406,7 @@ Widget _recheck(HomeState state, Review review) {
                       Container(
                         margin: EdgeInsets.only(top: 20.0),
                         child: Text(
-                          '重大隐患',
+                          review.dangerLevel,
                           style: TextStyle(color: Colors.red, fontSize: 14.0),
                           textAlign: TextAlign.right,
                         ),
@@ -351,95 +447,7 @@ Widget _recheck(HomeState state, Review review) {
   );
 }
 
-Widget _rectify(HomeState state, Repair rectify) {
-  return Container(
-    padding: EdgeInsets.all(10.0),
-    margin: EdgeInsets.all(15.0),
-    width: double.infinity,
-    decoration: BoxDecoration(
-      color: Colors.white,
-      boxShadow: [
-        BoxShadow(
-            color: Colors.grey[800],
-            blurRadius: 10.0,
-            offset: Offset(0.0, 2.0),
-            spreadRadius: -7.0)
-      ],
-      borderRadius: BorderRadius.all(Radius.circular(15.0)),
-    ),
-    child: Column(
-      children: <Widget>[
-        _buildItemHeader(title: '${rectify.equipmentName}', result: '待整改'),
-        Container(
-          margin: EdgeInsets.only(top: 10.0),
-          width: double.infinity,
-          color: Colors.black12,
-          height: 0.5,
-        ),
-        Container(
-          child: Row(
-            children: <Widget>[
-              Expanded(
-                  flex: 8,
-                  child: Column(
-                    children: <Widget>[
-                      _buildItem(
-                          title: '位置', result: '${rectify.dangerAddress}'),
-                      _buildItem(
-                          title: '隐患描述', result: '${rectify.dangerRemark}'),
-                      _buildItem(
-                          title: '隐患类型', result: '${rectify.dangerType}'),
-                      _buildItem(
-                          title: '编号', result: '${rectify.equipmentCode}'),
-                    ],
-                  )),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: <Widget>[
-                    Container(
-                      margin: EdgeInsets.only(top: 20.0),
-                      child: Text(
-                        '重大隐患',
-                        style: TextStyle(color: Colors.red, fontSize: 14.0),
-                        textAlign: TextAlign.right,
-                      ),
-                    ),
-                    Container(
-                      margin: EdgeInsets.only(top: 45.0),
-                      child: RaisedButton(
-                        color: Colors.green,
-                        onPressed: () {
-                          Navigator.of(state.context)
-                              .push(MaterialPageRoute(builder: (content) {
-                            Map<String, dynamic> map = {'state': '待整改'};
-                            return HazardInfoPage().buildPage(map);
-                          }));
-                        },
-                        shape: RoundedRectangleBorder(
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(20.0))),
-                        child: Text(
-                          '待整改',
-                          style: TextStyle(color: Colors.white, fontSize: 13.0),
-                        ),
-                        padding: EdgeInsets.symmetric(
-                            vertical: 3.0, horizontal: 5.0),
-                      ),
-                    ),
-                  ],
-                ),
-                flex: 2,
-              )
-            ],
-          ),
-        ),
-      ],
-    ),
-  );
-}
-
-Widget _inspect(Recheck inspect, Dispatch dispatch) {
+Widget inflateInspect(Inspect inspect, Dispatch dispatch) {
   return Container(
     child: Column(
       children: <Widget>[
@@ -460,8 +468,7 @@ Widget _inspect(Recheck inspect, Dispatch dispatch) {
           ),
           child: Column(
             children: <Widget>[
-              _buildItemHeader(
-                  title: '${inspect.equipmentName}', result: '待检查'),
+              commonHeader(title: '${inspect.equipmentName}', result: '待检查'),
               Container(
                 margin: EdgeInsets.only(top: 10.0),
                 width: double.infinity,
@@ -475,12 +482,12 @@ Widget _inspect(Recheck inspect, Dispatch dispatch) {
                         flex: 8,
                         child: Column(
                           children: <Widget>[
-                            _buildItem(
+                            commonRow(
                                 title: '位置', result: '${inspect.installArea}'),
-                            _buildItem(
+                            commonRow(
                                 title: '编号',
                                 result: '${inspect.equipmentCode}'),
-                            _buildItem(
+                            commonRow(
                                 title: '设备类型',
                                 result: '${inspect.equipmentType}'),
                           ],
@@ -518,7 +525,7 @@ Widget _inspect(Recheck inspect, Dispatch dispatch) {
   );
 }
 
-Widget _buildItem({String title, String result}) {
+Widget commonRow({String title, String result}) {
   return Container(
     margin: EdgeInsets.only(top: 10.0),
     child: Row(
@@ -552,7 +559,7 @@ Widget _buildItem({String title, String result}) {
   );
 }
 
-Widget _buildItemHeader({String title, String result}) {
+Widget commonHeader({String title, String result}) {
   return Container(
     child: Row(
       children: <Widget>[

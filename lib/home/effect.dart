@@ -44,22 +44,6 @@ void _onSkipNoticePage(Action action, Context<HomeState> ctx) {
   }));
 }
 
-//void _onScanQRCode(Action action, Context<HomeState> ctx) async {
-//  try {
-//    String qrResult = await BarcodeScanner.scan();
-//  } on PlatformException catch (ex) {
-//    if (ex.code == BarcodeScanner.CameraAccessDenied) {
-//     ("The permission was denied.");
-//    } else {
-//     ("unknown error ocurred $ex");
-//    }
-//  } on FormatException {
-//    ("Scan canceled, try again !");
-//  } catch (e) {
-//   ("Unknown error $e");
-//  }
-//}
-
 void _onScanQRCode(Action action, Context<HomeState> ctx) {
   Navigator.of(ctx.context).push(MaterialPageRoute(builder: (content) {
     return InspectionTaskPage().buildPage(null);
@@ -80,47 +64,8 @@ void _onBreakDownReport(Action action, Context<HomeState> ctx) {
 
 void _init(Action action, Context<HomeState> ctx) {
   ctx.state.context = ctx.context;
-  List<BannerModel> list = [
-    BannerModel(
-        link:
-            'http://p1.img.cctvpic.com/photoworkspace/2018/05/18/2018051814594647287.jpg',
-        desc: '治愈系小可爱和你说晚安'),
-    BannerModel(
-        link:
-            'http://p1.img.cctvpic.com/photoworkspace/2018/05/18/2018051814175817985.jpg',
-        desc: '福豹”：跟我一起嗨'),
-    BannerModel(
-        link:
-            'http://p1.img.cctvpic.com/photoworkspace/2018/05/18/2018051814245872100.jpg',
-        desc: '冷静冷静，这也太有爱了吧'),
-  ];
+  List<BannerModel> list = [];
   ctx.dispatch(HomeActionCreator.initBannerData(list));
-//
-//  List<Rectify> rectify = [
-//    Rectify(
-//        desc: '车间地面留有设备机油',
-//        depart: '缔科研发部',
-//        date: '2019-08-08',
-//        state: '待整改',
-//        rectifier: '高大陆')
-//  ];
-//  List<Recheck> recheck = [
-//    Recheck(
-//        desc: '办公室墙面掉皮',
-//        depart: '通昱消防',
-//        date: '2019-06-06',
-//        rechecker: '黄骁',
-//        state: '待复查')
-//  ];
-//
-//  List<Inspect> inspect = [
-//    Inspect(name: '日常检查', pic: '贠拓', depart: '陕西缔科网络科技有限公司', state: '待检查'),
-//  ];
-//
-//  Todos todo = Todos(recheck: recheck, inspect: inspect, rectify: rectify);
-//
-//  HomeModel model = HomeModel(banner: [], todos: todo, notice: '');
-//  ctx.dispatch(HomeActionCreator.onGetHomeModels(model));
   DicoHttpRepository.homeRequest().then((model) {
     ctx.dispatch(HomeActionCreator.onGetHomeModels(model));
   });

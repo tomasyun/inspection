@@ -23,54 +23,6 @@ Widget buildView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            GestureDetector(
-              onTap: () {
-                dispatch(HazardReportActionCreator.onLevelSkipFilter());
-              },
-              child: Container(
-                width: double.infinity,
-                padding: EdgeInsets.symmetric(horizontal: 15.0, vertical: 15.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Container(
-                      child: Text(
-                        '分类',
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 14.0,
-                            color: Colors.black),
-                      ),
-                    ),
-                    Expanded(
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: <Widget>[
-                          Container(
-                            margin: EdgeInsets.only(left: 25.0),
-                            child: Text(
-                              state.levelRst,
-                              style:
-                                  TextStyle(fontSize: 13.0, color: Colors.red),
-                            ),
-                          ),
-                          Container(
-                            alignment: AlignmentDirectional.centerEnd,
-                            child: Icon(Icons.keyboard_arrow_right),
-                          ),
-                        ],
-                      ),
-                    )
-                  ],
-                ),
-              ),
-            ),
-            Container(
-              width: double.infinity,
-              height: 0.5,
-              margin: EdgeInsets.symmetric(horizontal: 15.0),
-              color: Colors.black45,
-            ),
             Container(
               padding: EdgeInsets.symmetric(horizontal: 15.0, vertical: 10.0),
               child: Row(
@@ -102,6 +54,10 @@ Widget buildView(
                               OutlineInputBorder(borderSide: BorderSide.none)),
                     ),
                   ),
+                  Container(
+                    margin: EdgeInsets.only(left: 10.0),
+                    child: Icon(Icons.camera_alt),
+                  )
                 ],
               ),
             ),

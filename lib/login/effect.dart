@@ -30,6 +30,7 @@ void _onLogin(Action action, Context<LoginState> ctx) {
           password: '111111')
       .then((model) {
     if (model.code == 0) {
+      AppToast.showToast(model.msg);
       SpUtils sp = SpUtils();
       sp.putString('token', 'Bearer' + ' ${model.data.token}');
       sp.putString('name', '${model.data.name}');

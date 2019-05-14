@@ -4,6 +4,7 @@ import 'package:connectivity/connectivity.dart';
 import "package:dio/dio.dart";
 import 'package:http/http.dart' as http;
 import 'package:http_parser/http_parser.dart';
+import 'package:inspection/global/sharedpreferences.dart';
 import 'package:inspection/global/toast.dart';
 import 'package:multi_image_picker/multi_image_picker.dart';
 
@@ -83,19 +84,24 @@ class HttpUtil {
   //多部分上传（包括图片、参数）
   Future onMultipartRequest(
       {List<Asset> assets, Map<String, String> map, String url}) async {
-    Uri uri = Uri.parse(url);
-    http.MultipartRequest request = http.MultipartRequest("POST", uri);
+    Uri uri = Uri.parse(BASE_URL + url);
+    http.MultipartRequest request = http.MultipartRequest('post', uri);
+    String token;
+    await SpUtils().getString('token').then((value) {
+      token = value;
+    });
+    request.headers['Authorization'] = token;
+    request.headers['user-agent'] = 'android';
     if (assets != null && assets.isNotEmpty)
       for (int i = 0; i < assets.length; i++) {
         ByteData byteData = await assets[i].requestOriginal();
         List<int> imageData = byteData.buffer.asUint8List();
-        http.MultipartFile multipartFile = http.MultipartFile.fromBytes(
-          'photo',
+        request.files.add(http.MultipartFile.fromBytes(
+          'files',
           imageData,
           filename: assets[i].name,
           contentType: MediaType("image", "jpg", {'image': 'png'}),
-        );
-        request.files.add(multipartFile);
+        ));
       }
     if (map != null && map.isNotEmpty) {
       request.fields.addAll(map);

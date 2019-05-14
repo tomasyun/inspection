@@ -2,14 +2,17 @@ import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart';
 
 class ReportState implements Cloneable<ReportState> {
-  TextEditingController controller;
+  TextEditingController descController;
+  TextEditingController deviceNoController;
+
   String departRst;
   String applicantRst;
 
   @override
   ReportState clone() {
     return ReportState()
-      ..controller = controller
+      ..descController = descController
+      ..deviceNoController = deviceNoController
       ..departRst = departRst
       ..applicantRst = applicantRst;
   }
@@ -17,7 +20,8 @@ class ReportState implements Cloneable<ReportState> {
 
 ReportState initState(Map<String, dynamic> args) {
   ReportState state = ReportState();
-  state.controller = TextEditingController();
+  state.descController = TextEditingController();
+  state.deviceNoController = TextEditingController();
   state.departRst = '请选择';
   state.applicantRst = '请选择';
   return state;

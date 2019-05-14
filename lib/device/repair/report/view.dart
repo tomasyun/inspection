@@ -41,6 +41,7 @@ Widget buildView(
                   ),
                   Expanded(
                     child: TextField(
+                      controller: state.deviceNoController,
                       textAlign: TextAlign.right,
                       keyboardType: TextInputType.text,
                       maxLines: 1,
@@ -181,7 +182,7 @@ Widget buildView(
             Container(
               color: Colors.white,
               child: TextField(
-                controller: state.controller,
+                controller: state.descController,
                 maxLength: 50,
                 keyboardType: TextInputType.text,
                 maxLines: 10,

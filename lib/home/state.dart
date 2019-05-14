@@ -4,11 +4,10 @@ import 'package:inspection/entity/banner_model.dart';
 import 'package:inspection/entity/home_model.dart';
 
 class HomeState implements Cloneable<HomeState> {
+  BuildContext context;
   List<BannerModel> banners = List<BannerModel>();
-
   HomeModel model;
 
-  BuildContext context;
   @override
   HomeState clone() {
     return HomeState()
@@ -20,6 +19,5 @@ class HomeState implements Cloneable<HomeState> {
 
 HomeState initState(Map<String, dynamic> args) {
   HomeState state = HomeState();
-  state.model = HomeModel();
   return state;
 }

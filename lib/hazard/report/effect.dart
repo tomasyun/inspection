@@ -2,6 +2,7 @@ import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:inspection/filter/page.dart';
+import 'package:inspection/global/dico_http.dart';
 import 'package:inspection/global/toast.dart';
 import 'package:multi_image_picker/multi_image_picker.dart';
 
@@ -21,21 +22,32 @@ Effect<HazardReportState> buildEffect() {
 void _onAction(Action action, Context<HazardReportState> ctx) {}
 
 void _onReport(Action action, Context<HazardReportState> ctx) {
-//  AppToast.showToast('暂未实现');
-  if (ctx.state.deviceNoController.text.isEmpty) {
-    AppToast.showToast('设备编号不能为空');
-  } else if (ctx.state.locationController.text.isEmpty) {
+  if (ctx.state.locationController.text.isEmpty) {
     AppToast.showToast('请填写隐患具体位置');
-  } else if (ctx.state.levelRst == '等级') {
+  } else if (ctx.state.deviceNoController.text.isEmpty) {
+    AppToast.showToast('设备编号不能为空');
+  } else if (ctx.state.levelRst == '请选择') {
     AppToast.showToast('请选择隐患等级');
-  } else if (ctx.state.typeRst == '类型') {
+  } else if (ctx.state.typeRst == '请选择') {
     AppToast.showToast('请选择隐患类型');
   } else if (ctx.state.decsController.text.isEmpty) {
     AppToast.showToast('请填写隐患描述');
   } else if (ctx.state.assets.isEmpty) {
     AppToast.showToast('请上传相关附件');
   } else {
-    AppToast.showToast('暂未实现');
+//    AppToast.showToast('暂未实现');
+    String location = ctx.state.locationController.text;
+    String deviceNo = ctx.state.deviceNoController.text;
+    String level = ctx.state.levelRst;
+    String type = ctx.state.typeRst;
+    String desc = ctx.state.decsController.text;
+    Map<String, String> map = Map();
+    map['locaticon'] = location;
+    map['deviceNo'] = deviceNo;
+    map['level'] = level;
+    map['type'] = type;
+    map['desc'] = desc;
+    DicoHttpRepository.hazardReportRequest(assets: ctx.state.assets, map: map);
   }
 }
 

@@ -33,7 +33,7 @@ Widget buildView(
                       dispatch(FunctionActionCreator.onDeviceScanQRCode());
                     },
                     child: _buildFuncItem(
-                        asset: 'images/ic_avatar.png', title: '设备信息'),
+                        asset: 'images/ic_device_scan.png', title: '设备信息'),
                   ),
                   GestureDetector(
                     onTap: () {
@@ -101,8 +101,8 @@ Widget _buildFuncItem({String asset, String title}) {
     children: <Widget>[
       Image.asset(
         asset,
-        width: 60.0,
-        height: 60.0,
+        width: 80.0,
+        height: 80.0,
       ),
       Container(
         margin: EdgeInsets.only(top: 10.0),

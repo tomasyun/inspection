@@ -24,12 +24,14 @@ Future<bool> _onGoBack(Action action, Context<ReportState> ctx) {
 
 void _onReport(Action action, Context<ReportState> ctx) {
 //  AppToast.showToast('暂未实现');
-  if (ctx.state.controller.text.isEmpty) {
-    AppToast.showToast('请填写故障描述');
+  if (ctx.state.deviceNoController.text.isEmpty) {
+    AppToast.showToast('设备编号不能为空');
   } else if (ctx.state.departRst == '选择责任部门') {
     AppToast.showToast('请选择责任部门');
   } else if (ctx.state.applicantRst == '申请人') {
     AppToast.showToast('请选择申请人');
+  } else if (ctx.state.descController.text.isEmpty) {
+    AppToast.showToast('请填写故障描述');
   } else {
     AppToast.showToast('暂未实现');
   }

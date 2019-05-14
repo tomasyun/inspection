@@ -25,14 +25,14 @@ Widget buildView(
               dispatch(SettingActionCreator.onSkipUpgradePassword());
             },
             child: _buildMineNavigatorItem(
-                asset: 'images/ic_avatar.png', title: '修改密码'),
+                asset: 'images/ic_pwd_update.png', title: '修改密码'),
           ),
           GestureDetector(
             onTap: () {
               dispatch(SettingActionCreator.onUpgradeVersion());
             },
             child: _buildMineNavigatorItem(
-                asset: 'images/ic_avatar.png',
+                asset: 'images/ic_version_update.png',
                 title: '检查版本',
                 edge: EdgeInsets.only(top: 10.0)),
           ),
