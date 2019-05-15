@@ -9,6 +9,7 @@ import 'state.dart';
 Widget buildView(
     InspectionTaskState state, Dispatch dispatch, ViewService viewService) {
   return Scaffold(
+    backgroundColor: Colors.grey[100],
     appBar: AppBar(
       title: Text(
         '检查内容',
@@ -29,21 +30,44 @@ Widget _buildInspectionTaskBody(Dispatch dispatch, InspectionTaskState state) {
   } else {
     return SingleChildScrollView(
       child: Container(
-          padding: EdgeInsets.all(15.0),
           child: Column(
-            children: <Widget>[
-              Container(
-                child: Column(
-                  children: _buildAllTaskList(dispatch, state.tasks),
+        children: <Widget>[
+          Container(
+            child: Row(
+              children: <Widget>[
+                Container(
+                  padding: EdgeInsets.symmetric(vertical: 15.0),
+                  child: Text(
+                    '设备名称',
+                    style: TextStyle(color: Colors.black45, fontSize: 15.0),
+                    textAlign: TextAlign.left,
+                  ),
                 ),
-              ),
-              Container(
-                alignment: AlignmentDirectional.center,
-                margin: EdgeInsets.only(top: 50.0),
-                child: _buildRaisedButton(dispatch: dispatch),
-              )
-            ],
-          )),
+                Container(
+                  margin: EdgeInsets.only(left: 20.0),
+                  padding: EdgeInsets.symmetric(vertical: 15.0),
+                  child: Text(
+                    '火灾报警控制器',
+                    style: TextStyle(color: Colors.black45, fontSize: 15.0),
+                    textAlign: TextAlign.left,
+                  ),
+                )
+              ],
+            ),
+            padding: EdgeInsets.symmetric(horizontal: 15.0),
+          ),
+          Container(
+            child: Column(
+              children: _buildAllTaskList(dispatch, state.tasks),
+            ),
+          ),
+          Container(
+            alignment: AlignmentDirectional.center,
+            margin: EdgeInsets.only(top: 50.0),
+            child: _buildRaisedButton(dispatch: dispatch),
+          )
+        ],
+      )),
     );
   }
 }
@@ -56,46 +80,30 @@ List<Widget> _buildAllTaskList(Dispatch dispatch, List<String> list) {
 
 Widget _buildInspectionTaskItem(Dispatch dispatch, String content) {
   return Container(
-    margin: EdgeInsets.only(top: 15.0),
+    padding: EdgeInsets.symmetric(vertical: 15.0, horizontal: 15.0),
+    margin: EdgeInsets.only(top: 1),
+    color: Colors.white,
     width: double.infinity,
     child: Row(
+      mainAxisAlignment: MainAxisAlignment.end,
       children: <Widget>[
-        Container(
+        Expanded(
+            child: Container(
           child: Text(
             content,
             style: TextStyle(fontSize: 14.0, color: Colors.black),
           ),
-        ),
-        Expanded(
-          child: Container(
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: <Widget>[
-                Container(
-                  child: Text(
-                    '正常',
-                    style: TextStyle(fontSize: 14.0, color: Colors.black),
-                  ),
-                  margin: EdgeInsets.only(right: 10.0),
-                ),
-                SwitchButton(
-                  isOpen: true,
-                  size: Size(60.0, 25.0),
-                  callback: () {
-                    dispatch(InspectionTaskActionCreator.onShowBottomSheet());
-                  },
-                ),
-                Container(
-                    margin: EdgeInsets.only(left: 10.0),
-                    child: Text(
-                      '异常',
-                      style: TextStyle(fontSize: 14.0, color: Colors.black),
-                    ))
-              ],
-            ),
+        )),
+        Container(
+          margin: EdgeInsets.only(left: 10.0),
+          child: SwitchButton(
+            isOpen: true,
+            size: Size(60.0, 30.0),
+            callback: () {
+              dispatch(InspectionTaskActionCreator.onShowBottomSheet());
+            },
           ),
-        ),
+        )
       ],
     ),
   );

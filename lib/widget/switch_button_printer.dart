@@ -24,7 +24,7 @@ class SwitchButtonPainter extends CustomPainter {
     final double animationValue = animation.value.fraction;
     final bool openState = animation.value.isOpen;
     final paint = Paint()
-      ..color = openState ? Colors.green : Colors.grey[400]
+      ..color = openState ? Colors.green : Colors.red
       ..style = PaintingStyle.fill;
     final path = Path();
     final pRadius = size.height / 2.0;
@@ -49,7 +49,7 @@ class SwitchButtonPainter extends CustomPainter {
     }
     path.close();
     canvas.drawPath(path, paint);
-    paint.color = Colors.white70;
+    paint.color = Colors.white;
     canvas.drawCircle(
         new Offset(
             pRadius + animationValue * (size.width - 2 * pRadius), pRadius),

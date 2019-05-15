@@ -75,9 +75,9 @@ Widget _buildContainer(EdgeInsetsGeometry edge, String text, String hintText,
             cursorWidth: 3.0,
             keyboardType: TextInputType.text,
             decoration: InputDecoration(
-              hintText: hintText,
-              contentPadding: EdgeInsets.only(top: 10.0, bottom: 10.0),
-            ),
+                hintText: hintText,
+                contentPadding: EdgeInsets.only(top: 10.0, bottom: 10.0),
+                border: OutlineInputBorder(borderSide: BorderSide.none)),
           ),
           flex: 8,
         )
