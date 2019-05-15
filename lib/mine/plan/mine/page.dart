@@ -1,4 +1,5 @@
 import 'package:fish_redux/fish_redux.dart';
+import 'package:inspection/mine/plan/mine/adapter/adapter.dart';
 
 import 'effect.dart';
 import 'reducer.dart';
@@ -13,7 +14,7 @@ class MinePlanPage extends Page<MinePlanState, Map<String, dynamic>> {
           reducer: buildReducer(),
           view: buildView,
           dependencies: Dependencies<MinePlanState>(
-              adapter: null, slots: <String, Dependent<MinePlanState>>{}),
-          middleware: <Middleware<MinePlanState>>[],
+            adapter: MinePlanAdapter(),
+          ),
         );
 }

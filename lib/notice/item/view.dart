@@ -1,6 +1,7 @@
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart';
 import 'package:inspection/entity/notice_model.dart';
+import 'package:inspection/notice/item/action.dart';
 
 Widget buildView(
     NoticeModel state, Dispatch dispatch, ViewService viewService) {
@@ -40,7 +41,9 @@ Widget buildView(
                       children: <Widget>[
                         Expanded(
                             child: GestureDetector(
-                          onTap: () {},
+                          onTap: () {
+                            dispatch(NoticeItemActionCreator.onDelete());
+                          },
                           child: Container(
                             padding: EdgeInsets.all(10.0),
                             child: Text('删除'),

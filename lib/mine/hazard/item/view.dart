@@ -121,6 +121,7 @@ Widget _buildItem({String title, String result}) {
 Widget _buildItemHeader({String title, String result}) {
   return Container(
     child: Row(
+      crossAxisAlignment: CrossAxisAlignment.end,
       children: <Widget>[
         Expanded(
           child: Container(
@@ -133,17 +134,13 @@ Widget _buildItemHeader({String title, String result}) {
               maxLines: 1,
             ),
           ),
-          flex: 4,
         ),
-        Expanded(
-          child: Container(
-            alignment: AlignmentDirectional.topEnd,
-            child: Text(
-              result,
-              style: TextStyle(color: Colors.black45, fontSize: 14.0),
-            ),
+        Container(
+          alignment: AlignmentDirectional.topEnd,
+          child: Text(
+            result,
+            style: TextStyle(color: Colors.black45, fontSize: 14.0),
           ),
-          flex: 6,
         )
       ],
     ),

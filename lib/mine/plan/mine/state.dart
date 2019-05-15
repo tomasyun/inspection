@@ -1,9 +1,11 @@
 import 'package:fish_redux/fish_redux.dart';
+import 'package:inspection/entity/plan_model.dart';
 
 class MinePlanState implements Cloneable<MinePlanState> {
+  List<PlanModel> list = [];
   @override
   MinePlanState clone() {
-    return MinePlanState();
+    return MinePlanState()..list = list;
   }
 }
 

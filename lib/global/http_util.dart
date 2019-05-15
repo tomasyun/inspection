@@ -26,7 +26,7 @@ class HttpUtil {
   HttpUtil._internal() {
     // 初始化
     if (dio == null) {
-      BaseOptions options = new BaseOptions(baseUrl: BASE_URL);
+      BaseOptions options = BaseOptions(baseUrl: BASE_URL);
       dio = Dio(options);
       (dio.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate =
           (client) {
@@ -50,7 +50,7 @@ class HttpUtil {
 
   //判断当前移动设备网络是否可用
   Future isNetWorkAvailable() async {
-    var connectivityResult = await (new Connectivity().checkConnectivity());
+    var connectivityResult = await (Connectivity().checkConnectivity());
     if (connectivityResult == ConnectivityResult.mobile)
       return true;
     else if (connectivityResult == ConnectivityResult.wifi)
