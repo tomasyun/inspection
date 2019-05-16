@@ -67,6 +67,8 @@ class DicoHttpRepository {
 
   ///通知消息
 
+  /// 删除通知消息
+
   ///检查计划
 
   ///我的计划

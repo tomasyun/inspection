@@ -1,6 +1,7 @@
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart';
 import 'package:inspection/entity/plan_about_model.dart';
+import 'package:inspection/mine/plan/manage/about/item/action.dart';
 
 Widget buildView(
     PlanAboutModel state, Dispatch dispatch, ViewService viewService) {
@@ -53,7 +54,9 @@ Widget buildView(
                               borderRadius:
                                   BorderRadius.all(Radius.circular(20.0))),
                           color: Colors.green,
-                          onPressed: () {},
+                          onPressed: () {
+                            dispatch(PlanAboutItemActionCreator.onScanQRCode());
+                          },
                           child: Text(
                             '扫一扫',
                             style:

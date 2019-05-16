@@ -49,40 +49,40 @@ Widget buildView(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Container(
-                    margin: EdgeInsets.only(top: 30.0, left: 15.0, right: 15.0),
+                    margin: EdgeInsets.only(top: 50.0, left: 15.0, right: 15.0),
                     child: Text(
-                      '按隐患发现时间查询',
+                      '时间查询',
                       style: TextStyle(
-                          fontSize: 14.0,
+                          fontSize: 15.0,
                           color: Colors.black,
                           fontWeight: FontWeight.bold),
                     ),
                   ),
                   _buildSearchItem(
                       label: '起始时间',
-                      value: '',
+                      value: state.startDate,
                       callback: () {
-                        dispatch(HazardActionCreator.onSelectDate());
+                        dispatch(HazardActionCreator.onSelectStartDate());
                       }),
                   _buildSearchItem(
                       label: '结束时间',
-                      value: '',
+                      value: state.endDate,
                       callback: () {
-                        dispatch(HazardActionCreator.onSelectDate());
+                        dispatch(HazardActionCreator.onSelectEndDate());
                       }),
                   Container(
                     margin: EdgeInsets.only(top: 20.0, left: 15.0, right: 15.0),
                     child: Text(
-                      '按隐患状态查询',
+                      '状态查询',
                       style: TextStyle(
-                          fontSize: 14.0,
+                          fontSize: 15.0,
                           color: Colors.black,
                           fontWeight: FontWeight.bold),
                     ),
                   ),
                   _buildSearchItem(
                       label: '隐患状态',
-                      value: '',
+                      value: state.state,
                       callback: () {
                         dispatch(HazardActionCreator.onSelectState());
                       }),
@@ -90,7 +90,7 @@ Widget buildView(
               ),
             ),
           ),
-          buildBottomNavigatorDouble(title1: '查询', title2: '重置'),
+          buildBottomNavigatorDouble(leftLabel: '查询', rightLabel: '重置'),
         ],
       ),
     ),
@@ -98,10 +98,10 @@ Widget buildView(
 }
 
 Widget buildBottomNavigatorDouble(
-    {String title1 = '',
-    String title2 = '',
-    GestureTapCallback callback1,
-    GestureTapCallback callback2}) {
+    {String leftLabel = '',
+    String rightLabel = '',
+    VoidCallback callbackLeftBtn,
+    VoidCallback callbackRightBtn}) {
   return Container(
     height: 60.0,
     width: double.infinity,
@@ -110,14 +110,14 @@ Widget buildBottomNavigatorDouble(
       children: <Widget>[
         Expanded(
           child: GestureDetector(
-            onTap: callback1,
+            onTap: callbackLeftBtn,
             child: Container(
               alignment: AlignmentDirectional.center,
               color: Colors.blue,
               height: double.infinity,
               child: Text(
-                title1,
-                style: TextStyle(color: Colors.white),
+                leftLabel,
+                style: TextStyle(color: Colors.white, fontSize: 16.0),
                 textAlign: TextAlign.center,
               ),
             ),
@@ -125,14 +125,14 @@ Widget buildBottomNavigatorDouble(
         ),
         Expanded(
           child: GestureDetector(
-            onTap: callback2,
+            onTap: callbackRightBtn,
             child: Container(
               alignment: AlignmentDirectional.center,
-              color: Colors.grey,
+              color: Colors.grey[200],
               height: double.infinity,
               child: Text(
-                title2,
-                style: TextStyle(color: Colors.white),
+                rightLabel,
+                style: TextStyle(color: Colors.blue, fontSize: 16.0),
                 textAlign: TextAlign.center,
               ),
             ),
@@ -147,33 +147,35 @@ Widget _buildSearchItem({String label, String value, VoidCallback callback}) {
   return GestureDetector(
     onTap: callback,
     child: Container(
-      margin: EdgeInsets.only(top: 5.0),
+      margin: EdgeInsets.only(top: 10.0),
       width: double.infinity,
-      padding: EdgeInsets.symmetric(vertical: 15.0, horizontal: 25.0),
+      padding:
+          EdgeInsets.only(top: 15.0, bottom: 15.0, left: 30.0, right: 15.0),
       color: Colors.white,
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.end,
         children: <Widget>[
-          Container(
+          Expanded(
             child: Text(
               label,
               style: TextStyle(fontSize: 14.0, color: Colors.black),
             ),
           ),
           Container(
-            margin: EdgeInsets.only(left: 20.0),
-            child: Text(
-              value,
-              style: TextStyle(fontSize: 13.0, color: Colors.lightBlue),
+            child: Row(
+              children: <Widget>[
+                Container(
+                  child: Text(
+                    value,
+                    style: TextStyle(fontSize: 13.0, color: Colors.red),
+                  ),
+                ),
+                Container(
+                  child: Icon(Icons.keyboard_arrow_right),
+                ),
+              ],
             ),
           ),
-          Container(
-            child: Expanded(
-              child: Container(
-                alignment: AlignmentDirectional.centerEnd,
-                child: Icon(Icons.keyboard_arrow_right),
-              ),
-            ),
-          )
         ],
       ),
     ),

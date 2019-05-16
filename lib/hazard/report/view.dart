@@ -50,7 +50,7 @@ Widget buildView(
                       decoration: InputDecoration(
                           contentPadding: EdgeInsets.symmetric(
                               vertical: 10.0, horizontal: 10.0),
-                          hintText: "手输/扫码",
+                          hintText: '手输/扫码',
                           border:
                               OutlineInputBorder(borderSide: BorderSide.none)),
                     ),
@@ -62,7 +62,11 @@ Widget buildView(
                     child: Container(
                       margin: EdgeInsets.only(left: 10.0),
                       padding: EdgeInsets.all(5.0),
-                      child: Icon(Icons.camera_alt),
+                      child: Image.asset(
+                        'images/ic_scan_small.png',
+                        width: 30.0,
+                        height: 30.0,
+                      ),
                     ),
                   )
                 ],

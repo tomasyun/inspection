@@ -56,9 +56,17 @@ Widget buildView(
                               OutlineInputBorder(borderSide: BorderSide.none)),
                     ),
                   ),
-                  Container(
-                    margin: EdgeInsets.only(left: 10.0),
-                    child: Icon(Icons.camera_alt),
+                  GestureDetector(
+                    onTap: () {},
+                    child: Container(
+                      margin: EdgeInsets.only(left: 10.0),
+                      padding: EdgeInsets.all(5.0),
+                      child: Image.asset(
+                        'images/ic_scan_small.png',
+                        width: 30.0,
+                        height: 30.0,
+                      ),
+                    ),
                   )
                 ],
               ),

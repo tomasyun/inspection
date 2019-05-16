@@ -1,5 +1,4 @@
 import 'package:fish_redux/fish_redux.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_picker/Picker.dart';
 import 'package:inspection/entity/hazard_model.dart';
 
@@ -10,7 +9,8 @@ Effect<HazardState> buildEffect() {
   return combineEffects(<Object, Effect<HazardState>>{
     Lifecycle.initState: _initHazardListData,
     HazardAction.action: _onAction,
-    HazardAction.selectDate: _onSelectDate,
+    HazardAction.selectStartDate: _onSelectStartDate,
+    HazardAction.selectEndDate: _onSelectEndDate,
     HazardAction.selectState: _onSelectState,
   });
 }
@@ -23,38 +23,50 @@ void _onSelectState(Action action, Context<HazardState> ctx) {
 //      onCancel: () {
 //        Navigator.pop(ctx.context);
 //      },
+      height: 120,
       hideHeader: true,
-      title: Text(
-        '选择状态',
-        style: TextStyle(fontSize: 15.0, color: Colors.black),
-      ),
       cancelText: '取消',
       confirmText: '确定',
-      confirmTextStyle: TextStyle(fontSize: 14.0),
-      cancelTextStyle: TextStyle(fontSize: 14.0),
       onConfirm: (Picker picker, List value) {
-        print(picker.getSelectedValues()[0]);
+        ctx.dispatch(
+            HazardActionCreator.getHazardState(picker.getSelectedValues()[0]));
       }).showDialog(ctx.context);
 }
 
-void _onSelectDate(Action action, Context<HazardState> ctx) {
+void _onSelectStartDate(Action action, Context<HazardState> ctx) {
   new Picker(
-          adapter: new DateTimePickerAdapter(
-              type: PickerDateTimeType.kYMD,
-              isNumberMonth: true,
-              yearSuffix: "年",
-              monthSuffix: "月",
-              daySuffix: "日"),
-          onConfirm: (Picker picker, List value) {
-            print(picker.adapter.text);
-          },
-          cancelText: '取消',
-          confirmText: '确定',
-          hideHeader: true,
-          confirmTextStyle: TextStyle(fontSize: 14.0),
-          cancelTextStyle: TextStyle(fontSize: 14.0),
-          onSelect: (Picker picker, int index, List<int> selected) {})
-      .showDialog(ctx.context);
+    adapter: new DateTimePickerAdapter(
+        type: PickerDateTimeType.kYMD,
+        isNumberMonth: true,
+        yearSuffix: '年',
+        monthSuffix: '月',
+        daySuffix: '日'),
+    onConfirm: (Picker picker, List value) {
+      ctx.dispatch(HazardActionCreator.getStartDate(
+          picker.adapter.text.substring(0, 10)));
+    },
+    cancelText: '取消',
+    confirmText: '确定',
+    hideHeader: true,
+  ).showDialog(ctx.context);
+}
+
+void _onSelectEndDate(Action action, Context<HazardState> ctx) {
+  new Picker(
+    adapter: new DateTimePickerAdapter(
+        type: PickerDateTimeType.kYMD,
+        isNumberMonth: true,
+        yearSuffix: '年',
+        monthSuffix: '月',
+        daySuffix: '日'),
+    onConfirm: (Picker picker, List value) {
+      ctx.dispatch(
+          HazardActionCreator.getEndDate(picker.adapter.text.substring(0, 10)));
+    },
+    cancelText: '取消',
+    confirmText: '确定',
+    hideHeader: true,
+  ).showDialog(ctx.context);
 }
 
 void _initHazardListData(Action action, Context<HazardState> ctx) {

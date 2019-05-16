@@ -57,6 +57,7 @@ flutter:
    - images/ic_pwd_update.png
    - images/ic_version_update.png
    - images/ic_device_scan.png
+   - images/ic_scan_small.png
   #  - images/a_dot_burr.jpeg
   #  - images/a_dot_ham.jpeg
 
