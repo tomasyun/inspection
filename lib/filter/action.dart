@@ -1,5 +1,7 @@
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart';
+import 'package:inspection/entity/level_model.dart';
+import 'package:inspection/entity/type_model.dart';
 
 //TODO replace with your own action
 enum FilterAction { context, action, levels, types, departs, applicants }
@@ -13,11 +15,11 @@ class FilterActionCreator {
     return Action(FilterAction.context, payload: context);
   }
 
-  static Action onGetLevels(List<String> levels) {
+  static Action onGetLevels(LevelModel levels) {
     return Action(FilterAction.levels, payload: levels);
   }
 
-  static Action onGetTypes(List<String> types) {
+  static Action onGetTypes(TypeModel types) {
     return Action(FilterAction.types, payload: types);
   }
 

@@ -23,13 +23,13 @@ FilterState _onAction(FilterState state, Action action) {
 
 FilterState _onGetLevels(FilterState state, Action action) {
   FilterState newState = state.clone();
-  newState.levels = action.payload;
+  newState.levelModel = action.payload;
   return newState;
 }
 
 FilterState _onGetTypes(FilterState state, Action action) {
   FilterState newState = state.clone();
-  newState.types = action.payload;
+  newState.typeModel = action.payload;
   return newState;
 }
 

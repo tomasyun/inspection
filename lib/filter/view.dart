@@ -1,5 +1,7 @@
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart';
+import 'package:inspection/entity/level_model.dart';
+import 'package:inspection/entity/type_model.dart';
 import 'package:inspection/widget/filter_flow_delegate.dart';
 import 'package:inspection/widget/state_view.dart' as stateView;
 
@@ -39,10 +41,10 @@ Widget _buildFilterTitle({String flag, String content = ''}) {
   );
 }
 
-Widget _buildFlowItem({FilterState state, String item}) {
+Widget _buildFlowItem({FilterState state, Map<String, String> map}) {
   return GestureDetector(
     onTap: () {
-      Navigator.of(state.context).pop(item);
+      Navigator.of(state.context).pop(map);
     },
     child: Container(
       height: 40.0,
@@ -55,7 +57,7 @@ Widget _buildFlowItem({FilterState state, String item}) {
         alignment: Alignment.center,
         children: <Widget>[
           Text(
-            item,
+            map['name'],
             style: TextStyle(fontSize: 14.0, color: Colors.black),
             textAlign: TextAlign.center,
           )
@@ -65,30 +67,52 @@ Widget _buildFlowItem({FilterState state, String item}) {
   );
 }
 
-List<Widget> _buildFlowData({FilterState state, List<String> list}) {
-  return list.map((item) => _buildFlowItem(state: state, item: item)).toList();
+List<Widget> _buildLevelFlowData({FilterState state, List<LevelData> list}) {
+  return list
+      .map((item) => _buildFlowItem(
+          state: state, map: {'name': item.name, 'id': item.id.toString()}))
+      .toList();
+}
+
+List<Widget> _buildTypeFlowData({FilterState state, List<TypeData> list}) {
+  return list
+      .map((item) => _buildFlowItem(
+          state: state, map: {'name': item.name, 'id': item.id.toString()}))
+      .toList();
 }
 
 Widget _buildFlow({FilterState state}) {
   if (state.flag == 'level') {
     return Flow(
       delegate: FilterFlowDelegate(EdgeInsets.all(5.0)),
-      children: _buildFlowData(state: state, list: state.levels),
+      children: _buildLevelFlowData(
+          state: state,
+          list: state.levelModel != null &&
+                  state.levelModel.data != null &&
+                  state.levelModel.data.isNotEmpty
+              ? state.levelModel.data
+              : []),
     );
   } else if (state.flag == 'type') {
     return Flow(
       delegate: FilterFlowDelegate(EdgeInsets.all(5.0)),
-      children: _buildFlowData(state: state, list: state.types),
+      children: _buildTypeFlowData(
+          state: state,
+          list: state.typeModel != null &&
+                  state.typeModel.data != null &&
+                  state.typeModel.data.isNotEmpty
+              ? state.typeModel.data
+              : []),
     );
   } else if (state.flag == 'depart') {
     return Flow(
       delegate: FilterFlowDelegate(EdgeInsets.all(5.0)),
-      children: _buildFlowData(state: state, list: state.departs),
+//      children: _buildFlowData(state: state, list: state.departs),
     );
   } else if (state.flag == 'applicant') {
     return Flow(
       delegate: FilterFlowDelegate(EdgeInsets.all(5.0)),
-      children: _buildFlowData(state: state, list: state.applicants),
+//      children: _buildFlowData(state: state, list: state.applicants),
     );
   } else {
     return stateView.blackPage();

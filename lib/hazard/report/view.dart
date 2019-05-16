@@ -19,10 +19,61 @@ Widget buildView(
     ),
     body: SingleChildScrollView(
       child: Container(
-        padding: EdgeInsets.only(top: 20.0, bottom: 50.0),
+        padding: EdgeInsets.only(top: 10.0, bottom: 50.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
+            Container(
+              padding: EdgeInsets.symmetric(horizontal: 15.0, vertical: 10.0),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  Container(
+                    margin: EdgeInsets.only(right: 15.0),
+                    child: Text(
+                      '设备/设施编号',
+                      style: TextStyle(
+                          fontSize: 14.0,
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                  Expanded(
+                    child: TextField(
+                      textAlign: TextAlign.right,
+                      controller: state.deviceNoController,
+                      keyboardType: TextInputType.text,
+                      maxLines: 1,
+                      cursorWidth: 2.0,
+                      cursorColor: Colors.grey,
+                      style: TextStyle(fontSize: 14.0, color: Colors.black),
+                      decoration: InputDecoration(
+                          contentPadding: EdgeInsets.symmetric(
+                              vertical: 10.0, horizontal: 10.0),
+                          hintText: "手输/扫码",
+                          border:
+                              OutlineInputBorder(borderSide: BorderSide.none)),
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      dispatch(HazardReportActionCreator.onScanQRCode());
+                    },
+                    child: Container(
+                      margin: EdgeInsets.only(left: 10.0),
+                      padding: EdgeInsets.all(5.0),
+                      child: Icon(Icons.camera_alt),
+                    ),
+                  )
+                ],
+              ),
+            ),
+            Container(
+              width: double.infinity,
+              height: 0.5,
+              margin: EdgeInsets.symmetric(horizontal: 15.0),
+              color: Colors.black45,
+            ),
             Container(
               padding: EdgeInsets.symmetric(horizontal: 15.0, vertical: 10.0),
               child: Row(
@@ -54,55 +105,6 @@ Widget buildView(
                               OutlineInputBorder(borderSide: BorderSide.none)),
                     ),
                   ),
-                  Container(
-                    margin: EdgeInsets.only(left: 10.0),
-                    child: Icon(Icons.camera_alt),
-                  )
-                ],
-              ),
-            ),
-            Container(
-              width: double.infinity,
-              height: 0.5,
-              margin: EdgeInsets.symmetric(horizontal: 15.0),
-              color: Colors.black45,
-            ),
-            Container(
-              padding: EdgeInsets.symmetric(horizontal: 15.0, vertical: 10.0),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: <Widget>[
-                  Container(
-                    margin: EdgeInsets.only(right: 15.0),
-                    child: Text(
-                      '设备编号',
-                      style: TextStyle(
-                          fontSize: 14.0,
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold),
-                    ),
-                  ),
-                  Expanded(
-                    child: TextField(
-                      textAlign: TextAlign.right,
-                      controller: state.deviceNoController,
-                      keyboardType: TextInputType.text,
-                      maxLines: 1,
-                      cursorWidth: 2.0,
-                      cursorColor: Colors.grey,
-                      style: TextStyle(fontSize: 14.0, color: Colors.black),
-                      decoration: InputDecoration(
-                          contentPadding: EdgeInsets.symmetric(
-                              vertical: 10.0, horizontal: 10.0),
-                          hintText: "手输/扫码",
-                          border:
-                              OutlineInputBorder(borderSide: BorderSide.none)),
-                    ),
-                  ),
-                  Container(
-                    margin: EdgeInsets.only(left: 10.0),
-                    child: Icon(Icons.camera_alt),
-                  )
                 ],
               ),
             ),
@@ -138,7 +140,7 @@ Widget buildView(
                           Container(
                             margin: EdgeInsets.only(left: 25.0),
                             child: Text(
-                              state.levelRst,
+                              state.levelRst['name'],
                               style:
                                   TextStyle(fontSize: 13.0, color: Colors.red),
                             ),
@@ -185,7 +187,7 @@ Widget buildView(
                           Container(
                             margin: EdgeInsets.only(left: 25.0),
                             child: Text(
-                              state.typeRst,
+                              state.typeRst['name'],
                               style:
                                   TextStyle(fontSize: 13.0, color: Colors.red),
                             ),

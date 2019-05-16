@@ -11,6 +11,7 @@ enum HazardReportAction {
   images,
   addAttachment,
   report,
+  scanQRCode,
 }
 
 class HazardReportActionCreator {
@@ -26,12 +27,12 @@ class HazardReportActionCreator {
     return Action(HazardReportAction.type);
   }
 
-  static Action onGetLevelRst(String level) {
-    return Action(HazardReportAction.levelRst, payload: level);
+  static Action onGetLevelRst(Map<String, String> map) {
+    return Action(HazardReportAction.levelRst, payload: map);
   }
 
-  static Action onGetTypeRst(String level) {
-    return Action(HazardReportAction.typeRst, payload: level);
+  static Action onGetTypeRst(Map<String, String> map) {
+    return Action(HazardReportAction.typeRst, payload: map);
   }
 
   static Action onAddAttachmentClick() {
@@ -44,5 +45,9 @@ class HazardReportActionCreator {
 
   static Action onReport() {
     return Action(HazardReportAction.report);
+  }
+
+  static Action onScanQRCode() {
+    return Action(HazardReportAction.scanQRCode);
   }
 }

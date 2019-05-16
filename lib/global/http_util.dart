@@ -83,7 +83,7 @@ class HttpUtil {
 
   //多部分上传（包括图片、参数）
   Future onMultipartRequest(
-      {List<Asset> assets, Map<String, String> map, String url}) async {
+      {List<Asset> assets, Map<String, dynamic> map, String url}) async {
     Uri uri = Uri.parse(BASE_URL + url);
     http.MultipartRequest request = http.MultipartRequest('post', uri);
     String token;
@@ -103,7 +103,9 @@ class HttpUtil {
           contentType: MediaType("image", "jpg", {'image': 'png'}),
         ));
       }
+
     if (map != null && map.isNotEmpty) {
+      map['file'] = request.files;
       request.fields.addAll(map);
     }
     return await request.send();

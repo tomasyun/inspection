@@ -1,7 +1,8 @@
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart';
 import 'package:inspection/banner/banner.dart';
-import 'package:inspection/entity/home_model.dart';
+import 'package:inspection/entity/banner_model.dart';
+import 'package:inspection/entity/home_model.dart' as home;
 import 'package:inspection/global/marquee.dart';
 import 'package:inspection/hazard/info/page.dart';
 import 'package:inspection/home/action.dart';
@@ -9,6 +10,15 @@ import 'package:inspection/home/action.dart';
 import 'state.dart';
 
 Widget buildView(HomeState state, Dispatch dispatch, ViewService viewService) {
+  if (state.model != null &&
+      state.model.data != null &&
+      state.model.data.banner.isNotEmpty) {
+    List<home.Banner> banners = state.model.data.banner;
+    for (int i = 0; i < banners.length; i++) {
+      var model = BannerModel(link: banners[i].url, desc: banners[i].title);
+      state.banners.add(model);
+    }
+  }
   return Scaffold(
     backgroundColor: Colors.white,
     appBar: AppBar(
@@ -249,7 +259,7 @@ Widget _buildContainerItem({String asset, String title}) {
 }
 
 List<Widget> _buildToDoWidgets({HomeState state, Dispatch dispatch}) {
-  Todos todo = state.model.data.todos;
+  home.Todos todo = state.model.data.todos;
   List<Widget> widgets = [];
   if (todo.rectify != null && todo.rectify.isNotEmpty) {
     todo.rectify.map((item) {
@@ -269,7 +279,7 @@ List<Widget> _buildToDoWidgets({HomeState state, Dispatch dispatch}) {
   return widgets;
 }
 
-Widget inflateRectify(HomeState state, Rectify rectify) {
+Widget inflateRectify(HomeState state, home.Rectify rectify) {
   return Container(
     padding: EdgeInsets.all(10.0),
     margin: EdgeInsets.all(15.0),
@@ -356,7 +366,7 @@ Widget inflateRectify(HomeState state, Rectify rectify) {
   );
 }
 
-Widget inflateRecheck(HomeState state, Review review) {
+Widget inflateRecheck(HomeState state, home.Review review) {
   return Container(
     margin: EdgeInsets.all(15.0),
     width: double.infinity,
@@ -447,7 +457,7 @@ Widget inflateRecheck(HomeState state, Review review) {
   );
 }
 
-Widget inflateInspect(Inspect inspect, Dispatch dispatch) {
+Widget inflateInspect(home.Inspect inspect, Dispatch dispatch) {
   return Container(
     child: Column(
       children: <Widget>[

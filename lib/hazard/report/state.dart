@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:multi_image_picker/multi_image_picker.dart';
 
 class HazardReportState implements Cloneable<HazardReportState> {
-  String levelRst;
-  String typeRst;
+  Map<String, String> levelRst;
+  Map<String, String> typeRst;
   List<Asset> assets;
   TextEditingController deviceNoController;
   TextEditingController locationController;
@@ -24,8 +24,8 @@ class HazardReportState implements Cloneable<HazardReportState> {
 
 HazardReportState initState(Map<String, dynamic> args) {
   HazardReportState state = HazardReportState();
-  state.levelRst = '请选择';
-  state.typeRst = '请选择';
+  state.levelRst = {'name': '请选择', 'id': ''};
+  state.typeRst = {'name': '请选择', 'id': ''};
   state.assets = [];
   state.deviceNoController = TextEditingController();
   state.locationController = TextEditingController();

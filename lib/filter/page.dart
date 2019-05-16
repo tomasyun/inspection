@@ -12,8 +12,5 @@ class FilterPage extends Page<FilterState, Map<String, dynamic>> {
           effect: buildEffect(),
           reducer: buildReducer(),
           view: buildView,
-          dependencies: Dependencies<FilterState>(
-              adapter: null, slots: <String, Dependent<FilterState>>{}),
-          middleware: <Middleware<FilterState>>[],
         );
 }
