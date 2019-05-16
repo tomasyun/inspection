@@ -1,10 +1,11 @@
 import 'package:barcode_scan/barcode_scan.dart';
+import 'package:dio/dio.dart';
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:inspection/filter/page.dart';
+import 'package:inspection/global/app_common.dart';
 import 'package:inspection/global/dico_http.dart';
-import 'package:inspection/global/toast.dart';
 import 'package:multi_image_picker/multi_image_picker.dart';
 
 import 'action.dart';
@@ -32,23 +33,22 @@ void _onScanQRCode(Action action, Context<HazardReportState> ctx) async {
   } on FormatException {} catch (e) {}
 }
 
-void _onReport(Action action, Context<HazardReportState> ctx) {
+void _onReport(Action action, Context<HazardReportState> ctx) async {
   if (ctx.state.locationController.text.isEmpty) {
-    AppToast.showToast('请填写隐患具体位置');
+    AppCommons.showToast('请填写隐患具体位置');
   } else if (ctx.state.deviceNoController.text.isEmpty) {
-    AppToast.showToast('设备编号不能为空');
+    AppCommons.showToast('设备编号不能为空');
   }
 //  else if (ctx.state.levelRst['name'] == '请选择') {
-//    AppToast.showToast('请选择隐患等级');
+//    AppCommons.showToast('请选择隐患等级');
 //  } else if (ctx.state.typeRst['name'] == '请选择') {
-//    AppToast.showToast('请选择隐患类型');
+//    AppCommons.showToast('请选择隐患类型');
 //  }
   else if (ctx.state.decsController.text.isEmpty) {
-    AppToast.showToast('请填写隐患描述');
+    AppCommons.showToast('请填写隐患描述');
   } else if (ctx.state.assets.isEmpty) {
-    AppToast.showToast('请上传相关附件');
+    AppCommons.showToast('请上传相关附件');
   } else {
-//    AppToast.showToast('暂未实现');
     String location = ctx.state.locationController.text;
     String deviceNo = ctx.state.deviceNoController.text;
     String level = ctx.state.levelRst['id'];
@@ -56,7 +56,7 @@ void _onReport(Action action, Context<HazardReportState> ctx) {
     String type = ctx.state.typeRst['id'];
     String typeName = ctx.state.typeRst['name'];
     String desc = ctx.state.decsController.text;
-    Map<String, dynamic> map = Map();
+    Map<String, String> map = Map();
     map['dangerAddress'] = location;
     map['equipmentId'] = deviceNo;
     map['equipmentName'] = deviceNo;
@@ -65,8 +65,16 @@ void _onReport(Action action, Context<HazardReportState> ctx) {
     map['dangerTypeId'] = type;
     map['dangerTypeName'] = typeName;
     map['dangerRemark'] = desc;
-    map['name'] = 23;
-    DicoHttpRepository.hazardReportRequest(assets: ctx.state.assets, map: map);
+    List<UploadFileInfo> files = [];
+    if (ctx.state.assets != null && ctx.state.assets.isNotEmpty) {
+      for (int i = 0; i < ctx.state.assets.length; i++) {
+        ByteData byteData = await ctx.state.assets[i].requestOriginal();
+        List<int> imageData = byteData.buffer.asUint8List();
+        files
+            .add(UploadFileInfo.fromBytes(imageData, ctx.state.assets[i].name));
+      }
+    }
+    DicoHttpRepository.hazardReportRequest(files, map);
   }
 }
 
@@ -85,7 +93,7 @@ void _onAddAttachmentClick(
           selectCircleStrokeColor: "#000000",
         ));
   } on PlatformException catch (e) {
-    AppToast.showToast(e.message);
+    AppCommons.showToast(e.message);
   }
 
   ctx.dispatch(HazardReportActionCreator.onPickImages(assets));

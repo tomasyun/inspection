@@ -14,6 +14,5 @@ class HazardReportPage extends Page<HazardReportState, Map<String, dynamic>> {
           view: buildView,
           dependencies: Dependencies<HazardReportState>(
               adapter: null, slots: <String, Dependent<HazardReportState>>{}),
-          middleware: <Middleware<HazardReportState>>[],
         );
 }

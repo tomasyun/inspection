@@ -1,6 +1,6 @@
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/services.dart';
-import 'package:inspection/global/toast.dart';
+import 'package:inspection/global/app_common.dart';
 import 'package:multi_image_picker/multi_image_picker.dart';
 
 import 'action.dart';
@@ -19,11 +19,11 @@ void _onAction(Action action, Context<RecheckReportState> ctx) {}
 void _onReport(Action action, Context<RecheckReportState> ctx) {
 //  AppToast.showToast('暂未实现');
   if (ctx.state.controller.text.isEmpty) {
-    AppToast.showToast('请填写复查情况');
+    AppCommons.showToast('请填写复查情况');
   } else if (ctx.state.assets.isEmpty) {
-    AppToast.showToast('请上传相关附件');
+    AppCommons.showToast('请上传相关附件');
   } else {
-    AppToast.showToast('暂未实现');
+    AppCommons.showToast('暂未实现');
   }
 }
 

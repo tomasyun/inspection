@@ -1,6 +1,6 @@
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart';
-import 'package:inspection/global/toast.dart';
+import 'package:inspection/global/app_common.dart';
 import 'package:inspection/mine/updatepassword/page.dart';
 
 import 'action.dart';
@@ -24,9 +24,9 @@ void _onSkipUpgradePassword(Action action, Context<SettingState> ctx) {
 }
 
 void _onUpgradeVersion(Action action, Context<SettingState> ctx) {
-  AppToast.showToast('当前版本为最新版本');
+  AppCommons.showToast('当前版本为最新版本');
 }
 
 void _onLogout(Action action, Context<SettingState> ctx) {
-  AppToast.showToast('暂未实现');
+  AppCommons.showToast('暂未实现');
 }

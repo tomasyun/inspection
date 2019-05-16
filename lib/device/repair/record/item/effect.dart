@@ -1,6 +1,6 @@
 import 'package:fish_redux/fish_redux.dart';
 import 'package:inspection/entity/repair_record.dart';
-import 'package:inspection/global/toast.dart';
+import 'package:inspection/global/app_common.dart';
 
 import 'action.dart';
 
@@ -11,5 +11,5 @@ Effect<RepairRecord> buildEffect() {
 }
 
 void _onAction(Action action, Context<RepairRecord> ctx) {
-  AppToast.showToast("陕西缔科网络科技有限公司");
+  AppCommons.showToast("陕西缔科网络科技有限公司");
 }

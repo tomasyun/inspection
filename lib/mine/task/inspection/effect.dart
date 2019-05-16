@@ -3,7 +3,7 @@ import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:inspection/device/repair/report/page.dart';
-import 'package:inspection/global/toast.dart';
+import 'package:inspection/global/app_common.dart';
 import 'package:inspection/hazard/report/page.dart';
 
 import 'action.dart';
@@ -22,8 +22,9 @@ Effect<InspectionTaskState> buildEffect() {
 }
 
 void _onAction(Action action, Context<InspectionTaskState> ctx) {}
+
 void _onSubmit(Action action, Context<InspectionTaskState> ctx) {
-  AppToast.showToast('暂未实现');
+  AppCommons.showToast('暂未实现');
 }
 
 void _onBreakDownReport(Action action, Context<InspectionTaskState> ctx) {

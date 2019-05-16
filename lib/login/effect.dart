@@ -1,8 +1,8 @@
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart';
+import 'package:inspection/global/app_common.dart';
 import 'package:inspection/global/dico_http.dart';
 import 'package:inspection/global/sharedpreferences.dart';
-import 'package:inspection/global/toast.dart';
 import 'package:inspection/index/page.dart';
 
 import 'action.dart';
@@ -23,14 +23,12 @@ void _onLogin(Action action, Context<LoginState> ctx) {
 //  } else if (ctx.state.passwordController.text.isEmpty) {
 //    AppToast.showToast('密码不能空');
 //  } else {
-  DicoHttpRepository.userLogin(
-//            username: ctx.state.userNameController.text,
-          username: 'system',
-//            password: ctx.state.passwordController.text
-          password: '111111')
-      .then((model) {
+  Map<String, String> map = Map();
+  map['username'] = 'system';
+  map['password'] = '111111';
+  DicoHttpRepository.userLogin(map).then((model) {
     if (model.code == 0) {
-      AppToast.showToast(model.msg);
+      AppCommons.showToast(model.msg);
       SpUtils sp = SpUtils();
       sp.putString('token', 'Bearer' + ' ${model.data.token}');
       sp.putString('name', '${model.data.name}');
@@ -40,7 +38,7 @@ void _onLogin(Action action, Context<LoginState> ctx) {
           MaterialPageRoute(builder: (context) => IndexPage().buildPage(null)),
           (route) => route == null);
     } else {
-      AppToast.showToast(model.msg);
+      AppCommons.showToast(model.msg);
     }
   });
 //  }

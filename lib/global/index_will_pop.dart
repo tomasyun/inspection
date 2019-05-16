@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:inspection/global/toast.dart';
+import 'package:inspection/global/app_common.dart';
 
 // ignore: must_be_immutable
 class IndexWillPop extends StatelessWidget {
@@ -23,7 +23,7 @@ class IndexWillPop extends StatelessWidget {
       Future.delayed(const Duration(milliseconds: 1500), () {
         _lastClickTime = 0;
       });
-      AppToast.showToast("再按一次后退键退出程序");
+      AppCommons.showToast("再按一次后退键退出程序");
       return Future.value(false);
     }
   }

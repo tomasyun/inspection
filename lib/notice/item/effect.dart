@@ -1,6 +1,6 @@
 import 'package:fish_redux/fish_redux.dart';
 import 'package:inspection/entity/notice_model.dart';
-import 'package:inspection/global/toast.dart';
+import 'package:inspection/global/app_common.dart';
 
 import 'action.dart';
 
@@ -14,5 +14,5 @@ Effect<NoticeModel> buildEffect() {
 void _onAction(Action action, Context<NoticeModel> ctx) {}
 
 void _onDelete(Action action, Context<NoticeModel> ctx) {
-  AppToast.showToast('暂未实现');
+  AppCommons.showToast('暂未实现');
 }
