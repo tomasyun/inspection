@@ -19,6 +19,6 @@ HazardHistoryState _onAction(HazardHistoryState state, Action action) {
 
 HazardHistoryState _init(HazardHistoryState state, Action action) {
   HazardHistoryState newState = state.clone();
-  newState.list = action.payload;
+  newState.model = action.payload;
   return newState;
 }

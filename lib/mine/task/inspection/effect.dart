@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:inspection/device/repair/report/page.dart';
 import 'package:inspection/global/app_common.dart';
+import 'package:inspection/global/dico_http.dart';
 import 'package:inspection/hazard/report/page.dart';
 
 import 'action.dart';
@@ -98,6 +99,7 @@ void _onGetInspectionTask(Action action, Context<InspectionTaskState> ctx) {
 void _onScanQRCode(Action action, Context<InspectionTaskState> ctx) async {
   try {
     String qrResult = await BarcodeScanner.scan();
+    DicoHttpRepository.scanQRCodeRequest(qrResult);
   } on PlatformException catch (ex) {
     if (ex.code == BarcodeScanner.CameraAccessDenied) {
     } else {}

@@ -3,28 +3,31 @@ import 'package:flutter/material.dart';
 import 'package:inspection/entity/hazard_model.dart';
 
 class HazardState implements Cloneable<HazardState> {
-  List<HazardModel> list = List<HazardModel>();
+  HazardModel model;
   GlobalKey<ScaffoldState> scaffoldKey;
   String startDate;
   String endDate;
   String state;
-
+  Map<String, String> map = Map();
+  BuildContext context;
   @override
   HazardState clone() {
     return HazardState()
-      ..list = list
+      ..model = model
       ..scaffoldKey = scaffoldKey
       ..startDate = startDate
       ..endDate = endDate
-      ..state = state;
+      ..state = state
+      ..map = map
+      ..context = context;
   }
 }
 
 HazardState initState(Map<String, dynamic> args) {
   HazardState state = HazardState();
   state.scaffoldKey = GlobalKey<ScaffoldState>();
+  state.state = '请选择';
   state.startDate = '请选择';
   state.endDate = '请选择';
-  state.state = '请选择';
   return state;
 }

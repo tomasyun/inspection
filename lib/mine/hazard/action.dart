@@ -9,7 +9,7 @@ class HazardHistoryActionCreator {
     return const Action(HazardHistoryAction.action);
   }
 
-  static Action onInitHazardListData(List<HazardModel> list) {
-    return Action(HazardHistoryAction.init, payload: list);
+  static Action onInitHazardListData(HazardModel model) {
+    return Action(HazardHistoryAction.init, payload: model);
   }
 }

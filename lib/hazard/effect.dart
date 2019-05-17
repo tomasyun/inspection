@@ -1,7 +1,6 @@
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter_picker/Picker.dart';
-import 'package:inspection/entity/hazard_model.dart';
-import 'package:inspection/global/app_common.dart';
+import 'package:inspection/global/dico_http.dart';
 
 import 'action.dart';
 import 'state.dart';
@@ -21,21 +20,44 @@ Effect<HazardState> buildEffect() {
 void _onAction(Action action, Context<HazardState> ctx) {}
 
 void _onResearch(Action action, Context<HazardState> ctx) {
-  AppCommons.showToast('开始查询');
+  String research = '';
+  StringBuffer buffer = StringBuffer();
+  if (ctx.state.map.isNotEmpty) {
+    buffer.write('?');
+    if (ctx.state.map.length == 1) {
+      buffer.write(
+          '${ctx.state.map.keys.toList()[0]}=${ctx.state.map.values.toList()[0]}');
+      research = buffer.toString();
+    } else {
+      for (int i = 0; i < ctx.state.map.length; i++) {
+        buffer.write(
+            '${ctx.state.map.keys.toList()[i]}=${ctx.state.map.values.toList()[i]}&');
+        research = buffer.toString().substring(0, buffer.length - 1);
+      }
+    }
+  }
+  DicoHttpRepository.doGetHazardManageRequest(research).then((model) {
+    ctx.dispatch(HazardActionCreator.onInitHazardListData(model));
+  });
 }
 
 void _onReset(Action action, Context<HazardState> ctx) {
   ctx.dispatch(HazardActionCreator.getStartDate('请选择'));
   ctx.dispatch(HazardActionCreator.getEndDate('请选择'));
   ctx.dispatch(HazardActionCreator.getHazardState('请选择'));
+  ctx.state.map.clear();
+  DicoHttpRepository.doGetHazardManageRequest('').then((model) {
+    ctx.dispatch(HazardActionCreator.onInitHazardListData(model));
+  });
 }
 
 void _onSelectState(Action action, Context<HazardState> ctx) {
+  Map<String, String> map = Map();
+  map['待整改'] = '1';
+  map['待审批'] = '0';
+  map['待复查'] = '2';
   Picker(
-      adapter: PickerDataAdapter<String>(pickerdata: ['待整改', '待复查', '待审批']),
-//      onCancel: () {
-//        Navigator.pop(ctx.context);
-//      },
+      adapter: PickerDataAdapter<String>(pickerdata: map.keys.toList()),
       height: 120,
       hideHeader: true,
       cancelText: '取消',
@@ -43,6 +65,7 @@ void _onSelectState(Action action, Context<HazardState> ctx) {
       onConfirm: (Picker picker, List value) {
         ctx.dispatch(
             HazardActionCreator.getHazardState(picker.getSelectedValues()[0]));
+        ctx.state.map['dangerStatus'] = map[picker.getSelectedValues()[0]];
       }).showDialog(ctx.context);
 }
 
@@ -57,6 +80,7 @@ void _onSelectStartDate(Action action, Context<HazardState> ctx) {
     onConfirm: (Picker picker, List value) {
       ctx.dispatch(HazardActionCreator.getStartDate(
           picker.adapter.text.substring(0, 10)));
+      ctx.state.map['beginDate'] = picker.adapter.text.substring(0, 10);
     },
     cancelText: '取消',
     confirmText: '确定',
@@ -75,6 +99,7 @@ void _onSelectEndDate(Action action, Context<HazardState> ctx) {
     onConfirm: (Picker picker, List value) {
       ctx.dispatch(
           HazardActionCreator.getEndDate(picker.adapter.text.substring(0, 10)));
+      ctx.state.map['endDate'] = picker.adapter.text.substring(0, 10);
     },
     cancelText: '取消',
     confirmText: '确定',
@@ -83,31 +108,8 @@ void _onSelectEndDate(Action action, Context<HazardState> ctx) {
 }
 
 void _initHazardListData(Action action, Context<HazardState> ctx) {
-  List<HazardModel> list = [
-    HazardModel(
-        desc: '焊接车间,地面留油',
-        depart: '缔科研发部',
-        date: '2019-05-02',
-        state: '待整改',
-        rectifier: '贠拓'),
-    HazardModel(
-        desc: '焊接车间,地面留油',
-        depart: '通昱行政部',
-        date: '2019-05-02',
-        state: '待复查',
-        rectifier: '高大陆'),
-    HazardModel(
-        desc: '挡风玻璃有裂痕',
-        depart: '通昱行政部',
-        date: '2019-05-02',
-        state: '待审批',
-        rectifier: '黄骁'),
-    HazardModel(
-        desc: '焊接车间,地面留油',
-        depart: '通昱行政部',
-        date: '2019-05-02',
-        state: '已完成',
-        rectifier: '王婷'),
-  ];
-  ctx.dispatch(HazardActionCreator.onInitHazardListData(list));
+  ctx.dispatch(HazardActionCreator.onGetContext(ctx.context));
+  DicoHttpRepository.doGetHazardManageRequest('').then((model) {
+    ctx.dispatch(HazardActionCreator.onInitHazardListData(model));
+  });
 }

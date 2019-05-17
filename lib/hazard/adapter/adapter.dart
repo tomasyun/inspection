@@ -13,9 +13,15 @@ class HazardAdapter extends DynamicFlowAdapter<HazardState> {
 class _HazardConnector extends ConnOp<HazardState, List<ItemBean>> {
   @override
   List<ItemBean> get(HazardState state) {
-    return state.list.map((item) {
-      return ItemBean('hazard', item);
-    }).toList();
+    if (state.model != null &&
+        state.model.data != null &&
+        state.model.data.isNotEmpty) {
+      return state.model.data.map((item) {
+        return ItemBean('hazard', item);
+      }).toList();
+    } else {
+      return <ItemBean>[];
+    }
   }
 
   @override

@@ -1,4 +1,5 @@
 import 'package:fish_redux/fish_redux.dart';
+import 'package:flutter/material.dart';
 import 'package:inspection/entity/hazard_model.dart';
 
 //TODO replace with your own action
@@ -13,6 +14,7 @@ enum HazardAction {
   state,
   research,
   reset,
+  context,
 }
 
 class HazardActionCreator {
@@ -28,7 +30,7 @@ class HazardActionCreator {
     return Action(HazardAction.selectEndDate);
   }
 
-  static Action onInitHazardListData(List<HazardModel> list) {
+  static Action onInitHazardListData(HazardModel list) {
     return Action(HazardAction.init, payload: list);
   }
 
@@ -54,5 +56,9 @@ class HazardActionCreator {
 
   static Action onReset() {
     return Action(HazardAction.reset);
+  }
+
+  static Action onGetContext(BuildContext context) {
+    return Action(HazardAction.context, payload: context);
   }
 }

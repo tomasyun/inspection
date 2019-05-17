@@ -16,17 +16,17 @@ class _HazardHistoryConnector
     extends ConnOp<HazardHistoryState, List<ItemBean>> {
   @override
   List<ItemBean> get(HazardHistoryState state) {
-    return state.list.map((item) {
-      return ItemBean('hazardHistory', item);
-    }).toList();
+    if (state.model != null &&
+        state.model.data != null &&
+        state.model.data.isNotEmpty) {
+      return state.model.data.map((item) {
+        return ItemBean('hazardHistory', item);
+      }).toList();
+    } else {
+      return <ItemBean>[];
+    }
   }
 
   @override
   void set(HazardHistoryState state, List<ItemBean> items) {}
-
-  @override
-  subReducer(reducer) {
-    // TODO: implement subReducer
-    return super.subReducer(reducer);
-  }
 }

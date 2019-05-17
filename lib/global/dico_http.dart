@@ -1,6 +1,7 @@
 import 'dart:convert' show json;
 
 import 'package:dio/dio.dart';
+import 'package:inspection/entity/hazard_model.dart';
 import 'package:inspection/entity/home_model.dart';
 import 'package:inspection/entity/level_model.dart';
 import 'package:inspection/entity/login_model.dart';
@@ -13,6 +14,16 @@ class DicoHttpRepository {
   static final String hazardReport = 'sms-interface/danger/dangerReport';
   static final String hazardLevel = 'sms-interface/danger/findDangerLevel';
   static final String hazardType = 'sms-interface/danger/findDangerType';
+  static final String hazardManage = 'sms-interface/danger/findDnagerList';
+  static final String repairReport = '';
+  static final String warningRecord = '';
+  static final String repairRecord = '';
+
+  ///设备扫码
+
+  static Future scanQRCodeRequest(String url) async {
+    return await HttpUtil().get(url);
+  }
 
   ///登录
   static Future<LoginModel> userLogin(Map<String, String> map) async =>
@@ -38,14 +49,28 @@ class DicoHttpRepository {
       TypeModel.fromJson(await HttpUtil().get(hazardType));
 
   ///维修上报
+  static Future repairReportRequest(Map<String, String> map) async {
+    return await HttpUtil().post(repairReport, data: map);
+  }
 
   ///设备预警
+  static Future doGetDeviceWarningRequest() async {
+    return await HttpUtil().get(warningRecord);
+  }
 
   ///维修记录
+
+  static Future doGetRepairRecordRequest() async {
+    return await HttpUtil().get(repairRecord);
+  }
 
   ///保养记录
 
   ///隐患管理
+
+  static Future<HazardModel> doGetHazardManageRequest(String research) async {
+    return HazardModel.fromJson(await HttpUtil().get(hazardManage + research));
+  }
 
   ///隐患信息
 

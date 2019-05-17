@@ -4,7 +4,7 @@ import 'package:inspection/entity/hazard_model.dart';
 import 'effect.dart';
 import 'view.dart';
 
-class HistoryItemComponent extends Component<HazardModel> {
+class HistoryItemComponent extends Component<Data> {
   HistoryItemComponent()
       : super(
           effect: buildEffect(),

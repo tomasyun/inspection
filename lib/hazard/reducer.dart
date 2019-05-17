@@ -10,13 +10,20 @@ Reducer<HazardState> buildReducer() {
       HazardAction.startDate: _getStartDate,
       HazardAction.endDate: _getEndDate,
       HazardAction.state: _getHazardState,
+      HazardAction.context: _onGetContext,
     },
   );
 }
 
 HazardState _onAction(HazardState state, Action action) {
   HazardState newState = state.clone();
-  newState.list = action.payload;
+  newState.model = action.payload;
+  return newState;
+}
+
+HazardState _onGetContext(HazardState state, Action action) {
+  HazardState newState = state.clone();
+  newState.context = action.payload;
   return newState;
 }
 

@@ -1,10 +1,17 @@
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart';
 import 'package:inspection/entity/hazard_model.dart';
-import 'package:inspection/hazard/item/action.dart';
+import 'package:inspection/hazard/info/page.dart';
 
-Widget buildView(
-    HazardModel state, Dispatch dispatch, ViewService viewService) {
+Widget buildView(Data data, Dispatch dispatch, ViewService viewService) {
+  Map<String, dynamic> map = Map();
+  if (data.todoType == '0') {
+    map['state'] = '待审批';
+  } else if (data.todoType == '1') {
+    map['state'] = '待整改';
+  } else if (data.todoType == '2') {
+    map['state'] = '待审批';
+  }
   return Container(
     padding: EdgeInsets.all(10.0),
     margin: EdgeInsets.all(15.0),
@@ -22,7 +29,8 @@ Widget buildView(
     ),
     child: Column(
       children: <Widget>[
-        _buildItemHeader(title: '火灾报警控制器', result: '${state.state}'),
+        _buildItemHeader(
+            title: '${data.equipmentName}', result: '${map['state']}'),
         Container(
           margin: EdgeInsets.only(top: 10.0),
           width: double.infinity,
@@ -36,10 +44,13 @@ Widget buildView(
                   flex: 8,
                   child: Column(
                     children: <Widget>[
-                      _buildItem(title: '位置 :', result: '${state.state}'),
-                      _buildItem(title: '隐患描述 :', result: '${state.desc}'),
-                      _buildItem(title: '隐患类型 :', result: '${state.depart}'),
-                      _buildItem(title: '编号 :', result: '${state.date}'),
+                      _buildItem(
+                          title: '位置 :', result: '${data.dangerAddress}'),
+                      _buildItem(
+                          title: '隐患描述 :', result: '${data.dangerRemark}'),
+                      _buildItem(title: '隐患类型 :', result: '${data.dangerType}'),
+                      _buildItem(
+                          title: '编号 :', result: '${data.equipmentCode}'),
                     ],
                   )),
               Expanded(
@@ -49,7 +60,7 @@ Widget buildView(
                     Container(
                       margin: EdgeInsets.only(top: 20.0),
                       child: Text(
-                        '重大隐患',
+                        '${data.dangerLevel}',
                         style: TextStyle(color: Colors.red, fontSize: 14.0),
                         textAlign: TextAlign.right,
                       ),
@@ -59,13 +70,16 @@ Widget buildView(
                       child: RaisedButton(
                         color: Colors.green,
                         onPressed: () {
-                          dispatch(HazardItemActionCreator.onSkipInfo());
+                          Navigator.of(viewService.context)
+                              .push(MaterialPageRoute(builder: (content) {
+                            return HazardInfoPage().buildPage(map);
+                          }));
                         },
                         shape: RoundedRectangleBorder(
                             borderRadius:
                                 BorderRadius.all(Radius.circular(20.0))),
                         child: Text(
-                          '${state.state}',
+                          '${map['state']}',
                           style: TextStyle(color: Colors.white, fontSize: 13.0),
                         ),
                         padding: EdgeInsets.symmetric(

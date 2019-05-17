@@ -17,7 +17,6 @@ Effect<RecheckReportState> buildEffect() {
 void _onAction(Action action, Context<RecheckReportState> ctx) {}
 
 void _onReport(Action action, Context<RecheckReportState> ctx) {
-//  AppToast.showToast('暂未实现');
   if (ctx.state.controller.text.isEmpty) {
     AppCommons.showToast('请填写复查情况');
   } else if (ctx.state.assets.isEmpty) {

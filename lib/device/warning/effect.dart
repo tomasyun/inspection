@@ -1,5 +1,6 @@
 import 'package:fish_redux/fish_redux.dart';
 import 'package:inspection/entity/warning_model.dart';
+import 'package:inspection/global/dico_http.dart';
 
 import 'action.dart';
 import 'state.dart';
@@ -29,4 +30,6 @@ void _initState(Action action, Context<WarningState> ctx) {
         pic: '王婷')
   ];
   ctx.dispatch(WarningActionCreator.initState(list));
+
+  DicoHttpRepository.doGetDeviceWarningRequest();
 }
