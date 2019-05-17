@@ -16,9 +16,7 @@ class _HazardHistoryConnector
     extends ConnOp<HazardHistoryState, List<ItemBean>> {
   @override
   List<ItemBean> get(HazardHistoryState state) {
-    if (state.model != null &&
-        state.model.data != null &&
-        state.model.data.isNotEmpty) {
+    if (state.model != null && state.model.data != null) {
       return state.model.data.map((item) {
         return ItemBean('hazardHistory', item);
       }).toList();

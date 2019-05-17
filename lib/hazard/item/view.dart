@@ -10,7 +10,7 @@ Widget buildView(Data data, Dispatch dispatch, ViewService viewService) {
   } else if (data.todoType == '1') {
     map['state'] = '待整改';
   } else if (data.todoType == '2') {
-    map['state'] = '待审批';
+    map['state'] = '待复查';
   }
   return Container(
     padding: EdgeInsets.all(10.0),
