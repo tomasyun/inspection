@@ -1,6 +1,6 @@
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart';
-import 'package:inspection/entity/todos_model.dart';
+import 'package:inspection/entity/task_model.dart';
 import 'package:inspection/hazard/info/page.dart';
 import 'package:inspection/mine/task/action.dart';
 
@@ -20,8 +20,10 @@ Widget buildView(TaskState state, Dispatch dispatch, ViewService viewService) {
       child: Container(
         padding: EdgeInsets.only(bottom: 50.0),
         child: Column(
-          children: _buildToDoWidgets(
-              state: state, model: state.model, dispatch: dispatch),
+          children: state.model != null && state.model.data != null
+              ? _buildToDoWidgets(
+                  state: state, model: state.model, dispatch: dispatch)
+              : [],
         ),
       ),
     ),
@@ -29,29 +31,37 @@ Widget buildView(TaskState state, Dispatch dispatch, ViewService viewService) {
 }
 
 List<Widget> _buildToDoWidgets(
-    {TaskState state, ToDosModel model, Dispatch dispatch}) {
+    {TaskState state, TaskModel model, Dispatch dispatch}) {
   List<Widget> list = [];
-  if (model.rectify != null) {
-    model.rectify.map((rectify) {
-      list.add(_rectify(state, rectify));
+  if (model.data.rectify != null && model.data.rectify.isNotEmpty) {
+    model.data.rectify.map((item) {
+      list.add(_rectify(state, item));
     }).toList();
   }
 
-  if (model.recheck != null) {
-    model.recheck.map((recheck) {
-      list.add(_recheck(state, recheck));
+  if (model.data.review != null && model.data.review.isNotEmpty) {
+    model.data.review.map((item) {
+      list.add(_recheck(state, item));
     }).toList();
   }
 
-  if (model.inspect != null) {
-    model.inspect.map((inspect) {
-      list.add(_inspect(inspect, dispatch));
+  if (model.data.inspect != null && model.data.inspect.isNotEmpty) {
+    model.data.inspect.map((item) {
+      list.add(_inspect(item, dispatch));
     }).toList();
   }
   return list;
 }
 
-Widget _recheck(TaskState state, Recheck recheck) {
+Widget _recheck(TaskState state, Review review) {
+  Map<String, dynamic> map = Map();
+  if (review.todoType == '0') {
+    map['state'] = '待审批';
+  } else if (review.todoType == '1') {
+    map['state'] = '待整改';
+  } else if (review.todoType == '2') {
+    map['state'] = '待复查';
+  }
   return Container(
     margin: EdgeInsets.all(15.0),
     width: double.infinity,
@@ -70,7 +80,8 @@ Widget _recheck(TaskState state, Recheck recheck) {
       padding: EdgeInsets.all(15.0),
       child: Column(
         children: <Widget>[
-          _buildItemHeader(title: '火灾报警控制器', result: '待复查'),
+          _buildItemHeader(
+              title: '${review.equipmentName}', result: '${map['state']}'),
           Container(
             margin: EdgeInsets.only(top: 10.0),
             width: double.infinity,
@@ -84,10 +95,14 @@ Widget _recheck(TaskState state, Recheck recheck) {
                     flex: 8,
                     child: Column(
                       children: <Widget>[
-                        _buildItem(title: '位置', result: '${recheck.date}'),
-                        _buildItem(title: '隐患描述', result: '${recheck.depart}'),
-                        _buildItem(title: '隐患类型', result: '${recheck.depart}'),
-                        _buildItem(title: '编号', result: '${recheck.depart}'),
+                        _buildItem(
+                            title: '位置', result: '${review.dangerAddress}'),
+                        _buildItem(
+                            title: '隐患描述', result: '${review.dangerRemark}'),
+                        _buildItem(
+                            title: '隐患类型', result: '${review.dangerType}'),
+                        _buildItem(
+                            title: '编号', result: '${review.equipmentCode}'),
                       ],
                     )),
                 Expanded(
@@ -97,7 +112,7 @@ Widget _recheck(TaskState state, Recheck recheck) {
                       Container(
                         margin: EdgeInsets.only(top: 20.0),
                         child: Text(
-                          '重大隐患',
+                          '${review.dangerLevel}',
                           style: TextStyle(color: Colors.red, fontSize: 14.0),
                           textAlign: TextAlign.right,
                         ),
@@ -109,9 +124,6 @@ Widget _recheck(TaskState state, Recheck recheck) {
                           onPressed: () {
                             Navigator.of(state.context)
                                 .push(MaterialPageRoute(builder: (content) {
-                              Map<String, dynamic> map = {
-                                'state': recheck.state
-                              };
                               return HazardInfoPage().buildPage(map);
                             }));
                           },
@@ -119,7 +131,7 @@ Widget _recheck(TaskState state, Recheck recheck) {
                               borderRadius:
                                   BorderRadius.all(Radius.circular(20.0))),
                           child: Text(
-                            '去复查',
+                            '${map['state']}',
                             style:
                                 TextStyle(color: Colors.white, fontSize: 13.0),
                           ),
@@ -141,6 +153,14 @@ Widget _recheck(TaskState state, Recheck recheck) {
 }
 
 Widget _rectify(TaskState state, Rectify rectify) {
+  Map<String, dynamic> map = Map();
+  if (rectify.todoType == '0') {
+    map['state'] = '待审批';
+  } else if (rectify.todoType == '1') {
+    map['state'] = '待整改';
+  } else if (rectify.todoType == '2') {
+    map['state'] = '待复查';
+  }
   return Container(
     padding: EdgeInsets.all(10.0),
     margin: EdgeInsets.all(15.0),
@@ -158,7 +178,8 @@ Widget _rectify(TaskState state, Rectify rectify) {
     ),
     child: Column(
       children: <Widget>[
-        _buildItemHeader(title: '火灾报警控制器', result: '待整改'),
+        _buildItemHeader(
+            title: rectify.equipmentName, result: '${map['state']}'),
         Container(
           margin: EdgeInsets.only(top: 10.0),
           width: double.infinity,
@@ -172,10 +193,14 @@ Widget _rectify(TaskState state, Rectify rectify) {
                   flex: 8,
                   child: Column(
                     children: <Widget>[
-                      _buildItem(title: '位置', result: '${rectify.date}'),
-                      _buildItem(title: '隐患描述', result: '${rectify.depart}'),
-                      _buildItem(title: '隐患类型', result: '${rectify.depart}'),
-                      _buildItem(title: '编号', result: '${rectify.depart}'),
+                      _buildItem(
+                          title: '位置', result: '${rectify.dangerAddress}'),
+                      _buildItem(
+                          title: '隐患描述', result: '${rectify.dangerRemark}'),
+                      _buildItem(
+                          title: '隐患类型', result: '${rectify.dangerType}'),
+                      _buildItem(
+                          title: '编号', result: '${rectify.equipmentCode}'),
                     ],
                   )),
               Expanded(
@@ -185,7 +210,7 @@ Widget _rectify(TaskState state, Rectify rectify) {
                     Container(
                       margin: EdgeInsets.only(top: 20.0),
                       child: Text(
-                        '重大隐患',
+                        '${rectify.dangerLevel}',
                         style: TextStyle(color: Colors.red, fontSize: 14.0),
                         textAlign: TextAlign.right,
                       ),
@@ -197,7 +222,6 @@ Widget _rectify(TaskState state, Rectify rectify) {
                         onPressed: () {
                           Navigator.of(state.context)
                               .push(MaterialPageRoute(builder: (content) {
-                            Map<String, dynamic> map = {'state': rectify.state};
                             return HazardInfoPage().buildPage(map);
                           }));
                         },
@@ -205,7 +229,7 @@ Widget _rectify(TaskState state, Rectify rectify) {
                             borderRadius:
                                 BorderRadius.all(Radius.circular(20.0))),
                         child: Text(
-                          '待整改',
+                          '${map['state']}',
                           style: TextStyle(color: Colors.white, fontSize: 13.0),
                         ),
                         padding: EdgeInsets.symmetric(
@@ -260,10 +284,13 @@ Widget _inspect(Inspect inspect, Dispatch dispatch) {
                         child: Column(
                           children: <Widget>[
                             _buildItem(
-                                title: '位置:', result: '${inspect.depart}'),
+                                title: '位置:', result: '${inspect.installArea}'),
                             _buildItem(
-                                title: '编号', result: '${inspect.depart}'),
-                            _buildItem(title: '设备类型', result: '${inspect.pic}'),
+                                title: '编号',
+                                result: '${inspect.equipmentCode}'),
+                            _buildItem(
+                                title: '设备类型',
+                                result: '${inspect.equipmentType}'),
                           ],
                         )),
                     Expanded(

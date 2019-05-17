@@ -4,12 +4,10 @@ import 'package:inspection/entity/notice_model.dart';
 import 'effect.dart';
 import 'view.dart';
 
-class NoticeItemComponent extends Component<NoticeModel> {
+class NoticeItemComponent extends Component<Data> {
   NoticeItemComponent()
       : super(
           effect: buildEffect(),
           view: buildView,
-          dependencies: Dependencies<NoticeModel>(
-              adapter: null, slots: <String, Dependent<NoticeModel>>{}),
         );
 }

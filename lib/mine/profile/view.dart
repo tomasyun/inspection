@@ -23,21 +23,29 @@ Widget buildView(
       child: Column(
         children: <Widget>[
           _buildContainer(
-              title1: '用户名', title2: '${state.model.userName}', maxLines: 2),
+              title1: '用户名',
+              title2: state.model != null && state.model.data != null
+                  ? '${state.model.data.userName}'
+                  : '',
+              maxLines: 2),
           _buildContainer(
               edge: EdgeInsets.only(top: 10.0),
               title1: '姓名',
-              title2: '${state.model.name}',
+              title2: state.model != null ? '${state.model.data.name}' : '',
               maxLines: 2),
           _buildContainer(
               edge: EdgeInsets.only(top: 10.0),
               title1: '所在单位',
-              title2: '${state.model.company}',
+              title2: state.model != null && state.model.data != null
+                  ? '${state.model.data.company}'
+                  : '',
               maxLines: 2),
           _buildContainer(
               edge: EdgeInsets.only(top: 10.0),
               title1: '所在部门',
-              title2: '${state.model.depart}',
+              title2: state.model != null && state.model.data != null
+                  ? '${state.model.data.organization}'
+                  : '',
               maxLines: 2),
         ],
       ),

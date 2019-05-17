@@ -13,9 +13,13 @@ class NoticeAdapter extends DynamicFlowAdapter<NoticeState> {
 class _NoticeConnector extends ConnOp<NoticeState, List<ItemBean>> {
   @override
   List<ItemBean> get(NoticeState state) {
-    return state.list.map((item) {
-      return ItemBean('notice', item);
-    }).toList();
+    if (state.model != null && state.model.data != null) {
+      return state.model.data.map((item) {
+        return ItemBean('notice', item);
+      }).toList();
+    } else {
+      return <ItemBean>[];
+    }
   }
 
   @override

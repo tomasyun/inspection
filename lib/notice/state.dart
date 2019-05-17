@@ -2,10 +2,10 @@ import 'package:fish_redux/fish_redux.dart';
 import 'package:inspection/entity/notice_model.dart';
 
 class NoticeState implements Cloneable<NoticeState> {
-  List<NoticeModel> list;
+  NoticeModel model;
   @override
   NoticeState clone() {
-    return NoticeState()..list = list;
+    return NoticeState()..model = model;
   }
 }
 

@@ -15,19 +15,21 @@ Widget buildView(
       centerTitle: true,
       backgroundColor: Colors.blue,
     ),
-    body: Container(
-      child: Column(
-        children: <Widget>[
-          _buildContainer(null, '原密码', '请输入原密码', state.oldPasswordController),
-          _buildContainer(EdgeInsets.only(top: 1.0), '新密码', '请输入新密码',
-              state.newPasswordController),
-          _buildContainer(EdgeInsets.only(top: 1.0), '确认密码', '请再次输入新密码',
-              state.againPasswordController),
-          Container(
-            margin: EdgeInsets.only(top: 100.0),
-            child: _buildRaisedButton(dispatch: dispatch),
-          )
-        ],
+    body: SingleChildScrollView(
+      child: Container(
+        child: Column(
+          children: <Widget>[
+            _buildContainer(null, '原密码', '请输入原密码', state.oldPasswordController),
+            _buildContainer(EdgeInsets.only(top: 1.0), '新密码', '请输入新密码',
+                state.newPasswordController),
+            _buildContainer(EdgeInsets.only(top: 1.0), '确认密码', '请再次输入新密码',
+                state.againPasswordController),
+            Container(
+              margin: EdgeInsets.only(top: 100.0),
+              child: _buildRaisedButton(dispatch: dispatch),
+            )
+          ],
+        ),
       ),
     ),
   );
@@ -72,7 +74,7 @@ Widget _buildContainer(EdgeInsetsGeometry edge, String text, String hintText,
             controller: controller,
             maxLines: 1,
             cursorColor: Colors.red,
-            cursorWidth: 3.0,
+            cursorWidth: 2.0,
             keyboardType: TextInputType.text,
             decoration: InputDecoration(
                 hintText: hintText,

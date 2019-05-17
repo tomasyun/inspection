@@ -19,6 +19,6 @@ NoticeState _onAction(NoticeState state, Action action) {
 
 NoticeState _onGetNotices(NoticeState state, Action action) {
   NoticeState newState = state.clone();
-  newState.list = action.payload;
+  newState.model = action.payload;
   return newState;
 }

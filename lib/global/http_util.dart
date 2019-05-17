@@ -17,6 +17,7 @@ class HttpUtil {
   static const String BASE_URL = 'http://192.168.10.19:8080/';
   static const String TYPE_GET = 'get';
   static const String TYPE_POST = 'post';
+  static const String TYPE_PUT = 'put';
   Dio dio;
 
   ///一般一个应用中只有一个dio实例
@@ -89,6 +90,17 @@ class HttpUtil {
         data: data, options: options, onError: onError);
   }
 
+  ///put方法
+  Future put(
+    String url, {
+    Map data,
+    Options options,
+    NetworkError onError,
+  }) async {
+    return _request(url, TYPE_PUT,
+        data: data, options: options, onError: onError);
+  } //
+
   ///多部分上传（包括图片、参数）
   Future<String> onMultipartRequest(
       {List<Asset> assets, Map<String, String> map, String url}) async {
@@ -142,6 +154,8 @@ class HttpUtil {
         response = await dio.get(url, queryParameters: data, options: options);
       } else if (type == TYPE_POST) {
         response = await dio.post(url, options: options, data: data);
+      } else if (type == TYPE_PUT) {
+        response = await dio.put(url, options: options, queryParameters: data);
       }
       if (response.statusCode != 200) {
         var errorMsg = '服务器出错,状态码:${response.statusCode}';

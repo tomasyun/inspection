@@ -3,8 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:inspection/entity/notice_model.dart';
 import 'package:inspection/notice/item/action.dart';
 
-Widget buildView(
-    NoticeModel state, Dispatch dispatch, ViewService viewService) {
+Widget buildView(Data state, Dispatch dispatch, ViewService viewService) {
   return Container(
     margin: EdgeInsets.only(top: 10.0),
     child: ExpansionPanelList(
@@ -17,7 +16,7 @@ Widget buildView(
                 padding: EdgeInsets.all(15.0),
                 child: Container(
                   child: Text(
-                    '${state.title}',
+                    '${state.messageTitle}',
                     style: TextStyle(fontSize: 14.0, color: Colors.black45),
                   ),
                 ),
@@ -31,7 +30,7 @@ Widget buildView(
                 children: <Widget>[
                   Container(
                     child: Text(
-                      '${state.content}',
+                      '${state.messageContent}',
                       style: TextStyle(fontSize: 14.0, color: Colors.black),
                     ),
                   ),
@@ -55,7 +54,7 @@ Widget buildView(
                         )),
                         Expanded(
                             child: Text(
-                          '${state.date}',
+                          '${state.messageDate}',
                           textAlign: TextAlign.right,
                         ))
                       ],

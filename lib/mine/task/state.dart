@@ -1,10 +1,11 @@
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart';
-import 'package:inspection/entity/todos_model.dart';
+import 'package:inspection/entity/task_model.dart';
 
 class TaskState implements Cloneable<TaskState> {
-  ToDosModel model;
+  TaskModel model;
   BuildContext context;
+
   @override
   TaskState clone() {
     return TaskState()

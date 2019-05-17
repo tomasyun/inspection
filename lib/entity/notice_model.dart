@@ -1,21 +1,57 @@
 class NoticeModel {
-  String title;
-  String content;
-  String date;
+  int code;
+  String msg;
+  List<Data> data;
 
-  NoticeModel({this.title, this.content, this.date});
+  NoticeModel({this.code, this.msg, this.data});
 
   NoticeModel.fromJson(Map<String, dynamic> json) {
-    title = json['title'];
-    content = json['content'];
-    date = json['date'];
+    code = json['code'];
+    msg = json['msg'];
+    if (json['data'] != null) {
+      data = new List<Data>();
+      json['data'].forEach((v) {
+        data.add(new Data.fromJson(v));
+      });
+    }
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['title'] = this.title;
-    data['content'] = this.content;
-    data['date'] = this.date;
+    data['code'] = this.code;
+    data['msg'] = this.msg;
+    if (this.data != null) {
+      data['data'] = this.data.map((v) => v.toJson()).toList();
+    }
+    return data;
+  }
+}
+
+class Data {
+  String messageTitle;
+  String noticePersonId;
+  String messageDate;
+  String messageContent;
+
+  Data(
+      {this.messageTitle,
+      this.noticePersonId,
+      this.messageDate,
+      this.messageContent});
+
+  Data.fromJson(Map<String, dynamic> json) {
+    messageTitle = json['messageTitle'];
+    noticePersonId = json['noticePersonId'];
+    messageDate = json['messageDate'];
+    messageContent = json['messageContent'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['messageTitle'] = this.messageTitle;
+    data['noticePersonId'] = this.noticePersonId;
+    data['messageDate'] = this.messageDate;
+    data['messageContent'] = this.messageContent;
     return data;
   }
 }

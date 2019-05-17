@@ -9,7 +9,7 @@ class NoticeActionCreator {
     return const Action(NoticeAction.action);
   }
 
-  static Action onGetNotices(List<NoticeModel> list) {
+  static Action onGetNotices(NoticeModel list) {
     return Action(NoticeAction.notices, payload: list);
   }
 }

@@ -4,15 +4,15 @@ import 'package:inspection/global/app_common.dart';
 
 import 'action.dart';
 
-Effect<NoticeModel> buildEffect() {
-  return combineEffects(<Object, Effect<NoticeModel>>{
+Effect<Data> buildEffect() {
+  return combineEffects(<Object, Effect<Data>>{
     NoticeItemAction.action: _onAction,
     NoticeItemAction.delete: _onDelete,
   });
 }
 
-void _onAction(Action action, Context<NoticeModel> ctx) {}
+void _onAction(Action action, Context<Data> ctx) {}
 
-void _onDelete(Action action, Context<NoticeModel> ctx) {
+void _onDelete(Action action, Context<Data> ctx) {
   AppCommons.showToast('暂未实现');
 }
