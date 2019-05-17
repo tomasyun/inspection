@@ -46,7 +46,11 @@ Widget buildView(
                           },
                           child: Container(
                             padding: EdgeInsets.all(10.0),
-                            child: Text('删除',style: TextStyle(fontSize: 14.0,color: Colors.red),),
+                            child: Text(
+                              '删除',
+                              style:
+                                  TextStyle(fontSize: 14.0, color: Colors.red),
+                            ),
                           ),
                         )),
                         Expanded(
