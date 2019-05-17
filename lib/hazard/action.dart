@@ -11,6 +11,8 @@ enum HazardAction {
   endDate,
   selectEndDate,
   state,
+  research,
+  reset,
 }
 
 class HazardActionCreator {
@@ -44,5 +46,13 @@ class HazardActionCreator {
 
   static Action getHazardState(String state) {
     return Action(HazardAction.state, payload: state);
+  }
+
+  static Action onResearch() {
+    return Action(HazardAction.research);
+  }
+
+  static Action onReset() {
+    return Action(HazardAction.reset);
   }
 }

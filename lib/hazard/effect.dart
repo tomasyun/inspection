@@ -1,6 +1,7 @@
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter_picker/Picker.dart';
 import 'package:inspection/entity/hazard_model.dart';
+import 'package:inspection/global/app_common.dart';
 
 import 'action.dart';
 import 'state.dart';
@@ -12,10 +13,22 @@ Effect<HazardState> buildEffect() {
     HazardAction.selectStartDate: _onSelectStartDate,
     HazardAction.selectEndDate: _onSelectEndDate,
     HazardAction.selectState: _onSelectState,
+    HazardAction.research: _onResearch,
+    HazardAction.reset: _onReset,
   });
 }
 
 void _onAction(Action action, Context<HazardState> ctx) {}
+
+void _onResearch(Action action, Context<HazardState> ctx) {
+  AppCommons.showToast('开始查询');
+}
+
+void _onReset(Action action, Context<HazardState> ctx) {
+  ctx.dispatch(HazardActionCreator.getStartDate('请选择'));
+  ctx.dispatch(HazardActionCreator.getEndDate('请选择'));
+  ctx.dispatch(HazardActionCreator.getHazardState('请选择'));
+}
 
 void _onSelectState(Action action, Context<HazardState> ctx) {
   Picker(

@@ -90,7 +90,15 @@ Widget buildView(
               ),
             ),
           ),
-          buildBottomNavigatorDouble(leftLabel: '查询', rightLabel: '重置'),
+          buildBottomNavigatorDouble(
+              leftLabel: '查询',
+              rightLabel: '重置',
+              callbackLeftBtn: () {
+                dispatch(HazardActionCreator.onResearch());
+              },
+              callbackRightBtn: () {
+                dispatch(HazardActionCreator.onReset());
+              }),
         ],
       ),
     ),
