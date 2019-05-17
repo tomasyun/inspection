@@ -1,7 +1,6 @@
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart';
-import 'package:inspection/entity/level_model.dart';
-import 'package:inspection/entity/type_model.dart';
+import 'package:inspection/entity/filter_model.dart';
 import 'package:inspection/widget/filter_flow_delegate.dart';
 import 'package:inspection/widget/state_view.dart' as stateView;
 
@@ -67,41 +66,34 @@ Widget _buildFlowItem({FilterState state, Map<String, String> map}) {
   );
 }
 
-List<Widget> _buildLevelFlowData({FilterState state, List<LevelData> list}) {
-  return list
-      .map((item) => _buildFlowItem(
-          state: state, map: {'name': item.name, 'id': item.id.toString()}))
-      .toList();
-}
-
-List<Widget> _buildTypeFlowData({FilterState state, List<TypeData> list}) {
-  return list
-      .map((item) => _buildFlowItem(
-          state: state, map: {'name': item.name, 'id': item.id.toString()}))
-      .toList();
+List<Widget> _buildFlowData({FilterState state, List<Data> list}) {
+  return list.map((item) {
+    return _buildFlowItem(
+        state: state, map: {'name': item.name, 'id': item.id.toString()});
+  }).toList();
 }
 
 Widget _buildFlow({FilterState state}) {
   if (state.flag == 'level') {
     return Flow(
       delegate: FilterFlowDelegate(EdgeInsets.all(5.0)),
-      children: _buildLevelFlowData(
+      children: _buildFlowData(
           state: state,
-          list: state.levelModel != null &&
-                  state.levelModel.data != null &&
-                  state.levelModel.data.isNotEmpty
-              ? state.levelModel.data
+          list: state.filterModel != null &&
+                  state.filterModel.data != null &&
+                  state.filterModel.data.isNotEmpty
+              ? state.filterModel.data
               : []),
     );
   } else if (state.flag == 'type') {
     return Flow(
       delegate: FilterFlowDelegate(EdgeInsets.all(5.0)),
-      children: _buildTypeFlowData(
+      children: _buildFlowData(
           state: state,
-          list: state.typeModel != null &&
-                  state.typeModel.data != null &&
-                  state.typeModel.data.isNotEmpty
-              ? state.typeModel.data
+          list: state.filterModel != null &&
+                  state.filterModel.data != null &&
+                  state.filterModel.data.isNotEmpty
+              ? state.filterModel.data
               : []),
     );
   } else if (state.flag == 'depart') {

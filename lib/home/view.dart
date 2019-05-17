@@ -261,20 +261,14 @@ Widget _buildContainerItem({String asset, String title}) {
 List<Widget> _buildToDoWidgets({HomeState state, Dispatch dispatch}) {
   home.Todos todo = state.model.data.todos;
   List<Widget> widgets = [];
-  if (todo.rectify != null && todo.rectify.isNotEmpty) {
-    todo.rectify.map((item) {
-      widgets.add(inflateRectify(state, item));
-    }).toList();
+  if (todo.rectify != null) {
+    widgets.add(inflateRectify(state, todo.rectify));
   }
-  if (todo.review != null && todo.review.isNotEmpty) {
-    todo.review.map((item) {
-      widgets.add(inflateRecheck(state, item));
-    }).toList();
+  if (todo.review != null) {
+    widgets.add(inflateRecheck(state, todo.review));
   }
-  if (todo.inspect != null && todo.inspect.isNotEmpty) {
-    todo.inspect.map((item) {
-      widgets.add(inflateInspect(item, dispatch));
-    }).toList();
+  if (todo.inspect != null) {
+    widgets.add(inflateInspect(todo.inspect, dispatch));
   }
   return widgets;
 }

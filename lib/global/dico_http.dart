@@ -1,11 +1,10 @@
 import 'dart:convert' show json;
 
 import 'package:dio/dio.dart';
+import 'package:inspection/entity/filter_model.dart';
 import 'package:inspection/entity/hazard_model.dart';
 import 'package:inspection/entity/home_model.dart';
-import 'package:inspection/entity/level_model.dart';
 import 'package:inspection/entity/login_model.dart';
-import 'package:inspection/entity/type_model.dart';
 import 'package:inspection/global/http_util.dart';
 
 class DicoHttpRepository {
@@ -41,12 +40,12 @@ class DicoHttpRepository {
               {'smsDangerInfo': json.encode(map), 'files': files}));
 
   ///获取隐患等级
-  static Future<LevelModel> doGetHazardLevelRequest() async =>
-      LevelModel.fromJson(await HttpUtil().get(hazardLevel));
+  static Future<FilterModel> doGetHazardLevelRequest() async =>
+      FilterModel.fromJson(await HttpUtil().get(hazardLevel));
 
   ///获取隐患类型
-  static Future<TypeModel> doGetHazardTypeRequest() async =>
-      TypeModel.fromJson(await HttpUtil().get(hazardType));
+  static Future<FilterModel> doGetHazardTypeRequest() async =>
+      FilterModel.fromJson(await HttpUtil().get(hazardType));
 
   ///维修上报
   static Future repairReportRequest(Map<String, String> map) async {

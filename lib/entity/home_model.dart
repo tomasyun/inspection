@@ -1,231 +1,186 @@
-class HomeModel {
+import 'package:json_annotation/json_annotation.dart';
+
+part 'home_model.g.dart';
+
+@JsonSerializable()
+class HomeModel extends Object {
+  @JsonKey(name: 'code')
   int code;
+
+  @JsonKey(name: 'msg')
   String msg;
+
+  @JsonKey(name: 'data')
   Data data;
 
-  HomeModel({this.code, this.msg, this.data});
+  HomeModel(
+    this.code,
+    this.msg,
+    this.data,
+  );
 
-  HomeModel.fromJson(Map<String, dynamic> json) {
-    code = json['code'];
-    msg = json['msg'];
-    data = json['data'] != null ? new Data.fromJson(json['data']) : null;
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['code'] = this.code;
-    data['msg'] = this.msg;
-    if (this.data != null) {
-      data['data'] = this.data.toJson();
-    }
-    return data;
-  }
+  factory HomeModel.fromJson(Map<String, dynamic> srcJson) =>
+      _$HomeModelFromJson(srcJson);
 }
 
-class Data {
+@JsonSerializable()
+class Data extends Object {
+  @JsonKey(name: 'banner')
   List<Banner> banner;
+
+  @JsonKey(name: 'todos')
   Todos todos;
+
+  @JsonKey(name: 'notice')
   String notice;
 
-  Data({this.banner, this.todos, this.notice});
+  Data(
+    this.banner,
+    this.todos,
+    this.notice,
+  );
 
-  Data.fromJson(Map<String, dynamic> json) {
-    if (json['banner'] != null) {
-      banner = new List<Banner>();
-      json['banner'].forEach((v) {
-        banner.add(new Banner.fromJson(v));
-      });
-    }
-    todos = json['todos'] != null ? new Todos.fromJson(json['todos']) : null;
-    notice = json['notice'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    if (this.banner != null) {
-      data['banner'] = this.banner.map((v) => v.toJson()).toList();
-    }
-    if (this.todos != null) {
-      data['todos'] = this.todos.toJson();
-    }
-    data['notice'] = this.notice;
-    return data;
-  }
+  factory Data.fromJson(Map<String, dynamic> srcJson) =>
+      _$DataFromJson(srcJson);
 }
 
-class Banner {
+@JsonSerializable()
+class Banner extends Object {
+  @JsonKey(name: 'title')
   String title;
+
+  @JsonKey(name: 'url')
   String url;
 
-  Banner({this.title, this.url});
+  Banner(
+    this.title,
+    this.url,
+  );
 
-  Banner.fromJson(Map<String, dynamic> json) {
-    title = json['title'];
-    url = json['url'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['title'] = this.title;
-    data['url'] = this.url;
-    return data;
-  }
+  factory Banner.fromJson(Map<String, dynamic> srcJson) =>
+      _$BannerFromJson(srcJson);
 }
 
-class Todos {
-  List<Rectify> rectify;
-  List<Review> review;
-  List<Inspect> inspect;
+@JsonSerializable()
+class Todos extends Object {
+  @JsonKey(name: 'rectify')
+  Rectify rectify;
 
-  Todos({this.rectify, this.review, this.inspect});
+  @JsonKey(name: 'review')
+  Review review;
 
-  Todos.fromJson(Map<String, dynamic> json) {
-    if (json['rectify'] != null) {
-      rectify = new List<Rectify>();
-      json['rectify'].forEach((v) {
-        rectify.add(new Rectify.fromJson(v));
-      });
-    }
-    if (json['review'] != null) {
-      review = new List<Review>();
-      json['review'].forEach((v) {
-        review.add(new Review.fromJson(v));
-      });
-    }
-    if (json['inspect'] != null) {
-      inspect = new List<Inspect>();
-      json['inspect'].forEach((v) {
-        inspect.add(new Inspect.fromJson(v));
-      });
-    }
-  }
+  @JsonKey(name: 'inspect')
+  Inspect inspect;
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    if (this.rectify != null) {
-      data['rectify'] = this.rectify.map((v) => v.toJson()).toList();
-    }
-    if (this.review != null) {
-      data['review'] = this.review.map((v) => v.toJson()).toList();
-    }
-    if (this.inspect != null) {
-      data['inspect'] = this.inspect.map((v) => v.toJson()).toList();
-    }
-    return data;
-  }
+  Todos(
+    this.rectify,
+    this.review,
+    this.inspect,
+  );
+
+  factory Todos.fromJson(Map<String, dynamic> srcJson) =>
+      _$TodosFromJson(srcJson);
 }
 
-class Rectify {
+@JsonSerializable()
+class Rectify extends Object {
+  @JsonKey(name: 'dangerRemark')
   String dangerRemark;
+
+  @JsonKey(name: 'dangerAddress')
   String dangerAddress;
+
+  @JsonKey(name: 'dangerType')
   String dangerType;
+
+  @JsonKey(name: 'todoType')
   String todoType;
+
+  @JsonKey(name: 'equipmentCode')
   String equipmentCode;
+
+  @JsonKey(name: 'dangerLevel')
   String dangerLevel;
+
+  @JsonKey(name: 'equipmentName')
   String equipmentName;
 
   Rectify(
-      {this.dangerRemark,
-      this.dangerAddress,
-      this.dangerType,
-      this.todoType,
-      this.equipmentCode,
-      this.dangerLevel,
-      this.equipmentName});
+    this.dangerRemark,
+    this.dangerAddress,
+    this.dangerType,
+    this.todoType,
+    this.equipmentCode,
+    this.dangerLevel,
+    this.equipmentName,
+  );
 
-  Rectify.fromJson(Map<String, dynamic> json) {
-    dangerRemark = json['dangerRemark'];
-    dangerAddress = json['dangerAddress'];
-    dangerType = json['dangerType'];
-    todoType = json['todoType'];
-    equipmentCode = json['equipmentCode'];
-    dangerLevel = json['dangerLevel'];
-    equipmentName = json['equipmentName'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['dangerRemark'] = this.dangerRemark;
-    data['dangerAddress'] = this.dangerAddress;
-    data['dangerType'] = this.dangerType;
-    data['todoType'] = this.todoType;
-    data['equipmentCode'] = this.equipmentCode;
-    data['dangerLevel'] = this.dangerLevel;
-    data['equipmentName'] = this.equipmentName;
-    return data;
-  }
+  factory Rectify.fromJson(Map<String, dynamic> srcJson) =>
+      _$RectifyFromJson(srcJson);
 }
 
-class Review {
+@JsonSerializable()
+class Review extends Object {
+  @JsonKey(name: 'dangerRemark')
   String dangerRemark;
+
+  @JsonKey(name: 'dangerAddress')
   String dangerAddress;
+
+  @JsonKey(name: 'dangerType')
   String dangerType;
+
+  @JsonKey(name: 'todoType')
   String todoType;
+
+  @JsonKey(name: 'equipmentCode')
   String equipmentCode;
+
+  @JsonKey(name: 'dangerLevel')
   String dangerLevel;
+
+  @JsonKey(name: 'equipmentName')
   String equipmentName;
 
   Review(
-      {this.dangerRemark,
-      this.dangerAddress,
-      this.dangerType,
-      this.todoType,
-      this.equipmentCode,
-      this.dangerLevel,
-      this.equipmentName});
+    this.dangerRemark,
+    this.dangerAddress,
+    this.dangerType,
+    this.todoType,
+    this.equipmentCode,
+    this.dangerLevel,
+    this.equipmentName,
+  );
 
-  Review.fromJson(Map<String, dynamic> json) {
-    dangerRemark = json['dangerRemark'];
-    dangerAddress = json['dangerAddress'];
-    dangerType = json['dangerType'];
-    todoType = json['todoType'];
-    equipmentCode = json['equipmentCode'];
-    dangerLevel = json['dangerLevel'];
-    equipmentName = json['equipmentName'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['dangerRemark'] = this.dangerRemark;
-    data['dangerAddress'] = this.dangerAddress;
-    data['dangerType'] = this.dangerType;
-    data['todoType'] = this.todoType;
-    data['equipmentCode'] = this.equipmentCode;
-    data['dangerLevel'] = this.dangerLevel;
-    data['equipmentName'] = this.equipmentName;
-    return data;
-  }
+  factory Review.fromJson(Map<String, dynamic> srcJson) =>
+      _$ReviewFromJson(srcJson);
 }
 
-class Inspect {
+@JsonSerializable()
+class Inspect extends Object {
+  @JsonKey(name: 'installArea')
   String installArea;
+
+  @JsonKey(name: 'equipmentCode')
   String equipmentCode;
+
+  @JsonKey(name: 'equipmentName')
   String equipmentName;
+
+  @JsonKey(name: 'equipmentType')
   String equipmentType;
+
+  @JsonKey(name: 'status')
   int status;
 
   Inspect(
-      {this.installArea,
-      this.equipmentCode,
-      this.equipmentName,
-      this.equipmentType,
-      this.status});
+    this.installArea,
+    this.equipmentCode,
+    this.equipmentName,
+    this.equipmentType,
+    this.status,
+  );
 
-  Inspect.fromJson(Map<String, dynamic> json) {
-    installArea = json['installArea'];
-    equipmentCode = json['equipmentCode'];
-    equipmentName = json['equipmentName'];
-    equipmentType = json['equipmentType'];
-    status = json['status'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['installArea'] = this.installArea;
-    data['equipmentCode'] = this.equipmentCode;
-    data['equipmentName'] = this.equipmentName;
-    data['equipmentType'] = this.equipmentType;
-    data['status'] = this.status;
-    return data;
-  }
+  factory Inspect.fromJson(Map<String, dynamic> srcJson) =>
+      _$InspectFromJson(srcJson);
 }
