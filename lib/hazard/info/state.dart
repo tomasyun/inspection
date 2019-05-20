@@ -1,14 +1,17 @@
 import 'package:fish_redux/fish_redux.dart';
+import 'package:inspection/entity/hazard_info_model.dart';
 
 class HazardInfoState implements Cloneable<HazardInfoState> {
   String state;
   String id;
+  HazardInfoModel model;
 
   @override
   HazardInfoState clone() {
     return HazardInfoState()
       ..state = state
-      ..id = id;
+      ..id = id
+      ..model = model;
   }
 }
 

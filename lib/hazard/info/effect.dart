@@ -1,5 +1,6 @@
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart';
+import 'package:inspection/global/dico_http.dart';
 import 'package:inspection/hazard/recheck/page.dart';
 import 'package:inspection/hazard/rectify/apply/page.dart';
 import 'package:inspection/hazard/rectify/info/page.dart';
@@ -12,6 +13,7 @@ import 'state.dart';
 Effect<HazardInfoState> buildEffect() {
   return combineEffects(<Object, Effect<HazardInfoState>>{
     HazardInfoAction.action: _onAction,
+    Lifecycle.initState: _init,
     HazardInfoAction.skipRectifyCostApply: _onSkipRectifyCostApply,
     HazardInfoAction.skipRectifyInfo: _onSkipRectifyInfo,
     HazardInfoAction.skipRectifyReport: _onSkipRectifyReport,
@@ -21,6 +23,15 @@ Effect<HazardInfoState> buildEffect() {
 }
 
 void _onAction(Action action, Context<HazardInfoState> ctx) {}
+
+void _init(Action action, Context<HazardInfoState> ctx) {
+  DicoHttpRepository.doGetHazardInfoRequest(ctx.state.id).then((model) {
+//    if (model.code == 0) {
+//      ctx.dispatch(HazardInfoActionCreator.onGetHazardInfoAction(model));
+//    }
+    ctx.dispatch(HazardInfoActionCreator.onGetHazardInfoAction(model));
+  });
+}
 
 void _onSkipRectifyReport(Action action, Context<HazardInfoState> ctx) {
   Navigator.of(ctx.context).push(MaterialPageRoute(builder: (content) {

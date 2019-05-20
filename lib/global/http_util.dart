@@ -18,6 +18,7 @@ class HttpUtil {
   static const String TYPE_GET = 'get';
   static const String TYPE_POST = 'post';
   static const String TYPE_PUT = 'put';
+  static const String TYPE_DELETE = 'delete';
   Dio dio;
 
   ///一般一个应用中只有一个dio实例
@@ -101,6 +102,17 @@ class HttpUtil {
         data: data, options: options, onError: onError);
   } //
 
+  ///delete方法
+  Future delete(
+    String url, {
+    Map data,
+    Options options,
+    NetworkError onError,
+  }) async {
+    return _request(url, TYPE_DELETE,
+        data: data, options: options, onError: onError);
+  } //
+
   ///多部分上传（包括图片、参数）
   Future<String> onMultipartRequest(
       {List<Asset> assets, Map<String, String> map, String url}) async {
@@ -156,6 +168,9 @@ class HttpUtil {
         response = await dio.post(url, options: options, data: data);
       } else if (type == TYPE_PUT) {
         response = await dio.put(url, options: options, queryParameters: data);
+      } else if (type == TYPE_DELETE) {
+        response =
+            await dio.delete(url, queryParameters: data, options: options);
       }
       if (response.statusCode != 200) {
         var errorMsg = '服务器出错,状态码:${response.statusCode}';

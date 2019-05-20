@@ -29,19 +29,19 @@ class NoticeModel {
 
 class Data {
   String messageTitle;
-  String noticePersonId;
+  String messageId;
   String messageDate;
   String messageContent;
 
   Data(
       {this.messageTitle,
-      this.noticePersonId,
+      this.messageId,
       this.messageDate,
       this.messageContent});
 
   Data.fromJson(Map<String, dynamic> json) {
     messageTitle = json['messageTitle'];
-    noticePersonId = json['noticePersonId'];
+    messageId = json['messageId'];
     messageDate = json['messageDate'];
     messageContent = json['messageContent'];
   }
@@ -49,7 +49,7 @@ class Data {
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['messageTitle'] = this.messageTitle;
-    data['noticePersonId'] = this.noticePersonId;
+    data['messageId'] = this.messageId;
     data['messageDate'] = this.messageDate;
     data['messageContent'] = this.messageContent;
     return data;

@@ -53,23 +53,102 @@ Widget buildView(
                       padding: EdgeInsets.symmetric(
                           vertical: 15.0, horizontal: 10.0),
                       child: Text(
-                        '西安市高新区丈八一路汇鑫IBC B座1005,办公室墙面墙皮脱落',
+                        state.model != null &&
+                                state.model.data != null &&
+                                state.model.data.dangerRemark != null
+                            ? state.model.data.dangerRemark
+                            : '',
                         style: TextStyle(
                           fontSize: 14.0,
                           color: Colors.black,
                         ),
                       ),
                     ),
-                    _buildHazardInfoItem(title: '设备名称', content: '火灾报警控制器'),
-                    _buildHazardInfoItem(title: '设备编号', content: '001'),
-                    _buildHazardInfoItem(title: '等级', content: 'A级隐患'),
-                    _buildHazardInfoItem(title: '类型', content: '消防栓表面裂纹'),
-                    _buildHazardInfoItem(title: '整改人', content: '高大陆'),
-                    _buildHazardInfoItem(title: '整改部门', content: '缔科研发部'),
-                    _buildHazardInfoItem(title: '责任人', content: '贠拓'),
                     _buildHazardInfoItem(
-                        title: '责任部门', content: '陕西缔科网络科技有限公司'),
-                    _buildHazardInfoItem(title: '上报时间', content: '2019-06-23'),
+                        title: '设备名称',
+                        content: state.model != null &&
+                                state.model.data != null &&
+                                state.model.data.equipmentName != null
+                            ? state.model.data.equipmentName
+                            : ''),
+                    _buildHazardInfoItem(
+                        title: '设备编号',
+                        content: state.model != null &&
+                                state.model.data != null &&
+                                state.model.data.equipmentCode != null
+                            ? state.model.data.equipmentCode
+                            : ''),
+                    _buildHazardInfoItem(
+                        title: '隐患等级',
+                        content: state.model != null &&
+                                state.model.data != null &&
+                                state.model.data.dangerLevel != null
+                            ? state.model.data.dangerLevel
+                            : ''),
+                    _buildHazardInfoItem(
+                        title: '隐患类型',
+                        content: state.model != null &&
+                                state.model.data != null &&
+                                state.model.data.dangerType != null
+                            ? state.model.data.dangerType
+                            : ''),
+                    state.model != null &&
+                            state.model.data != null &&
+                            state.model.data.repairPerson != null
+                        ? _buildHazardInfoItem(
+                            title: '整改人',
+                            content: state.model.data.repairPerson)
+                        : Container(
+                            height: 0.0,
+                          ),
+                    state.model != null &&
+                            state.model.data != null &&
+                            state.model.data.repairOrganization != null
+                        ? _buildHazardInfoItem(
+                            title: '整改部门',
+                            content: state.model.data.repairOrganization)
+                        : Container(
+                            height: 0.0,
+                          ),
+                    state.model != null &&
+                            state.model.data != null &&
+                            state.model.data.reviewPerson != null
+                        ? _buildHazardInfoItem(
+                            title: '复查人',
+                            content: state.model.data.reviewPerson)
+                        : Container(
+                            height: 0.0,
+                          ),
+                    state.model != null &&
+                            state.model.data != null &&
+                            state.model.data.reviewOrganization != null
+                        ? _buildHazardInfoItem(
+                            title: '复查部门',
+                            content: state.model.data.reviewOrganization)
+                        : Container(
+                            height: 0.0,
+                          ),
+                    _buildHazardInfoItem(
+                        title: '责任人',
+                        content: state.model != null &&
+                                state.model.data != null &&
+                                state.model.data.liablePerson != null
+                            ? state.model.data.liablePerson
+                            : ''),
+                    _buildHazardInfoItem(
+                        title: '责任部门',
+                        content: state.model != null &&
+                                state.model.data != null &&
+                                state.model.data.liableOrganization != null
+                            ? state.model.data.liableOrganization
+                            : ''),
+                    _buildHazardInfoItem(
+                        title: '上报时间',
+                        content: state.model != null &&
+                                state.model.data != null &&
+                                state.model.data.createDate != null
+                            ? state.model.data.createDate
+                            : ''),
                     Container(
                       margin: EdgeInsets.only(top: 15.0),
                       child: Text(

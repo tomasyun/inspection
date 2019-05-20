@@ -2,6 +2,7 @@ import 'dart:convert' show json;
 
 import 'package:dio/dio.dart';
 import 'package:inspection/entity/filter_model.dart';
+import 'package:inspection/entity/hazard_info_model.dart';
 import 'package:inspection/entity/hazard_model.dart';
 import 'package:inspection/entity/home_model.dart';
 import 'package:inspection/entity/login_model.dart';
@@ -22,7 +23,7 @@ class DicoHttpRepository {
   static final String warningRecord = '';
   static final String repairRecord = '';
   static final String keepRecord = '';
-  static final String hazardInfo = '';
+  static final String hazardInfo = 'sms-interface/danger/findDnagerInfo';
   static final String rectifyInfo = 'sms-interface/danger/getRectifyInfo';
   static final String rectifyReport = '';
   static final String recheckInfo = '';
@@ -31,7 +32,7 @@ class DicoHttpRepository {
   static final String todos = 'sms-interface/todos/findToDoList';
   static final String updatePassword = 'sms-interface/todos/updatePass';
   static final String notice = 'sms-interface/message/findMessageList';
-  static final String deleteNotice = '';
+  static final String deleteNotice = 'sms-interface/message/deleteMessage';
   static final String inspectPlan = '';
   static final String minePlan = '';
   static final String aboutPlan = '';
@@ -50,11 +51,11 @@ class DicoHttpRepository {
       HomeModel.fromJson(await HttpUtil().get(home));
 
   /// 隐患上报
-  static Future hazardReportRequest(
+  static Future<Map<String, dynamic>> hazardReportRequest(
           List<UploadFileInfo> files, Map<String, String> map) async =>
       await HttpUtil().post(hazardReport,
           data: FormData.from(
-              {'smsDangerInfo': json.encode(map), 'files': files}));
+              {'smsDangerInfoStr': json.encode(map), 'file': files}));
 
   ///获取隐患等级
   static Future<FilterModel> doGetHazardLevelRequest() async =>
@@ -85,14 +86,14 @@ class DicoHttpRepository {
   }
 
   ///隐患管理
-  static Future<HazardModel> doGetHazardManageRequest(String research) async {
-    return HazardModel.fromJson(await HttpUtil().get(hazardManage + research));
-  }
+  static Future<HazardModel> doGetHazardManageRequest(String research) async =>
+      HazardModel.fromJson(await HttpUtil().get(hazardManage + research));
 
   ///隐患信息
-  static Future doGetHazardInfoRequest(String hazardId) async {
-    return await HttpUtil().get(hazardInfo);
-  }
+  static Future<HazardInfoModel> doGetHazardInfoRequest(
+          String hazardId) async =>
+      HazardInfoModel.fromJson(
+          await HttpUtil().get(hazardInfo + '?dangerId=$hazardId'));
 
   ///整改上报
   static Future doRectifyReport() async {
@@ -135,17 +136,15 @@ class DicoHttpRepository {
       TaskModel.fromJson(await HttpUtil().get(todos));
 
   ///通知消息
-  static Future<NoticeModel> doGetNotice() async {
-    return NoticeModel.fromJson(await HttpUtil().get(notice));
-  }
+  static Future<NoticeModel> doGetNotice() async =>
+      NoticeModel.fromJson(await HttpUtil().get(notice));
 
   /// 删除通知消息
-  static Future doDeleteNoticeRequest() async {
-    return await HttpUtil().get(deleteNotice);
-  }
+  static Future<Map<String, dynamic>> doDeleteNoticeRequest(
+          String noticeId) async =>
+      await HttpUtil().delete(deleteNotice + '?messageId=$noticeId');
 
   ///检查计划
-
   static Future doInspectPlanRequest() async {
     return await HttpUtil().get(inspectPlan);
   }

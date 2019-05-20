@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:inspection/entity/notice_model.dart';
 import 'package:inspection/notice/item/action.dart';
 
-Widget buildView(Data state, Dispatch dispatch, ViewService viewService) {
+Widget buildView(Data data, Dispatch dispatch, ViewService viewService) {
   return Container(
     margin: EdgeInsets.only(top: 10.0),
     child: ExpansionPanelList(
@@ -16,7 +16,7 @@ Widget buildView(Data state, Dispatch dispatch, ViewService viewService) {
                 padding: EdgeInsets.all(15.0),
                 child: Container(
                   child: Text(
-                    '${state.messageTitle}',
+                    '${data.messageTitle}',
                     style: TextStyle(fontSize: 14.0, color: Colors.black45),
                   ),
                 ),
@@ -30,7 +30,7 @@ Widget buildView(Data state, Dispatch dispatch, ViewService viewService) {
                 children: <Widget>[
                   Container(
                     child: Text(
-                      '${state.messageContent}',
+                      '${data.messageContent}',
                       style: TextStyle(fontSize: 14.0, color: Colors.black),
                     ),
                   ),
@@ -41,7 +41,7 @@ Widget buildView(Data state, Dispatch dispatch, ViewService viewService) {
                         Expanded(
                             child: GestureDetector(
                           onTap: () {
-                            dispatch(NoticeItemActionCreator.onDelete());
+                            dispatch(NoticeItemActionCreator.onDeleteAction());
                           },
                           child: Container(
                             padding: EdgeInsets.all(10.0),
@@ -54,7 +54,7 @@ Widget buildView(Data state, Dispatch dispatch, ViewService viewService) {
                         )),
                         Expanded(
                             child: Text(
-                          '${state.messageDate}',
+                          '${data.messageDate}',
                           textAlign: TextAlign.right,
                         ))
                       ],

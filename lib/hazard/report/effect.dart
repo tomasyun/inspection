@@ -38,13 +38,11 @@ void _onReport(Action action, Context<HazardReportState> ctx) async {
     AppCommons.showToast('请填写隐患具体位置');
   } else if (ctx.state.deviceNoController.text.isEmpty) {
     AppCommons.showToast('设备编号不能为空');
-  }
-//  else if (ctx.state.levelRst['name'] == '请选择') {
-//    AppCommons.showToast('请选择隐患等级');
-//  } else if (ctx.state.typeRst['name'] == '请选择') {
-//    AppCommons.showToast('请选择隐患类型');
-//  }
-  else if (ctx.state.decsController.text.isEmpty) {
+  } else if (ctx.state.levelRst['name'] == '请选择') {
+    AppCommons.showToast('请选择隐患等级');
+  } else if (ctx.state.typeRst['name'] == '请选择') {
+    AppCommons.showToast('请选择隐患类型');
+  } else if (ctx.state.decsController.text.isEmpty) {
     AppCommons.showToast('请填写隐患描述');
   } else if (ctx.state.assets.isEmpty) {
     AppCommons.showToast('请上传相关附件');
@@ -74,7 +72,13 @@ void _onReport(Action action, Context<HazardReportState> ctx) async {
             .add(UploadFileInfo.fromBytes(imageData, ctx.state.assets[i].name));
       }
     }
-    DicoHttpRepository.hazardReportRequest(files, map);
+    DicoHttpRepository.hazardReportRequest(files, map).then((map) {
+      if (map['code'] == 0) {
+        AppCommons.showToast('上传成功');
+      } else {
+        AppCommons.showToast(map['msg']);
+      }
+    });
   }
 }
 

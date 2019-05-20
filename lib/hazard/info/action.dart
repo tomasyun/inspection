@@ -1,4 +1,5 @@
 import 'package:fish_redux/fish_redux.dart';
+import 'package:inspection/entity/hazard_info_model.dart';
 
 //TODO replace with your own action
 enum HazardInfoAction {
@@ -7,31 +8,36 @@ enum HazardInfoAction {
   skipRectifyReport,
   skipRectifyInfo,
   skipRecheckReport,
-  skipHazardAllInfo
+  skipHazardAllInfo,
+  info,
 }
 
 class HazardInfoActionCreator {
   static Action onAction() {
-    return const Action(HazardInfoAction.action);
+    return Action(HazardInfoAction.action);
+  }
+
+  static Action onGetHazardInfoAction(HazardInfoModel model) {
+    return Action(HazardInfoAction.info, payload: model);
   }
 
   static Action onSkipRectifyInfo() {
-    return const Action(HazardInfoAction.skipRectifyInfo);
+    return Action(HazardInfoAction.skipRectifyInfo);
   }
 
   static Action onSkipRectifyReport() {
-    return const Action(HazardInfoAction.skipRectifyReport);
+    return Action(HazardInfoAction.skipRectifyReport);
   }
 
   static Action onSkipRectifyCostApply() {
-    return const Action(HazardInfoAction.skipRectifyCostApply);
+    return Action(HazardInfoAction.skipRectifyCostApply);
   }
 
   static Action onSkipRecheckReport() {
-    return const Action(HazardInfoAction.skipRecheckReport);
+    return Action(HazardInfoAction.skipRecheckReport);
   }
 
   static Action onSkipHazardAllInfo() {
-    return const Action(HazardInfoAction.skipHazardAllInfo);
+    return Action(HazardInfoAction.skipHazardAllInfo);
   }
 }
