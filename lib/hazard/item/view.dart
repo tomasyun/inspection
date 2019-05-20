@@ -5,6 +5,7 @@ import 'package:inspection/hazard/info/page.dart';
 
 Widget buildView(Data data, Dispatch dispatch, ViewService viewService) {
   Map<String, dynamic> map = Map();
+  map['id'] = data.dangerId;
   if (data.todoType == '0') {
     map['state'] = '待审批';
   } else if (data.todoType == '1') {

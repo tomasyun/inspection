@@ -34,6 +34,7 @@ void _onLogin(Action action, Context<LoginState> ctx) {
       sp.putString('name', '${model.data.name}');
       sp.putString('company', '${model.data.company}');
       sp.putString('avatar', '${model.data.icon}');
+      sp.putInt('isLoginOk', 1);
       Navigator.of(ctx.context).pushAndRemoveUntil(
           MaterialPageRoute(builder: (context) => IndexPage().buildPage(null)),
           (route) => route == null);

@@ -6,6 +6,7 @@ import 'package:inspection/entity/hazard_model.dart';
 import 'package:inspection/entity/home_model.dart';
 import 'package:inspection/entity/login_model.dart';
 import 'package:inspection/entity/notice_model.dart';
+import 'package:inspection/entity/rectify_info_model.dart';
 import 'package:inspection/entity/task_model.dart';
 import 'package:inspection/entity/user_model.dart';
 import 'package:inspection/global/http_util.dart';
@@ -23,11 +24,17 @@ class DicoHttpRepository {
   static final String keepRecord = '';
   static final String hazardInfo = '';
   static final String rectifyInfo = 'sms-interface/danger/getRectifyInfo';
+  static final String rectifyReport = '';
   static final String recheckInfo = '';
+  static final String recheckReport = '';
   static final String userInfo = 'sms-interface/todos/getCurrentUserInfo';
   static final String todos = 'sms-interface/todos/findToDoList';
   static final String updatePassword = 'sms-interface/todos/updatePass';
   static final String notice = 'sms-interface/message/findMessageList';
+  static final String deleteNotice = '';
+  static final String inspectPlan = '';
+  static final String minePlan = '';
+  static final String aboutPlan = '';
 
   ///设备扫码
   static Future scanQRCodeRequest(String url) async {
@@ -88,13 +95,17 @@ class DicoHttpRepository {
   }
 
   ///整改上报
+  static Future doRectifyReport() async {
+    return await HttpUtil().get(rectifyReport);
+  }
 
   ///整改费用申请
 
   ///整改信息
-  static Future doGetRectifyInfoRequest(String hazardId) async {
-    return await HttpUtil().get(rectifyInfo);
-  }
+  static Future<RectifyInfoModel> doGetRectifyInfoRequest(
+          String hazardId) async =>
+      RectifyInfoModel.fromJson(
+          await HttpUtil().get(rectifyInfo + '?dangerId=$hazardId'));
 
   ///复查信息
   static Future doGetRecheckInfoRequest(String hazardId) async {
@@ -102,6 +113,9 @@ class DicoHttpRepository {
   }
 
   ///复查上报
+  static Future doRecheckReport() async {
+    return await HttpUtil().get(recheckReport);
+  }
 
   ///个人信息
   static Future<UserModel> doGetUserInfoRequest() async {
@@ -126,10 +140,23 @@ class DicoHttpRepository {
   }
 
   /// 删除通知消息
+  static Future doDeleteNoticeRequest() async {
+    return await HttpUtil().get(deleteNotice);
+  }
 
   ///检查计划
 
+  static Future doInspectPlanRequest() async {
+    return await HttpUtil().get(inspectPlan);
+  }
+
   ///我的计划
+  static Future doMinePlanRequest() async {
+    return await HttpUtil().get(minePlan);
+  }
 
   ///关于计划
+  static Future doAboutPlanRequest() async {
+    return await HttpUtil().get(aboutPlan);
+  }
 }

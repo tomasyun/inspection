@@ -27,6 +27,4 @@ void _onUpgradeVersion(Action action, Context<SettingState> ctx) {
   AppCommons.showToast('当前版本为最新版本');
 }
 
-void _onLogout(Action action, Context<SettingState> ctx) {
-  AppCommons.showToast('暂未实现');
-}
+void _onLogout(Action action, Context<SettingState> ctx) async {}

@@ -65,7 +65,7 @@ Widget buildView(
                     _buildHazardInfoItem(title: '等级', content: 'A级隐患'),
                     _buildHazardInfoItem(title: '类型', content: '消防栓表面裂纹'),
                     _buildHazardInfoItem(title: '整改人', content: '高大陆'),
-                    _buildHazardInfoItem(title: '整改类型', content: '限期整改'),
+                    _buildHazardInfoItem(title: '整改部门', content: '缔科研发部'),
                     _buildHazardInfoItem(title: '责任人', content: '贠拓'),
                     _buildHazardInfoItem(
                         title: '责任部门', content: '陕西缔科网络科技有限公司'),

@@ -33,12 +33,24 @@ Widget buildView(
           Container(
             padding: EdgeInsets.all(15.0),
             color: Colors.white,
+            width: double.infinity,
             child: Text(
-              '西安市高新区丈八一路汇鑫IBC B座1005,办公室墙面重新打底粉刷',
+              state.model != null &&
+                      state.model.data != null &&
+                      state.model.data.repairResult != null
+                  ? state.model.data.repairResult
+                  : '',
               style: TextStyle(
                   fontSize: 14.0, color: Colors.black, letterSpacing: 2),
             ),
           ),
+          _buildHazardInfoItem(
+              title: '整改意见',
+              content: state.model != null &&
+                      state.model.data != null &&
+                      state.model.data.repairOpinion != null
+                  ? state.model.data.repairOpinion
+                  : ''),
           Container(
             padding: EdgeInsets.all(15.0),
             child: Text(
@@ -56,8 +68,20 @@ Widget buildView(
             constraints:
                 BoxConstraints.tightFor(width: double.infinity, height: 130.0),
           ),
-          _buildHazardInfoItem(title: '整改人', content: '高大陆'),
-          _buildHazardInfoItem(title: '负责部门', content: '陕西缔科网络科技有限公司'),
+          _buildHazardInfoItem(
+              title: '整改人',
+              content: state.model != null &&
+                      state.model.data != null &&
+                      state.model.data.repairUser != null
+                  ? state.model.data.repairUser
+                  : ''),
+          _buildHazardInfoItem(
+              title: '整改部门',
+              content: state.model != null &&
+                      state.model.data != null &&
+                      state.model.data.repairOrganization != null
+                  ? state.model.data.repairOrganization
+                  : ''),
         ],
       ),
     ),

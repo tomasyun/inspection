@@ -29,8 +29,10 @@ void _onSkipRectifyReport(Action action, Context<HazardInfoState> ctx) {
 }
 
 void _onSkipRectifyInfo(Action action, Context<HazardInfoState> ctx) {
+  Map<String, dynamic> map = Map();
+  map['id'] = ctx.state.id;
   Navigator.of(ctx.context).push(MaterialPageRoute(builder: (content) {
-    return RectifyInfoPage().buildPage(null);
+    return RectifyInfoPage().buildPage(map);
   }));
 }
 

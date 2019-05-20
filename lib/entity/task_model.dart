@@ -73,6 +73,7 @@ class Rectify {
   String equipmentCode;
   String dangerLevel;
   String equipmentName;
+  String dangerId;
 
   Rectify(
       {this.dangerRemark,
@@ -81,7 +82,8 @@ class Rectify {
       this.todoType,
       this.equipmentCode,
       this.dangerLevel,
-      this.equipmentName});
+      this.equipmentName,
+      this.dangerId});
 
   Rectify.fromJson(Map<String, dynamic> json) {
     dangerRemark = json['dangerRemark'];
@@ -91,6 +93,7 @@ class Rectify {
     equipmentCode = json['equipmentCode'];
     dangerLevel = json['dangerLevel'];
     equipmentName = json['equipmentName'];
+    dangerId = json['dangerId'];
   }
 
   Map<String, dynamic> toJson() {
@@ -102,6 +105,7 @@ class Rectify {
     data['equipmentCode'] = this.equipmentCode;
     data['dangerLevel'] = this.dangerLevel;
     data['equipmentName'] = this.equipmentName;
+    data['dangerId'] = this.dangerId;
     return data;
   }
 }
@@ -114,6 +118,7 @@ class Review {
   String equipmentCode;
   String dangerLevel;
   String equipmentName;
+  String dangerId;
 
   Review(
       {this.dangerRemark,
@@ -122,7 +127,8 @@ class Review {
       this.todoType,
       this.equipmentCode,
       this.dangerLevel,
-      this.equipmentName});
+      this.equipmentName,
+      this.dangerId});
 
   Review.fromJson(Map<String, dynamic> json) {
     dangerRemark = json['dangerRemark'];
@@ -132,6 +138,7 @@ class Review {
     equipmentCode = json['equipmentCode'];
     dangerLevel = json['dangerLevel'];
     equipmentName = json['equipmentName'];
+    dangerId = json['dangerId'];
   }
 
   Map<String, dynamic> toJson() {
@@ -143,6 +150,7 @@ class Review {
     data['equipmentCode'] = this.equipmentCode;
     data['dangerLevel'] = this.dangerLevel;
     data['equipmentName'] = this.equipmentName;
+    data['dangerId'] = this.dangerId;
     return data;
   }
 }
