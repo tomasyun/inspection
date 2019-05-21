@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:fish_redux/fish_redux.dart';
 import 'package:inspection/global/app_common.dart';
 import 'package:inspection/global/dico_http.dart';
@@ -22,9 +23,9 @@ void _onUpdate(Action action, Context<UpdatePasswordState> ctx) {
   } else if (ctx.state.againPasswordController.text.isEmpty) {
     AppCommons.showToast('请再次输入新密码');
   } else {
-    DicoHttpRepository.doUpdatePasswordRequest(
-            ctx.state.newPasswordController.text,
-            ctx.state.oldPasswordController.text)
+    FormData data =
+    FormData.from({'newPassword': ctx.state.newPasswordController.text, 'oldPassword': ctx.state.oldPasswordController.text});
+    DicoHttpRepository.doUpdatePasswordRequest(data)
         .then((value) {
       AppCommons.showToast(value['msg']);
     });

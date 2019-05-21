@@ -7,7 +7,7 @@ import 'package:inspection/filter/page.dart';
 import 'package:inspection/global/app_common.dart';
 import 'package:inspection/global/dico_http.dart';
 import 'package:multi_image_picker/multi_image_picker.dart';
-
+import 'dart:convert' show json;
 import 'action.dart';
 import 'state.dart';
 
@@ -72,7 +72,9 @@ void _onReport(Action action, Context<HazardReportState> ctx) async {
             .add(UploadFileInfo.fromBytes(imageData, ctx.state.assets[i].name));
       }
     }
-    DicoHttpRepository.hazardReportRequest(files, map).then((map) {
+    FormData data=FormData.from(
+        {'smsDangerInfoStr': json.encode(map), 'file': files});
+    DicoHttpRepository.hazardReportRequest(data).then((map) {
       if (map['code'] == 0) {
         AppCommons.showToast('上传成功');
       } else {

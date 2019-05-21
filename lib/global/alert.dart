@@ -22,7 +22,7 @@ class AlertGlobal {
         DialogButton(
           height: 40.0,
           child: Text(
-            "确定",
+            '确定',
             style: TextStyle(fontSize: 14.0, color: Colors.white),
           ),
           color: Colors.blue[600],
@@ -31,7 +31,7 @@ class AlertGlobal {
         DialogButton(
           height: 40.0,
           child: Text(
-            "取消",
+            '取消',
             style: TextStyle(fontSize: 14.0, color: Colors.white),
           ),
           color: Colors.red,

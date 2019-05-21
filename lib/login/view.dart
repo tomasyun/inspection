@@ -16,7 +16,7 @@ Widget buildView(LoginState state, Dispatch dispatch, ViewService viewService) {
       backgroundColor: Colors.blue,
     ),
     body: Container(
-      margin: EdgeInsets.symmetric(horizontal: 30, vertical: 30.0),
+      margin: EdgeInsets.only(left: 30.0, right: 30.0, top: 150.0),
       child: Column(
         children: <Widget>[
           Container(

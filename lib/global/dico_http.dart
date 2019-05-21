@@ -1,5 +1,3 @@
-import 'dart:convert' show json;
-
 import 'package:dio/dio.dart';
 import 'package:inspection/entity/filter_model.dart';
 import 'package:inspection/entity/hazard_info_model.dart';
@@ -37,11 +35,6 @@ class DicoHttpRepository {
   static final String minePlan = '';
   static final String aboutPlan = '';
 
-  ///设备扫码
-  static Future scanQRCodeRequest(String url) async {
-    return await HttpUtil().get(url);
-  }
-
   ///登录
   static Future<LoginModel> userLogin(Map<String, String> map) async =>
       LoginModel.fromJson(await HttpUtil().post(login, data: map));
@@ -52,10 +45,8 @@ class DicoHttpRepository {
 
   /// 隐患上报
   static Future<Map<String, dynamic>> hazardReportRequest(
-          List<UploadFileInfo> files, Map<String, String> map) async =>
-      await HttpUtil().post(hazardReport,
-          data: FormData.from(
-              {'smsDangerInfoStr': json.encode(map), 'file': files}));
+          FormData data) async =>
+      await HttpUtil().post(hazardReport, data: data);
 
   ///获取隐患等级
   static Future<FilterModel> doGetHazardLevelRequest() async =>
@@ -64,6 +55,56 @@ class DicoHttpRepository {
   ///获取隐患类型
   static Future<FilterModel> doGetHazardTypeRequest() async =>
       FilterModel.fromJson(await HttpUtil().get(hazardType));
+
+  ///隐患管理
+  static Future<HazardModel> doGetHazardManageRequest(String research) async =>
+      HazardModel.fromJson(await HttpUtil().get(hazardManage + research));
+
+  ///隐患信息
+  static Future<HazardInfoModel> doGetHazardInfoRequest(
+          String hazardId) async =>
+      HazardInfoModel.fromJson(
+          await HttpUtil().get(hazardInfo + '?dangerId=$hazardId'));
+
+  ///整改费用申请(废弃)
+
+  ///整改信息
+  static Future<RectifyInfoModel> doGetRectifyInfoRequest(
+          String hazardId) async =>
+      RectifyInfoModel.fromJson(
+          await HttpUtil().get(rectifyInfo + '?dangerId=$hazardId'));
+
+  ///个人信息
+  static Future<UserModel> doGetUserInfoRequest() async =>
+      UserModel.fromJson(await HttpUtil().get(userInfo));
+
+  ///密码修改
+  static Future<Map<String, dynamic>> doUpdatePasswordRequest(
+          FormData data) async =>
+      await HttpUtil().post(updatePassword, data: data);
+
+  ///代办任务
+  static Future<TaskModel> doGetTodosRequest() async =>
+      TaskModel.fromJson(await HttpUtil().get(todos));
+
+  ///通知消息
+  static Future<NoticeModel> doGetNotice() async =>
+      NoticeModel.fromJson(await HttpUtil().get(notice));
+
+  /// 删除通知消息
+  static Future<Map<String, dynamic>> doDeleteNoticeRequest(
+          String noticeId) async =>
+      await HttpUtil().delete(deleteNotice + '?messageId=$noticeId');
+
+  ///设备扫码
+  static Future scanQRCodeRequest(String url) async {
+    return await HttpUtil().get(url);
+  }
+
+  ///复查信息
+  static Future doGetRecheckInfoRequest(String hazardId) async {
+    return await HttpUtil().get(recheckInfo);
+  }
 
   ///维修上报
   static Future repairReportRequest(Map<String, String> map) async {
@@ -85,64 +126,15 @@ class DicoHttpRepository {
     return await HttpUtil().get(keepRecord);
   }
 
-  ///隐患管理
-  static Future<HazardModel> doGetHazardManageRequest(String research) async =>
-      HazardModel.fromJson(await HttpUtil().get(hazardManage + research));
-
-  ///隐患信息
-  static Future<HazardInfoModel> doGetHazardInfoRequest(
-          String hazardId) async =>
-      HazardInfoModel.fromJson(
-          await HttpUtil().get(hazardInfo + '?dangerId=$hazardId'));
-
   ///整改上报
   static Future doRectifyReport() async {
     return await HttpUtil().get(rectifyReport);
-  }
-
-  ///整改费用申请
-
-  ///整改信息
-  static Future<RectifyInfoModel> doGetRectifyInfoRequest(
-          String hazardId) async =>
-      RectifyInfoModel.fromJson(
-          await HttpUtil().get(rectifyInfo + '?dangerId=$hazardId'));
-
-  ///复查信息
-  static Future doGetRecheckInfoRequest(String hazardId) async {
-    return await HttpUtil().get(recheckInfo);
   }
 
   ///复查上报
   static Future doRecheckReport() async {
     return await HttpUtil().get(recheckReport);
   }
-
-  ///个人信息
-  static Future<UserModel> doGetUserInfoRequest() async {
-    return UserModel.fromJson(await HttpUtil().get(userInfo));
-  }
-
-  ///密码修改
-  static Future<Map<String, dynamic>> doUpdatePasswordRequest(
-      String newPassword, String oldPassword) async {
-    FormData data =
-        FormData.from({'newPassword': newPassword, 'oldPassword': oldPassword});
-    return await HttpUtil().post(updatePassword, data: data);
-  }
-
-  ///代办任务
-  static Future<TaskModel> doGetTodosRequest() async =>
-      TaskModel.fromJson(await HttpUtil().get(todos));
-
-  ///通知消息
-  static Future<NoticeModel> doGetNotice() async =>
-      NoticeModel.fromJson(await HttpUtil().get(notice));
-
-  /// 删除通知消息
-  static Future<Map<String, dynamic>> doDeleteNoticeRequest(
-          String noticeId) async =>
-      await HttpUtil().delete(deleteNotice + '?messageId=$noticeId');
 
   ///检查计划
   static Future doInspectPlanRequest() async {
