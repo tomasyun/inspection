@@ -1,8 +1,8 @@
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart';
 import 'package:inspection/hazard/review/fragment/hazard/page.dart';
+import 'package:inspection/hazard/review/fragment/recheck/page.dart';
 import 'package:inspection/hazard/review/fragment/rectify/page.dart';
-import 'package:inspection/hazard/review/fragment/review/page.dart';
 
 import 'state.dart';
 
@@ -12,6 +12,8 @@ Widget buildView(
 }
 
 class ReviewPageWidget extends StatefulWidget {
+  ReviewState state;
+
   @override
   State<StatefulWidget> createState() => ReviewPageState();
 }
@@ -56,15 +58,22 @@ class ReviewPageState extends State<ReviewPageWidget>
       ),
       body: Center(
         child: TabBarView(
-          children: <Widget>[
-            HazardInfoFragPage().buildPage(null),
-            RectifyInfoFragPage().buildPage(null),
-            ReviewInfoFragPage().buildPage(null)
-          ],
+          children: _buildPages(widget.state.id != null ? widget.state.id : ''),
           controller: _controller,
           physics: NeverScrollableScrollPhysics(),
         ),
       ),
     );
   }
+}
+
+List<Widget> _buildPages(String id) {
+  Map<String, dynamic> map = Map();
+  map['id'] = id;
+  List<Widget> pages = [
+    HazardInfoFragPage().buildPage(map),
+    RectifyInfoFragPage().buildPage(map),
+    RecheckInfoFragPage().buildPage(map)
+  ];
+  return pages;
 }

@@ -1,3 +1,16 @@
+/**
+ * {
+    "code": 0,
+    "msg": "成功",
+    "data": [{
+    "messageId": "40288a9f6ab0743c016ab07a17f60000",
+    "messageTitle": "习近平的一天如何度过？",
+    "messageDate": "2019-05-13",
+    "messageContent": "7987987"
+    }]
+    }
+ */
+
 class NoticeModel {
   int code;
   String msg;

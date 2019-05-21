@@ -19,24 +19,27 @@ Future _onDeleteAction(Action action, Context<Data> ctx) async {
       context: ctx.context,
       builder: (BuildContext buildContext) {
         return AlertDialog(
-          title: Text('Are you sure to delete?'),
+          title: Text(
+            '确定删除此条消息?',
+            style: TextStyle(fontSize: 16.0),
+          ),
           actions: <Widget>[
             GestureDetector(
               child: const Text(
-                'Cancel',
-                style: TextStyle(fontSize: 16.0),
+                '取消',
+                style: TextStyle(fontSize: 15.0),
               ),
               onTap: () => Navigator.of(buildContext).pop(),
             ),
             GestureDetector(
-              child: const Text('Yes', style: TextStyle(fontSize: 16.0)),
-              onTap: () => Navigator.of(buildContext).pop('Yes'),
+              child: const Text('确定', style: TextStyle(fontSize: 15.0)),
+              onTap: () => Navigator.of(buildContext).pop('确定'),
             )
           ],
         );
       });
 
-  if (select == 'Yes') {
+  if (select == '确定') {
     DicoHttpRepository.doDeleteNoticeRequest(ctx.state.messageId).then((map) {
       if (map['code'] == 0) {
         DicoHttpRepository.doGetNotice().then((model) {

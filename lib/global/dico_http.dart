@@ -17,14 +17,14 @@ class DicoHttpRepository {
   static final String hazardLevel = 'sms-interface/danger/findDangerLevel';
   static final String hazardType = 'sms-interface/danger/findDangerType';
   static final String hazardManage = 'sms-interface/danger/findDnagerList';
-  static final String repairReport = '';
+  static final String repairReport = 'sms-interface/equipment/saveRepairInfo';
   static final String warningRecord = '';
   static final String repairRecord = '';
   static final String keepRecord = '';
   static final String hazardInfo = 'sms-interface/danger/findDnagerInfo';
   static final String rectifyInfo = 'sms-interface/danger/getRectifyInfo';
   static final String rectifyReport = '';
-  static final String recheckInfo = '';
+  static final String recheckInfo = 'sms-interface/danger/getReviewInfo';
   static final String recheckReport = '';
   static final String userInfo = 'sms-interface/todos/getCurrentUserInfo';
   static final String todos = 'sms-interface/todos/findToDoList';
@@ -34,6 +34,11 @@ class DicoHttpRepository {
   static final String inspectPlan = '';
   static final String minePlan = '';
   static final String aboutPlan = '';
+  static final String depart =
+      'sms-interface/organization/findOrganizationList';
+  static final String pic =
+      'sms-interface/organization/findSysUserByOrganizationId';
+  static final String repairMan = 'sms-interface/organization/findSysUserAll';
 
   ///登录
   static Future<LoginModel> userLogin(Map<String, String> map) async =>
@@ -96,6 +101,19 @@ class DicoHttpRepository {
           String noticeId) async =>
       await HttpUtil().delete(deleteNotice + '?messageId=$noticeId');
 
+  ///获取责任部门
+  static Future<FilterModel> doGetDepartsRequest() async =>
+      FilterModel.fromJson(await HttpUtil().get(depart));
+
+  ///获取责任人
+  static Future<FilterModel> doGetPicRequest(String departId) async =>
+      FilterModel.fromJson(
+          await HttpUtil().get(pic + '?organizationId=$departId'));
+
+  ///获取维修人
+  static Future<FilterModel> doGetRepairManRequest() async =>
+      FilterModel.fromJson(await HttpUtil().get(repairMan));
+
   ///设备扫码
   static Future scanQRCodeRequest(String url) async {
     return await HttpUtil().get(url);
@@ -103,11 +121,12 @@ class DicoHttpRepository {
 
   ///复查信息
   static Future doGetRecheckInfoRequest(String hazardId) async {
-    return await HttpUtil().get(recheckInfo);
+    return await HttpUtil().get(recheckInfo + '?dangerId=$hazardId');
   }
 
   ///维修上报
-  static Future repairReportRequest(Map<String, String> map) async {
+  static Future<Map<String, dynamic>> repairReportRequest(
+      Map<String, String> map) async {
     return await HttpUtil().post(repairReport, data: map);
   }
 

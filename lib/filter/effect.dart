@@ -21,6 +21,18 @@ void _init(Action action, Context<FilterState> ctx) {
     DicoHttpRepository.doGetHazardTypeRequest().then((model) {
       ctx.dispatch(FilterActionCreator.onGetFilterModel(model));
     });
+  } else if (ctx.state.flag == 'depart') {
+    DicoHttpRepository.doGetDepartsRequest().then((model) {
+      ctx.dispatch(FilterActionCreator.onGetFilterModel(model));
+    });
+  } else if (ctx.state.flag == 'pic') {
+    DicoHttpRepository.doGetPicRequest(ctx.state.departId).then((model) {
+      ctx.dispatch(FilterActionCreator.onGetFilterModel(model));
+    });
+  } else if (ctx.state.flag == 'repairman') {
+    DicoHttpRepository.doGetRepairManRequest().then((model) {
+      ctx.dispatch(FilterActionCreator.onGetFilterModel(model));
+    });
   }
 }
 

@@ -5,7 +5,6 @@ class HazardInfoState implements Cloneable<HazardInfoState> {
   String state;
   String id;
   HazardInfoModel model;
-
   @override
   HazardInfoState clone() {
     return HazardInfoState()

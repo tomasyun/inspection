@@ -18,7 +18,7 @@ class FilterActionCreator {
     return Action(FilterAction.model, payload: levels);
   }
 
-  static Action onGetDeparts(List<String> departs) {
+  static Action onGetDeparts(FilterModel departs) {
     return Action(FilterAction.departs, payload: departs);
   }
 

@@ -9,8 +9,6 @@ Reducer<FilterState> buildReducer() {
       FilterAction.action: _onAction,
       FilterAction.model: _onGetFilterModel,
       FilterAction.context: _onInitContext,
-      FilterAction.departs: _onGetDeparts,
-      FilterAction.applicants: _onGetApplicants
     },
   );
 }
@@ -22,19 +20,7 @@ FilterState _onAction(FilterState state, Action action) {
 
 FilterState _onGetFilterModel(FilterState state, Action action) {
   FilterState newState = state.clone();
-  newState.filterModel = action.payload;
-  return newState;
-}
-
-FilterState _onGetDeparts(FilterState state, Action action) {
-  FilterState newState = state.clone();
-  newState.departs = action.payload;
-  return newState;
-}
-
-FilterState _onGetApplicants(FilterState state, Action action) {
-  FilterState newState = state.clone();
-  newState.applicants = action.payload;
+  newState.model = action.payload;
   return newState;
 }
 

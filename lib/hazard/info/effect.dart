@@ -60,7 +60,9 @@ void _onSkipRecheckReport(Action action, Context<HazardInfoState> ctx) {
 }
 
 void _onSkipHazardAllInfo(Action action, Context<HazardInfoState> ctx) {
+  Map<String, dynamic> map = Map();
+  map['id'] = ctx.state.id;
   Navigator.of(ctx.context).push(MaterialPageRoute(builder: (content) {
-    return ReviewPage().buildPage(null);
+    return ReviewPage().buildPage(map);
   }));
 }

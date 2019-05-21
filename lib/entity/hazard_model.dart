@@ -1,3 +1,38 @@
+/**
+ * {
+    "code": 0,
+    "msg": "成功",
+    "data": [{
+    "dangerRemark": "隐患描述111",
+    "dangerAddress": "汇鑫IBC B座1050",
+    "dangerType": "消防隐患",
+    "todoType": "1",
+    "equipmentCode": "001",
+    "dangerLevel": "重大隐患",
+    "equipmentName": "灭火器001",
+    "dangerId": "3"
+    }, {
+    "dangerRemark": "隐患描述",
+    "dangerAddress": "汇鑫IBC B座1050",
+    "dangerType": "消防隐患",
+    "todoType": "1",
+    "equipmentCode": "001",
+    "dangerLevel": "重大隐患",
+    "equipmentName": "灭火器001",
+    "dangerId": "1"
+    }, {
+    "dangerRemark": "隐患描述",
+    "dangerAddress": "汇鑫IBC B座1050",
+    "dangerType": "消防隐患",
+    "todoType": "2",
+    "equipmentCode": "001",
+    "dangerLevel": "一般隐患",
+    "equipmentName": "灭火器001",
+    "dangerId": "2"
+    }]
+    }
+ */
+
 class HazardModel {
   int code;
   String msg;

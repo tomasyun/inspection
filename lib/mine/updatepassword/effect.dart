@@ -23,10 +23,11 @@ void _onUpdate(Action action, Context<UpdatePasswordState> ctx) {
   } else if (ctx.state.againPasswordController.text.isEmpty) {
     AppCommons.showToast('请再次输入新密码');
   } else {
-    FormData data =
-    FormData.from({'newPassword': ctx.state.newPasswordController.text, 'oldPassword': ctx.state.oldPasswordController.text});
-    DicoHttpRepository.doUpdatePasswordRequest(data)
-        .then((value) {
+    FormData data = FormData.from({
+      'newPassword': ctx.state.newPasswordController.text,
+      'oldPassword': ctx.state.oldPasswordController.text
+    });
+    DicoHttpRepository.doUpdatePasswordRequest(data).then((value) {
       AppCommons.showToast(value['msg']);
     });
   }

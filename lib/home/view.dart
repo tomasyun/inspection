@@ -159,7 +159,7 @@ Widget buildView(HomeState state, Dispatch dispatch, ViewService viewService) {
                       dispatch(HomeActionCreator.onBreakDownReport());
                     },
                     child: _buildContainerItem(
-                        asset: 'images/ic_repair_report.png', title: '维修上报'),
+                        asset: 'images/ic_repair_report.png', title: '新增维修记录'),
                   )
                 ],
               ),

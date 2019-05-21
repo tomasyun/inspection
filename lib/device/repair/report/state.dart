@@ -4,25 +4,33 @@ import 'package:flutter/material.dart';
 class ReportState implements Cloneable<ReportState> {
   TextEditingController descController;
   TextEditingController deviceNoController;
-
-  String departRst;
-  String applicantRst;
+  TextEditingController deviceNameController;
+  Map<String, String> departRst;
+  Map<String, String> picRst;
+  Map<String, String> repairManRst;
+  String repairDateRst;
 
   @override
   ReportState clone() {
     return ReportState()
       ..descController = descController
       ..deviceNoController = deviceNoController
+      ..deviceNameController = deviceNameController
       ..departRst = departRst
-      ..applicantRst = applicantRst;
+      ..picRst = picRst
+      ..repairManRst = repairManRst
+      ..repairDateRst = repairDateRst;
   }
 }
 
 ReportState initState(Map<String, dynamic> args) {
   ReportState state = ReportState();
   state.descController = TextEditingController();
+  state.deviceNameController = TextEditingController();
   state.deviceNoController = TextEditingController();
-  state.departRst = '请选择';
-  state.applicantRst = '请选择';
+  state.departRst = {'name': '请选择', 'id': ''};
+  state.picRst = {'name': '请选择', 'id': ''};
+  state.repairManRst = {'name': '请选择', 'id': ''};
+  state.repairDateRst = '请选择';
   return state;
 }

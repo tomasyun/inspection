@@ -76,39 +76,22 @@ List<Widget> _buildFlowData({FilterState state, List<Data> list}) {
 }
 
 Widget _buildFlow({FilterState state}) {
-  if (state.flag == 'level') {
-    return Flow(
-      delegate: FilterFlowDelegate(EdgeInsets.all(5.0)),
-      children: _buildFlowData(
-          state: state,
-          list: state.filterModel != null &&
-                  state.filterModel.data != null &&
-                  state.filterModel.data.isNotEmpty
-              ? state.filterModel.data
-              : []),
-    );
-  } else if (state.flag == 'type') {
-    return Flow(
-      delegate: FilterFlowDelegate(EdgeInsets.all(5.0)),
-      children: _buildFlowData(
-          state: state,
-          list: state.filterModel != null &&
-                  state.filterModel.data != null &&
-                  state.filterModel.data.isNotEmpty
-              ? state.filterModel.data
-              : []),
-    );
-  } else if (state.flag == 'depart') {
-    return Flow(
-      delegate: FilterFlowDelegate(EdgeInsets.all(5.0)),
-//      children: _buildFlowData(state: state, list: state.departs),
-    );
-  } else if (state.flag == 'applicant') {
-    return Flow(
-      delegate: FilterFlowDelegate(EdgeInsets.all(5.0)),
-//      children: _buildFlowData(state: state, list: state.applicants),
-    );
+  if (state.flag != null && state.flag.isNotEmpty) {
+    return _showFlowData(state);
   } else {
     return stateView.blackPage();
   }
+}
+
+Widget _showFlowData(FilterState state) {
+  return Flow(
+    delegate: FilterFlowDelegate(EdgeInsets.all(5.0)),
+    children: _buildFlowData(
+        state: state,
+        list: state.model != null &&
+                state.model.data != null &&
+                state.model.data.isNotEmpty
+            ? state.model.data
+            : []),
+  );
 }

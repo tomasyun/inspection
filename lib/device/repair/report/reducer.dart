@@ -8,7 +8,9 @@ Reducer<ReportState> buildReducer() {
     <Object, Reducer<ReportState>>{
       ReportAction.action: _onAction,
       ReportAction.departRst: _onGetDepartRst,
-      ReportAction.applicantRst: _onGetApplicantRst
+      ReportAction.picRst: _onGetPicRst,
+      ReportAction.repairmanRst: _onGetRepairManRst,
+      ReportAction.repairDateRst: _onGetRepairDateRst,
     },
   );
 }
@@ -18,14 +20,26 @@ ReportState _onAction(ReportState state, Action action) {
   return newState;
 }
 
+ReportState _onGetRepairDateRst(ReportState state, Action action) {
+  ReportState newState = state.clone();
+  newState.repairDateRst = action.payload;
+  return newState;
+}
+
 ReportState _onGetDepartRst(ReportState state, Action action) {
   ReportState newState = state.clone();
   newState.departRst = action.payload;
   return newState;
 }
 
-ReportState _onGetApplicantRst(ReportState state, Action action) {
+ReportState _onGetPicRst(ReportState state, Action action) {
   ReportState newState = state.clone();
-  newState.applicantRst = action.payload;
+  newState.picRst = action.payload;
+  return newState;
+}
+
+ReportState _onGetRepairManRst(ReportState state, Action action) {
+  ReportState newState = state.clone();
+  newState.repairManRst = action.payload;
   return newState;
 }

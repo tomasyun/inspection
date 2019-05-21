@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'state.dart';
 
 Widget buildView(
-    ReviewInfoFragState state, Dispatch dispatch, ViewService viewService) {
+    RecheckInfoFragState state, Dispatch dispatch, ViewService viewService) {
   return Container(
     color: Colors.grey[100],
     child: SingleChildScrollView(

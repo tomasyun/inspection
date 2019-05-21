@@ -7,14 +7,21 @@ enum ReportAction {
   repairman,
   departRst,
   pic,
-  applicantRst,
   report,
-  goBack
+  goBack,
+  picRst,
+  repairmanRst,
+  repairDate,
+  repairDateRst,
 }
 
 class ReportActionCreator {
   static Action onAction() {
     return const Action(ReportAction.action);
+  }
+
+  static Action onShowRepairDate() {
+    return Action(ReportAction.repairDate);
   }
 
   static Action onDepartSkipFilter() {
@@ -29,12 +36,20 @@ class ReportActionCreator {
     return Action(ReportAction.pic);
   }
 
-  static Action onGetDepartRst(String departRst) {
-    return Action(ReportAction.departRst, payload: departRst);
+  static Action onGetDepartRst(Map<String, String> map) {
+    return Action(ReportAction.departRst, payload: map);
   }
 
-  static Action onGetApplicantRst(String applicantRst) {
-    return Action(ReportAction.applicantRst, payload: applicantRst);
+  static Action onGetPicRst(Map<String, String> map) {
+    return Action(ReportAction.picRst, payload: map);
+  }
+
+  static Action onGetRepairManRst(Map<String, String> map) {
+    return Action(ReportAction.repairmanRst, payload: map);
+  }
+
+  static Action onGetRepairDateRst(String repairDate) {
+    return Action(ReportAction.repairDateRst, payload: repairDate);
   }
 
   static Action onReport() {

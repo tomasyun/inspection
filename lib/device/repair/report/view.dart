@@ -42,7 +42,7 @@ Widget buildView(
                   ),
                   Expanded(
                     child: TextField(
-                      controller: state.deviceNoController,
+                      controller: state.deviceNameController,
                       textAlign: TextAlign.right,
                       keyboardType: TextInputType.text,
                       maxLines: 1,
@@ -133,7 +133,7 @@ Widget buildView(
                   children: <Widget>[
                     Container(
                       child: Text(
-                        '责任人',
+                        '责任部门',
                         style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 14.0,
@@ -147,7 +147,7 @@ Widget buildView(
                           Container(
                             margin: EdgeInsets.only(left: 25.0),
                             child: Text(
-                              state.departRst,
+                              state.departRst['name'],
                               style:
                                   TextStyle(fontSize: 13.0, color: Colors.red),
                             ),
@@ -171,7 +171,7 @@ Widget buildView(
             ),
             GestureDetector(
               onTap: () {
-                dispatch(ReportActionCreator.onDepartSkipFilter());
+                dispatch(ReportActionCreator.onPicSkipFilter());
               },
               child: Container(
                 color: Colors.white,
@@ -182,7 +182,7 @@ Widget buildView(
                   children: <Widget>[
                     Container(
                       child: Text(
-                        '责任部门',
+                        '责任人',
                         style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 14.0,
@@ -196,7 +196,7 @@ Widget buildView(
                           Container(
                             margin: EdgeInsets.only(left: 25.0),
                             child: Text(
-                              state.departRst,
+                              state.picRst['name'],
                               style:
                                   TextStyle(fontSize: 13.0, color: Colors.red),
                             ),
@@ -245,7 +245,7 @@ Widget buildView(
                           Container(
                             margin: EdgeInsets.only(left: 25.0),
                             child: Text(
-                              state.applicantRst,
+                              state.repairManRst['name'],
                               style:
                                   TextStyle(fontSize: 13.0, color: Colors.red),
                             ),
@@ -268,7 +268,9 @@ Widget buildView(
               color: Colors.black45,
             ),
             GestureDetector(
-              onTap: () {},
+              onTap: () {
+                dispatch(ReportActionCreator.onShowRepairDate());
+              },
               child: Container(
                 color: Colors.white,
                 width: double.infinity,
@@ -292,7 +294,7 @@ Widget buildView(
                           Container(
                             margin: EdgeInsets.only(left: 25.0),
                             child: Text(
-                              state.applicantRst,
+                              state.repairDateRst,
                               style:
                                   TextStyle(fontSize: 13.0, color: Colors.red),
                             ),
