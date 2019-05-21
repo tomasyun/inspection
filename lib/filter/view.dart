@@ -30,8 +30,10 @@ Widget _buildFilterTitle({String flag, String content = ''}) {
     content = '隐患类型';
   } else if (flag == 'depart') {
     content = '责任部门';
-  } else if (flag == 'applicant') {
-    content = '申请人';
+  } else if (flag == 'repairman') {
+    content = '维修人';
+  } else if (flag == 'pic') {
+    content = '责任人';
   }
   return Text(
     content,

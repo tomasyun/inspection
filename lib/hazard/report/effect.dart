@@ -62,7 +62,7 @@ void _onReport(Action action, Context<HazardReportState> ctx) async {
     map['dangerLevelName'] = levelName;
     map['dangerTypeId'] = type;
     map['dangerTypeName'] = typeName;
-    map['dangerRemark'] = desc;
+    map['remark'] = desc;
     List<UploadFileInfo> files = [];
     if (ctx.state.assets != null && ctx.state.assets.isNotEmpty) {
       for (int i = 0; i < ctx.state.assets.length; i++) {

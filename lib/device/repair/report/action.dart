@@ -4,8 +4,9 @@ import 'package:fish_redux/fish_redux.dart';
 enum ReportAction {
   action,
   depart,
-  applicant,
+  repairman,
   departRst,
+  pic,
   applicantRst,
   report,
   goBack
@@ -20,8 +21,12 @@ class ReportActionCreator {
     return Action(ReportAction.depart);
   }
 
-  static Action onApplicantSkipFilter() {
-    return Action(ReportAction.applicant);
+  static Action onRepairManSkipFilter() {
+    return Action(ReportAction.repairman);
+  }
+
+  static Action onPicSkipFilter() {
+    return Action(ReportAction.pic);
   }
 
   static Action onGetDepartRst(String departRst) {

@@ -21,6 +21,7 @@ Widget buildView(
 //        child:
         SingleChildScrollView(
       child: Container(
+        padding: EdgeInsets.only(bottom: 60.0),
         child: Column(
           children: <Widget>[
             Container(
@@ -32,7 +33,7 @@ Widget buildView(
                   Container(
                     margin: EdgeInsets.only(right: 15.0),
                     child: Text(
-                      '设备编号',
+                      '设备名称',
                       style: TextStyle(
                           fontSize: 14.0,
                           color: Colors.black,
@@ -69,6 +70,97 @@ Widget buildView(
                     ),
                   )
                 ],
+              ),
+            ),
+            Container(
+              width: double.infinity,
+              height: 0.5,
+              margin: EdgeInsets.symmetric(horizontal: 15.0),
+              color: Colors.black45,
+            ),
+            Container(
+              color: Colors.white,
+              padding: EdgeInsets.symmetric(horizontal: 15.0, vertical: 10.0),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  Container(
+                    margin: EdgeInsets.only(right: 15.0),
+                    child: Text(
+                      '编号',
+                      style: TextStyle(
+                          fontSize: 14.0,
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                  Expanded(
+                    child: TextField(
+                      controller: state.deviceNoController,
+                      textAlign: TextAlign.right,
+                      keyboardType: TextInputType.text,
+                      maxLines: 1,
+                      cursorWidth: 2.0,
+                      cursorColor: Colors.grey,
+                      style: TextStyle(fontSize: 14.0, color: Colors.black),
+                      decoration: InputDecoration(
+                          contentPadding: EdgeInsets.symmetric(
+                              vertical: 10.0, horizontal: 10.0),
+                          hintText: '扫码获取',
+                          border:
+                              OutlineInputBorder(borderSide: BorderSide.none)),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Container(
+              width: double.infinity,
+              height: 0.5,
+              margin: EdgeInsets.symmetric(horizontal: 15.0),
+              color: Colors.black45,
+            ),
+            GestureDetector(
+              onTap: () {
+                dispatch(ReportActionCreator.onDepartSkipFilter());
+              },
+              child: Container(
+                color: Colors.white,
+                width: double.infinity,
+                padding: EdgeInsets.symmetric(horizontal: 15.0, vertical: 15.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Container(
+                      child: Text(
+                        '责任人',
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 14.0,
+                            color: Colors.black),
+                      ),
+                    ),
+                    Expanded(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: <Widget>[
+                          Container(
+                            margin: EdgeInsets.only(left: 25.0),
+                            child: Text(
+                              state.departRst,
+                              style:
+                                  TextStyle(fontSize: 13.0, color: Colors.red),
+                            ),
+                          ),
+                          Container(
+                            alignment: AlignmentDirectional.centerEnd,
+                            child: Icon(Icons.keyboard_arrow_right),
+                          ),
+                        ],
+                      ),
+                    )
+                  ],
+                ),
               ),
             ),
             Container(
@@ -128,7 +220,7 @@ Widget buildView(
             ),
             GestureDetector(
               onTap: () {
-                dispatch(ReportActionCreator.onApplicantSkipFilter());
+                dispatch(ReportActionCreator.onRepairManSkipFilter());
               },
               child: Container(
                 color: Colors.white,
@@ -139,7 +231,7 @@ Widget buildView(
                   children: <Widget>[
                     Container(
                       child: Text(
-                        '申请人',
+                        '维修人',
                         style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 14.0,
@@ -174,6 +266,47 @@ Widget buildView(
               height: 0.5,
               margin: EdgeInsets.symmetric(horizontal: 15.0),
               color: Colors.black45,
+            ),
+            GestureDetector(
+              onTap: () {},
+              child: Container(
+                color: Colors.white,
+                width: double.infinity,
+                padding: EdgeInsets.symmetric(horizontal: 15.0, vertical: 15.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Container(
+                      child: Text(
+                        '维修时间',
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 14.0,
+                            color: Colors.black),
+                      ),
+                    ),
+                    Expanded(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: <Widget>[
+                          Container(
+                            margin: EdgeInsets.only(left: 25.0),
+                            child: Text(
+                              state.applicantRst,
+                              style:
+                                  TextStyle(fontSize: 13.0, color: Colors.red),
+                            ),
+                          ),
+                          Container(
+                            alignment: AlignmentDirectional.centerEnd,
+                            child: Icon(Icons.keyboard_arrow_right),
+                          ),
+                        ],
+                      ),
+                    )
+                  ],
+                ),
+              ),
             ),
             Container(
               color: Colors.grey[100],
