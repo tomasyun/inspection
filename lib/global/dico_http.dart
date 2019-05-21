@@ -5,6 +5,8 @@ import 'package:inspection/entity/hazard_model.dart';
 import 'package:inspection/entity/home_model.dart';
 import 'package:inspection/entity/login_model.dart';
 import 'package:inspection/entity/notice_model.dart';
+import 'package:inspection/entity/recheck_info_model.dart';
+import 'package:inspection/entity/rectify_form_model.dart';
 import 'package:inspection/entity/rectify_info_model.dart';
 import 'package:inspection/entity/task_model.dart';
 import 'package:inspection/entity/user_model.dart';
@@ -23,9 +25,13 @@ class DicoHttpRepository {
   static final String keepRecord = '';
   static final String hazardInfo = 'sms-interface/danger/findDnagerInfo';
   static final String rectifyInfo = 'sms-interface/danger/getRectifyInfo';
-  static final String rectifyReport = '';
+  static final String rectifyReport =
+      'sms-interface/danger/saveDangerRepairInfo';
+  static final String rectifyForm = 'sms-interface/danger/getRepairForSave';
   static final String recheckInfo = 'sms-interface/danger/getReviewInfo';
-  static final String recheckReport = '';
+  static final String recheckForm = 'sms-interface/danger/getReviewForSave';
+  static final String recheckReport =
+      'sms-interface/danger/saveDangerReviewInfo';
   static final String userInfo = 'sms-interface/todos/getCurrentUserInfo';
   static final String todos = 'sms-interface/todos/findToDoList';
   static final String updatePassword = 'sms-interface/todos/updatePass';
@@ -39,6 +45,9 @@ class DicoHttpRepository {
   static final String pic =
       'sms-interface/organization/findSysUserByOrganizationId';
   static final String repairMan = 'sms-interface/organization/findSysUserAll';
+
+  static final String historyHazard =
+      'sms-interface/danger/findDnagerFinishList';
 
   ///登录
   static Future<LoginModel> userLogin(Map<String, String> map) async =>
@@ -64,6 +73,9 @@ class DicoHttpRepository {
   ///隐患管理
   static Future<HazardModel> doGetHazardManageRequest(String research) async =>
       HazardModel.fromJson(await HttpUtil().get(hazardManage + research));
+
+  static Future<HazardModel> doGetHistoryHazardRequest() async =>
+      HazardModel.fromJson(await HttpUtil().get(historyHazard));
 
   ///隐患信息
   static Future<HazardInfoModel> doGetHazardInfoRequest(
@@ -120,9 +132,10 @@ class DicoHttpRepository {
   }
 
   ///复查信息
-  static Future doGetRecheckInfoRequest(String hazardId) async {
-    return await HttpUtil().get(recheckInfo + '?dangerId=$hazardId');
-  }
+  static Future<RecheckInfoModel> doGetRecheckInfoRequest(
+          String hazardId) async =>
+      RecheckInfoModel.fromJson(
+          await HttpUtil().get(recheckInfo + '?dangerId=$hazardId'));
 
   ///维修上报
   static Future<Map<String, dynamic>> repairReportRequest(
@@ -146,14 +159,25 @@ class DicoHttpRepository {
   }
 
   ///整改上报
-  static Future doRectifyReport() async {
-    return await HttpUtil().get(rectifyReport);
-  }
+  static Future<Map<String, dynamic>> doSendRectifyReport(
+          FormData data) async =>
+      await HttpUtil().post(rectifyReport, data: data);
+
+  ///获取整改单信息
+  static Future<RectifyFormModel> doGetRectifyFormRequest(
+          String dangerId) async =>
+      RectifyFormModel.fromJson(
+          await HttpUtil().get(rectifyForm + '?dangerId=$dangerId'));
+
+  ///获取复查单信息
+  static Future<Map<String, dynamic>> doGetRecheckFormRequest(
+          String dangerId) async =>
+      await HttpUtil().get(recheckForm + '?dangerId=$dangerId');
 
   ///复查上报
-  static Future doRecheckReport() async {
-    return await HttpUtil().get(recheckReport);
-  }
+  static Future<Map<String, dynamic>> doSendRecheckReport(
+          FormData data) async =>
+      await HttpUtil().post(recheckReport, data: data);
 
   ///检查计划
   static Future doInspectPlanRequest() async {

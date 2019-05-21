@@ -1,10 +1,14 @@
 import 'package:fish_redux/fish_redux.dart';
+import 'package:inspection/entity/recheck_info_model.dart';
 
 class RecheckInfoFragState implements Cloneable<RecheckInfoFragState> {
   String id;
+  RecheckInfoModel model;
   @override
   RecheckInfoFragState clone() {
-    return RecheckInfoFragState()..id = id;
+    return RecheckInfoFragState()
+      ..id = id
+      ..model = model;
   }
 }
 

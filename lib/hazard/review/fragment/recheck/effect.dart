@@ -12,6 +12,11 @@ Effect<RecheckInfoFragState> buildEffect() {
 }
 
 void _onAction(Action action, Context<RecheckInfoFragState> ctx) {}
+
 void _onInit(Action action, Context<RecheckInfoFragState> ctx) {
-  DicoHttpRepository.doGetRecheckInfoRequest(ctx.state.id);
+  DicoHttpRepository.doGetRecheckInfoRequest(ctx.state.id).then((model) {
+    if (model.code == 0) {
+      ctx.dispatch(RecheckInfoFragActionCreator.onGetRecheckInfoModel(model));
+    }
+  });
 }

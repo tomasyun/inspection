@@ -37,12 +37,35 @@ Widget buildView(
               padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
               margin: EdgeInsets.only(top: 10.0),
               child: Text(
-                '西安市高新区丈八一路汇鑫IBC B座1005,办公室墙面重新打底粉刷',
+                state.model != null &&
+                        state.model.data != null &&
+                        state.model.data.reviewResult != null
+                    ? state.model.data.reviewResult
+                    : '',
                 style: TextStyle(fontSize: 14.0, color: Colors.black),
               ),
             ),
-            _buildHazardInfoItem(title: '复查时间', content: '2019-06-08'),
-            _buildHazardInfoItem(title: '复查意见', content: '通过'),
+            _buildHazardInfoItem(
+                title: '复查人',
+                content: state.model != null &&
+                        state.model.data != null &&
+                        state.model.data.reviewUser != null
+                    ? state.model.data.reviewUser
+                    : ''),
+            _buildHazardInfoItem(
+                title: '复查部门',
+                content: state.model != null &&
+                        state.model.data != null &&
+                        state.model.data.reviewOrganization != null
+                    ? state.model.data.reviewOrganization
+                    : ''),
+            _buildHazardInfoItem(
+                title: '复查时间',
+                content: state.model != null &&
+                        state.model.data != null &&
+                        state.model.data.reviewDate != null
+                    ? state.model.data.reviewDate
+                    : ''),
             Container(
               margin: EdgeInsets.only(top: 10.0),
               child: Text(

@@ -28,13 +28,15 @@ class Data {
   List<RepairAttachments> repairAttachments;
   String repairUser;
   String repairOpinion;
+  String repairDate;
 
   Data(
       {this.repairOrganization,
       this.repairResult,
       this.repairAttachments,
       this.repairUser,
-      this.repairOpinion});
+      this.repairOpinion,
+      this.repairDate});
 
   Data.fromJson(Map<String, dynamic> json) {
     repairOrganization = json['repairOrganization'];
@@ -47,6 +49,7 @@ class Data {
     }
     repairUser = json['repairUser'];
     repairOpinion = json['repairOpinion'];
+    repairDate = json['repairDate'];
   }
 
   Map<String, dynamic> toJson() {

@@ -18,6 +18,7 @@ Widget buildView(
     ),
     body: SingleChildScrollView(
       child: Container(
+        padding: EdgeInsets.only(bottom: 100.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
@@ -83,7 +84,7 @@ Widget buildView(
               child: _buildGridView(state: state),
               constraints: BoxConstraints.tightFor(
                   width: double.infinity,
-                  height: state.assets.length > 0 ? 110.0 : 0.0),
+                  height: state.assets.length > 0 ? 90.0 : 0.0),
             ),
 //            Container(
 //              margin: EdgeInsets.only(top: 20.0),

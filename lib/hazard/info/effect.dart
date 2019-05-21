@@ -34,8 +34,10 @@ void _init(Action action, Context<HazardInfoState> ctx) {
 }
 
 void _onSkipRectifyReport(Action action, Context<HazardInfoState> ctx) {
+  Map<String, dynamic> map = Map();
+  map['id'] = ctx.state.id;
   Navigator.of(ctx.context).push(MaterialPageRoute(builder: (content) {
-    return RectifyReportPage().buildPage(null);
+    return RectifyReportPage().buildPage(map);
   }));
 }
 
@@ -54,8 +56,10 @@ void _onSkipRectifyCostApply(Action action, Context<HazardInfoState> ctx) {
 }
 
 void _onSkipRecheckReport(Action action, Context<HazardInfoState> ctx) {
+  Map<String, dynamic> map = Map();
+  map['id'] = ctx.state.id;
   Navigator.of(ctx.context).push(MaterialPageRoute(builder: (content) {
-    return RecheckReportPage().buildPage(null);
+    return RecheckReportPage().buildPage(map);
   }));
 }
 

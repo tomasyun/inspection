@@ -50,48 +50,54 @@ Widget buildView(
                       ),
                     ),
                     Container(
-                      padding: EdgeInsets.symmetric(
-                          vertical: 15.0, horizontal: 10.0),
-                      child: Text(
-                        state.model != null &&
+                        padding: EdgeInsets.symmetric(
+                            vertical: 15.0, horizontal: 10.0),
+                        child: state.model != null &&
                                 state.model.data != null &&
                                 state.model.data.dangerRemark != null
-                            ? state.model.data.dangerRemark
-                            : '',
-                        style: TextStyle(
-                          fontSize: 14.0,
-                          color: Colors.black,
-                        ),
-                      ),
-                    ),
-                    _buildHazardInfoItem(
-                        title: '设备名称',
-                        content: state.model != null &&
-                                state.model.data != null &&
-                                state.model.data.equipmentName != null
-                            ? state.model.data.equipmentName
-                            : ''),
-                    _buildHazardInfoItem(
-                        title: '设备编号',
-                        content: state.model != null &&
-                                state.model.data != null &&
-                                state.model.data.equipmentCode != null
-                            ? state.model.data.equipmentCode
-                            : ''),
-                    _buildHazardInfoItem(
-                        title: '隐患等级',
-                        content: state.model != null &&
-                                state.model.data != null &&
-                                state.model.data.dangerLevel != null
-                            ? state.model.data.dangerLevel
-                            : ''),
-                    _buildHazardInfoItem(
-                        title: '隐患类型',
-                        content: state.model != null &&
-                                state.model.data != null &&
-                                state.model.data.dangerType != null
-                            ? state.model.data.dangerType
-                            : ''),
+                            ? Text(
+                                state.model.data.dangerRemark,
+                                style: TextStyle(
+                                  fontSize: 14.0,
+                                  color: Colors.black,
+                                ),
+                              )
+                            : Text('')),
+                    state.model != null &&
+                            state.model.data != null &&
+                            state.model.data.equipmentName != null
+                        ? _buildHazardInfoItem(
+                            title: '设备名称',
+                            content: state.model.data.equipmentName)
+                        : Container(
+                            height: 0.0,
+                          ),
+                    state.model != null &&
+                            state.model.data != null &&
+                            state.model.data.equipmentCode != null
+                        ? _buildHazardInfoItem(
+                            title: '设备编号',
+                            content: state.model.data.equipmentCode)
+                        : Container(
+                            height: 0.0,
+                          ),
+                    state.model != null &&
+                            state.model.data != null &&
+                            state.model.data.dangerLevel != null
+                        ? _buildHazardInfoItem(
+                            title: '隐患等级',
+                            content: state.model.data.dangerLevel)
+                        : Container(
+                            height: 0.0,
+                          ),
+                    state.model != null &&
+                            state.model.data != null &&
+                            state.model.data.dangerType != null
+                        ? _buildHazardInfoItem(
+                            title: '隐患类型', content: state.model.data.dangerType)
+                        : Container(
+                            height: 0.0,
+                          ),
                     state.model != null &&
                             state.model.data != null &&
                             state.model.data.repairPerson != null
@@ -128,27 +134,32 @@ Widget buildView(
                         : Container(
                             height: 0.0,
                           ),
-                    _buildHazardInfoItem(
-                        title: '责任人',
-                        content: state.model != null &&
-                                state.model.data != null &&
-                                state.model.data.liablePerson != null
-                            ? state.model.data.liablePerson
-                            : ''),
-                    _buildHazardInfoItem(
-                        title: '责任部门',
-                        content: state.model != null &&
-                                state.model.data != null &&
-                                state.model.data.liableOrganization != null
-                            ? state.model.data.liableOrganization
-                            : ''),
-                    _buildHazardInfoItem(
-                        title: '上报时间',
-                        content: state.model != null &&
-                                state.model.data != null &&
-                                state.model.data.createDate != null
-                            ? state.model.data.createDate
-                            : ''),
+                    state.model != null &&
+                            state.model.data != null &&
+                            state.model.data.liablePerson != null
+                        ? _buildHazardInfoItem(
+                            title: '责任人',
+                            content: state.model.data.liablePerson)
+                        : Container(
+                            height: 0.0,
+                          ),
+                    state.model != null &&
+                            state.model.data != null &&
+                            state.model.data.liableOrganization != null
+                        ? _buildHazardInfoItem(
+                            title: '责任部门',
+                            content: state.model.data.liableOrganization)
+                        : Container(
+                            height: 0.0,
+                          ),
+                    state.model != null &&
+                            state.model.data != null &&
+                            state.model.data.createDate != null
+                        ? _buildHazardInfoItem(
+                            title: '上报时间', content: state.model.data.createDate)
+                        : Container(
+                            height: 0.0,
+                          ),
                     Container(
                       margin: EdgeInsets.only(top: 15.0),
                       child: Text(

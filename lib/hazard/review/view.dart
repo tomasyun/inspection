@@ -8,11 +8,14 @@ import 'state.dart';
 
 Widget buildView(
     ReviewState state, Dispatch dispatch, ViewService viewService) {
-  return ReviewPageWidget();
+  return ReviewPageWidget(state);
 }
 
+// ignore: must_be_immutable
 class ReviewPageWidget extends StatefulWidget {
   ReviewState state;
+
+  ReviewPageWidget(this.state);
 
   @override
   State<StatefulWidget> createState() => ReviewPageState();

@@ -5,12 +5,15 @@ import 'package:inspection/hazard/info/page.dart';
 
 Widget buildView(Data data, Dispatch dispatch, ViewService viewService) {
   Map<String, dynamic> map = Map();
+  map['id'] = data.dangerId;
   if (data.todoType == '0') {
     map['state'] = '待审批';
   } else if (data.todoType == '1') {
     map['state'] = '待整改';
   } else if (data.todoType == '2') {
     map['state'] = '待审批';
+  } else if (data.todoType == '3') {
+    map['state'] = '已完成';
   }
   return Container(
     padding: EdgeInsets.all(10.0),

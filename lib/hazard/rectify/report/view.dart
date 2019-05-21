@@ -19,80 +19,105 @@ Widget buildView(
     ),
     body: SingleChildScrollView(
       child: Container(
+          padding: EdgeInsets.only(bottom: 100.0),
           child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          Container(
-            padding: EdgeInsets.all(15.0),
-            alignment: AlignmentDirectional.topStart,
-            child: Text(
-              '整改情况(200字以内)',
-              style: TextStyle(
-                  fontSize: 14.0,
-                  color: Colors.black,
-                  fontWeight: FontWeight.bold),
-            ),
-          ),
-          Container(
-            color: Colors.white,
-            child: TextField(
-              controller: state.controller,
-              maxLength: 50,
-              keyboardType: TextInputType.text,
-              maxLines: 6,
-              cursorWidth: 1.0,
-              cursorColor: Colors.grey,
-              style: TextStyle(fontSize: 14.0, color: Colors.black),
-              decoration: InputDecoration(
-                  hintText: "请输入复查情况",
-                  contentPadding: EdgeInsets.all(15.0),
-                  border: OutlineInputBorder(borderSide: BorderSide.none)),
-            ),
-          ),
-          Container(
-            padding: EdgeInsets.all(15.0),
-            alignment: AlignmentDirectional.topStart,
-            child: Text(
-              '整改附件(最多可上传3张)',
-              style: TextStyle(
-                  fontSize: 14.0,
-                  color: Colors.black,
-                  fontWeight: FontWeight.bold),
-            ),
-          ),
-          Container(
-            color: Colors.white,
-            padding: EdgeInsets.all(15.0),
-            child: GestureDetector(
-              onTap: () {
-                dispatch(RectifyReportActionCreator.onAddAttachmentClick());
-              },
-              child: Container(
-                width: 100.0,
-                height: 100.0,
-                color: Colors.grey,
-                child: Icon(
-                  Icons.add,
-                  color: Colors.grey[100],
-                  size: 80.0,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Container(
+                padding: EdgeInsets.all(15.0),
+                alignment: AlignmentDirectional.topStart,
+                child: Text(
+                  '整改意见',
+                  style: TextStyle(
+                      fontSize: 14.0,
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold),
                 ),
               ),
-            ),
-          ),
-          Container(
-            margin: EdgeInsets.only(top: 10.0),
-            child: _buildGridView(state: state),
-            constraints: BoxConstraints.tightFor(
-                width: double.infinity,
-                height: state.assets.length > 0 ? 110.0 : 0.0),
-          ),
-          Container(
-            alignment: AlignmentDirectional.center,
-            margin: EdgeInsets.only(top: 50.0),
-            child: _buildRaisedButton(dispatch: dispatch),
-          )
-        ],
-      )),
+              Container(
+                padding: EdgeInsets.all(15.0),
+                alignment: AlignmentDirectional.topStart,
+                child: Text(
+                  state.map != null && state.map.isNotEmpty
+                      ? state.map['opinion']
+                      : '',
+                  style: TextStyle(
+                    fontSize: 14.0,
+                    color: Colors.black,
+                  ),
+                ),
+              ),
+              Container(
+                padding: EdgeInsets.all(15.0),
+                alignment: AlignmentDirectional.topStart,
+                child: Text(
+                  '整改情况(200字以内)',
+                  style: TextStyle(
+                      fontSize: 14.0,
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold),
+                ),
+              ),
+              Container(
+                color: Colors.white,
+                child: TextField(
+                  controller: state.controller,
+                  maxLength: 50,
+                  keyboardType: TextInputType.text,
+                  maxLines: 6,
+                  cursorWidth: 1.0,
+                  cursorColor: Colors.grey,
+                  style: TextStyle(fontSize: 14.0, color: Colors.black),
+                  decoration: InputDecoration(
+                      hintText: "请输入复查情况",
+                      contentPadding: EdgeInsets.all(15.0),
+                      border: OutlineInputBorder(borderSide: BorderSide.none)),
+                ),
+              ),
+              Container(
+                padding: EdgeInsets.all(15.0),
+                alignment: AlignmentDirectional.topStart,
+                child: Text(
+                  '整改附件(最多可上传3张)',
+                  style: TextStyle(
+                      fontSize: 14.0,
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold),
+                ),
+              ),
+              Container(
+                color: Colors.white,
+                padding: EdgeInsets.all(15.0),
+                child: GestureDetector(
+                  onTap: () {
+                    dispatch(RectifyReportActionCreator.onAddAttachmentClick());
+                  },
+                  child: Container(
+                    width: 100.0,
+                    height: 100.0,
+                    color: Colors.grey,
+                    child: Icon(
+                      Icons.add,
+                      color: Colors.grey[100],
+                      size: 80.0,
+                    ),
+                  ),
+                ),
+              ),
+              Container(
+                margin: EdgeInsets.only(top: 10.0),
+                child: _buildGridView(state: state),
+                constraints: BoxConstraints.tightFor(
+                    width: double.infinity,
+                    height: state.assets.length > 0 ? 110.0 : 0.0),
+              ),
+              Container(
+                alignment: AlignmentDirectional.center,
+                margin: EdgeInsets.only(top: 50.0),
+                child: _buildRaisedButton(dispatch: dispatch),
+              )
+            ],
+          )),
     ),
   );
 }
