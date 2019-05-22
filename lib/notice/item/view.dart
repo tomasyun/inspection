@@ -5,7 +5,6 @@ import 'package:inspection/notice/item/action.dart';
 
 Widget buildView(Data data, Dispatch dispatch, ViewService viewService) {
   return Container(
-    margin: EdgeInsets.only(top: 10.0),
     child: ExpansionPanelList(
         expansionCallback: (int panelIndex, bool isExpanded) {},
         children: [
@@ -24,6 +23,7 @@ Widget buildView(Data data, Dispatch dispatch, ViewService viewService) {
             },
             body: Container(
               padding: EdgeInsets.all(15.0),
+              margin: EdgeInsets.only(bottom: 10.0),
               width: double.infinity,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,

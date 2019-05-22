@@ -28,9 +28,9 @@ Widget buildView(
               child: Text(
                 '复查情况(200字以内)',
                 style: TextStyle(
-                    fontSize: 14.0,
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold),
+                  fontSize: 14.0,
+                  color: Colors.black,
+                ),
               ),
             ),
             Container(
@@ -55,9 +55,9 @@ Widget buildView(
               child: Text(
                 '复查附件(最多可上传3张)',
                 style: TextStyle(
-                    fontSize: 14.0,
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold),
+                  fontSize: 14.0,
+                  color: Colors.black,
+                ),
               ),
             ),
             Container(
@@ -134,18 +134,21 @@ Widget _buildGridView({RecheckReportState state}) {
 }
 
 Widget _buildRaisedButton({Dispatch dispatch}) {
-  return RaisedButton(
-      onPressed: () {
-        dispatch(RecheckReportActionCreator.onReport());
-      },
-      child: Text(
-        '提交',
-        style: TextStyle(color: Colors.white, fontSize: 14.0),
-      ),
-      color: Colors.blue,
-      padding:
-          EdgeInsets.only(top: 15.0, bottom: 15.0, left: 150.0, right: 150.0),
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(10.0),
-      ));
+  return Container(
+    width: double.infinity,
+    margin: EdgeInsets.symmetric(horizontal: 15.0),
+    child: RaisedButton(
+        onPressed: () {
+          dispatch(RecheckReportActionCreator.onReport());
+        },
+        child: Text(
+          '上报',
+          style: TextStyle(color: Colors.white, fontSize: 14.0),
+        ),
+        color: Colors.blue,
+        padding: EdgeInsets.only(top: 15.0, bottom: 15.0),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10.0),
+        )),
+  );
 }

@@ -35,9 +35,9 @@ Widget buildView(
                     child: Text(
                       '设备名称',
                       style: TextStyle(
-                          fontSize: 14.0,
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold),
+                        fontSize: 14.0,
+                        color: Colors.black,
+                      ),
                     ),
                   ),
                   Expanded(
@@ -60,12 +60,11 @@ Widget buildView(
                   GestureDetector(
                     onTap: () {},
                     child: Container(
-                      margin: EdgeInsets.only(left: 10.0),
                       padding: EdgeInsets.all(5.0),
                       child: Image.asset(
                         'images/ic_scan_small.png',
-                        width: 30.0,
-                        height: 30.0,
+                        width: 20.0,
+                        height: 20.0,
                       ),
                     ),
                   )
@@ -76,7 +75,7 @@ Widget buildView(
               width: double.infinity,
               height: 0.5,
               margin: EdgeInsets.symmetric(horizontal: 15.0),
-              color: Colors.black45,
+              color: Colors.grey[300],
             ),
             Container(
               color: Colors.white,
@@ -89,9 +88,9 @@ Widget buildView(
                     child: Text(
                       '编号',
                       style: TextStyle(
-                          fontSize: 14.0,
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold),
+                        fontSize: 14.0,
+                        color: Colors.black,
+                      ),
                     ),
                   ),
                   Expanded(
@@ -118,7 +117,7 @@ Widget buildView(
               width: double.infinity,
               height: 0.5,
               margin: EdgeInsets.symmetric(horizontal: 15.0),
-              color: Colors.black45,
+              color: Colors.grey[300],
             ),
             GestureDetector(
               onTap: () {
@@ -134,10 +133,7 @@ Widget buildView(
                     Container(
                       child: Text(
                         '责任部门',
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 14.0,
-                            color: Colors.black),
+                        style: TextStyle(fontSize: 14.0, color: Colors.black),
                       ),
                     ),
                     Expanded(
@@ -148,13 +144,16 @@ Widget buildView(
                             margin: EdgeInsets.only(left: 25.0),
                             child: Text(
                               state.departRst['name'],
-                              style:
-                                  TextStyle(fontSize: 13.0, color: Colors.red),
+                              style: TextStyle(
+                                  fontSize: 13.0, color: Colors.black45),
                             ),
                           ),
                           Container(
                             alignment: AlignmentDirectional.centerEnd,
-                            child: Icon(Icons.keyboard_arrow_right),
+                            child: Icon(
+                              Icons.keyboard_arrow_right,
+                              color: Colors.black45,
+                            ),
                           ),
                         ],
                       ),
@@ -167,7 +166,7 @@ Widget buildView(
               width: double.infinity,
               height: 0.5,
               margin: EdgeInsets.symmetric(horizontal: 15.0),
-              color: Colors.black45,
+              color: Colors.grey[300],
             ),
             GestureDetector(
               onTap: () {
@@ -183,10 +182,7 @@ Widget buildView(
                     Container(
                       child: Text(
                         '责任人',
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 14.0,
-                            color: Colors.black),
+                        style: TextStyle(fontSize: 14.0, color: Colors.black),
                       ),
                     ),
                     Expanded(
@@ -197,13 +193,16 @@ Widget buildView(
                             margin: EdgeInsets.only(left: 25.0),
                             child: Text(
                               state.picRst['name'],
-                              style:
-                                  TextStyle(fontSize: 13.0, color: Colors.red),
+                              style: TextStyle(
+                                  fontSize: 13.0, color: Colors.black45),
                             ),
                           ),
                           Container(
                             alignment: AlignmentDirectional.centerEnd,
-                            child: Icon(Icons.keyboard_arrow_right),
+                            child: Icon(
+                              Icons.keyboard_arrow_right,
+                              color: Colors.black45,
+                            ),
                           ),
                         ],
                       ),
@@ -216,7 +215,7 @@ Widget buildView(
               width: double.infinity,
               height: 0.5,
               margin: EdgeInsets.symmetric(horizontal: 15.0),
-              color: Colors.black45,
+              color: Colors.grey[300],
             ),
             GestureDetector(
               onTap: () {
@@ -232,10 +231,7 @@ Widget buildView(
                     Container(
                       child: Text(
                         '维修人',
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 14.0,
-                            color: Colors.black),
+                        style: TextStyle(fontSize: 14.0, color: Colors.black),
                       ),
                     ),
                     Expanded(
@@ -246,13 +242,16 @@ Widget buildView(
                             margin: EdgeInsets.only(left: 25.0),
                             child: Text(
                               state.repairManRst['name'],
-                              style:
-                                  TextStyle(fontSize: 13.0, color: Colors.red),
+                              style: TextStyle(
+                                  fontSize: 13.0, color: Colors.black45),
                             ),
                           ),
                           Container(
                             alignment: AlignmentDirectional.centerEnd,
-                            child: Icon(Icons.keyboard_arrow_right),
+                            child: Icon(
+                              Icons.keyboard_arrow_right,
+                              color: Colors.black45,
+                            ),
                           ),
                         ],
                       ),
@@ -265,7 +264,7 @@ Widget buildView(
               width: double.infinity,
               height: 0.5,
               margin: EdgeInsets.symmetric(horizontal: 15.0),
-              color: Colors.black45,
+              color: Colors.grey[300],
             ),
             GestureDetector(
               onTap: () {
@@ -281,10 +280,7 @@ Widget buildView(
                     Container(
                       child: Text(
                         '维修时间',
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 14.0,
-                            color: Colors.black),
+                        style: TextStyle(fontSize: 14.0, color: Colors.black),
                       ),
                     ),
                     Expanded(
@@ -295,13 +291,16 @@ Widget buildView(
                             margin: EdgeInsets.only(left: 25.0),
                             child: Text(
                               state.repairDateRst,
-                              style:
-                                  TextStyle(fontSize: 13.0, color: Colors.red),
+                              style: TextStyle(
+                                  fontSize: 13.0, color: Colors.black45),
                             ),
                           ),
                           Container(
                             alignment: AlignmentDirectional.centerEnd,
-                            child: Icon(Icons.keyboard_arrow_right),
+                            child: Icon(
+                              Icons.keyboard_arrow_right,
+                              color: Colors.black45,
+                            ),
                           ),
                         ],
                       ),
@@ -317,9 +316,9 @@ Widget buildView(
               child: Text(
                 '故障描述(200字以内)',
                 style: TextStyle(
-                    fontSize: 14.0,
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold),
+                  fontSize: 14.0,
+                  color: Colors.black,
+                ),
               ),
             ),
             Container(
@@ -355,18 +354,21 @@ Widget buildView(
 }
 
 Widget _buildRaisedButton({Dispatch dispatch}) {
-  return RaisedButton(
-      onPressed: () {
-        dispatch(ReportActionCreator.onReport());
-      },
-      child: Text(
-        '上报',
-        style: TextStyle(color: Colors.white, fontSize: 14.0),
-      ),
-      color: Colors.blue,
-      padding:
-          EdgeInsets.only(top: 15.0, bottom: 15.0, left: 150.0, right: 150.0),
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(10.0),
-      ));
+  return Container(
+    width: double.infinity,
+    margin: EdgeInsets.symmetric(horizontal: 15.0),
+    child: RaisedButton(
+        onPressed: () {
+          dispatch(ReportActionCreator.onReport());
+        },
+        child: Text(
+          '上报',
+          style: TextStyle(color: Colors.white, fontSize: 14.0),
+        ),
+        color: Colors.blue,
+        padding: EdgeInsets.only(top: 15.0, bottom: 15.0),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10.0),
+        )),
+  );
 }

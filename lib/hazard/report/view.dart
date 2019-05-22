@@ -33,9 +33,9 @@ Widget buildView(
                     child: Text(
                       '设备/设施编号',
                       style: TextStyle(
-                          fontSize: 14.0,
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold),
+                        fontSize: 14.0,
+                        color: Colors.black,
+                      ),
                     ),
                   ),
                   Expanded(
@@ -76,7 +76,7 @@ Widget buildView(
               width: double.infinity,
               height: 0.5,
               margin: EdgeInsets.symmetric(horizontal: 15.0),
-              color: Colors.black45,
+              color: Colors.grey[300],
             ),
             Container(
               padding: EdgeInsets.symmetric(horizontal: 15.0, vertical: 10.0),
@@ -88,9 +88,9 @@ Widget buildView(
                     child: Text(
                       '位置',
                       style: TextStyle(
-                          fontSize: 14.0,
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold),
+                        fontSize: 14.0,
+                        color: Colors.black,
+                      ),
                     ),
                   ),
                   Expanded(
@@ -116,7 +116,7 @@ Widget buildView(
               width: double.infinity,
               height: 0.5,
               margin: EdgeInsets.symmetric(horizontal: 15.0),
-              color: Colors.black45,
+              color: Colors.grey[300],
             ),
             GestureDetector(
               onTap: () {
@@ -131,10 +131,7 @@ Widget buildView(
                     Container(
                       child: Text(
                         '等级',
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 14.0,
-                            color: Colors.black),
+                        style: TextStyle(fontSize: 14.0, color: Colors.black),
                       ),
                     ),
                     Expanded(
@@ -145,13 +142,16 @@ Widget buildView(
                             margin: EdgeInsets.only(left: 25.0),
                             child: Text(
                               state.levelRst['name'],
-                              style:
-                                  TextStyle(fontSize: 13.0, color: Colors.red),
+                              style: TextStyle(
+                                  fontSize: 13.0, color: Colors.black45),
                             ),
                           ),
                           Container(
                             alignment: AlignmentDirectional.centerEnd,
-                            child: Icon(Icons.keyboard_arrow_right),
+                            child: Icon(
+                              Icons.keyboard_arrow_right,
+                              color: Colors.black45,
+                            ),
                           ),
                         ],
                       ),
@@ -164,7 +164,7 @@ Widget buildView(
               width: double.infinity,
               height: 0.5,
               margin: EdgeInsets.symmetric(horizontal: 15.0),
-              color: Colors.black45,
+              color: Colors.grey[300],
             ),
             GestureDetector(
               onTap: () {
@@ -178,10 +178,7 @@ Widget buildView(
                     Container(
                       child: Text(
                         '类型',
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 14.0,
-                            color: Colors.black),
+                        style: TextStyle(fontSize: 14.0, color: Colors.black),
                       ),
                     ),
                     Expanded(
@@ -192,13 +189,16 @@ Widget buildView(
                             margin: EdgeInsets.only(left: 25.0),
                             child: Text(
                               state.typeRst['name'],
-                              style:
-                                  TextStyle(fontSize: 13.0, color: Colors.red),
+                              style: TextStyle(
+                                  fontSize: 13.0, color: Colors.black45),
                             ),
                           ),
                           Container(
                             alignment: AlignmentDirectional.centerEnd,
-                            child: Icon(Icons.keyboard_arrow_right),
+                            child: Icon(
+                              Icons.keyboard_arrow_right,
+                              color: Colors.black45,
+                            ),
                           ),
                         ],
                       ),
@@ -214,9 +214,9 @@ Widget buildView(
               child: Text(
                 '描述(200字以内)',
                 style: TextStyle(
-                    fontSize: 14.0,
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold),
+                  fontSize: 14.0,
+                  color: Colors.black,
+                ),
               ),
             ),
             Container(
@@ -241,9 +241,9 @@ Widget buildView(
               child: Text(
                 '附件(最多可上传3张)',
                 style: TextStyle(
-                    fontSize: 14.0,
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold),
+                  fontSize: 14.0,
+                  color: Colors.black,
+                ),
               ),
             ),
             GestureDetector(
@@ -297,18 +297,21 @@ Widget _buildGridView({HazardReportState state}) {
 }
 
 Widget _buildRaisedButton({Dispatch dispatch}) {
-  return RaisedButton(
-      onPressed: () {
-        dispatch(HazardReportActionCreator.onReport());
-      },
-      child: Text(
-        '上报',
-        style: TextStyle(color: Colors.white, fontSize: 14.0),
-      ),
-      color: Colors.blue,
-      padding:
-          EdgeInsets.only(top: 15.0, bottom: 15.0, left: 150.0, right: 150.0),
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(10.0),
-      ));
+  return Container(
+    width: double.infinity,
+    margin: EdgeInsets.symmetric(horizontal: 15.0),
+    child: RaisedButton(
+        onPressed: () {
+          dispatch(HazardReportActionCreator.onReport());
+        },
+        child: Text(
+          '上报',
+          style: TextStyle(color: Colors.white, fontSize: 14.0),
+        ),
+        color: Colors.blue,
+        padding: EdgeInsets.only(top: 15.0, bottom: 15.0),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10.0),
+        )),
+  );
 }

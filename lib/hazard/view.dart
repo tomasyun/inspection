@@ -1,6 +1,7 @@
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart';
 import 'package:inspection/hazard/action.dart';
+import 'package:inspection/widget/state_view.dart' as StateView;
 
 import 'state.dart';
 
@@ -32,14 +33,18 @@ Widget buildView(
         )
       ],
     ),
-    body: Container(
-      margin: EdgeInsets.all(15.0),
-      child: ListView.builder(
-        padding: EdgeInsets.only(bottom: 50.0),
-        itemBuilder: listAdapter.itemBuilder,
-        itemCount: listAdapter.itemCount,
-      ),
-    ),
+    body: listAdapter.itemCount != 0
+        ? Container(
+            child: ListView.builder(
+              padding: EdgeInsets.only(bottom: 50.0),
+              itemBuilder: listAdapter.itemBuilder,
+              itemCount: listAdapter.itemCount,
+            ),
+            margin: EdgeInsets.all(15.0),
+          )
+        : Container(
+            child: StateView.blackPage(),
+          ),
     endDrawer: Drawer(
       child: Stack(
         alignment: AlignmentDirectional.bottomStart,
@@ -56,9 +61,9 @@ Widget buildView(
                     child: Text(
                       '时间查询',
                       style: TextStyle(
-                          fontSize: 15.0,
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold),
+                        fontSize: 15.0,
+                        color: Colors.black,
+                      ),
                     ),
                   ),
                   _buildSearchItem(
@@ -78,9 +83,9 @@ Widget buildView(
                     child: Text(
                       '状态查询',
                       style: TextStyle(
-                          fontSize: 15.0,
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold),
+                        fontSize: 15.0,
+                        color: Colors.black,
+                      ),
                     ),
                   ),
                   _buildSearchItem(
@@ -178,11 +183,14 @@ Widget _buildSearchItem({String label, String value, VoidCallback callback}) {
                 Container(
                   child: Text(
                     value,
-                    style: TextStyle(fontSize: 13.0, color: Colors.red),
+                    style: TextStyle(fontSize: 13.0, color: Colors.black45),
                   ),
                 ),
                 Container(
-                  child: Icon(Icons.keyboard_arrow_right),
+                  child: Icon(
+                    Icons.keyboard_arrow_right,
+                    color: Colors.black45,
+                  ),
                 ),
               ],
             ),

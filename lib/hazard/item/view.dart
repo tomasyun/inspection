@@ -35,7 +35,7 @@ Widget buildView(Data data, Dispatch dispatch, ViewService viewService) {
         Container(
           margin: EdgeInsets.only(top: 10.0),
           width: double.infinity,
-          color: Colors.black12,
+          color: Colors.grey[300],
           height: 0.5,
         ),
         Container(
@@ -59,7 +59,7 @@ Widget buildView(Data data, Dispatch dispatch, ViewService viewService) {
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: <Widget>[
                     Container(
-                      margin: EdgeInsets.only(top: 20.0),
+                      margin: EdgeInsets.only(top: 10.0),
                       child: Text(
                         '${data.dangerLevel}',
                         style: TextStyle(color: Colors.red, fontSize: 14.0),
@@ -67,7 +67,7 @@ Widget buildView(Data data, Dispatch dispatch, ViewService viewService) {
                       ),
                     ),
                     Container(
-                      margin: EdgeInsets.only(top: 45.0),
+                      margin: EdgeInsets.only(top: 10.0),
                       child: RaisedButton(
                         color: Colors.green,
                         onPressed: () {
@@ -79,10 +79,7 @@ Widget buildView(Data data, Dispatch dispatch, ViewService viewService) {
                         shape: RoundedRectangleBorder(
                             borderRadius:
                                 BorderRadius.all(Radius.circular(20.0))),
-                        child: Text(
-                          '${map['state']}',
-                          style: TextStyle(color: Colors.white, fontSize: 13.0),
-                        ),
+                        child: _buildStateBtnText('${map['state']}'),
                         padding: EdgeInsets.symmetric(
                             vertical: 3.0, horizontal: 5.0),
                       ),
@@ -99,9 +96,37 @@ Widget buildView(Data data, Dispatch dispatch, ViewService viewService) {
   );
 }
 
+Widget _buildStateBtnText(String title) {
+  if (title == '待整改') {
+    return Text('去整改',
+        style: TextStyle(
+          color: Colors.white,
+          fontSize: 14.0,
+        ));
+  } else if (title == '待复查') {
+    return Text('去复查',
+        style: TextStyle(
+          color: Colors.white,
+          fontSize: 14.0,
+        ));
+  } else if (title == '待审批') {
+    return Text('查看',
+        style: TextStyle(
+          color: Colors.white,
+          fontSize: 14.0,
+        ));
+  } else {
+    return Text(title,
+        style: TextStyle(
+          color: Colors.white,
+          fontSize: 14.0,
+        ));
+  }
+}
+
 Widget _buildItem({String title, String result}) {
   return Container(
-    margin: EdgeInsets.only(top: 10.0),
+    margin: EdgeInsets.only(top: 5.0),
     child: Row(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: <Widget>[
@@ -110,9 +135,9 @@ Widget _buildItem({String title, String result}) {
             child: Text(
               title,
               style: TextStyle(
-                  fontSize: 14.0,
-                  color: Colors.black,
-                  fontWeight: FontWeight.bold),
+                fontSize: 14.0,
+                color: Colors.black,
+              ),
               textAlign: TextAlign.left,
             ),
           ),
@@ -120,9 +145,10 @@ Widget _buildItem({String title, String result}) {
         ),
         Expanded(
           child: Container(
+            margin: EdgeInsets.only(left: 15.0),
             child: Text(
               result,
-              style: TextStyle(fontSize: 14.0),
+              style: TextStyle(fontSize: 14.0, color: Colors.black45),
               textAlign: TextAlign.left,
             ),
           ),
@@ -142,10 +168,7 @@ Widget _buildItemHeader({String title, String result}) {
           child: Container(
             child: Text(
               title,
-              style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black,
-                  fontSize: 16.0),
+              style: TextStyle(color: Colors.black, fontSize: 16.0),
               maxLines: 1,
             ),
           ),
@@ -154,7 +177,10 @@ Widget _buildItemHeader({String title, String result}) {
           alignment: AlignmentDirectional.topEnd,
           child: Text(
             result,
-            style: TextStyle(color: Colors.black45, fontSize: 14.0),
+            style: TextStyle(
+                color: Colors.black45,
+                fontSize: 14.0,
+                fontWeight: FontWeight.bold),
           ),
         )
       ],

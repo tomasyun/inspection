@@ -181,7 +181,7 @@ Widget buildView(HomeState state, Dispatch dispatch, ViewService viewService) {
                     height: 15.0,
                   ),
                   Container(
-                    margin: EdgeInsets.only(left: 5.0),
+                    margin: EdgeInsets.only(left: 15.0),
                     child: Text(
                       '代办任务',
                       style: TextStyle(
@@ -407,7 +407,7 @@ Widget inflateRecheck(HomeState state, home.Review review) {
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: <Widget>[
                     Container(
-                      margin: EdgeInsets.only(top: 20.0),
+                      margin: EdgeInsets.only(top: 10.0),
                       child: Text(
                         review.dangerLevel,
                         style: TextStyle(color: Colors.red, fontSize: 14.0),
@@ -415,7 +415,7 @@ Widget inflateRecheck(HomeState state, home.Review review) {
                       ),
                     ),
                     Container(
-                      margin: EdgeInsets.only(top: 45.0),
+                      margin: EdgeInsets.only(top: 10.0),
                       child: RaisedButton(
                         color: Colors.green,
                         onPressed: () {
@@ -491,7 +491,7 @@ Widget inflateInspect(home.Inspect inspect, Dispatch dispatch) {
                   )),
               Expanded(
                 child: Container(
-                  margin: EdgeInsets.only(top: 50.0),
+                  margin: EdgeInsets.only(top: 10.0),
                   child: RaisedButton(
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.all(Radius.circular(20.0))),
@@ -519,7 +519,7 @@ Widget inflateInspect(home.Inspect inspect, Dispatch dispatch) {
 
 Widget commonRow({String title, String result}) {
   return Container(
-    margin: EdgeInsets.only(top: 10.0),
+    margin: EdgeInsets.only(top: 5.0),
     child: Row(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: <Widget>[
@@ -528,9 +528,9 @@ Widget commonRow({String title, String result}) {
             child: Text(
               title,
               style: TextStyle(
-                  fontSize: 14.0,
-                  color: Colors.black,
-                  fontWeight: FontWeight.bold),
+                fontSize: 14.0,
+                color: Colors.black,
+              ),
               textAlign: TextAlign.left,
             ),
           ),
@@ -538,9 +538,10 @@ Widget commonRow({String title, String result}) {
         ),
         Expanded(
           child: Container(
+            margin: EdgeInsets.only(left: 15.0),
             child: Text(
               result,
-              style: TextStyle(fontSize: 14.0),
+              style: TextStyle(fontSize: 14.0, color: Colors.black45),
               textAlign: TextAlign.left,
             ),
           ),
@@ -559,10 +560,7 @@ Widget commonHeader({String title, String result}) {
           child: Container(
             child: Text(
               title,
-              style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black,
-                  fontSize: 16.0),
+              style: TextStyle(color: Colors.black, fontSize: 16.0),
               maxLines: 1,
             ),
           ),
@@ -573,7 +571,10 @@ Widget commonHeader({String title, String result}) {
             alignment: AlignmentDirectional.topEnd,
             child: Text(
               result,
-              style: TextStyle(color: Colors.black45, fontSize: 14.0),
+              style: TextStyle(
+                  color: Colors.black45,
+                  fontSize: 14.0,
+                  fontWeight: FontWeight.bold),
             ),
           ),
           flex: 6,

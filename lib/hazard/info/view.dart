@@ -42,11 +42,11 @@ Widget buildView(
                   children: <Widget>[
                     Container(
                       child: Text(
-                        '描述 :',
+                        '隐患描述 :',
                         style: TextStyle(
-                            fontSize: 14.0,
-                            color: Colors.black,
-                            fontWeight: FontWeight.bold),
+                          fontSize: 14.0,
+                          color: Colors.black,
+                        ),
                       ),
                     ),
                     Container(
@@ -59,7 +59,7 @@ Widget buildView(
                                 state.model.data.dangerRemark,
                                 style: TextStyle(
                                   fontSize: 14.0,
-                                  color: Colors.black,
+                                  color: Colors.black45,
                                 ),
                               )
                             : Text('')),
@@ -165,9 +165,9 @@ Widget buildView(
                       child: Text(
                         '附件 :',
                         style: TextStyle(
-                            fontSize: 14.0,
-                            color: Colors.black,
-                            fontWeight: FontWeight.bold),
+                          fontSize: 14.0,
+                          color: Colors.black,
+                        ),
                       ),
                     ),
                     Container(
@@ -197,10 +197,7 @@ Widget _buildHazardInfoItem({String title, String content}) {
         Expanded(
           child: Text(
             title,
-            style: TextStyle(
-                fontSize: 14.0,
-                fontWeight: FontWeight.bold,
-                color: Colors.black),
+            style: TextStyle(fontSize: 14.0, color: Colors.black),
             textAlign: TextAlign.left,
           ),
           flex: 3,
@@ -208,7 +205,7 @@ Widget _buildHazardInfoItem({String title, String content}) {
         Expanded(
           child: Text(
             content,
-            style: TextStyle(fontSize: 14.0, color: Colors.black),
+            style: TextStyle(fontSize: 14.0, color: Colors.black45),
             textAlign: TextAlign.right,
           ),
           flex: 7,

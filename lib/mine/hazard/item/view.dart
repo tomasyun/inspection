@@ -78,10 +78,7 @@ Widget buildView(Data data, Dispatch dispatch, ViewService viewService) {
                         shape: RoundedRectangleBorder(
                             borderRadius:
                                 BorderRadius.all(Radius.circular(20.0))),
-                        child: Text(
-                          '${map['state']}',
-                          style: TextStyle(color: Colors.white, fontSize: 13.0),
-                        ),
+                        child: _buildStateBtnText('${map['state']}'),
                         padding: EdgeInsets.symmetric(
                             vertical: 3.0, horizontal: 5.0),
                       ),
@@ -98,9 +95,43 @@ Widget buildView(Data data, Dispatch dispatch, ViewService viewService) {
   );
 }
 
+Widget _buildStateBtnText(String title) {
+  if (title == '待整改') {
+    return Text('去整改',
+        style: TextStyle(
+          color: Colors.white,
+          fontSize: 14.0,
+        ));
+  } else if (title == '待复查') {
+    return Text('去复查',
+        style: TextStyle(
+          color: Colors.white,
+          fontSize: 14.0,
+        ));
+  } else if (title == '待审批') {
+    return Text('查看',
+        style: TextStyle(
+          color: Colors.white,
+          fontSize: 14.0,
+        ));
+  } else if (title == '已完成') {
+    return Text('查看',
+        style: TextStyle(
+          color: Colors.white,
+          fontSize: 14.0,
+        ));
+  } else {
+    return Text(title,
+        style: TextStyle(
+          color: Colors.white,
+          fontSize: 14.0,
+        ));
+  }
+}
+
 Widget _buildItem({String title, String result}) {
   return Container(
-    margin: EdgeInsets.only(top: 10.0),
+    margin: EdgeInsets.only(top: 5.0),
     child: Row(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: <Widget>[
@@ -109,9 +140,9 @@ Widget _buildItem({String title, String result}) {
             child: Text(
               title,
               style: TextStyle(
-                  fontSize: 14.0,
-                  color: Colors.black,
-                  fontWeight: FontWeight.bold),
+                fontSize: 14.0,
+                color: Colors.black,
+              ),
               textAlign: TextAlign.left,
             ),
           ),
@@ -119,9 +150,10 @@ Widget _buildItem({String title, String result}) {
         ),
         Expanded(
           child: Container(
+            margin: EdgeInsets.only(left: 15.0),
             child: Text(
               result,
-              style: TextStyle(fontSize: 14.0),
+              style: TextStyle(fontSize: 14.0, color: Colors.black45),
               textAlign: TextAlign.left,
             ),
           ),
@@ -141,10 +173,7 @@ Widget _buildItemHeader({String title, String result}) {
           child: Container(
             child: Text(
               title,
-              style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black,
-                  fontSize: 16.0),
+              style: TextStyle(color: Colors.black, fontSize: 16.0),
               maxLines: 1,
             ),
           ),

@@ -28,9 +28,9 @@ Widget buildView(
               child: Text(
                 '复查情况',
                 style: TextStyle(
-                    fontSize: 14.0,
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold),
+                  fontSize: 14.0,
+                  color: Colors.black,
+                ),
               ),
             ),
             Container(
@@ -42,7 +42,7 @@ Widget buildView(
                         state.model.data.reviewResult != null
                     ? state.model.data.reviewResult
                     : '',
-                style: TextStyle(fontSize: 14.0, color: Colors.black),
+                style: TextStyle(fontSize: 14.0, color: Colors.black45),
               ),
             ),
             _buildHazardInfoItem(
@@ -92,9 +92,9 @@ Widget buildView(
               child: Text(
                 '复查附件',
                 style: TextStyle(
-                    fontSize: 14.0,
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold),
+                  fontSize: 14.0,
+                  color: Colors.black,
+                ),
               ),
             ),
             Container(
@@ -120,17 +120,14 @@ Widget _buildHazardInfoItem({String title, String content}) {
         Expanded(
           child: Text(
             title,
-            style: TextStyle(
-                fontSize: 14.0,
-                fontWeight: FontWeight.bold,
-                color: Colors.black),
+            style: TextStyle(fontSize: 14.0, color: Colors.black),
           ),
           flex: 3,
         ),
         Expanded(
           child: Text(
             content,
-            style: TextStyle(fontSize: 14.0, color: Colors.black),
+            style: TextStyle(fontSize: 14.0, color: Colors.black45),
           ),
           flex: 7,
         )

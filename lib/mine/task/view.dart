@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:inspection/entity/task_model.dart';
 import 'package:inspection/hazard/info/page.dart';
 import 'package:inspection/mine/task/action.dart';
+import 'package:inspection/widget/state_view.dart' as StateView;
 
 import 'state.dart';
 
@@ -16,18 +17,20 @@ Widget buildView(TaskState state, Dispatch dispatch, ViewService viewService) {
       centerTitle: true,
       backgroundColor: Colors.blue,
     ),
-    body: SingleChildScrollView(
-      child: Container(
-        margin: EdgeInsets.all(15.0),
-        padding: EdgeInsets.only(bottom: 50.0),
-        child: Column(
-          children: state.model != null && state.model.data != null
-              ? _buildToDoWidgets(
-                  state: state, model: state.model, dispatch: dispatch)
-              : [],
-        ),
-      ),
-    ),
+    body: state.model != null && state.model.data != null
+        ? SingleChildScrollView(
+            child: Container(
+              margin: EdgeInsets.all(15.0),
+              padding: EdgeInsets.only(bottom: 50.0),
+              child: Column(
+                children: _buildToDoWidgets(
+                    state: state, model: state.model, dispatch: dispatch),
+              ),
+            ),
+          )
+        : Container(
+            child: StateView.blackPage(),
+          ),
   );
 }
 
@@ -110,7 +113,7 @@ Widget _recheck(TaskState state, Review review) {
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: <Widget>[
                     Container(
-                      margin: EdgeInsets.only(top: 20.0),
+                      margin: EdgeInsets.only(top: 10.0),
                       child: Text(
                         '${review.dangerLevel}',
                         style: TextStyle(color: Colors.red, fontSize: 14.0),
@@ -118,7 +121,7 @@ Widget _recheck(TaskState state, Review review) {
                       ),
                     ),
                     Container(
-                      margin: EdgeInsets.only(top: 45.0),
+                      margin: EdgeInsets.only(top: 10.0),
                       child: RaisedButton(
                         color: Colors.green,
                         onPressed: () {
@@ -207,7 +210,7 @@ Widget _rectify(TaskState state, Rectify rectify) {
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: <Widget>[
                     Container(
-                      margin: EdgeInsets.only(top: 20.0),
+                      margin: EdgeInsets.only(top: 10.0),
                       child: Text(
                         '${rectify.dangerLevel}',
                         style: TextStyle(color: Colors.red, fontSize: 14.0),
@@ -215,7 +218,7 @@ Widget _rectify(TaskState state, Rectify rectify) {
                       ),
                     ),
                     Container(
-                      margin: EdgeInsets.only(top: 45.0),
+                      margin: EdgeInsets.only(top: 10.0),
                       child: RaisedButton(
                         color: Colors.green,
                         onPressed: () {
@@ -289,7 +292,8 @@ Widget _inspect(Inspect inspect, Dispatch dispatch) {
                   )),
               Expanded(
                 child: Container(
-                  margin: EdgeInsets.only(top: 50.0),
+                  alignment: AlignmentDirectional.bottomCenter,
+                  margin: EdgeInsets.only(top: 10.0),
                   child: RaisedButton(
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.all(Radius.circular(20.0))),
@@ -317,7 +321,7 @@ Widget _inspect(Inspect inspect, Dispatch dispatch) {
 
 Widget _buildItem({String title, String result}) {
   return Container(
-    margin: EdgeInsets.only(top: 10.0),
+    margin: EdgeInsets.only(top: 5.0),
     child: Row(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: <Widget>[
@@ -326,9 +330,9 @@ Widget _buildItem({String title, String result}) {
             child: Text(
               title,
               style: TextStyle(
-                  fontSize: 14.0,
-                  color: Colors.black,
-                  fontWeight: FontWeight.bold),
+                fontSize: 14.0,
+                color: Colors.black,
+              ),
               textAlign: TextAlign.left,
             ),
           ),
@@ -336,9 +340,10 @@ Widget _buildItem({String title, String result}) {
         ),
         Expanded(
           child: Container(
+            margin: EdgeInsets.only(left: 15.0),
             child: Text(
               result,
-              style: TextStyle(fontSize: 14.0),
+              style: TextStyle(fontSize: 14.0, color: Colors.black45),
               textAlign: TextAlign.left,
             ),
           ),
@@ -358,10 +363,7 @@ Widget _buildItemHeader({String title, String result}) {
           child: Container(
             child: Text(
               title,
-              style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black,
-                  fontSize: 16.0),
+              style: TextStyle(color: Colors.black, fontSize: 16.0),
               maxLines: 1,
             ),
           ),
@@ -370,7 +372,10 @@ Widget _buildItemHeader({String title, String result}) {
           alignment: AlignmentDirectional.topEnd,
           child: Text(
             result,
-            style: TextStyle(color: Colors.black45, fontSize: 14.0),
+            style: TextStyle(
+                color: Colors.black45,
+                fontSize: 14.0,
+                fontWeight: FontWeight.bold),
           ),
         )
       ],
