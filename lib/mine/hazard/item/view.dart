@@ -17,7 +17,7 @@ Widget buildView(Data data, Dispatch dispatch, ViewService viewService) {
   }
   return Container(
     padding: EdgeInsets.all(10.0),
-    margin: EdgeInsets.all(15.0),
+    margin: EdgeInsets.only(bottom: 10.0),
     width: double.infinity,
     decoration: BoxDecoration(
       color: Colors.white,
@@ -153,7 +153,8 @@ Widget _buildItemHeader({String title, String result}) {
           alignment: AlignmentDirectional.topEnd,
           child: Text(
             result,
-            style: TextStyle(color: Colors.black45, fontSize: 14.0),
+            style: TextStyle(
+                color: Colors.red, fontSize: 14.0, fontWeight: FontWeight.bold),
           ),
         )
       ],

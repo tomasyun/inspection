@@ -1,7 +1,6 @@
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart';
 import 'package:inspection/entity/plan_model.dart';
-import 'package:inspection/mine/plan/manage/item/action.dart';
 
 Widget buildView(Data data, Dispatch dispatch, ViewService viewService) {
   Map<String, dynamic> map = Map();
@@ -13,12 +12,10 @@ Widget buildView(Data data, Dispatch dispatch, ViewService viewService) {
     map['state'] = '已结束';
   }
   return GestureDetector(
-    onTap: () {
-      dispatch(InspectPlanItemActionCreator.onSkipAboutPage());
-    },
+    onTap: () {},
     child: Container(
       padding: EdgeInsets.all(10.0),
-      margin: EdgeInsets.all(15.0),
+      margin: EdgeInsets.only(bottom: 10.0),
       width: double.infinity,
       decoration: BoxDecoration(
         color: Colors.white,
@@ -116,13 +113,41 @@ Widget _buildItemHeader({String title, String result}) {
           ),
         ),
         Container(
-          alignment: AlignmentDirectional.topEnd,
-          child: Text(
-            result,
-            style: TextStyle(color: Colors.black45, fontSize: 14.0),
-          ),
-        )
+            alignment: AlignmentDirectional.topEnd,
+            child: _buildChangeTextColor(result))
       ],
     ),
   );
+}
+
+Widget _buildChangeTextColor(String title) {
+  if (title == '未开始') {
+    return Text(title,
+        style: TextStyle(
+          color: Colors.blue,
+          fontSize: 14.0,
+          fontWeight: FontWeight.bold,
+        ));
+  } else if (title == '进行中') {
+    return Text(title,
+        style: TextStyle(
+          color: Colors.red,
+          fontSize: 14.0,
+          fontWeight: FontWeight.bold,
+        ));
+  } else if (title == '已结束') {
+    return Text(title,
+        style: TextStyle(
+          color: Colors.black45,
+          fontSize: 14.0,
+          fontWeight: FontWeight.bold,
+        ));
+  } else {
+    return Text(title,
+        style: TextStyle(
+          color: Colors.black45,
+          fontSize: 14.0,
+          fontWeight: FontWeight.bold,
+        ));
+  }
 }

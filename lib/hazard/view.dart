@@ -32,10 +32,13 @@ Widget buildView(
         )
       ],
     ),
-    body: ListView.builder(
-      padding: EdgeInsets.only(bottom: 50.0),
-      itemBuilder: listAdapter.itemBuilder,
-      itemCount: listAdapter.itemCount,
+    body: Container(
+      margin: EdgeInsets.all(15.0),
+      child: ListView.builder(
+        padding: EdgeInsets.only(bottom: 50.0),
+        itemBuilder: listAdapter.itemBuilder,
+        itemCount: listAdapter.itemCount,
+      ),
     ),
     endDrawer: Drawer(
       child: Stack(

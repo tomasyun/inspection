@@ -18,6 +18,7 @@ Widget buildView(TaskState state, Dispatch dispatch, ViewService viewService) {
     ),
     body: SingleChildScrollView(
       child: Container(
+        margin: EdgeInsets.all(15.0),
         padding: EdgeInsets.only(bottom: 50.0),
         child: Column(
           children: state.model != null && state.model.data != null
@@ -64,7 +65,8 @@ Widget _recheck(TaskState state, Review review) {
     map['state'] = '待复查';
   }
   return Container(
-    margin: EdgeInsets.all(15.0),
+    padding: EdgeInsets.all(15.0),
+    margin: EdgeInsets.only(bottom: 10.0),
     width: double.infinity,
     decoration: BoxDecoration(
       color: Colors.white,
@@ -77,78 +79,73 @@ Widget _recheck(TaskState state, Review review) {
       ],
       borderRadius: BorderRadius.all(Radius.circular(15.0)),
     ),
-    child: Container(
-      padding: EdgeInsets.all(15.0),
-      child: Column(
-        children: <Widget>[
-          _buildItemHeader(
-              title: '${review.equipmentName}', result: '${map['state']}'),
-          Container(
-            margin: EdgeInsets.only(top: 10.0),
-            width: double.infinity,
-            color: Colors.black12,
-            height: 0.5,
-          ),
-          Container(
-            child: Row(
-              children: <Widget>[
-                Expanded(
-                    flex: 8,
-                    child: Column(
-                      children: <Widget>[
-                        _buildItem(
-                            title: '位置', result: '${review.dangerAddress}'),
-                        _buildItem(
-                            title: '隐患描述', result: '${review.dangerRemark}'),
-                        _buildItem(
-                            title: '隐患类型', result: '${review.dangerType}'),
-                        _buildItem(
-                            title: '编号', result: '${review.equipmentCode}'),
-                      ],
-                    )),
-                Expanded(
+    child: Column(
+      children: <Widget>[
+        _buildItemHeader(
+            title: '${review.equipmentName}', result: '${map['state']}'),
+        Container(
+          margin: EdgeInsets.only(top: 10.0),
+          width: double.infinity,
+          color: Colors.black12,
+          height: 0.5,
+        ),
+        Container(
+          child: Row(
+            children: <Widget>[
+              Expanded(
+                  flex: 8,
                   child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: <Widget>[
-                      Container(
-                        margin: EdgeInsets.only(top: 20.0),
-                        child: Text(
-                          '${review.dangerLevel}',
-                          style: TextStyle(color: Colors.red, fontSize: 14.0),
-                          textAlign: TextAlign.right,
-                        ),
-                      ),
-                      Container(
-                        margin: EdgeInsets.only(top: 45.0),
-                        child: RaisedButton(
-                          color: Colors.green,
-                          onPressed: () {
-                            Navigator.of(state.context)
-                                .push(MaterialPageRoute(builder: (content) {
-                              return HazardInfoPage().buildPage(map);
-                            }));
-                          },
-                          shape: RoundedRectangleBorder(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(20.0))),
-                          child: Text(
-                            '${map['state']}',
-                            style:
-                                TextStyle(color: Colors.white, fontSize: 13.0),
-                          ),
-                          padding: EdgeInsets.symmetric(
-                              vertical: 3.0, horizontal: 5.0),
-                        ),
-                      ),
+                      _buildItem(
+                          title: '位置', result: '${review.dangerAddress}'),
+                      _buildItem(
+                          title: '隐患描述', result: '${review.dangerRemark}'),
+                      _buildItem(title: '隐患类型', result: '${review.dangerType}'),
+                      _buildItem(
+                          title: '编号', result: '${review.equipmentCode}'),
                     ],
-                  ),
-                  flex: 2,
-                )
-              ],
-            ),
+                  )),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: <Widget>[
+                    Container(
+                      margin: EdgeInsets.only(top: 20.0),
+                      child: Text(
+                        '${review.dangerLevel}',
+                        style: TextStyle(color: Colors.red, fontSize: 14.0),
+                        textAlign: TextAlign.right,
+                      ),
+                    ),
+                    Container(
+                      margin: EdgeInsets.only(top: 45.0),
+                      child: RaisedButton(
+                        color: Colors.green,
+                        onPressed: () {
+                          Navigator.of(state.context)
+                              .push(MaterialPageRoute(builder: (content) {
+                            return HazardInfoPage().buildPage(map);
+                          }));
+                        },
+                        shape: RoundedRectangleBorder(
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(20.0))),
+                        child: Text(
+                          '${map['state']}',
+                          style: TextStyle(color: Colors.white, fontSize: 13.0),
+                        ),
+                        padding: EdgeInsets.symmetric(
+                            vertical: 3.0, horizontal: 5.0),
+                      ),
+                    ),
+                  ],
+                ),
+                flex: 2,
+              )
+            ],
           ),
-        ],
-      ),
+        ),
+      ],
     ),
   );
 }
@@ -164,8 +161,8 @@ Widget _rectify(TaskState state, Rectify rectify) {
     map['state'] = '待复查';
   }
   return Container(
-    padding: EdgeInsets.all(10.0),
-    margin: EdgeInsets.all(15.0),
+    padding: EdgeInsets.all(15.0),
+    margin: EdgeInsets.only(bottom: 10.0),
     width: double.infinity,
     decoration: BoxDecoration(
       color: Colors.white,
@@ -252,75 +249,64 @@ Widget _rectify(TaskState state, Rectify rectify) {
 
 Widget _inspect(Inspect inspect, Dispatch dispatch) {
   return Container(
+    padding: EdgeInsets.all(15.0),
+    margin: EdgeInsets.only(bottom: 10.0),
+    width: double.infinity,
+    decoration: BoxDecoration(
+      color: Colors.white,
+      boxShadow: [
+        BoxShadow(
+            color: Colors.grey[800],
+            blurRadius: 10.0,
+            offset: Offset(0.0, 2.0),
+            spreadRadius: -7.0)
+      ],
+      borderRadius: BorderRadius.all(Radius.circular(15.0)),
+    ),
     child: Column(
       children: <Widget>[
+        _buildItemHeader(title: '${inspect.equipmentName}', result: '待检查'),
         Container(
-          padding: EdgeInsets.all(10.0),
-          margin: EdgeInsets.all(15.0),
+          margin: EdgeInsets.only(top: 10.0),
           width: double.infinity,
-          decoration: BoxDecoration(
-            color: Colors.white,
-            boxShadow: [
-              BoxShadow(
-                  color: Colors.grey[800],
-                  blurRadius: 10.0,
-                  offset: Offset(0.0, 2.0),
-                  spreadRadius: -7.0)
-            ],
-            borderRadius: BorderRadius.all(Radius.circular(15.0)),
-          ),
-          child: Column(
+          color: Colors.black12,
+          height: 0.5,
+        ),
+        Container(
+          child: Row(
             children: <Widget>[
-              _buildItemHeader(
-                  title: '${inspect.equipmentName}', result: '待检查'),
-              Container(
-                margin: EdgeInsets.only(top: 10.0),
-                width: double.infinity,
-                color: Colors.black12,
-                height: 0.5,
-              ),
-              Container(
-                child: Row(
-                  children: <Widget>[
-                    Expanded(
-                        flex: 8,
-                        child: Column(
-                          children: <Widget>[
-                            _buildItem(
-                                title: '位置:', result: '${inspect.installArea}'),
-                            _buildItem(
-                                title: '编号',
-                                result: '${inspect.equipmentCode}'),
-                            _buildItem(
-                                title: '设备类型',
-                                result: '${inspect.equipmentType}'),
-                          ],
-                        )),
-                    Expanded(
-                      child: Container(
-                        margin: EdgeInsets.only(top: 50.0),
-                        child: RaisedButton(
-                          shape: RoundedRectangleBorder(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(20.0))),
-                          color: Colors.green,
-                          onPressed: () {
-                            dispatch(TaskActionCreator.onScanQRCode());
-                          },
-                          child: Text(
-                            '扫一扫',
-                            style:
-                                TextStyle(color: Colors.white, fontSize: 13.0),
-                          ),
-                          padding: EdgeInsets.symmetric(
-                              vertical: 3.0, horizontal: 5.0),
-                        ),
-                      ),
-                      flex: 2,
-                    )
-                  ],
+              Expanded(
+                  flex: 8,
+                  child: Column(
+                    children: <Widget>[
+                      _buildItem(
+                          title: '位置:', result: '${inspect.installArea}'),
+                      _buildItem(
+                          title: '编号', result: '${inspect.equipmentCode}'),
+                      _buildItem(
+                          title: '设备类型', result: '${inspect.equipmentType}'),
+                    ],
+                  )),
+              Expanded(
+                child: Container(
+                  margin: EdgeInsets.only(top: 50.0),
+                  child: RaisedButton(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(20.0))),
+                    color: Colors.green,
+                    onPressed: () {
+                      dispatch(TaskActionCreator.onScanQRCode());
+                    },
+                    child: Text(
+                      '扫一扫',
+                      style: TextStyle(color: Colors.white, fontSize: 13.0),
+                    ),
+                    padding:
+                        EdgeInsets.symmetric(vertical: 3.0, horizontal: 5.0),
+                  ),
                 ),
-              ),
+                flex: 2,
+              )
             ],
           ),
         ),

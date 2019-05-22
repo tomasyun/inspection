@@ -98,7 +98,8 @@ Widget _buildItemHeader({String title, String result}) {
           alignment: AlignmentDirectional.topEnd,
           child: Text(
             result,
-            style: TextStyle(color: Colors.black45, fontSize: 14.0),
+            style: TextStyle(
+                color: Colors.red, fontSize: 14.0, fontWeight: FontWeight.bold),
           ),
         )
       ],
