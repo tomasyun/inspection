@@ -15,6 +15,7 @@ Widget buildView(
       backgroundColor: Colors.blue,
     ),
     body: Container(
+      margin: EdgeInsets.all(15.0),
       child: ListView.builder(
         padding: EdgeInsets.only(bottom: 50.0),
         itemBuilder: listAdapter.itemBuilder,

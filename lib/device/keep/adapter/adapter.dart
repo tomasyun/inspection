@@ -15,9 +15,11 @@ class KeepRecordAdapter extends DynamicFlowAdapter<KeepState> {
 class _KeepRecordConnector extends ConnOp<KeepState, List<ItemBean>> {
   @override
   List<ItemBean> get(KeepState state) {
-    return state.list.map((item) {
-      return ItemBean('keep_record', item);
-    }).toList();
+    return state.model != null && state.model.data != null
+        ? state.model.data.map((item) {
+            return ItemBean('keep_record', item);
+          }).toList()
+        : <ItemBean>[];
   }
 
   @override

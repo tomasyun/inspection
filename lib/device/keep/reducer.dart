@@ -13,6 +13,6 @@ Reducer<KeepState> buildReducer() {
 
 KeepState _onAction(KeepState state, Action action) {
   KeepState newState = state.clone();
-  newState.list = action.payload;
+  newState.model = action.payload;
   return newState;
 }

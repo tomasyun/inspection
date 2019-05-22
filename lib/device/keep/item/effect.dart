@@ -1,12 +1,12 @@
 import 'package:fish_redux/fish_redux.dart';
-import 'package:inspection/entity/keep_record.dart';
+import 'package:inspection/entity/keep_record_model.dart';
 
 import 'action.dart';
 
-Effect<KeepRecord> buildEffect() {
-  return combineEffects(<Object, Effect<KeepRecord>>{
+Effect<Data> buildEffect() {
+  return combineEffects(<Object, Effect<Data>>{
     RecordItemAction.action: _onAction,
   });
 }
 
-void _onAction(Action action, Context<KeepRecord> ctx) {}
+void _onAction(Action action, Context<Data> ctx) {}

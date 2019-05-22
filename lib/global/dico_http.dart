@@ -3,11 +3,13 @@ import 'package:inspection/entity/filter_model.dart';
 import 'package:inspection/entity/hazard_info_model.dart';
 import 'package:inspection/entity/hazard_model.dart';
 import 'package:inspection/entity/home_model.dart';
+import 'package:inspection/entity/keep_record_model.dart';
 import 'package:inspection/entity/login_model.dart';
 import 'package:inspection/entity/notice_model.dart';
 import 'package:inspection/entity/recheck_info_model.dart';
 import 'package:inspection/entity/rectify_form_model.dart';
 import 'package:inspection/entity/rectify_info_model.dart';
+import 'package:inspection/entity/repair_record_model.dart';
 import 'package:inspection/entity/task_model.dart';
 import 'package:inspection/entity/user_model.dart';
 import 'package:inspection/global/http_util.dart';
@@ -21,8 +23,8 @@ class DicoHttpRepository {
   static final String hazardManage = 'sms-interface/danger/findDnagerList';
   static final String repairReport = 'sms-interface/equipment/saveRepairInfo';
   static final String warningRecord = '';
-  static final String repairRecord = '';
-  static final String keepRecord = '';
+  static final String repairRecord = 'sms-interface/equipment/findRepairList';
+  static final String keepRecord = 'sms-interface/equipment/findMaintainList';
   static final String hazardInfo = 'sms-interface/danger/findDnagerInfo';
   static final String rectifyInfo = 'sms-interface/danger/getRectifyInfo';
   static final String rectifyReport =
@@ -149,13 +151,17 @@ class DicoHttpRepository {
   }
 
   ///维修记录
-  static Future doGetRepairRecordRequest() async {
-    return await HttpUtil().get(repairRecord);
+  static Future<RepairRecordModel> doGetRepairRecordRequest(
+      String equipmentId) async {
+    return RepairRecordModel.fromJson(
+        await HttpUtil().get(repairRecord + '?equipmentId=$equipmentId'));
   }
 
   ///保养记录
-  static Future doGetKeepRecordRequest() async {
-    return await HttpUtil().get(keepRecord);
+  static Future<KeepRecordModel> doGetKeepRecordRequest(
+      String equipmentId) async {
+    return KeepRecordModel.fromJson(
+        await HttpUtil().get(keepRecord + '?equipmentId=$equipmentId'));
   }
 
   ///整改上报

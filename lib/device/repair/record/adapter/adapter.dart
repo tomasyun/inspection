@@ -13,9 +13,11 @@ class RepairRecordAdapter extends DynamicFlowAdapter<RecordState> {
 class _RepairRecordConnector extends ConnOp<RecordState, List<ItemBean>> {
   @override
   List<ItemBean> get(RecordState state) {
-    return state.list.map((item) {
-      return ItemBean('record', item);
-    }).toList();
+    return state.model != null && state.model.data != null
+        ? state.model.data.map((item) {
+            return ItemBean('record', item);
+          }).toList()
+        : <ItemBean>[];
   }
 
   @override

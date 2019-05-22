@@ -1,12 +1,12 @@
 import 'package:fish_redux/fish_redux.dart';
-import 'package:inspection/entity/repair_record.dart';
+import 'package:inspection/entity/repair_record_model.dart';
 
 class RecordState implements Cloneable<RecordState> {
-  List<RepairRecord> list = List<RepairRecord>();
+  RepairRecordModel model = RepairRecordModel();
 
   @override
   RecordState clone() {
-    return RecordState()..list = list;
+    return RecordState()..model = model;
   }
 }
 

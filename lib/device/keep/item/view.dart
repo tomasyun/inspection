@@ -1,15 +1,15 @@
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart';
-import 'package:inspection/entity/keep_record.dart';
+import 'package:inspection/entity/keep_record_model.dart';
 
-Widget buildView(KeepRecord state, Dispatch dispatch, ViewService viewService) {
+Widget buildView(Data data, Dispatch dispatch, ViewService viewService) {
   return GestureDetector(
     onTap: () {
 //      dispatch(RecordItemActionCreator.onAction());
     },
     child: Container(
         padding: EdgeInsets.all(10.0),
-        margin: EdgeInsets.all(15.0),
+        margin: EdgeInsets.only(bottom: 10.0),
         width: double.infinity,
         decoration: BoxDecoration(
           color: Colors.white,
@@ -25,17 +25,17 @@ Widget buildView(KeepRecord state, Dispatch dispatch, ViewService viewService) {
         child: Container(
           child: Column(
             children: <Widget>[
-              _buildItemHeader(title: '火灾报警控制器', result: '已保养'),
+              _buildItemHeader(title: '${data.equipmentName}', result: '已保养'),
               Container(
                 margin: EdgeInsets.only(top: 10.0),
                 width: double.infinity,
                 color: Colors.black12,
                 height: 0.5,
               ),
-              _buildItem(title: '保养时间', result: '${state.date}'),
-              _buildItem(title: '保养人', result: '${state.keeper}'),
-              _buildItem(title: '保养状态', result: '${state.state}'),
-              _buildItem(title: '备注', result: '${state.remark}'),
+              _buildItem(title: '保养人', result: '${data.maintainPersonName}'),
+              _buildItem(title: '保养时间', result: '${data.maintainDate}'),
+              _buildItem(title: '责任人', result: '${data.personLiableName}'),
+              _buildItem(title: '责任部门', result: '${data.organizationName}'),
             ],
           ),
         )),
@@ -50,27 +50,27 @@ Widget _buildItem({String title, String result}) {
       children: <Widget>[
         Expanded(
           child: Container(
+            margin: EdgeInsets.only(left: 20.0),
             child: Text(
               title,
               style: TextStyle(
                   fontSize: 14.0,
                   color: Colors.black,
                   fontWeight: FontWeight.bold),
-              textAlign: TextAlign.right,
+              textAlign: TextAlign.left,
             ),
           ),
-          flex: 3,
+          flex: 4,
         ),
         Expanded(
           child: Container(
-            margin: EdgeInsets.only(left: 30.0),
             child: Text(
               result,
               style: TextStyle(fontSize: 14.0),
               textAlign: TextAlign.left,
             ),
           ),
-          flex: 7,
+          flex: 6,
         ),
       ],
     ),

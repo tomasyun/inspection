@@ -1,6 +1,7 @@
 import 'package:fish_redux/fish_redux.dart';
 import 'package:inspection/device/keep/action.dart';
-import 'package:inspection/entity/keep_record.dart';
+import 'package:inspection/global/app_common.dart';
+import 'package:inspection/global/dico_http.dart';
 
 import 'state.dart';
 
@@ -11,11 +12,14 @@ Effect<KeepState> buildEffect() {
 }
 
 void _onAction(Action action, Context<KeepState> ctx) {
-  List<KeepRecord> list = [
-    KeepRecord(state: '已完成', remark: '深度保养', keeper: '贠拓', date: '2019-06-23'),
-    KeepRecord(
-        state: '未开始', remark: '添加高纯度润滑剂', keeper: '王婷', date: '2019-04-28')
-  ];
+  DicoHttpRepository.doGetKeepRecordRequest('40288a8a6aba494a016ac398a0240002')
+      .then((model) {
+    if (model.code == 0) {
+      ctx.dispatch(KeepActionCreator.onAction(model));
+    } else {
+      AppCommons.showToast(model.msg);
+    }
+  });
 
-  ctx.dispatch(KeepActionCreator.onAction(list));
+//
 }

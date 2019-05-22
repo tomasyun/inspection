@@ -1,11 +1,12 @@
 import 'package:fish_redux/fish_redux.dart';
-import 'package:inspection/entity/keep_record.dart';
+import 'package:inspection/entity/keep_record_model.dart';
 
 class KeepState implements Cloneable<KeepState> {
-  List<KeepRecord> list = List<KeepRecord>();
+  KeepRecordModel model = KeepRecordModel();
+
   @override
   KeepState clone() {
-    return KeepState()..list = list;
+    return KeepState()..model = model;
   }
 }
 

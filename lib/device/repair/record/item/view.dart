@@ -1,17 +1,16 @@
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart';
-import 'package:inspection/entity/repair_record.dart';
+import 'package:inspection/entity/repair_record_model.dart';
 
-Widget buildView(
-    RepairRecord state, Dispatch dispatch, ViewService viewService) {
+Widget buildView(Data data, Dispatch dispatch, ViewService viewService) {
   return GestureDetector(
     onTap: () {
 //      dispatch(RecordItemActionCreator.onAction());
     },
     child: Container(
         padding: EdgeInsets.all(10.0),
-        margin: EdgeInsets.all(15.0),
         width: double.infinity,
+        margin: EdgeInsets.only(bottom: 10.0),
         decoration: BoxDecoration(
           color: Colors.white,
           boxShadow: [
@@ -26,20 +25,17 @@ Widget buildView(
         child: Container(
           child: Column(
             children: <Widget>[
-              _buildItemHeader(title: '火灾报警控制器', result: '已维修'),
+              _buildItemHeader(title: '${data.equipmentName}', result: '已维修'),
               Container(
                 margin: EdgeInsets.only(top: 10.0),
                 width: double.infinity,
                 color: Colors.black12,
                 height: 0.5,
               ),
-              _buildItem(title: '设备名称', result: '${state.name}'),
-              _buildItem(title: '位置', result: '${state.name}'),
-              _buildItem(title: '编号', result: '${state.name}'),
-              _buildItem(title: '故障描述', result: '${state.desc}'),
-              _buildItem(title: '上报时间', result: '${state.date}'),
-              _buildItem(title: '责任部门', result: '${state.depart}'),
-              _buildItem(title: '上报人', result: '${state.applicant}')
+              _buildItem(title: '维修人', result: '${data.repairPersonName}'),
+              _buildItem(title: '上报时间', result: '${data.repairDate}'),
+              _buildItem(title: '责任人', result: '${data.personLiableName}'),
+              _buildItem(title: '责任部门', result: '${data.organizationName}'),
             ],
           ),
         )),
@@ -54,27 +50,27 @@ Widget _buildItem({String title, String result}) {
       children: <Widget>[
         Expanded(
           child: Container(
+            margin: EdgeInsets.only(left: 20.0),
             child: Text(
               title,
               style: TextStyle(
                   fontSize: 14.0,
                   color: Colors.black,
                   fontWeight: FontWeight.bold),
-              textAlign: TextAlign.right,
+              textAlign: TextAlign.left,
             ),
           ),
-          flex: 3,
+          flex: 4,
         ),
         Expanded(
           child: Container(
-            margin: EdgeInsets.only(left: 30.0),
             child: Text(
               result,
               style: TextStyle(fontSize: 14.0),
               textAlign: TextAlign.left,
             ),
           ),
-          flex: 7,
+          flex: 6,
         ),
       ],
     ),
