@@ -13,9 +13,13 @@ class InspectPlanAdapter extends DynamicFlowAdapter<InspectPlanState> {
 class _InspectPlanConnector extends ConnOp<InspectPlanState, List<ItemBean>> {
   @override
   List<ItemBean> get(InspectPlanState state) {
-    return state.list.map((item) {
-      return ItemBean('plan', item);
-    }).toList();
+    if (state.model != null && state.model.data != null) {
+      return state.model.data.map((item) {
+        return ItemBean('plan', item);
+      }).toList();
+    } else {
+      return <ItemBean>[];
+    }
   }
 
   @override

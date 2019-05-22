@@ -55,6 +55,7 @@ List<Widget> _buildToDoWidgets(
 
 Widget _recheck(TaskState state, Review review) {
   Map<String, dynamic> map = Map();
+  map['id'] = review.dangerId;
   if (review.todoType == '0') {
     map['state'] = '待审批';
   } else if (review.todoType == '1') {
@@ -154,6 +155,7 @@ Widget _recheck(TaskState state, Review review) {
 
 Widget _rectify(TaskState state, Rectify rectify) {
   Map<String, dynamic> map = Map();
+  map['id'] = rectify.dangerId;
   if (rectify.todoType == '0') {
     map['state'] = '待审批';
   } else if (rectify.todoType == '1') {
@@ -269,7 +271,8 @@ Widget _inspect(Inspect inspect, Dispatch dispatch) {
           ),
           child: Column(
             children: <Widget>[
-              _buildItemHeader(title: '火灾报警控制器', result: '待检查'),
+              _buildItemHeader(
+                  title: '${inspect.equipmentName}', result: '待检查'),
               Container(
                 margin: EdgeInsets.only(top: 10.0),
                 width: double.infinity,

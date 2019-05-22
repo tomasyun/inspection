@@ -4,7 +4,7 @@ import 'package:inspection/entity/plan_model.dart';
 import 'effect.dart';
 import 'view.dart';
 
-class MinePlanItemComponent extends Component<PlanModel> {
+class MinePlanItemComponent extends Component<Data> {
   MinePlanItemComponent()
       : super(
           effect: buildEffect(),

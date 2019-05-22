@@ -6,6 +6,7 @@ import 'package:inspection/entity/home_model.dart';
 import 'package:inspection/entity/keep_record_model.dart';
 import 'package:inspection/entity/login_model.dart';
 import 'package:inspection/entity/notice_model.dart';
+import 'package:inspection/entity/plan_model.dart';
 import 'package:inspection/entity/recheck_info_model.dart';
 import 'package:inspection/entity/rectify_form_model.dart';
 import 'package:inspection/entity/rectify_info_model.dart';
@@ -39,8 +40,8 @@ class DicoHttpRepository {
   static final String updatePassword = 'sms-interface/todos/updatePass';
   static final String notice = 'sms-interface/message/findMessageList';
   static final String deleteNotice = 'sms-interface/message/deleteMessage';
-  static final String inspectPlan = '';
-  static final String minePlan = '';
+  static final String inspectPlan =
+      'sms-interface/inspectionPlan/findInspectionPlanList';
   static final String aboutPlan = '';
   static final String depart =
       'sms-interface/organization/findOrganizationList';
@@ -186,14 +187,8 @@ class DicoHttpRepository {
       await HttpUtil().post(recheckReport, data: data);
 
   ///检查计划
-  static Future doInspectPlanRequest() async {
-    return await HttpUtil().get(inspectPlan);
-  }
-
-  ///我的计划
-  static Future doMinePlanRequest() async {
-    return await HttpUtil().get(minePlan);
-  }
+  static Future<PlanModel> doInspectPlanRequest(String search) async =>
+      PlanModel.fromJson(await HttpUtil().get(inspectPlan + search));
 
   ///关于计划
   static Future doAboutPlanRequest() async {

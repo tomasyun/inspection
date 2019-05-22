@@ -7,6 +7,7 @@ Reducer<InspectPlanState> buildReducer() {
     <Object, Reducer<InspectPlanState>>{
       InspectPlanAction.action: _onAction,
       InspectPlanAction.plans: _onGetInspectPlans,
+      InspectPlanAction.planState: _onGetInspectPlanState,
     },
   );
 }
@@ -16,8 +17,14 @@ InspectPlanState _onAction(InspectPlanState state, Action action) {
   return newState;
 }
 
+InspectPlanState _onGetInspectPlanState(InspectPlanState state, Action action) {
+  InspectPlanState newState = state.clone();
+  newState.planState = action.payload;
+  return newState;
+}
+
 InspectPlanState _onGetInspectPlans(InspectPlanState state, Action action) {
   InspectPlanState newState = state.clone();
-  newState.list = action.payload;
+  newState.model = action.payload;
   return newState;
 }

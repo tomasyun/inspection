@@ -333,7 +333,9 @@ Widget inflateRectify(HomeState state, home.Rectify rectify) {
                         onPressed: () {
                           Navigator.of(state.context)
                               .push(MaterialPageRoute(builder: (content) {
-                            Map<String, dynamic> map = {'state': '待整改'};
+                            Map<String, dynamic> map = Map();
+                            map['state'] = '待整改';
+                            map['id'] = rectify.dangerId;
                             return HazardInfoPage().buildPage(map);
                           }));
                         },
@@ -422,7 +424,9 @@ Widget inflateRecheck(HomeState state, home.Review review) {
                           onPressed: () {
                             Navigator.of(state.context)
                                 .push(MaterialPageRoute(builder: (content) {
-                              Map<String, dynamic> map = {'state': '待复查'};
+                              Map<String, dynamic> map = Map();
+                              map['state'] = '待复查';
+                              map['id'] = review.dangerId;
                               return HazardInfoPage().buildPage(map);
                             }));
                           },

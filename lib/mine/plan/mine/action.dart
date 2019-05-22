@@ -9,7 +9,7 @@ class MinePlanActionCreator {
     return const Action(MinePlanAction.action);
   }
 
-  static Action onGetMinePlans(List<PlanModel> list) {
+  static Action onGetMinePlans(PlanModel list) {
     return Action(MinePlanAction.plans, payload: list);
   }
 }

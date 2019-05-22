@@ -13,9 +13,13 @@ class MinePlanAdapter extends DynamicFlowAdapter<MinePlanState> {
 class _MinePlanConnector extends ConnOp<MinePlanState, List<ItemBean>> {
   @override
   List<ItemBean> get(MinePlanState state) {
-    return state.list.map((item) {
-      return ItemBean('plan', item);
-    }).toList();
+    if (state.model != null && state.model.data != null) {
+      return state.model.data.map((item) {
+        return ItemBean('plan', item);
+      }).toList();
+    } else {
+      return <ItemBean>[];
+    }
   }
 
   @override

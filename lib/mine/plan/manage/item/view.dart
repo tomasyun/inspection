@@ -3,7 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:inspection/entity/plan_model.dart';
 import 'package:inspection/mine/plan/manage/item/action.dart';
 
-Widget buildView(PlanModel state, Dispatch dispatch, ViewService viewService) {
+Widget buildView(Data data, Dispatch dispatch, ViewService viewService) {
+  Map<String, dynamic> map = Map();
+  if (data.planStatus == '0') {
+    map['state'] = '未开始';
+  } else if (data.planStatus == '1') {
+    map['state'] = '进行中';
+  } else if (data.planStatus == '2') {
+    map['state'] = '已结束';
+  }
   return GestureDetector(
     onTap: () {
       dispatch(InspectPlanItemActionCreator.onSkipAboutPage());
@@ -26,7 +34,7 @@ Widget buildView(PlanModel state, Dispatch dispatch, ViewService viewService) {
       child: Column(
         children: <Widget>[
           _buildItemHeader(
-              title: '${state.planName}', result: '${state.planState}'),
+              title: '${data.planName}', result: '${map['state']}'),
           Container(
             margin: EdgeInsets.only(top: 10.0),
             width: double.infinity,
@@ -39,9 +47,12 @@ Widget buildView(PlanModel state, Dispatch dispatch, ViewService viewService) {
                 Expanded(
                     child: Column(
                   children: <Widget>[
-                    _buildItem(title: '计划编号', result: '${state.planNo}'),
-                    _buildItem(title: '责任部门', result: '${state.depart}'),
-                    _buildItem(title: '审批状态', result: '${state.checkState}'),
+                    _buildItem(title: '计划编号', result: '${data.planCode}'),
+                    _buildItem(title: '责任人', result: '${data.planPerson}'),
+                    _buildItem(
+                        title: '责任部门', result: '${data.planOrganization}'),
+                    _buildItem(title: '开始时间', result: '${data.beginDate}'),
+                    _buildItem(title: '结束时间', result: '${data.endDate}'),
                   ],
                 )),
               ],

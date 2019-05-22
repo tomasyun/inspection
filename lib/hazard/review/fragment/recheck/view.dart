@@ -66,6 +66,27 @@ Widget buildView(
                         state.model.data.reviewDate != null
                     ? state.model.data.reviewDate
                     : ''),
+            _buildHazardInfoItem(
+                title: '整改人',
+                content: state.model != null &&
+                        state.model.data != null &&
+                        state.model.data.repairUser != null
+                    ? state.model.data.repairUser
+                    : ''),
+            _buildHazardInfoItem(
+                title: '整改部门',
+                content: state.model != null &&
+                        state.model.data != null &&
+                        state.model.data.repairOrganization != null
+                    ? state.model.data.repairOrganization
+                    : ''),
+            _buildHazardInfoItem(
+                title: '整改时间',
+                content: state.model != null &&
+                        state.model.data != null &&
+                        state.model.data.repairDate != null
+                    ? state.model.data.repairDate
+                    : ''),
             Container(
               margin: EdgeInsets.only(top: 10.0),
               child: Text(

@@ -29,6 +29,9 @@ class Data {
   String repairUser;
   String repairOpinion;
   String repairDate;
+  String reviewUser;
+  String reviewDate;
+  String reviewOrganization;
 
   Data(
       {this.repairOrganization,
@@ -36,7 +39,10 @@ class Data {
       this.repairAttachments,
       this.repairUser,
       this.repairOpinion,
-      this.repairDate});
+      this.repairDate,
+      this.reviewUser,
+      this.reviewDate,
+      this.reviewOrganization});
 
   Data.fromJson(Map<String, dynamic> json) {
     repairOrganization = json['repairOrganization'];
@@ -50,6 +56,9 @@ class Data {
     repairUser = json['repairUser'];
     repairOpinion = json['repairOpinion'];
     repairDate = json['repairDate'];
+    reviewUser = json['reviewUser'];
+    reviewDate = json['reviewDate'];
+    reviewOrganization = json['reviewOrganization'];
   }
 
   Map<String, dynamic> toJson() {
@@ -62,6 +71,10 @@ class Data {
     }
     data['repairUser'] = this.repairUser;
     data['repairOpinion'] = this.repairOpinion;
+    data['repairDate'] = this.repairDate;
+    data['reviewUser'] = this.repairOpinion;
+    data['reviewDate'] = this.reviewDate;
+    data['reviewOrganization'] = this.reviewOrganization;
     return data;
   }
 }

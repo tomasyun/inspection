@@ -5,16 +5,16 @@ import 'package:inspection/mine/plan/manage/about/page.dart';
 
 import 'action.dart';
 
-Effect<PlanModel> buildEffect() {
-  return combineEffects(<Object, Effect<PlanModel>>{
+Effect<Data> buildEffect() {
+  return combineEffects(<Object, Effect<Data>>{
     InspectPlanItemAction.action: _onAction,
     InspectPlanItemAction.skipAbout: _onSkipAboutPage,
   });
 }
 
-void _onAction(Action action, Context<PlanModel> ctx) {}
+void _onAction(Action action, Context<Data> ctx) {}
 
-void _onSkipAboutPage(Action action, Context<PlanModel> ctx) {
+void _onSkipAboutPage(Action action, Context<Data> ctx) {
   Navigator.of(ctx.context).push(MaterialPageRoute(builder: (context) {
     return PlanAboutPage().buildPage(null);
   }));

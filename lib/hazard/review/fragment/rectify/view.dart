@@ -36,15 +36,62 @@ Widget buildView(
             Container(
               padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 15.0),
               child: Text(
-                '西安市高新区丈八一路汇鑫IBC B座1005,办公室墙面重新打底粉刷',
+                state.model != null &&
+                        state.model.data != null &&
+                        state.model.data.repairResult != null
+                    ? '${state.model.data.repairResult}'
+                    : '',
                 style: TextStyle(fontSize: 14.0, color: Colors.black),
               ),
             ),
-            _buildHazardInfoItem(title: '整改人', content: '黄骁'),
-            _buildHazardInfoItem(title: '整改时间', content: '2019-09-08'),
-            _buildHazardInfoItem(title: '整改费用', content: '无'),
-            _buildHazardInfoItem(title: '复查人', content: '高大陆'),
-            _buildHazardInfoItem(title: '复查时间', content: '2019-06-08'),
+            state.model != null &&
+                    state.model.data != null &&
+                    state.model.data.repairUser != null
+                ? _buildHazardInfoItem(
+                    title: '整改人', content: state.model.data.repairUser)
+                : Container(
+                    height: 0.0,
+                  ),
+            state.model != null &&
+                    state.model.data != null &&
+                    state.model.data.repairOrganization != null
+                ? _buildHazardInfoItem(
+                    title: '整改部门', content: state.model.data.repairOrganization)
+                : Container(
+                    height: 0.0,
+                  ),
+            state.model != null &&
+                    state.model.data != null &&
+                    state.model.data.repairDate != null
+                ? _buildHazardInfoItem(
+                    title: '整改时间', content: state.model.data.repairDate)
+                : Container(
+                    height: 0.0,
+                  ),
+            state.model != null &&
+                    state.model.data != null &&
+                    state.model.data.reviewUser != null
+                ? _buildHazardInfoItem(
+                    title: '复查人', content: state.model.data.reviewUser)
+                : Container(
+                    height: 0.0,
+                  ),
+            state.model != null &&
+                    state.model.data != null &&
+                    state.model.data.reviewOrganization != null
+                ? _buildHazardInfoItem(
+                    title: '复查部门', content: state.model.data.reviewOrganization)
+                : Container(
+                    height: 0.0,
+                  ),
+            state.model != null &&
+                    state.model.data != null &&
+                    state.model.data.reviewDate != null
+                ? _buildHazardInfoItem(
+                    title: '复查时间', content: state.model.data.reviewDate)
+                : Container(
+                    height: 0.0,
+                  ),
             Container(
               margin: EdgeInsets.only(top: 10.0),
               child: Text(
