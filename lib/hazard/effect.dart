@@ -1,5 +1,6 @@
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter_picker/Picker.dart';
+import 'package:inspection/global/app_common.dart';
 import 'package:inspection/global/dico_http.dart';
 
 import 'action.dart';
@@ -110,6 +111,10 @@ void _onSelectEndDate(Action action, Context<HazardState> ctx) {
 void _initHazardListData(Action action, Context<HazardState> ctx) {
   ctx.dispatch(HazardActionCreator.onGetContext(ctx.context));
   DicoHttpRepository.doGetHazardManageRequest('').then((model) {
-    ctx.dispatch(HazardActionCreator.onInitHazardListData(model));
+    if(model.code==0){
+      ctx.dispatch(HazardActionCreator.onInitHazardListData(model));
+    }else{
+      AppCommons.showToast(model.msg);
+    }
   });
 }

@@ -29,6 +29,9 @@ void _onInit(Action action, Context<RecheckReportState> ctx) {
             RecheckReportActionCreator.onGetRecheckFormId(map['data']['id']));
       }
     }
+    else{
+    AppCommons.showToast(map['msg']);
+    }
   });
 }
 

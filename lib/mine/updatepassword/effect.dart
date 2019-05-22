@@ -28,7 +28,11 @@ void _onUpdate(Action action, Context<UpdatePasswordState> ctx) {
       'oldPassword': ctx.state.oldPasswordController.text
     });
     DicoHttpRepository.doUpdatePasswordRequest(data).then((value) {
-      AppCommons.showToast(value['msg']);
+      if(value['code']==0){
+        AppCommons.showToast(value['msg']);
+      }else{
+        AppCommons.showToast(value['msg']);
+      }
     });
   }
 }

@@ -1,5 +1,6 @@
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart';
+import 'package:inspection/global/app_common.dart';
 import 'package:inspection/global/dico_http.dart';
 import 'package:inspection/hazard/recheck/page.dart';
 import 'package:inspection/hazard/rectify/apply/page.dart';
@@ -26,10 +27,11 @@ void _onAction(Action action, Context<HazardInfoState> ctx) {}
 
 void _init(Action action, Context<HazardInfoState> ctx) {
   DicoHttpRepository.doGetHazardInfoRequest(ctx.state.id).then((model) {
-//    if (model.code == 0) {
-//      ctx.dispatch(HazardInfoActionCreator.onGetHazardInfoAction(model));
-//    }
-    ctx.dispatch(HazardInfoActionCreator.onGetHazardInfoAction(model));
+    if (model.code == 0) {
+      ctx.dispatch(HazardInfoActionCreator.onGetHazardInfoAction(model));
+    }else{
+      AppCommons.showToast(model.msg);
+    }
   });
 }
 

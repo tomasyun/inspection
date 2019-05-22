@@ -2,6 +2,7 @@ import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart';
 import 'package:inspection/device/repair/report/page.dart';
 import 'package:inspection/entity/banner_model.dart';
+import 'package:inspection/global/app_common.dart';
 import 'package:inspection/global/dico_http.dart';
 import 'package:inspection/hazard/report/page.dart';
 import 'package:inspection/mine/task/inspection/page.dart';
@@ -67,6 +68,10 @@ void _init(Action action, Context<HomeState> ctx) {
   List<BannerModel> list = [];
   ctx.dispatch(HomeActionCreator.initBannerData(list));
   DicoHttpRepository.homeRequest().then((model) {
-    ctx.dispatch(HomeActionCreator.onGetHomeModels(model));
+    if(model.code==0){
+      ctx.dispatch(HomeActionCreator.onGetHomeModels(model));
+    }else{
+      AppCommons.showToast(model.msg);
+    }
   });
 }

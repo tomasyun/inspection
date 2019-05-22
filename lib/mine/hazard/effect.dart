@@ -14,6 +14,8 @@ Effect<HazardHistoryState> buildEffect() {
 void _onAction(Action action, Context<HazardHistoryState> ctx) {}
 void _initHazardListData(Action action, Context<HazardHistoryState> ctx) {
   DicoHttpRepository.doGetHistoryHazardRequest().then((model) {
-    ctx.dispatch(HazardHistoryActionCreator.onInitHazardListData(model));
+    if(model.code==0){
+      ctx.dispatch(HazardHistoryActionCreator.onInitHazardListData(model));
+    }
   });
 }
