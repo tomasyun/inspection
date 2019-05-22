@@ -18,7 +18,7 @@ void _onInit(Action action, Context<RecheckInfoFragState> ctx) {
   DicoHttpRepository.doGetRecheckInfoRequest(ctx.state.id).then((model) {
     if (model.code == 0) {
       ctx.dispatch(RecheckInfoFragActionCreator.onGetRecheckInfoModel(model));
-    }else{
+    } else {
       AppCommons.showToast(model.msg);
     }
   });

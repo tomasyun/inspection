@@ -28,9 +28,8 @@ void _onInit(Action action, Context<RecheckReportState> ctx) {
         ctx.dispatch(
             RecheckReportActionCreator.onGetRecheckFormId(map['data']['id']));
       }
-    }
-    else{
-    AppCommons.showToast(map['msg']);
+    } else {
+      AppCommons.showToast(map['msg']);
     }
   });
 }

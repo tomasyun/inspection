@@ -18,7 +18,7 @@ void _onInit(Action action, Context<HazardInfoFragState> ctx) {
   DicoHttpRepository.doGetHazardInfoRequest(ctx.state.id).then((model) {
     if (model.code == 0) {
       ctx.dispatch(HazardInfoFragActionCreator.onGetHazardModelAction(model));
-    }else{
+    } else {
       AppCommons.showToast(model.msg);
     }
   });

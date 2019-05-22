@@ -68,9 +68,9 @@ void _init(Action action, Context<HomeState> ctx) {
   List<BannerModel> list = [];
   ctx.dispatch(HomeActionCreator.initBannerData(list));
   DicoHttpRepository.homeRequest().then((model) {
-    if(model.code==0){
+    if (model.code == 0) {
       ctx.dispatch(HomeActionCreator.onGetHomeModels(model));
-    }else{
+    } else {
       AppCommons.showToast(model.msg);
     }
   });

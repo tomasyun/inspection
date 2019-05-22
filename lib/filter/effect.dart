@@ -16,43 +16,41 @@ void _init(Action action, Context<FilterState> ctx) {
   ctx.dispatch(FilterActionCreator.onInitContext(ctx.context));
   if (ctx.state.flag == 'level') {
     DicoHttpRepository.doGetHazardLevelRequest().then((model) {
-      if(model.code==0){
+      if (model.code == 0) {
         ctx.dispatch(FilterActionCreator.onGetFilterModel(model));
-      }else{
+      } else {
         AppCommons.showToast(model.msg);
       }
-
     });
   } else if (ctx.state.flag == 'type') {
     DicoHttpRepository.doGetHazardTypeRequest().then((model) {
-
-      if(model.code==0){
+      if (model.code == 0) {
         ctx.dispatch(FilterActionCreator.onGetFilterModel(model));
-      }else{
+      } else {
         AppCommons.showToast(model.msg);
       }
     });
   } else if (ctx.state.flag == 'depart') {
     DicoHttpRepository.doGetDepartsRequest().then((model) {
-      if(model.code==0){
+      if (model.code == 0) {
         ctx.dispatch(FilterActionCreator.onGetFilterModel(model));
-      }else{
+      } else {
         AppCommons.showToast(model.msg);
       }
     });
   } else if (ctx.state.flag == 'pic') {
     DicoHttpRepository.doGetPicRequest(ctx.state.departId).then((model) {
-      if(model.code==0){
+      if (model.code == 0) {
         ctx.dispatch(FilterActionCreator.onGetFilterModel(model));
-      }else{
+      } else {
         AppCommons.showToast(model.msg);
       }
     });
   } else if (ctx.state.flag == 'repairman') {
     DicoHttpRepository.doGetRepairManRequest().then((model) {
-      if(model.code==0){
+      if (model.code == 0) {
         ctx.dispatch(FilterActionCreator.onGetFilterModel(model));
-      }else{
+      } else {
         AppCommons.showToast(model.msg);
       }
     });

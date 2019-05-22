@@ -29,7 +29,7 @@ void _init(Action action, Context<HazardInfoState> ctx) {
   DicoHttpRepository.doGetHazardInfoRequest(ctx.state.id).then((model) {
     if (model.code == 0) {
       ctx.dispatch(HazardInfoActionCreator.onGetHazardInfoAction(model));
-    }else{
+    } else {
       AppCommons.showToast(model.msg);
     }
   });

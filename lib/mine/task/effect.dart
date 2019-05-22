@@ -25,7 +25,7 @@ void _onScanQRCode(Action action, Context<TaskState> ctx) {
 void _onGetToDos(Action action, Context<TaskState> ctx) {
   ctx.state.context = ctx.context;
   DicoHttpRepository.doGetTodosRequest().then((model) {
-    if(model.code==0){
+    if (model.code == 0) {
       ctx.dispatch(TaskActionCreator.onGetToDos(model));
     }
   });

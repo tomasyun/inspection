@@ -111,9 +111,9 @@ void _onSelectEndDate(Action action, Context<HazardState> ctx) {
 void _initHazardListData(Action action, Context<HazardState> ctx) {
   ctx.dispatch(HazardActionCreator.onGetContext(ctx.context));
   DicoHttpRepository.doGetHazardManageRequest('').then((model) {
-    if(model.code==0){
+    if (model.code == 0) {
       ctx.dispatch(HazardActionCreator.onInitHazardListData(model));
-    }else{
+    } else {
       AppCommons.showToast(model.msg);
     }
   });
