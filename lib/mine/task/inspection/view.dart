@@ -110,18 +110,21 @@ Widget _buildInspectionTaskItem(Dispatch dispatch, String content) {
 }
 
 Widget _buildRaisedButton({Dispatch dispatch}) {
-  return RaisedButton(
-      onPressed: () {
-        dispatch(InspectionTaskActionCreator.onSubmit());
-      },
-      child: Text(
-        '提交',
-        style: TextStyle(color: Colors.white, fontSize: 14.0),
-      ),
-      color: Colors.blue,
-      padding:
-          EdgeInsets.only(top: 15.0, bottom: 15.0, left: 150.0, right: 150.0),
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(10.0),
-      ));
+  return Container(
+    width: double.infinity,
+    margin: EdgeInsets.symmetric(horizontal: 15.0),
+    child: RaisedButton(
+        onPressed: () {
+          dispatch(InspectionTaskActionCreator.onSubmit());
+        },
+        child: Text(
+          '提交',
+          style: TextStyle(color: Colors.white, fontSize: 14.0),
+        ),
+        color: Colors.blue,
+        padding: EdgeInsets.only(top: 15.0, bottom: 15.0),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10.0),
+        )),
+  );
 }
