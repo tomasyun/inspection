@@ -146,7 +146,7 @@ Widget _buildRaisedButton({Dispatch dispatch}) {
           dispatch(RectifyReportActionCreator.onReport());
         },
         child: Text(
-          '上报',
+          '提交',
           style: TextStyle(color: Colors.white, fontSize: 14.0),
         ),
         color: Colors.blue,

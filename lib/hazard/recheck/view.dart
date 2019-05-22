@@ -86,26 +86,6 @@ Widget buildView(
                   width: double.infinity,
                   height: state.assets.length > 0 ? 90.0 : 0.0),
             ),
-//            Container(
-//              margin: EdgeInsets.only(top: 20.0),
-//              width: double.infinity,
-//              padding: EdgeInsets.symmetric(vertical: 15.0, horizontal: 20.0),
-//              color: Colors.white,
-//              child: Column(
-//                crossAxisAlignment: CrossAxisAlignment.start,
-//                children: <Widget>[
-//                  Container(
-//                    child: Text(
-//                      '复查意见',
-//                      style: TextStyle(
-//                          fontWeight: FontWeight.bold,
-//                          fontSize: 14.0,
-//                          color: Colors.black),
-//                    ),
-//                  ),
-//                ],
-//              ),
-//            ),
             Container(
               alignment: AlignmentDirectional.center,
               margin: EdgeInsets.only(top: 50.0),
@@ -142,7 +122,7 @@ Widget _buildRaisedButton({Dispatch dispatch}) {
           dispatch(RecheckReportActionCreator.onReport());
         },
         child: Text(
-          '上报',
+          '提交',
           style: TextStyle(color: Colors.white, fontSize: 14.0),
         ),
         color: Colors.blue,
