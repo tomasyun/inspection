@@ -134,7 +134,7 @@ Widget _recheck(TaskState state, Review review) {
                             borderRadius:
                                 BorderRadius.all(Radius.circular(20.0))),
                         child: Text(
-                          '${map['state']}',
+                          '去复查',
                           style: TextStyle(color: Colors.white, fontSize: 13.0),
                         ),
                         padding: EdgeInsets.symmetric(
@@ -231,7 +231,7 @@ Widget _rectify(TaskState state, Rectify rectify) {
                             borderRadius:
                                 BorderRadius.all(Radius.circular(20.0))),
                         child: Text(
-                          '${map['state']}',
+                          '去整改',
                           style: TextStyle(color: Colors.white, fontSize: 13.0),
                         ),
                         padding: EdgeInsets.symmetric(
