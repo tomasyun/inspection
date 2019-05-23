@@ -1,5 +1,6 @@
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart';
+import 'package:inspection/global/app_common.dart';
 import 'package:inspection/hazard/info/action.dart';
 
 import 'state.dart';
@@ -229,7 +230,8 @@ Widget _buildSpaceAttachment() {
 
 Widget _buildAttachment(String url) {
   return Container(
-    child: FadeInImage.assetNetwork(image: url, fit: BoxFit.fill),
+    child: FadeInImage.assetNetwork(
+        image: AppCommons.attachmentBaseUrl + url, fit: BoxFit.fill),
     height: 100.0,
   );
 }
