@@ -186,7 +186,7 @@ Widget _buildSearchItem({String label, String value, VoidCallback callback}) {
       margin: EdgeInsets.only(top: 10.0),
       width: double.infinity,
       padding:
-      EdgeInsets.only(top: 15.0, bottom: 15.0, left: 20.0, right: 15.0),
+          EdgeInsets.only(top: 15.0, bottom: 15.0, left: 20.0, right: 15.0),
       color: Colors.white,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.end,
