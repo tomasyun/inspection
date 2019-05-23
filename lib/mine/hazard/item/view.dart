@@ -99,33 +99,23 @@ Widget _buildStateBtnText(String title) {
   if (title == '待整改') {
     return Text('去整改',
         style: TextStyle(
-          color: Colors.white,
-          fontSize: 14.0,
-        ));
+            color: Colors.white, fontSize: 14.0, fontWeight: FontWeight.w600));
   } else if (title == '待复查') {
     return Text('去复查',
         style: TextStyle(
-          color: Colors.white,
-          fontSize: 14.0,
-        ));
+            color: Colors.white, fontSize: 14.0, fontWeight: FontWeight.w600));
   } else if (title == '待审批') {
     return Text('查看',
         style: TextStyle(
-          color: Colors.white,
-          fontSize: 14.0,
-        ));
+            color: Colors.white, fontSize: 14.0, fontWeight: FontWeight.w600));
   } else if (title == '已完成') {
     return Text('查看',
         style: TextStyle(
-          color: Colors.white,
-          fontSize: 14.0,
-        ));
+            color: Colors.white, fontSize: 14.0, fontWeight: FontWeight.w600));
   } else {
     return Text(title,
         style: TextStyle(
-          color: Colors.white,
-          fontSize: 14.0,
-        ));
+            color: Colors.white, fontSize: 14.0, fontWeight: FontWeight.w600));
   }
 }
 
@@ -140,9 +130,9 @@ Widget _buildItem({String title, String result}) {
             child: Text(
               title,
               style: TextStyle(
-                fontSize: 14.0,
-                color: Colors.black,
-              ),
+                  fontSize: 14.0,
+                  color: Colors.black,
+                  fontWeight: FontWeight.w600),
               textAlign: TextAlign.left,
             ),
           ),
@@ -153,7 +143,10 @@ Widget _buildItem({String title, String result}) {
             margin: EdgeInsets.only(left: 15.0),
             child: Text(
               result,
-              style: TextStyle(fontSize: 14.0, color: Colors.black45),
+              style: TextStyle(
+                  fontSize: 14.0,
+                  color: Colors.black45,
+                  fontWeight: FontWeight.w600),
               textAlign: TextAlign.left,
             ),
           ),
@@ -173,7 +166,10 @@ Widget _buildItemHeader({String title, String result}) {
           child: Container(
             child: Text(
               title,
-              style: TextStyle(color: Colors.black, fontSize: 16.0),
+              style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 16.0,
+                  fontWeight: FontWeight.w600),
               maxLines: 1,
             ),
           ),

@@ -123,7 +123,9 @@ Widget buildView(HomeState state, Dispatch dispatch, ViewService viewService) {
                               margin: EdgeInsets.only(left: 5.0),
                               child: Text(
                                 '更多',
-                                style: TextStyle(color: Colors.black45),
+                                style: TextStyle(
+                                    color: Colors.black45,
+                                    fontWeight: FontWeight.w600),
                               ),
                             )
                           ],
@@ -203,7 +205,9 @@ Widget buildView(HomeState state, Dispatch dispatch, ViewService viewService) {
                               child: Text(
                                 '更多',
                                 style: TextStyle(
-                                    color: Colors.black45, fontSize: 14.0),
+                                    color: Colors.black45,
+                                    fontSize: 14.0,
+                                    fontWeight: FontWeight.w600),
                               ),
                             ),
                             Container(
@@ -251,7 +255,10 @@ Widget _buildContainerItem({String asset, String title}) {
         Container(
           child: Text(
             title,
-            style: TextStyle(fontSize: 14.0, color: Colors.black),
+            style: TextStyle(
+                fontSize: 14.0,
+                color: Colors.black,
+                fontWeight: FontWeight.w600),
           ),
         )
       ],
@@ -528,9 +535,9 @@ Widget commonRow({String title, String result}) {
             child: Text(
               title,
               style: TextStyle(
-                fontSize: 14.0,
-                color: Colors.black,
-              ),
+                  fontSize: 14.0,
+                  color: Colors.black,
+                  fontWeight: FontWeight.w600),
               textAlign: TextAlign.left,
             ),
           ),
@@ -541,7 +548,10 @@ Widget commonRow({String title, String result}) {
             margin: EdgeInsets.only(left: 15.0),
             child: Text(
               result,
-              style: TextStyle(fontSize: 14.0, color: Colors.black45),
+              style: TextStyle(
+                  fontSize: 14.0,
+                  color: Colors.black45,
+                  fontWeight: FontWeight.w600),
               textAlign: TextAlign.left,
             ),
           ),

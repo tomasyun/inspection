@@ -45,9 +45,9 @@ Widget buildView(
                       child: Text(
                         '隐患描述 :',
                         style: TextStyle(
-                          fontSize: 14.0,
-                          color: Colors.black,
-                        ),
+                            fontSize: 14.0,
+                            color: Colors.black,
+                            fontWeight: FontWeight.w600),
                       ),
                     ),
                     Container(
@@ -59,9 +59,9 @@ Widget buildView(
                             ? Text(
                                 state.model.data.dangerRemark,
                                 style: TextStyle(
-                                  fontSize: 14.0,
-                                  color: Colors.black45,
-                                ),
+                                    fontSize: 14.0,
+                                    color: Colors.black45,
+                                    fontWeight: FontWeight.w600),
                               )
                             : Text('')),
                     state.model != null &&
@@ -198,7 +198,10 @@ Widget _buildHazardInfoItem({String title, String content}) {
         Expanded(
           child: Text(
             title,
-            style: TextStyle(fontSize: 14.0, color: Colors.black),
+            style: TextStyle(
+                fontSize: 14.0,
+                color: Colors.black,
+                fontWeight: FontWeight.w600),
             textAlign: TextAlign.left,
           ),
           flex: 3,
@@ -206,7 +209,10 @@ Widget _buildHazardInfoItem({String title, String content}) {
         Expanded(
           child: Text(
             content,
-            style: TextStyle(fontSize: 14.0, color: Colors.black45),
+            style: TextStyle(
+                fontSize: 14.0,
+                color: Colors.black45,
+                fontWeight: FontWeight.w600),
             textAlign: TextAlign.right,
           ),
           flex: 7,
@@ -338,7 +344,10 @@ Widget buildBottomNavigatorDouble(
               onPressed: leftChecked,
               child: Text(
                 leftLabel,
-                style: TextStyle(fontSize: 14.0, color: Colors.white),
+                style: TextStyle(
+                    fontSize: 14.0,
+                    color: Colors.white,
+                    fontWeight: FontWeight.w600),
               ),
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.all(Radius.circular(10.0))),
@@ -357,7 +366,10 @@ Widget buildBottomNavigatorDouble(
               onPressed: rightChecked,
               child: Text(
                 rightLabel,
-                style: TextStyle(fontSize: 14.0, color: Colors.white),
+                style: TextStyle(
+                    fontSize: 14.0,
+                    color: Colors.white,
+                    fontWeight: FontWeight.w600),
               ),
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.all(Radius.circular(10.0))),
@@ -386,7 +398,8 @@ Widget buildBottomNavigatorSingle({
       onPressed: callback,
       child: Text(
         title,
-        style: TextStyle(fontSize: 14.0, color: Colors.white),
+        style: TextStyle(
+            fontSize: 14.0, color: Colors.white, fontWeight: FontWeight.w600),
       ),
       shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(10.0))),

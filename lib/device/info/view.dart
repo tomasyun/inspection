@@ -159,7 +159,10 @@ Widget _buildDeviceInfoItem({String title, String content}) {
         Expanded(
           child: Text(
             title,
-            style: TextStyle(fontSize: 14.0, color: Colors.black),
+            style: TextStyle(
+                fontSize: 14.0,
+                color: Colors.black,
+                fontWeight: FontWeight.w600),
             textAlign: TextAlign.left,
           ),
           flex: 3,
@@ -167,7 +170,10 @@ Widget _buildDeviceInfoItem({String title, String content}) {
         Expanded(
           child: Text(
             content,
-            style: TextStyle(fontSize: 14.0, color: Colors.black45),
+            style: TextStyle(
+                fontSize: 14.0,
+                color: Colors.black45,
+                fontWeight: FontWeight.w600),
             textAlign: TextAlign.right,
           ),
           flex: 7,
@@ -195,7 +201,8 @@ Widget buildBottomNavigator(Dispatch dispatch) {
               height: double.infinity,
               child: Text(
                 '维修记录',
-                style: TextStyle(color: Colors.white),
+                style:
+                    TextStyle(color: Colors.white, fontWeight: FontWeight.w600),
               ),
             ),
           ),
@@ -211,7 +218,8 @@ Widget buildBottomNavigator(Dispatch dispatch) {
               height: double.infinity,
               child: Text(
                 '保养记录',
-                style: TextStyle(color: Colors.white),
+                style:
+                    TextStyle(color: Colors.white, fontWeight: FontWeight.w600),
               ),
             ),
           ),

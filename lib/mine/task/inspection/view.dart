@@ -85,7 +85,10 @@ Widget _buildInspectionTaskItem(Dispatch dispatch, String content) {
             child: Container(
           child: Text(
             content,
-            style: TextStyle(fontSize: 14.0, color: Colors.black),
+            style: TextStyle(
+                fontSize: 14.0,
+                color: Colors.black,
+                fontWeight: FontWeight.w600),
           ),
         )),
         Container(
@@ -113,7 +116,8 @@ Widget _buildRaisedButton({Dispatch dispatch}) {
         },
         child: Text(
           '提交',
-          style: TextStyle(color: Colors.white, fontSize: 14.0),
+          style: TextStyle(
+              color: Colors.white, fontSize: 14.0, fontWeight: FontWeight.w600),
         ),
         color: Colors.blue,
         padding: EdgeInsets.only(top: 15.0, bottom: 15.0),

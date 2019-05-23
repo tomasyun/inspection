@@ -23,7 +23,10 @@ Widget buildView(LoginState state, Dispatch dispatch, ViewService viewService) {
             child: TextField(
               controller: state.userNameController,
               keyboardType: TextInputType.text,
-              style: TextStyle(fontSize: 15, color: Colors.black),
+              style: TextStyle(
+                  fontSize: 15,
+                  color: Colors.black,
+                  fontWeight: FontWeight.w600),
               decoration: InputDecoration(
                 hintText: "请输入用户名",
                 border: OutlineInputBorder(
@@ -37,7 +40,10 @@ Widget buildView(LoginState state, Dispatch dispatch, ViewService viewService) {
             child: TextField(
               controller: state.passwordController,
               keyboardType: TextInputType.text,
-              style: TextStyle(fontSize: 15, color: Colors.black),
+              style: TextStyle(
+                  fontSize: 15,
+                  color: Colors.black,
+                  fontWeight: FontWeight.w600),
               decoration: InputDecoration(
                 hintText: "请输入密码",
                 border: OutlineInputBorder(
@@ -55,7 +61,10 @@ Widget buildView(LoginState state, Dispatch dispatch, ViewService viewService) {
                 color: Colors.blue,
                 child: Text(
                   "立即登录",
-                  style: TextStyle(fontSize: 14.0, color: Colors.white),
+                  style: TextStyle(
+                      fontSize: 14.0,
+                      color: Colors.white,
+                      fontWeight: FontWeight.w600),
                 ),
                 padding:
                     EdgeInsets.only(right: 120, left: 120, top: 15, bottom: 15),

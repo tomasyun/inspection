@@ -91,9 +91,9 @@ Widget buildView(
                     child: Text(
                       '编号',
                       style: TextStyle(
-                        fontSize: 14.0,
-                        color: Colors.black,
-                      ),
+                          fontSize: 14.0,
+                          color: Colors.black,
+                          fontWeight: FontWeight.w600),
                     ),
                   ),
                   Expanded(
@@ -105,7 +105,10 @@ Widget buildView(
                       enabled: false,
                       cursorWidth: 2.0,
                       cursorColor: Colors.grey,
-                      style: TextStyle(fontSize: 14.0, color: Colors.black),
+                      style: TextStyle(
+                          fontSize: 14.0,
+                          color: Colors.black,
+                          fontWeight: FontWeight.w600),
                       decoration: InputDecoration(
                           contentPadding: EdgeInsets.symmetric(
                               vertical: 10.0, horizontal: 10.0),
@@ -137,7 +140,10 @@ Widget buildView(
                     Container(
                       child: Text(
                         '责任部门',
-                        style: TextStyle(fontSize: 14.0, color: Colors.black),
+                        style: TextStyle(
+                            fontSize: 14.0,
+                            color: Colors.black,
+                            fontWeight: FontWeight.w600),
                       ),
                     ),
                     Expanded(
@@ -149,7 +155,9 @@ Widget buildView(
                             child: Text(
                               state.departRst['name'],
                               style: TextStyle(
-                                  fontSize: 13.0, color: Colors.black45),
+                                  fontSize: 13.0,
+                                  color: Colors.black45,
+                                  fontWeight: FontWeight.w600),
                             ),
                           ),
                           Container(
@@ -186,7 +194,10 @@ Widget buildView(
                     Container(
                       child: Text(
                         '责任人',
-                        style: TextStyle(fontSize: 14.0, color: Colors.black),
+                        style: TextStyle(
+                            fontSize: 14.0,
+                            color: Colors.black,
+                            fontWeight: FontWeight.w600),
                       ),
                     ),
                     Expanded(
@@ -198,7 +209,9 @@ Widget buildView(
                             child: Text(
                               state.picRst['name'],
                               style: TextStyle(
-                                  fontSize: 13.0, color: Colors.black45),
+                                  fontSize: 13.0,
+                                  color: Colors.black45,
+                                  fontWeight: FontWeight.w600),
                             ),
                           ),
                           Container(
@@ -235,7 +248,10 @@ Widget buildView(
                     Container(
                       child: Text(
                         '维修人',
-                        style: TextStyle(fontSize: 14.0, color: Colors.black),
+                        style: TextStyle(
+                            fontSize: 14.0,
+                            color: Colors.black,
+                            fontWeight: FontWeight.w600),
                       ),
                     ),
                     Expanded(
@@ -247,7 +263,9 @@ Widget buildView(
                             child: Text(
                               state.repairManRst['name'],
                               style: TextStyle(
-                                  fontSize: 13.0, color: Colors.black45),
+                                  fontSize: 13.0,
+                                  color: Colors.black45,
+                                  fontWeight: FontWeight.w600),
                             ),
                           ),
                           Container(
@@ -284,7 +302,10 @@ Widget buildView(
                     Container(
                       child: Text(
                         '维修时间',
-                        style: TextStyle(fontSize: 14.0, color: Colors.black),
+                        style: TextStyle(
+                            fontSize: 14.0,
+                            color: Colors.black,
+                            fontWeight: FontWeight.w600),
                       ),
                     ),
                     Expanded(
@@ -296,7 +317,9 @@ Widget buildView(
                             child: Text(
                               state.repairDateRst,
                               style: TextStyle(
-                                  fontSize: 13.0, color: Colors.black45),
+                                  fontSize: 13.0,
+                                  color: Colors.black45,
+                                  fontWeight: FontWeight.w600),
                             ),
                           ),
                           Container(
@@ -320,9 +343,9 @@ Widget buildView(
               child: Text(
                 '故障描述(200字以内)',
                 style: TextStyle(
-                  fontSize: 14.0,
-                  color: Colors.black,
-                ),
+                    fontSize: 14.0,
+                    color: Colors.black,
+                    fontWeight: FontWeight.w600),
               ),
             ),
             Container(
@@ -334,7 +357,10 @@ Widget buildView(
                 maxLines: 10,
                 cursorWidth: 2.0,
                 cursorColor: Colors.grey,
-                style: TextStyle(fontSize: 14.0, color: Colors.black),
+                style: TextStyle(
+                    fontSize: 14.0,
+                    color: Colors.black,
+                    fontWeight: FontWeight.w600),
                 decoration: InputDecoration(
                     hintText: "请输入故障描述",
                     contentPadding: EdgeInsets.all(15.0),
@@ -367,7 +393,8 @@ Widget _buildRaisedButton({Dispatch dispatch}) {
         },
         child: Text(
           '上报',
-          style: TextStyle(color: Colors.white, fontSize: 14.0),
+          style: TextStyle(
+              color: Colors.white, fontSize: 14.0, fontWeight: FontWeight.w600),
         ),
         color: Colors.blue,
         padding: EdgeInsets.only(top: 15.0, bottom: 15.0),

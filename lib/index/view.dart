@@ -91,7 +91,10 @@ class IndexPageState extends State<IndexPageWidget>
           icon: getTabIcon(0),
           title: Text(
             '首页',
-            style: TextStyle(color: Colors.black, fontSize: 15.0),
+            style: TextStyle(
+                color: Colors.black,
+                fontSize: 15.0,
+                fontWeight: FontWeight.w600),
           ),
           vsync: this,
         ),
@@ -99,7 +102,10 @@ class IndexPageState extends State<IndexPageWidget>
           icon: getTabIcon(1),
           title: Text(
             '功能',
-            style: TextStyle(color: Colors.black, fontSize: 15.0),
+            style: TextStyle(
+                color: Colors.black,
+                fontSize: 15.0,
+                fontWeight: FontWeight.w600),
           ),
           vsync: this,
         ),
@@ -112,7 +118,10 @@ class IndexPageState extends State<IndexPageWidget>
           icon: getTabIcon(2),
           title: Text(
             '我的',
-            style: TextStyle(color: Colors.black, fontSize: 15.0),
+            style: TextStyle(
+                color: Colors.black,
+                fontSize: 15.0,
+                fontWeight: FontWeight.w600),
           ),
           vsync: this,
         ),

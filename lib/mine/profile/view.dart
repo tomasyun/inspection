@@ -66,7 +66,7 @@ Widget _buildContainer(
             style: TextStyle(
                 fontSize: 14.0,
                 color: Colors.black,
-                fontWeight: FontWeight.bold),
+                fontWeight: FontWeight.w600),
             textAlign: TextAlign.left,
           ),
         ),
@@ -74,7 +74,10 @@ Widget _buildContainer(
           flex: 7,
           child: Text(
             title2,
-            style: TextStyle(fontSize: 14.0, color: Colors.black54),
+            style: TextStyle(
+                fontSize: 14.0,
+                color: Colors.black54,
+                fontWeight: FontWeight.w600),
             textAlign: TextAlign.right,
             maxLines: maxLines,
           ),

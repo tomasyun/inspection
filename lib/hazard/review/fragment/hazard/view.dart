@@ -29,9 +29,9 @@ Widget buildView(
               child: Text(
                 '描述 :',
                 style: TextStyle(
-                  fontSize: 14.0,
-                  color: Colors.black,
-                ),
+                    fontSize: 14.0,
+                    color: Colors.black,
+                    fontWeight: FontWeight.w600),
               ),
             ),
             Container(
@@ -42,9 +42,9 @@ Widget buildView(
                     ? Text(
                         state.model.data.dangerRemark,
                         style: TextStyle(
-                          fontSize: 14.0,
-                          color: Colors.black45,
-                        ),
+                            fontSize: 14.0,
+                            color: Colors.black45,
+                            fontWeight: FontWeight.w600),
                       )
                     : Text('')),
             state.model != null &&
@@ -140,9 +140,9 @@ Widget buildView(
               child: Text(
                 '隐患附件 :',
                 style: TextStyle(
-                  fontSize: 14.0,
-                  color: Colors.black,
-                ),
+                    fontSize: 14.0,
+                    color: Colors.black,
+                    fontWeight: FontWeight.w600),
               ),
             ),
             Container(
@@ -167,14 +167,20 @@ Widget _buildHazardInfoItem({String title, String content}) {
         Expanded(
           child: Text(
             title,
-            style: TextStyle(fontSize: 14.0, color: Colors.black),
+            style: TextStyle(
+                fontSize: 14.0,
+                color: Colors.black,
+                fontWeight: FontWeight.w600),
           ),
           flex: 3,
         ),
         Expanded(
           child: Text(
             content,
-            style: TextStyle(fontSize: 14.0, color: Colors.black45),
+            style: TextStyle(
+                fontSize: 14.0,
+                color: Colors.black45,
+                fontWeight: FontWeight.w600),
           ),
           flex: 7,
         )

@@ -28,9 +28,9 @@ Widget buildView(
               child: Text(
                 '复查情况(200字以内)',
                 style: TextStyle(
-                  fontSize: 14.0,
-                  color: Colors.black,
-                ),
+                    fontSize: 14.0,
+                    color: Colors.black,
+                    fontWeight: FontWeight.w600),
               ),
             ),
             Container(
@@ -42,7 +42,10 @@ Widget buildView(
                 maxLines: 6,
                 cursorWidth: 1.0,
                 cursorColor: Colors.grey,
-                style: TextStyle(fontSize: 14.0, color: Colors.black),
+                style: TextStyle(
+                    fontSize: 14.0,
+                    color: Colors.black,
+                    fontWeight: FontWeight.w600),
                 decoration: InputDecoration(
                     hintText: "复查情况",
                     contentPadding: EdgeInsets.all(15.0),
@@ -55,9 +58,9 @@ Widget buildView(
               child: Text(
                 '复查附件(最多可上传3张)',
                 style: TextStyle(
-                  fontSize: 14.0,
-                  color: Colors.black,
-                ),
+                    fontSize: 14.0,
+                    color: Colors.black,
+                    fontWeight: FontWeight.w600),
               ),
             ),
             Container(
@@ -123,7 +126,8 @@ Widget _buildRaisedButton({Dispatch dispatch}) {
         },
         child: Text(
           '提交',
-          style: TextStyle(color: Colors.white, fontSize: 14.0),
+          style: TextStyle(
+              color: Colors.white, fontSize: 14.0, fontWeight: FontWeight.w600),
         ),
         color: Colors.blue,
         padding: EdgeInsets.only(top: 15.0, bottom: 15.0),

@@ -64,7 +64,7 @@ Widget buildView(MineState state, Dispatch dispatch, ViewService viewService) {
                         margin: EdgeInsets.only(top: 5.0),
                         child: Text(
                           '电力工人',
-                          style: TextStyle(fontSize: 16.0, color: Colors.white),
+                          style: TextStyle(fontSize: 16.0, color: Colors.white,fontWeight: FontWeight.w600),
                         ),
                       ),
                     ],
@@ -86,7 +86,7 @@ Widget buildView(MineState state, Dispatch dispatch, ViewService viewService) {
                                 BorderRadius.all(Radius.circular(20.0))),
                         child: Text(
                           '基本信息',
-                          style: TextStyle(fontSize: 14.0, color: Colors.blue),
+                          style: TextStyle(fontSize: 14.0, color: Colors.blue,fontWeight: FontWeight.w600),
                         ),
                       ),
                     ),
@@ -150,7 +150,7 @@ Widget _buildMineNavigatorItem({String asset, String title}) {
               ),
               Container(
                 margin: EdgeInsets.only(left: 10.0),
-                child: Text(title),
+                child: Text(title,style: TextStyle(fontSize: 14.0,fontWeight: FontWeight.w600),),
               ),
               Expanded(
                 child: Container(

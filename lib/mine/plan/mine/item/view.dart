@@ -76,9 +76,9 @@ Widget _buildItem({String title, String result}) {
             child: Text(
               title,
               style: TextStyle(
-                fontSize: 14.0,
-                color: Colors.black,
-              ),
+                  fontSize: 14.0,
+                  color: Colors.black,
+                  fontWeight: FontWeight.w600),
               textAlign: TextAlign.left,
             ),
           ),
@@ -88,7 +88,10 @@ Widget _buildItem({String title, String result}) {
           child: Container(
             child: Text(
               result,
-              style: TextStyle(fontSize: 14.0, color: Colors.black45),
+              style: TextStyle(
+                  fontSize: 14.0,
+                  color: Colors.black45,
+                  fontWeight: FontWeight.w600),
               textAlign: TextAlign.left,
             ),
           ),
@@ -108,7 +111,10 @@ Widget _buildItemHeader({String title, String result}) {
           child: Container(
             child: Text(
               title,
-              style: TextStyle(color: Colors.black, fontSize: 16.0),
+              style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 16.0,
+                  fontWeight: FontWeight.w600),
               maxLines: 1,
             ),
           ),
@@ -126,30 +132,22 @@ Widget _buildChangeTextColor(String title) {
   if (title == '未开始') {
     return Text(title,
         style: TextStyle(
-          color: Colors.blue,
-          fontSize: 14.0,
-          fontWeight: FontWeight.bold,
-        ));
+            color: Colors.blue, fontSize: 14.0, fontWeight: FontWeight.w600));
   } else if (title == '进行中') {
     return Text(title,
         style: TextStyle(
-          color: Colors.red,
-          fontSize: 14.0,
-          fontWeight: FontWeight.bold,
-        ));
+            color: Colors.red, fontSize: 14.0, fontWeight: FontWeight.w600));
   } else if (title == '已结束') {
     return Text(title,
         style: TextStyle(
-          color: Colors.black45,
-          fontSize: 14.0,
-          fontWeight: FontWeight.bold,
-        ));
+            color: Colors.black45,
+            fontSize: 14.0,
+            fontWeight: FontWeight.w600));
   } else {
     return Text(title,
         style: TextStyle(
-          color: Colors.black45,
-          fontSize: 14.0,
-          fontWeight: FontWeight.bold,
-        ));
+            color: Colors.black45,
+            fontSize: 14.0,
+            fontWeight: FontWeight.w600));
   }
 }

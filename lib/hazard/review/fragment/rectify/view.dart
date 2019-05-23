@@ -29,9 +29,9 @@ Widget buildView(
               child: Text(
                 '整改描述',
                 style: TextStyle(
-                  fontSize: 14.0,
-                  color: Colors.black,
-                ),
+                    fontSize: 14.0,
+                    color: Colors.black,
+                    fontWeight: FontWeight.w600),
               ),
             ),
             Container(
@@ -98,9 +98,9 @@ Widget buildView(
               child: Text(
                 '整改附件',
                 style: TextStyle(
-                  fontSize: 14.0,
-                  color: Colors.black,
-                ),
+                    fontSize: 14.0,
+                    color: Colors.black,
+                    fontWeight: FontWeight.w600),
               ),
             ),
             Container(
@@ -125,14 +125,20 @@ Widget _buildHazardInfoItem({String title, String content}) {
         Expanded(
           child: Text(
             title,
-            style: TextStyle(fontSize: 14.0, color: Colors.black),
+            style: TextStyle(
+                fontSize: 14.0,
+                color: Colors.black,
+                fontWeight: FontWeight.w600),
           ),
           flex: 3,
         ),
         Expanded(
           child: Text(
             content,
-            style: TextStyle(fontSize: 14.0, color: Colors.black45),
+            style: TextStyle(
+                fontSize: 14.0,
+                color: Colors.black45,
+                fontWeight: FontWeight.w600),
           ),
           flex: 7,
         )

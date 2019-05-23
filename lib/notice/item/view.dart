@@ -47,14 +47,20 @@ Widget buildView(Data data, Dispatch dispatch, ViewService viewService) {
                             padding: EdgeInsets.all(10.0),
                             child: Text(
                               '删除',
-                              style:
-                                  TextStyle(fontSize: 14.0, color: Colors.red),
+                              style: TextStyle(
+                                  fontSize: 14.0,
+                                  color: Colors.red,
+                                  fontWeight: FontWeight.w600),
                             ),
                           ),
                         )),
                         Expanded(
                             child: Text(
                           '${data.messageDate}',
+                          style: TextStyle(
+                              fontSize: 14.0,
+                              color: Colors.black,
+                              fontWeight: FontWeight.w600),
                           textAlign: TextAlign.right,
                         ))
                       ],

@@ -27,7 +27,10 @@ Widget buildView(
             alignment: AlignmentDirectional.center,
             child: Text(
               '查询',
-              style: TextStyle(color: Colors.white, fontSize: 15.0),
+              style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 15.0,
+                  fontWeight: FontWeight.w600),
             ),
           ),
         )
@@ -61,9 +64,9 @@ Widget buildView(
                     child: Text(
                       '时间查询',
                       style: TextStyle(
-                        fontSize: 15.0,
-                        color: Colors.black,
-                      ),
+                          fontSize: 15.0,
+                          color: Colors.black,
+                          fontWeight: FontWeight.w600),
                     ),
                   ),
                   _buildSearchItem(
@@ -133,7 +136,10 @@ Widget buildBottomNavigatorDouble(
               height: double.infinity,
               child: Text(
                 leftLabel,
-                style: TextStyle(color: Colors.white, fontSize: 16.0),
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 16.0,
+                    fontWeight: FontWeight.w600),
                 textAlign: TextAlign.center,
               ),
             ),
@@ -148,7 +154,10 @@ Widget buildBottomNavigatorDouble(
               height: double.infinity,
               child: Text(
                 rightLabel,
-                style: TextStyle(color: Colors.blue, fontSize: 16.0),
+                style: TextStyle(
+                    color: Colors.blue,
+                    fontSize: 16.0,
+                    fontWeight: FontWeight.w600),
                 textAlign: TextAlign.center,
               ),
             ),
@@ -174,7 +183,10 @@ Widget _buildSearchItem({String label, String value, VoidCallback callback}) {
           Expanded(
             child: Text(
               label,
-              style: TextStyle(fontSize: 14.0, color: Colors.black),
+              style: TextStyle(
+                  fontSize: 14.0,
+                  color: Colors.black,
+                  fontWeight: FontWeight.w600),
             ),
           ),
           Container(
@@ -183,7 +195,10 @@ Widget _buildSearchItem({String label, String value, VoidCallback callback}) {
                 Container(
                   child: Text(
                     value,
-                    style: TextStyle(fontSize: 13.0, color: Colors.black45),
+                    style: TextStyle(
+                        fontSize: 13.0,
+                        color: Colors.black45,
+                        fontWeight: FontWeight.w600),
                   ),
                 ),
                 Container(

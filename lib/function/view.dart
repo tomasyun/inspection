@@ -88,17 +88,6 @@ Widget buildView(
   );
 }
 
-//Widget _buildLabel({String label}) {
-//  return Container(
-//    margin: EdgeInsets.only(top: 30.0),
-//    child: Text(
-//      label,
-//      style: TextStyle(
-//          fontSize: 14.0, color: Colors.black, fontWeight: FontWeight.bold),
-//    ),
-//  );
-//}
-
 Widget _buildFuncItem({String asset, String title}) {
   return Column(
     crossAxisAlignment: CrossAxisAlignment.center,
@@ -112,7 +101,8 @@ Widget _buildFuncItem({String asset, String title}) {
         margin: EdgeInsets.only(top: 10.0),
         child: Text(
           title,
-          style: TextStyle(fontSize: 13.0, color: Colors.black),
+          style: TextStyle(
+              fontSize: 13.0, color: Colors.black, fontWeight: FontWeight.w600),
         ),
       )
     ],
