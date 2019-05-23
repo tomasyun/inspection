@@ -26,7 +26,7 @@ Widget buildView(Data data, Dispatch dispatch, ViewService viewService) {
             color: Colors.grey[800],
             blurRadius: 10.0,
             offset: Offset(0.0, 2.0),
-            spreadRadius: -7.0)
+            spreadRadius: -9.0)
       ],
       borderRadius: BorderRadius.all(Radius.circular(15.0)),
     ),
@@ -61,7 +61,10 @@ Widget buildView(Data data, Dispatch dispatch, ViewService viewService) {
                       margin: EdgeInsets.only(top: 20.0),
                       child: Text(
                         '${data.dangerLevel}',
-                        style: TextStyle(color: Colors.red, fontSize: 14.0),
+                        style: TextStyle(
+                            color: Colors.red,
+                            fontSize: 14.0,
+                            fontWeight: FontWeight.w600),
                         textAlign: TextAlign.right,
                       ),
                     ),
@@ -169,7 +172,7 @@ Widget _buildItemHeader({String title, String result}) {
               style: TextStyle(
                   color: Colors.black,
                   fontSize: 16.0,
-                  fontWeight: FontWeight.w600),
+                  fontWeight: FontWeight.w700),
               maxLines: 1,
             ),
           ),
@@ -179,7 +182,7 @@ Widget _buildItemHeader({String title, String result}) {
           child: Text(
             result,
             style: TextStyle(
-                color: Colors.red, fontSize: 14.0, fontWeight: FontWeight.bold),
+                color: Colors.red, fontSize: 14.0, fontWeight: FontWeight.w600),
           ),
         )
       ],

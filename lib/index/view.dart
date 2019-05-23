@@ -27,9 +27,7 @@ class IndexPageState extends State<IndexPageWidget>
    */
   var _list = <Widget>[
     HomePage().buildPage(null),
-//    DevicePage().buildPage(null),
     FunctionPage().buildPage(null),
-//    QRScanPage().buildPage(null),
     MinePage().buildPage(null)
   ];
 
@@ -71,10 +69,6 @@ class IndexPageState extends State<IndexPageWidget>
         getTabImage("images/ic_fun_normal.png"),
         getTabImage("images/ic_fun_press.png")
       ],
-//      [
-//        getTabImage("images/ic_home_normal.png"),
-//        getTabImage("images/ic_home_press.png")
-//      ],
       [
         getTabImage("images/ic_mine_normal.png"),
         getTabImage("images/ic_mine_press.png")
@@ -85,7 +79,7 @@ class IndexPageState extends State<IndexPageWidget>
   @override
   Widget build(BuildContext context) {
     initIcon();
-    var bottomNavigationBar = new BottomNavigationBar(
+    var bottomNavigationBar = BottomNavigationBar(
       items: <NavItem>[
         NavItem(
           icon: getTabIcon(0),
@@ -128,9 +122,10 @@ class IndexPageState extends State<IndexPageWidget>
       ].map((item) => item.item).toList(),
       currentIndex: _currentIndex,
       fixedColor: Colors.red,
+      selectedFontSize: 12.0,
       //设置显示的模式
       type: BottomNavigationBarType.fixed,
-      onTap: (int index) {
+      onTap: (index) {
         setState(() {
           _currentIndex = index;
         });

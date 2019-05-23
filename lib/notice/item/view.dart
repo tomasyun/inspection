@@ -16,7 +16,10 @@ Widget buildView(Data data, Dispatch dispatch, ViewService viewService) {
                 child: Container(
                   child: Text(
                     '${data.messageTitle}',
-                    style: TextStyle(fontSize: 14.0, color: Colors.black45),
+                    style: TextStyle(
+                        fontSize: 14.0,
+                        color: Colors.black45,
+                        fontWeight: FontWeight.w600),
                   ),
                 ),
               );
@@ -31,7 +34,10 @@ Widget buildView(Data data, Dispatch dispatch, ViewService viewService) {
                   Container(
                     child: Text(
                       '${data.messageContent}',
-                      style: TextStyle(fontSize: 14.0, color: Colors.black),
+                      style: TextStyle(
+                          fontSize: 14.0,
+                          color: Colors.black,
+                          fontWeight: FontWeight.w600),
                     ),
                   ),
                   Container(

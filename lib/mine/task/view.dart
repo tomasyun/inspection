@@ -78,7 +78,7 @@ Widget _recheck(TaskState state, Review review) {
             color: Colors.grey[800],
             blurRadius: 10.0,
             offset: Offset(0.0, 2.0),
-            spreadRadius: -7.0)
+            spreadRadius: -9.0)
       ],
       borderRadius: BorderRadius.all(Radius.circular(15.0)),
     ),
@@ -116,7 +116,10 @@ Widget _recheck(TaskState state, Review review) {
                       margin: EdgeInsets.only(top: 10.0),
                       child: Text(
                         '${review.dangerLevel}',
-                        style: TextStyle(color: Colors.red, fontSize: 14.0),
+                        style: TextStyle(
+                            color: Colors.red,
+                            fontSize: 14.0,
+                            fontWeight: FontWeight.w600),
                         textAlign: TextAlign.right,
                       ),
                     ),
@@ -174,7 +177,7 @@ Widget _rectify(TaskState state, Rectify rectify) {
             color: Colors.grey[800],
             blurRadius: 10.0,
             offset: Offset(0.0, 2.0),
-            spreadRadius: -7.0)
+            spreadRadius: -9.0)
       ],
       borderRadius: BorderRadius.all(Radius.circular(15.0)),
     ),
@@ -213,7 +216,10 @@ Widget _rectify(TaskState state, Rectify rectify) {
                       margin: EdgeInsets.only(top: 10.0),
                       child: Text(
                         '${rectify.dangerLevel}',
-                        style: TextStyle(color: Colors.red, fontSize: 14.0),
+                        style: TextStyle(
+                            color: Colors.red,
+                            fontSize: 14.0,
+                            fontWeight: FontWeight.w600),
                         textAlign: TextAlign.right,
                       ),
                     ),
@@ -262,7 +268,7 @@ Widget _inspect(Inspect inspect, Dispatch dispatch) {
             color: Colors.grey[800],
             blurRadius: 10.0,
             offset: Offset(0.0, 2.0),
-            spreadRadius: -7.0)
+            spreadRadius: -9.0)
       ],
       borderRadius: BorderRadius.all(Radius.circular(15.0)),
     ),
@@ -303,7 +309,10 @@ Widget _inspect(Inspect inspect, Dispatch dispatch) {
                     },
                     child: Text(
                       '扫一扫',
-                      style: TextStyle(color: Colors.white, fontSize: 13.0),
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 13.0,
+                          fontWeight: FontWeight.w600),
                     ),
                     padding:
                         EdgeInsets.symmetric(vertical: 3.0, horizontal: 5.0),
@@ -369,7 +378,7 @@ Widget _buildItemHeader({String title, String result}) {
               style: TextStyle(
                   color: Colors.black,
                   fontSize: 16.0,
-                  fontWeight: FontWeight.w600),
+                  fontWeight: FontWeight.w700),
               maxLines: 1,
             ),
           ),
@@ -381,7 +390,7 @@ Widget _buildItemHeader({String title, String result}) {
             style: TextStyle(
                 color: Colors.black45,
                 fontSize: 14.0,
-                fontWeight: FontWeight.bold),
+                fontWeight: FontWeight.w600),
           ),
         )
       ],

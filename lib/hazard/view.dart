@@ -66,7 +66,7 @@ Widget buildView(
                       style: TextStyle(
                           fontSize: 15.0,
                           color: Colors.black,
-                          fontWeight: FontWeight.w600),
+                          fontWeight: FontWeight.w700),
                     ),
                   ),
                   _buildSearchItem(
@@ -86,9 +86,9 @@ Widget buildView(
                     child: Text(
                       '状态查询',
                       style: TextStyle(
-                        fontSize: 15.0,
-                        color: Colors.black,
-                      ),
+                          fontSize: 15.0,
+                          color: Colors.black,
+                          fontWeight: FontWeight.w700),
                     ),
                   ),
                   _buildSearchItem(

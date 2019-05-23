@@ -31,7 +31,7 @@ Widget buildView(
                 style: TextStyle(
                     fontSize: 14.0,
                     color: Colors.black,
-                    fontWeight: FontWeight.w600),
+                    fontWeight: FontWeight.w700),
               ),
             ),
             Container(
@@ -98,7 +98,7 @@ Widget buildView(
                 style: TextStyle(
                     fontSize: 14.0,
                     color: Colors.black,
-                    fontWeight: FontWeight.w600),
+                    fontWeight: FontWeight.w700),
               ),
             ),
             Container(
@@ -127,13 +127,14 @@ Widget _buildHazardInfoItem({String title, String content}) {
             style: TextStyle(
                 fontSize: 14.0,
                 color: Colors.black,
-                fontWeight: FontWeight.w600),
+                fontWeight: FontWeight.w700),
           ),
           flex: 3,
         ),
         Expanded(
           child: Text(
             content,
+            textAlign: TextAlign.right,
             style: TextStyle(
                 fontSize: 14.0,
                 color: Colors.black45,
@@ -161,7 +162,9 @@ Widget _buildSpaceAttachment() {
 Widget _buildAttachment(String url) {
   return Container(
     child: FadeInImage.assetNetwork(
-        image: AppCommons.attachmentBaseUrl + url, fit: BoxFit.fill),
+        placeholder: '',
+        image: AppCommons.attachmentBaseUrl + url,
+        fit: BoxFit.fill),
     height: 100.0,
   );
 }

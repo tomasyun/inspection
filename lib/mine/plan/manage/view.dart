@@ -26,7 +26,10 @@ Widget buildView(
             alignment: AlignmentDirectional.center,
             child: Text(
               '查询',
-              style: TextStyle(color: Colors.white, fontSize: 15.0),
+              style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 15.0,
+                  fontWeight: FontWeight.w600),
             ),
           ),
         )
@@ -60,9 +63,9 @@ Widget buildView(
                     child: Text(
                       '设备名称',
                       style: TextStyle(
-                        fontSize: 15.0,
-                        color: Colors.black,
-                      ),
+                          fontSize: 15.0,
+                          color: Colors.black,
+                          fontWeight: FontWeight.w700),
                     ),
                   ),
                   Container(
@@ -71,7 +74,10 @@ Widget buildView(
                     padding: EdgeInsets.only(
                         left: 20.0, right: 15.0, top: 5.0, bottom: 5.0),
                     child: TextField(
-                      style: TextStyle(fontSize: 14.0),
+                      style: TextStyle(
+                          fontSize: 14.0,
+                          fontWeight: FontWeight.w600,
+                          color: Colors.black),
                       controller: state.controller,
                       maxLines: 1,
                       cursorColor: Colors.red,
@@ -90,9 +96,9 @@ Widget buildView(
                     child: Text(
                       '状态查询',
                       style: TextStyle(
-                        fontSize: 15.0,
-                        color: Colors.black,
-                      ),
+                          fontSize: 15.0,
+                          color: Colors.black,
+                          fontWeight: FontWeight.w700),
                     ),
                   ),
                   _buildSearchItem(
@@ -141,7 +147,10 @@ Widget buildBottomNavigatorDouble(
               height: double.infinity,
               child: Text(
                 leftLabel,
-                style: TextStyle(color: Colors.white, fontSize: 16.0),
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 16.0,
+                    fontWeight: FontWeight.w600),
                 textAlign: TextAlign.center,
               ),
             ),
@@ -156,7 +165,10 @@ Widget buildBottomNavigatorDouble(
               height: double.infinity,
               child: Text(
                 rightLabel,
-                style: TextStyle(color: Colors.blue, fontSize: 16.0),
+                style: TextStyle(
+                    color: Colors.blue,
+                    fontSize: 16.0,
+                    fontWeight: FontWeight.w600),
                 textAlign: TextAlign.center,
               ),
             ),
@@ -174,7 +186,7 @@ Widget _buildSearchItem({String label, String value, VoidCallback callback}) {
       margin: EdgeInsets.only(top: 10.0),
       width: double.infinity,
       padding:
-          EdgeInsets.only(top: 15.0, bottom: 15.0, left: 30.0, right: 15.0),
+      EdgeInsets.only(top: 15.0, bottom: 15.0, left: 20.0, right: 15.0),
       color: Colors.white,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.end,
@@ -182,7 +194,10 @@ Widget _buildSearchItem({String label, String value, VoidCallback callback}) {
           Expanded(
             child: Text(
               label,
-              style: TextStyle(fontSize: 14.0, color: Colors.black),
+              style: TextStyle(
+                  fontSize: 14.0,
+                  color: Colors.black,
+                  fontWeight: FontWeight.w600),
             ),
           ),
           Container(
@@ -191,7 +206,10 @@ Widget _buildSearchItem({String label, String value, VoidCallback callback}) {
                 Container(
                   child: Text(
                     value,
-                    style: TextStyle(fontSize: 13.0, color: Colors.black45),
+                    style: TextStyle(
+                        fontSize: 13.0,
+                        color: Colors.black45,
+                        fontWeight: FontWeight.w600),
                   ),
                 ),
                 Container(

@@ -40,9 +40,9 @@ Widget _buildInspectionTaskBody(Dispatch dispatch, InspectionTaskState state) {
                   child: Text(
                     '火灾报警控制器',
                     style: TextStyle(
-                        color: Colors.black45,
+                        color: Colors.black,
                         fontSize: 15.0,
-                        fontWeight: FontWeight.bold),
+                        fontWeight: FontWeight.w700),
                     textAlign: TextAlign.left,
                   ),
                 )

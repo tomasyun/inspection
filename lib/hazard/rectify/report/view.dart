@@ -42,9 +42,9 @@ Widget buildView(
                       ? state.map['opinion']
                       : '',
                   style: TextStyle(
-                    fontSize: 14.0,
-                    color: Colors.black45,
-                  ),
+                      fontSize: 14.0,
+                      color: Colors.black45,
+                      fontWeight: FontWeight.w600),
                 ),
               ),
               Container(

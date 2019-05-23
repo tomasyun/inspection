@@ -76,7 +76,7 @@ Widget buildView(HomeState state, Dispatch dispatch, ViewService viewService) {
                         color: Colors.grey[800],
                         blurRadius: 10.0,
                         offset: Offset(0.0, 2.0),
-                        spreadRadius: -7.0)
+                        spreadRadius: -9.0)
                   ],
                   borderRadius: BorderRadius.all(Radius.circular(25.0))),
               width: double.infinity,
@@ -161,7 +161,7 @@ Widget buildView(HomeState state, Dispatch dispatch, ViewService viewService) {
                       dispatch(HomeActionCreator.onBreakDownReport());
                     },
                     child: _buildContainerItem(
-                        asset: 'images/ic_repair_report.png', title: '新增维修记录'),
+                        asset: 'images/ic_repair_report.png', title: '维修记录'),
                   )
                 ],
               ),
@@ -183,13 +183,13 @@ Widget buildView(HomeState state, Dispatch dispatch, ViewService viewService) {
                     height: 15.0,
                   ),
                   Container(
-                    margin: EdgeInsets.only(left: 15.0),
+                    margin: EdgeInsets.only(left: 10.0),
                     child: Text(
                       '代办任务',
                       style: TextStyle(
                           fontSize: 15.0,
                           color: Colors.black,
-                          fontWeight: FontWeight.bold),
+                          fontWeight: FontWeight.w600),
                     ),
                   ),
                   Expanded(
@@ -293,7 +293,7 @@ Widget inflateRectify(HomeState state, home.Rectify rectify) {
             color: Colors.grey[800],
             blurRadius: 10.0,
             offset: Offset(0.0, 2.0),
-            spreadRadius: -7.0)
+            spreadRadius: -9.0)
       ],
       borderRadius: BorderRadius.all(Radius.circular(15.0)),
     ),
@@ -330,7 +330,10 @@ Widget inflateRectify(HomeState state, home.Rectify rectify) {
                       margin: EdgeInsets.only(top: 20.0),
                       child: Text(
                         rectify.dangerLevel,
-                        style: TextStyle(color: Colors.red, fontSize: 14.0),
+                        style: TextStyle(
+                            color: Colors.red,
+                            fontSize: 14.0,
+                            fontWeight: FontWeight.w600),
                         textAlign: TextAlign.right,
                       ),
                     ),
@@ -352,7 +355,10 @@ Widget inflateRectify(HomeState state, home.Rectify rectify) {
                                 BorderRadius.all(Radius.circular(20.0))),
                         child: Text(
                           '待整改',
-                          style: TextStyle(color: Colors.white, fontSize: 13.0),
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 13.0,
+                              fontWeight: FontWeight.w600),
                         ),
                         padding: EdgeInsets.symmetric(
                             vertical: 3.0, horizontal: 5.0),
@@ -382,7 +388,7 @@ Widget inflateRecheck(HomeState state, home.Review review) {
             color: Colors.grey[800],
             blurRadius: 10.0,
             offset: Offset(0.0, 2.0),
-            spreadRadius: -7.0)
+            spreadRadius: -9.0)
       ],
       borderRadius: BorderRadius.all(Radius.circular(15.0)),
     ),
@@ -417,7 +423,10 @@ Widget inflateRecheck(HomeState state, home.Review review) {
                       margin: EdgeInsets.only(top: 10.0),
                       child: Text(
                         review.dangerLevel,
-                        style: TextStyle(color: Colors.red, fontSize: 14.0),
+                        style: TextStyle(
+                            color: Colors.red,
+                            fontSize: 14.0,
+                            fontWeight: FontWeight.w600),
                         textAlign: TextAlign.right,
                       ),
                     ),
@@ -439,7 +448,10 @@ Widget inflateRecheck(HomeState state, home.Review review) {
                                 BorderRadius.all(Radius.circular(20.0))),
                         child: Text(
                           '去复查',
-                          style: TextStyle(color: Colors.white, fontSize: 13.0),
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 13.0,
+                              fontWeight: FontWeight.w600),
                         ),
                         padding: EdgeInsets.symmetric(
                             vertical: 3.0, horizontal: 5.0),
@@ -469,7 +481,7 @@ Widget inflateInspect(home.Inspect inspect, Dispatch dispatch) {
             color: Colors.grey[800],
             blurRadius: 10.0,
             offset: Offset(0.0, 2.0),
-            spreadRadius: -7.0)
+            spreadRadius: -9.0)
       ],
       borderRadius: BorderRadius.all(Radius.circular(15.0)),
     ),
@@ -508,7 +520,10 @@ Widget inflateInspect(home.Inspect inspect, Dispatch dispatch) {
                     },
                     child: Text(
                       '扫一扫',
-                      style: TextStyle(color: Colors.white, fontSize: 13.0),
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 13.0,
+                          fontWeight: FontWeight.w600),
                     ),
                     padding:
                         EdgeInsets.symmetric(vertical: 3.0, horizontal: 5.0),
@@ -570,7 +585,10 @@ Widget commonHeader({String title, String result}) {
           child: Container(
             child: Text(
               title,
-              style: TextStyle(color: Colors.black, fontSize: 16.0),
+              style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 16.0,
+                  fontWeight: FontWeight.w700),
               maxLines: 1,
             ),
           ),
@@ -584,7 +602,7 @@ Widget commonHeader({String title, String result}) {
               style: TextStyle(
                   color: Colors.black45,
                   fontSize: 14.0,
-                  fontWeight: FontWeight.bold),
+                  fontWeight: FontWeight.w600),
             ),
           ),
           flex: 6,

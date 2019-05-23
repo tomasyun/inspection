@@ -65,7 +65,13 @@ Widget _buildMineNavigatorItem(
               ),
               Container(
                 margin: EdgeInsets.only(left: 10.0),
-                child: Text(title),
+                child: Text(
+                  title,
+                  style: TextStyle(
+                      fontSize: 14.0,
+                      fontWeight: FontWeight.w600,
+                      color: Colors.black),
+                ),
               ),
               Expanded(
                 child: Container(
@@ -97,7 +103,8 @@ Widget _buildRaisedButton({Dispatch dispatch}) {
     },
     child: Text(
       '退出登录',
-      style: TextStyle(color: Colors.red, fontSize: 14.0),
+      style: TextStyle(
+          color: Colors.red, fontSize: 14.0, fontWeight: FontWeight.w600),
     ),
     color: Colors.white,
     padding:

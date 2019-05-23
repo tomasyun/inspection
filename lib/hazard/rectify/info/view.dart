@@ -170,7 +170,9 @@ Widget _buildSpaceAttachment() {
 Widget _buildAttachment(String url) {
   return Container(
     child: FadeInImage.assetNetwork(
-        image: AppCommons.attachmentBaseUrl + url, fit: BoxFit.fill),
+        placeholder: '',
+        image: AppCommons.attachmentBaseUrl + url,
+        fit: BoxFit.fill),
     height: 100.0,
   );
 }

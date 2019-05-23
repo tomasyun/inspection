@@ -65,7 +65,7 @@ Widget _buildItem({String title, String result}) {
               style: TextStyle(
                   fontSize: 14.0,
                   color: Colors.black,
-                  fontWeight: FontWeight.bold),
+                  fontWeight: FontWeight.w600),
               textAlign: TextAlign.left,
             ),
           ),
@@ -75,7 +75,10 @@ Widget _buildItem({String title, String result}) {
           child: Container(
             child: Text(
               result,
-              style: TextStyle(fontSize: 14.0),
+              style: TextStyle(
+                  fontSize: 14.0,
+                  color: Colors.black,
+                  fontWeight: FontWeight.w600),
               textAlign: TextAlign.left,
             ),
           ),
@@ -96,7 +99,7 @@ Widget _buildItemHeader({String title, String result}) {
             child: Text(
               title,
               style: TextStyle(
-                  fontWeight: FontWeight.bold,
+                  fontWeight: FontWeight.w700,
                   color: Colors.black,
                   fontSize: 16.0),
               maxLines: 1,
@@ -107,7 +110,10 @@ Widget _buildItemHeader({String title, String result}) {
           alignment: AlignmentDirectional.topEnd,
           child: Text(
             result,
-            style: TextStyle(color: Colors.black45, fontSize: 14.0,fontWeight: FontWeight.w600),
+            style: TextStyle(
+                color: Colors.black45,
+                fontSize: 14.0,
+                fontWeight: FontWeight.w600),
           ),
         )
       ],

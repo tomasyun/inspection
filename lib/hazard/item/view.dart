@@ -24,7 +24,7 @@ Widget buildView(Data data, Dispatch dispatch, ViewService viewService) {
             color: Colors.grey[800],
             blurRadius: 10.0,
             offset: Offset(0.0, 2.0),
-            spreadRadius: -7.0)
+            spreadRadius: -9.0)
       ],
       borderRadius: BorderRadius.all(Radius.circular(15.0)),
     ),
@@ -62,7 +62,10 @@ Widget buildView(Data data, Dispatch dispatch, ViewService viewService) {
                       margin: EdgeInsets.only(top: 10.0),
                       child: Text(
                         '${data.dangerLevel}',
-                        style: TextStyle(color: Colors.red, fontSize: 14.0),
+                        style: TextStyle(
+                            color: Colors.red,
+                            fontSize: 14.0,
+                            fontWeight: FontWeight.w600),
                         textAlign: TextAlign.right,
                       ),
                     ),
@@ -100,27 +103,19 @@ Widget _buildStateBtnText(String title) {
   if (title == '待整改') {
     return Text('去整改',
         style: TextStyle(
-          color: Colors.white,
-          fontSize: 14.0,
-        ));
+            color: Colors.white, fontSize: 14.0, fontWeight: FontWeight.w600));
   } else if (title == '待复查') {
     return Text('去复查',
         style: TextStyle(
-          color: Colors.white,
-          fontSize: 14.0,
-        ));
+            color: Colors.white, fontSize: 14.0, fontWeight: FontWeight.w600));
   } else if (title == '待审批') {
     return Text('查看',
         style: TextStyle(
-          color: Colors.white,
-          fontSize: 14.0,
-        ));
+            color: Colors.white, fontSize: 14.0, fontWeight: FontWeight.w600));
   } else {
     return Text(title,
         style: TextStyle(
-          color: Colors.white,
-          fontSize: 14.0,
-        ));
+            color: Colors.white, fontSize: 14.0, fontWeight: FontWeight.w600));
   }
 }
 
@@ -174,7 +169,7 @@ Widget _buildItemHeader({String title, String result}) {
               style: TextStyle(
                   color: Colors.black,
                   fontSize: 16.0,
-                  fontWeight: FontWeight.w600),
+                  fontWeight: FontWeight.w700),
               maxLines: 1,
             ),
           ),
@@ -186,7 +181,7 @@ Widget _buildItemHeader({String title, String result}) {
             style: TextStyle(
                 color: Colors.black45,
                 fontSize: 14.0,
-                fontWeight: FontWeight.bold),
+                fontWeight: FontWeight.w600),
           ),
         )
       ],

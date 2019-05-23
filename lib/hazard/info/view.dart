@@ -47,7 +47,7 @@ Widget buildView(
                         style: TextStyle(
                             fontSize: 14.0,
                             color: Colors.black,
-                            fontWeight: FontWeight.w600),
+                            fontWeight: FontWeight.w700),
                       ),
                     ),
                     Container(
@@ -166,9 +166,9 @@ Widget buildView(
                       child: Text(
                         '附件 :',
                         style: TextStyle(
-                          fontSize: 14.0,
-                          color: Colors.black,
-                        ),
+                            fontSize: 14.0,
+                            color: Colors.black,
+                            fontWeight: FontWeight.w700),
                       ),
                     ),
                     Container(
@@ -201,7 +201,7 @@ Widget _buildHazardInfoItem({String title, String content}) {
             style: TextStyle(
                 fontSize: 14.0,
                 color: Colors.black,
-                fontWeight: FontWeight.w600),
+                fontWeight: FontWeight.w700),
             textAlign: TextAlign.left,
           ),
           flex: 3,
@@ -237,7 +237,9 @@ Widget _buildSpaceAttachment() {
 Widget _buildAttachment(String url) {
   return Container(
     child: FadeInImage.assetNetwork(
-        image: AppCommons.attachmentBaseUrl + url, fit: BoxFit.fill),
+        placeholder: '',
+        image: AppCommons.attachmentBaseUrl + url,
+        fit: BoxFit.fill),
     height: 100.0,
   );
 }
