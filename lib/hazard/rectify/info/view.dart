@@ -67,7 +67,7 @@ Widget buildView(
             Container(
               padding: EdgeInsets.all(15.0),
               color: Colors.white,
-              child: _buildGridView(),
+              child: _buildGridView(state),
               constraints: BoxConstraints.tightFor(
                   width: double.infinity, height: 130.0),
             ),
@@ -145,7 +145,7 @@ Widget _buildHazardInfoItem({String title, String content}) {
   );
 }
 
-Widget _buildAttachment() {
+Widget _buildSpaceAttachment() {
   return Container(
     child: Icon(
       Icons.add,
@@ -157,13 +157,31 @@ Widget _buildAttachment() {
   );
 }
 
-Widget _buildGridView() {
-  List<Widget> list = [
-    _buildAttachment(),
-    _buildAttachment(),
-    _buildAttachment(),
-    _buildAttachment()
-  ];
+Widget _buildAttachment(String url) {
+  return Container(
+    child: FadeInImage.assetNetwork(image: url, fit: BoxFit.fill),
+    height: 100.0,
+  );
+}
+
+Widget _buildGridView(RectifyInfoState state) {
+  List<Widget> list = [];
+
+  if (state.model == null ||
+      state.model.data == null ||
+      state.model.data.repairAttachments == null ||
+      state.model.data.repairAttachments.isEmpty) {
+    list = [
+      _buildSpaceAttachment(),
+      _buildSpaceAttachment(),
+      _buildSpaceAttachment(),
+      _buildSpaceAttachment()
+    ];
+  } else {
+    for (int i = 0; i < state.model.data.repairAttachments.length; i++) {
+      list.add(_buildAttachment(state.model.data.repairAttachments[i].fileUrl));
+    }
+  }
   return GridView.count(
     crossAxisCount: 3,
     children: list,

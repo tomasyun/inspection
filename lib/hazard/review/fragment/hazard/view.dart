@@ -146,7 +146,7 @@ Widget buildView(
             ),
             Container(
               margin: EdgeInsets.only(top: 10.0),
-              child: _buildGridView(),
+              child: _buildGridView(state),
               constraints:
                   BoxConstraints.tightFor(width: double.infinity, height: 90.0),
             ),
@@ -182,7 +182,7 @@ Widget _buildHazardInfoItem({String title, String content}) {
   );
 }
 
-Widget _buildAttachment() {
+Widget _buildSpaceAttachment() {
   return Container(
     child: Icon(
       Icons.add,
@@ -194,13 +194,31 @@ Widget _buildAttachment() {
   );
 }
 
-Widget _buildGridView() {
-  List<Widget> list = [
-    _buildAttachment(),
-    _buildAttachment(),
-    _buildAttachment(),
-    _buildAttachment()
-  ];
+Widget _buildAttachment(String url) {
+  return Container(
+    child: FadeInImage.assetNetwork(image: url, fit: BoxFit.fill),
+    height: 100.0,
+  );
+}
+
+Widget _buildGridView(HazardInfoFragState state) {
+  List<Widget> list = [];
+
+  if (state.model == null ||
+      state.model.data == null ||
+      state.model.data.attachments == null ||
+      state.model.data.attachments.isEmpty) {
+    list = [
+      _buildSpaceAttachment(),
+      _buildSpaceAttachment(),
+      _buildSpaceAttachment(),
+      _buildSpaceAttachment()
+    ];
+  } else {
+    for (int i = 0; i < state.model.data.attachments.length; i++) {
+      list.add(_buildAttachment(state.model.data.attachments[i].fileUrl));
+    }
+  }
   return GridView.count(
     crossAxisCount: 3,
     children: list,
