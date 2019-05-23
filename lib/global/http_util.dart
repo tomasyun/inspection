@@ -180,7 +180,7 @@ class HttpUtil {
         return response.data;
       }
     } catch (e) {
-      AppCommons.showToast(e.toString());
+      AppCommons.showToast('服务器异常');
       return Future.error(e.toString());
     }
   }

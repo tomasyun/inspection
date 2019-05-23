@@ -4,6 +4,7 @@ import 'package:inspection/mine/hazard/page.dart';
 import 'package:inspection/mine/profile/page.dart';
 import 'package:inspection/mine/report/page.dart';
 import 'package:inspection/mine/task/page.dart';
+import 'package:inspection/mine/updatepassword/page.dart';
 import 'package:inspection/setting/page.dart';
 
 import 'action.dart';
@@ -17,10 +18,17 @@ Effect<MineState> buildEffect() {
     MineAction.report: _onSkipMineReport,
     MineAction.setting: _onSkipSetting,
     MineAction.hazardHistory: _onSkipHazardHistory,
+    MineAction.upgradePassword: _onUpdatePasswordAction,
   });
 }
 
 void _onAction(Action action, Context<MineState> ctx) {}
+
+void _onUpdatePasswordAction(Action action, Context<MineState> ctx) {
+  Navigator.of(ctx.context).push(MaterialPageRoute(builder: (context) {
+    return UpdatePasswordPage().buildPage(null);
+  }));
+}
 
 void _onSkipHazardHistory(Action action, Context<MineState> ctx) {
   Navigator.of(ctx.context).push(MaterialPageRoute(builder: (context) {

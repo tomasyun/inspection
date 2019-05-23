@@ -20,13 +20,13 @@ Widget buildView(
       padding: EdgeInsets.symmetric(vertical: 15.0),
       child: Column(
         children: <Widget>[
-          GestureDetector(
-            onTap: () {
-              dispatch(SettingActionCreator.onSkipUpgradePassword());
-            },
-            child: _buildMineNavigatorItem(
-                asset: 'images/ic_pwd_update.png', title: '修改密码'),
-          ),
+//          GestureDetector(
+//            onTap: () {
+//              dispatch(SettingActionCreator.onSkipUpgradePassword());
+//            },
+//            child: _buildMineNavigatorItem(
+//                asset: 'images/ic_pwd_update.png', title: '修改密码'),
+//          ),
           GestureDetector(
             onTap: () {
               dispatch(SettingActionCreator.onUpgradeVersion());

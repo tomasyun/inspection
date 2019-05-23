@@ -103,19 +103,27 @@ Widget buildView(MineState state, Dispatch dispatch, ViewService viewService) {
             child: _buildMineNavigatorItem(
                 asset: 'images/ic_todo_task.png', title: '代办任务'),
           ),
-          GestureDetector(
-            onTap: () {
-              dispatch(MineActionCreator.onSkipMineReport());
-            },
-            child: _buildMineNavigatorItem(
-                asset: 'images/ic_mine_report.png', title: '上报记录'),
-          ),
+
+//          GestureDetector(
+//            onTap: () {
+//              dispatch(MineActionCreator.onSkipMineReport());
+//            },
+//            child: _buildMineNavigatorItem(
+//                asset: 'images/ic_mine_report.png', title: '上报记录'),
+//          ),
           GestureDetector(
             onTap: () {
               dispatch(MineActionCreator.onSkipHazardHistory());
             },
             child: _buildMineNavigatorItem(
                 asset: 'images/ic_history_hazard.png', title: '历史隐患'),
+          ),
+          GestureDetector(
+            onTap: () {
+              dispatch(MineActionCreator.onUpdatePasswordAction());
+            },
+            child: _buildMineNavigatorItem(
+                asset: 'images/ic_pwd_update.png', title: '修改密码'),
           ),
         ],
       ),

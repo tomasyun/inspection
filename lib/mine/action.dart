@@ -8,6 +8,7 @@ enum MineAction {
   report,
   setting,
   hazardHistory,
+  upgradePassword,
 }
 
 class MineActionCreator {
@@ -33,5 +34,9 @@ class MineActionCreator {
 
   static Action onSkipHazardHistory() {
     return Action(MineAction.hazardHistory);
+  }
+
+  static Action onUpdatePasswordAction() {
+    return Action(MineAction.upgradePassword);
   }
 }
