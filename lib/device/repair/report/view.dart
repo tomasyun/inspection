@@ -46,19 +46,22 @@ Widget buildView(
                       textAlign: TextAlign.right,
                       keyboardType: TextInputType.text,
                       maxLines: 1,
+                      enabled: false,
                       cursorWidth: 2.0,
                       cursorColor: Colors.grey,
                       style: TextStyle(fontSize: 14.0, color: Colors.black),
                       decoration: InputDecoration(
                           contentPadding: EdgeInsets.symmetric(
                               vertical: 10.0, horizontal: 10.0),
-                          hintText: "手输/扫码",
+                          hintText: state.deviceInfo['deviceName'],
                           border:
                               OutlineInputBorder(borderSide: BorderSide.none)),
                     ),
                   ),
                   GestureDetector(
-                    onTap: () {},
+                    onTap: () {
+                      dispatch(ReportActionCreator.onScanQRCodeAction());
+                    },
                     child: Container(
                       padding: EdgeInsets.all(5.0),
                       child: Image.asset(
@@ -99,13 +102,14 @@ Widget buildView(
                       textAlign: TextAlign.right,
                       keyboardType: TextInputType.text,
                       maxLines: 1,
+                      enabled: false,
                       cursorWidth: 2.0,
                       cursorColor: Colors.grey,
                       style: TextStyle(fontSize: 14.0, color: Colors.black),
                       decoration: InputDecoration(
                           contentPadding: EdgeInsets.symmetric(
                               vertical: 10.0, horizontal: 10.0),
-                          hintText: '扫码获取',
+                          hintText: state.deviceInfo['deviceCode'],
                           border:
                               OutlineInputBorder(borderSide: BorderSide.none)),
                     ),

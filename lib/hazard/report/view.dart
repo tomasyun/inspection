@@ -44,13 +44,14 @@ Widget buildView(
                       controller: state.deviceNoController,
                       keyboardType: TextInputType.text,
                       maxLines: 1,
+                      enabled: false,
                       cursorWidth: 2.0,
                       cursorColor: Colors.grey,
                       style: TextStyle(fontSize: 14.0, color: Colors.black),
                       decoration: InputDecoration(
                           contentPadding: EdgeInsets.symmetric(
                               vertical: 10.0, horizontal: 10.0),
-                          hintText: '手输/扫码',
+                          hintText: state.map['deviceCode'],
                           border:
                               OutlineInputBorder(borderSide: BorderSide.none)),
                     ),
@@ -95,6 +96,7 @@ Widget buildView(
                   ),
                   Expanded(
                     child: TextField(
+                      enabled: false,
                       textAlign: TextAlign.right,
                       controller: state.locationController,
                       keyboardType: TextInputType.text,
@@ -104,7 +106,7 @@ Widget buildView(
                       decoration: InputDecoration(
                           contentPadding: EdgeInsets.symmetric(
                               vertical: 10.0, horizontal: 10.0),
-                          hintText: '隐患具体位置',
+                          hintText: state.map['deviceLocation'],
                           border:
                               OutlineInputBorder(borderSide: BorderSide.none)),
                     ),

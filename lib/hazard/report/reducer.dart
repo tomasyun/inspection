@@ -9,13 +9,20 @@ Reducer<HazardReportState> buildReducer() {
       HazardReportAction.action: _onAction,
       HazardReportAction.levelRst: _onGetLevelRst,
       HazardReportAction.typeRst: _onGetTypeRst,
-      HazardReportAction.images: _onPickImages
+      HazardReportAction.images: _onPickImages,
+      HazardReportAction.deviceInfo: _onGetDeviceName,
     },
   );
 }
 
 HazardReportState _onAction(HazardReportState state, Action action) {
   HazardReportState newState = state.clone();
+  return newState;
+}
+
+HazardReportState _onGetDeviceName(HazardReportState state, Action action) {
+  HazardReportState newState = state.clone();
+  newState.map = action.payload;
   return newState;
 }
 

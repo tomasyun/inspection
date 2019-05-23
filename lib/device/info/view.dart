@@ -1,7 +1,6 @@
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart';
 import 'package:inspection/device/info/action.dart';
-import 'package:inspection/widget/state_view.dart' as stateView;
 
 import 'state.dart';
 
@@ -26,10 +25,153 @@ Widget buildView(InfoState state, Dispatch dispatch, ViewService viewService) {
             child: Container(
               padding: EdgeInsets.only(
                   top: 15.0, left: 15.0, right: 15.0, bottom: 60),
-              child: stateView.blackPage(),
+              child: Column(
+                children: <Widget>[
+                  state.model != null &&
+                          state.model.data != null &&
+                          state.model.data.equipmentName != null
+                      ? _buildDeviceInfoItem(
+                          title: '设备名称',
+                          content: state.model.data.equipmentName)
+                      : Container(
+                          height: 0.0,
+                        ),
+                  state.model != null &&
+                          state.model.data != null &&
+                          state.model.data.equipmentName != null
+                      ? _buildDeviceInfoItem(
+                          title: '设备编号',
+                          content: state.model.data.equipmentCode)
+                      : Container(
+                          height: 0.0,
+                        ),
+                  state.model != null &&
+                          state.model.data != null &&
+                          state.model.data.companyName != null
+                      ? _buildDeviceInfoItem(
+                          title: '所属单位', content: state.model.data.companyName)
+                      : Container(
+                          height: 0.0,
+                        ),
+                  state.model != null &&
+                          state.model.data != null &&
+                          state.model.data.organizationName != null
+                      ? _buildDeviceInfoItem(
+                          title: '所属部门',
+                          content: state.model.data.organizationName)
+                      : Container(
+                          height: 0.0,
+                        ),
+                  state.model != null &&
+                          state.model.data != null &&
+                          state.model.data.equipmentPersonLiableName != null
+                      ? _buildDeviceInfoItem(
+                          title: '设备负责人',
+                          content: state.model.data.equipmentPersonLiableName)
+                      : Container(
+                          height: 0.0,
+                        ),
+                  state.model != null &&
+                          state.model.data != null &&
+                          state.model.data.equipmentType != null
+                      ? _buildDeviceInfoItem(
+                          title: '设备分类',
+                          content: state.model.data.equipmentType)
+                      : Container(
+                          height: 0.0,
+                        ),
+                  state.model != null &&
+                          state.model.data != null &&
+                          state.model.data.equipmentModel != null
+                      ? _buildDeviceInfoItem(
+                          title: '设备型号',
+                          content: state.model.data.equipmentModel)
+                      : Container(
+                          height: 0.0,
+                        ),
+                  state.model != null &&
+                          state.model.data != null &&
+                          state.model.data.installArea != null
+                      ? _buildDeviceInfoItem(
+                          title: '安装区域', content: state.model.data.installArea)
+                      : Container(
+                          height: 0.0,
+                        ),
+                  state.model != null &&
+                          state.model.data != null &&
+                          state.model.data.equipmentManufacturer != null
+                      ? _buildDeviceInfoItem(
+                          title: '厂家',
+                          content: state.model.data.equipmentManufacturer)
+                      : Container(
+                          height: 0.0,
+                        ),
+                  state.model != null &&
+                          state.model.data != null &&
+                          state.model.data.equipmentManufactureTime != null
+                      ? _buildDeviceInfoItem(
+                          title: '生产日期',
+                          content: state.model.data.equipmentManufactureTime)
+                      : Container(
+                          height: 0.0,
+                        ),
+                  state.model != null &&
+                          state.model.data != null &&
+                          state.model.data.nextRepairTime != null
+                      ? _buildDeviceInfoItem(
+                          title: '下次维修时间',
+                          content: state.model.data.nextRepairTime)
+                      : Container(
+                          height: 0.0,
+                        ),
+                  state.model != null &&
+                          state.model.data != null &&
+                          state.model.data.scrapTime != null
+                      ? _buildDeviceInfoItem(
+                          title: '报废日期', content: state.model.data.scrapTime)
+                      : Container(
+                          height: 0.0,
+                        ),
+                  state.model != null &&
+                          state.model.data != null &&
+                          state.model.data.remark != null
+                      ? _buildDeviceInfoItem(
+                          title: '备注', content: state.model.data.remark)
+                      : Container(
+                          height: 0.0,
+                        ),
+                ],
+              ),
             ),
           ),
         ),
+      ],
+    ),
+  );
+}
+
+Widget _buildDeviceInfoItem({String title, String content}) {
+  return Container(
+    margin: EdgeInsets.only(top: 15.0),
+    child: Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        Expanded(
+          child: Text(
+            title,
+            style: TextStyle(fontSize: 14.0, color: Colors.black),
+            textAlign: TextAlign.left,
+          ),
+          flex: 3,
+        ),
+        Expanded(
+          child: Text(
+            content,
+            style: TextStyle(fontSize: 14.0, color: Colors.black45),
+            textAlign: TextAlign.right,
+          ),
+          flex: 7,
+        )
       ],
     ),
   );

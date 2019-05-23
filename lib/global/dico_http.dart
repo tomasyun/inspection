@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:inspection/entity/equipment_info_model.dart';
 import 'package:inspection/entity/filter_model.dart';
 import 'package:inspection/entity/hazard_info_model.dart';
 import 'package:inspection/entity/hazard_model.dart';
@@ -130,9 +131,8 @@ class DicoHttpRepository {
       FilterModel.fromJson(await HttpUtil().get(repairMan));
 
   ///设备扫码
-  static Future scanQRCodeRequest(String url) async {
-    return await HttpUtil().get(url);
-  }
+  static Future<EquipmentInfoModel> scanQRCodeRequest(String url) async =>
+      EquipmentInfoModel.fromJson(await HttpUtil().get(url));
 
   ///复查信息
   static Future<RecheckInfoModel> doGetRecheckInfoRequest(

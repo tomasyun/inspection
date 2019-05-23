@@ -11,12 +11,19 @@ Reducer<ReportState> buildReducer() {
       ReportAction.picRst: _onGetPicRst,
       ReportAction.repairmanRst: _onGetRepairManRst,
       ReportAction.repairDateRst: _onGetRepairDateRst,
+      ReportAction.deviceInfo: _onGetDeviceInfoAction,
     },
   );
 }
 
 ReportState _onAction(ReportState state, Action action) {
   ReportState newState = state.clone();
+  return newState;
+}
+
+ReportState _onGetDeviceInfoAction(ReportState state, Action action) {
+  ReportState newState = state.clone();
+  newState.deviceInfo = action.payload;
   return newState;
 }
 

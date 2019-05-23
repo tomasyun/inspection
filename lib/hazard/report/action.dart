@@ -12,6 +12,7 @@ enum HazardReportAction {
   addAttachment,
   report,
   scanQRCode,
+  deviceInfo,
 }
 
 class HazardReportActionCreator {
@@ -49,5 +50,9 @@ class HazardReportActionCreator {
 
   static Action onScanQRCode() {
     return Action(HazardReportAction.scanQRCode);
+  }
+
+  static Action onDeviceCodeAction(Map<String, String> map) {
+    return Action(HazardReportAction.deviceInfo, payload: map);
   }
 }

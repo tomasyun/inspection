@@ -1,5 +1,7 @@
+import 'package:barcode_scan/barcode_scan.dart';
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_picker/Picker.dart';
 import 'package:inspection/filter/page.dart';
 import 'package:inspection/global/app_common.dart';
@@ -17,10 +19,43 @@ Effect<ReportState> buildEffect() {
     ReportAction.report: _onReport,
     ReportAction.goBack: _onGoBack,
     ReportAction.repairDate: _onShowRepairDate,
+    ReportAction.scanQRCode: _onScanQRCode,
   });
 }
 
 void _onAction(Action action, Context<ReportState> ctx) {}
+
+Future _onScanQRCode(Action action, Context<ReportState> ctx) async {
+  try {
+    String qrResult = await BarcodeScanner.scan();
+    if (qrResult != null && qrResult.isNotEmpty) {
+      DicoHttpRepository.scanQRCodeRequest(qrResult).then((model) {
+        if (model.code == 0) {
+          if (model != null && model.data != null) {
+            Map<String, String> map = Map();
+            map['deviceCode'] = '扫码获取';
+            map['deviceId'] = '';
+            map['deviceName'] = '扫码获取';
+            if (model.data.equipmentCode != null) {
+              map['deviceCode'] = model.data.equipmentCode;
+            }
+            if (model.data.id != null) {
+              map['deviceId'] = model.data.id;
+            }
+            if (model.data.equipmentName != null) {
+              map['deviceName'] = model.data.equipmentName;
+            }
+            ctx.dispatch(ReportActionCreator.onGetDeviceInfo(map));
+          }
+        }
+      });
+    }
+  } on PlatformException catch (ex) {
+    if (ex.code == BarcodeScanner.CameraAccessDenied) {
+    } else {}
+  } on FormatException {} catch (e) {}
+}
+
 void _onShowRepairDate(Action action, Context<ReportState> ctx) {
   new Picker(
     adapter: new DateTimePickerAdapter(
@@ -44,10 +79,9 @@ Future<bool> _onGoBack(Action action, Context<ReportState> ctx) {
 }
 
 void _onReport(Action action, Context<ReportState> ctx) {
-  if (ctx.state.deviceNameController.text.isEmpty) {
-    AppCommons.showToast('设备名称不能为空');
-  } else if (ctx.state.deviceNoController.text.isEmpty) {
-    AppCommons.showToast('设备编号不能为空');
+  if (ctx.state.deviceNameController.text.isEmpty ||
+      ctx.state.deviceNoController.text.isEmpty) {
+    AppCommons.showToast('请选扫码获取设备名称和设备编号');
   } else if (ctx.state.departRst['name'] == '请选择') {
     AppCommons.showToast('请选择责任部门');
   } else if (ctx.state.picRst['name'] == '请选择') {
@@ -64,7 +98,7 @@ void _onReport(Action action, Context<ReportState> ctx) {
     AppCommons.showToast('请填写故障描述');
   } else {
     String deviceName = ctx.state.deviceNameController.text;
-    String deviceNo = ctx.state.deviceNoController.text;
+    String deviceNo = ctx.state.deviceInfo['deviceId'];
     String departName = ctx.state.departRst['name'];
     String departId = ctx.state.departRst['id'];
     String picName = ctx.state.picRst['name'];

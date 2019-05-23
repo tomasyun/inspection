@@ -29,6 +29,28 @@ void _onAction(Action action, Context<HazardReportState> ctx) {}
 void _onScanQRCode(Action action, Context<HazardReportState> ctx) async {
   try {
     String qrResult = await BarcodeScanner.scan();
+    if (qrResult != null && qrResult.isNotEmpty) {
+      DicoHttpRepository.scanQRCodeRequest(qrResult).then((model) {
+        if (model.code == 0) {
+          if (model != null && model.data != null) {
+            Map<String, String> map = Map();
+            map['deviceCode'] = '扫码获取';
+            map['deviceId'] = '';
+            map['deviceLocation'] = '隐患具体位置';
+            if (model.data.equipmentCode != null) {
+              map['deviceCode'] = model.data.equipmentCode;
+            }
+            if (model.data.id != null) {
+              map['deviceId'] = model.data.id;
+            }
+            if (model.data.installArea != null) {
+              map['deviceLocation'] = model.data.installArea;
+            }
+            ctx.dispatch(HazardReportActionCreator.onDeviceCodeAction(map));
+          }
+        }
+      });
+    }
   } on PlatformException catch (ex) {
     if (ex.code == BarcodeScanner.CameraAccessDenied) {
     } else {}
@@ -36,8 +58,9 @@ void _onScanQRCode(Action action, Context<HazardReportState> ctx) async {
 }
 
 void _onReport(Action action, Context<HazardReportState> ctx) async {
-  if (ctx.state.locationController.text.isEmpty) {
-    AppCommons.showToast('请填写隐患具体位置');
+  if (ctx.state.deviceNoController.text.isEmpty ||
+      ctx.state.locationController.text.isEmpty) {
+    AppCommons.showToast('请选扫码获取设备编号和隐患位置');
   } else if (ctx.state.deviceNoController.text.isEmpty) {
     AppCommons.showToast('设备编号不能为空');
   } else if (ctx.state.levelRst['name'] == '请选择') {
@@ -49,8 +72,8 @@ void _onReport(Action action, Context<HazardReportState> ctx) async {
   } else if (ctx.state.assets.isEmpty) {
     AppCommons.showToast('请上传相关附件');
   } else {
-    String location = ctx.state.locationController.text;
-    String deviceNo = ctx.state.deviceNoController.text;
+    String location = ctx.state.map['deviceLocation'];
+    String deviceNo = ctx.state.map['deviceId'];
     String level = ctx.state.levelRst['id'];
     String levelName = ctx.state.levelRst['name'];
     String type = ctx.state.typeRst['id'];

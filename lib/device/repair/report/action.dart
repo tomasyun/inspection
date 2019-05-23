@@ -13,6 +13,8 @@ enum ReportAction {
   repairmanRst,
   repairDate,
   repairDateRst,
+  deviceInfo,
+  scanQRCode,
 }
 
 class ReportActionCreator {
@@ -58,5 +60,13 @@ class ReportActionCreator {
 
   static Action onGoBack() {
     return Action(ReportAction.goBack);
+  }
+
+  static Action onScanQRCodeAction() {
+    return Action(ReportAction.scanQRCode);
+  }
+
+  static Action onGetDeviceInfo(Map<String, String> map) {
+    return Action(ReportAction.deviceInfo, payload: map);
   }
 }

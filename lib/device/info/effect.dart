@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:inspection/device/keep/page.dart';
 import 'package:inspection/device/repair/record/page.dart';
+import 'package:inspection/global/dico_http.dart';
 
 import 'action.dart';
 import 'state.dart';
@@ -22,6 +23,11 @@ void _onAction(Action action, Context<InfoState> ctx) {}
 void _onScanQRCode(Action action, Context<InfoState> ctx) async {
   try {
     String qrResult = await BarcodeScanner.scan();
+    if (qrResult != null && qrResult.isNotEmpty) {
+      DicoHttpRepository.scanQRCodeRequest(qrResult).then((model) {
+        ctx.dispatch(InfoActionCreator.onGetDeviceInfoModelAction(model));
+      });
+    }
   } on PlatformException catch (ex) {
     if (ex.code == BarcodeScanner.CameraAccessDenied) {
     } else {}

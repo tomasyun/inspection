@@ -38,17 +38,11 @@ Widget _buildInspectionTaskBody(Dispatch dispatch, InspectionTaskState state) {
                 Container(
                   padding: EdgeInsets.symmetric(vertical: 15.0),
                   child: Text(
-                    '设备名称',
-                    style: TextStyle(color: Colors.black45, fontSize: 15.0),
-                    textAlign: TextAlign.left,
-                  ),
-                ),
-                Container(
-                  margin: EdgeInsets.only(left: 20.0),
-                  padding: EdgeInsets.symmetric(vertical: 15.0),
-                  child: Text(
                     '火灾报警控制器',
-                    style: TextStyle(color: Colors.black45, fontSize: 15.0),
+                    style: TextStyle(
+                        color: Colors.black45,
+                        fontSize: 15.0,
+                        fontWeight: FontWeight.bold),
                     textAlign: TextAlign.left,
                   ),
                 )
