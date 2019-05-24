@@ -15,8 +15,8 @@ class _WarningConnector extends ConnOp<WarningState, List<ItemBean>> {
   List<ItemBean> get(WarningState state) {
     return state.model != null && state.model.data != null
         ? state.model.data.map((item) {
-      return ItemBean('warning', item);
-    }).toList()
+            return ItemBean('warning', item);
+          }).toList()
         : <ItemBean>[];
   }
 
