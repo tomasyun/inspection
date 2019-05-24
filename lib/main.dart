@@ -5,6 +5,6 @@ import 'package:inspection/app.dart';
 void main() {
   runApp(createApp());
   SystemUiOverlayStyle systemUiOverlayStyle =
-  SystemUiOverlayStyle(statusBarColor: Colors.blue);
+      SystemUiOverlayStyle(statusBarColor: Colors.blue);
   SystemChrome.setSystemUIOverlayStyle(systemUiOverlayStyle);
 }
