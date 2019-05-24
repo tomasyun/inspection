@@ -102,6 +102,28 @@ Widget _buildItem({String title, String result}) {
   );
 }
 
+Widget _buildStateText(String title) {
+  if (title == '已过期') {
+    return Text('已过期',
+        style: TextStyle(
+            color: Colors.black45,
+            fontSize: 14.0,
+            fontWeight: FontWeight.w600));
+  } else if (title == '紧急') {
+    return Text('紧急',
+        style: TextStyle(
+            color: Colors.red, fontSize: 14.0, fontWeight: FontWeight.w600));
+  } else if (title == '一般') {
+    return Text('一般',
+        style: TextStyle(
+            color: Colors.blue, fontSize: 14.0, fontWeight: FontWeight.w600));
+  } else {
+    return Text(title,
+        style: TextStyle(
+            color: Colors.white, fontSize: 14.0, fontWeight: FontWeight.w600));
+  }
+}
+
 Widget _buildItemHeader({String title, String result}) {
   return Container(
     child: Row(
@@ -121,11 +143,7 @@ Widget _buildItemHeader({String title, String result}) {
         ),
         Container(
           alignment: AlignmentDirectional.topEnd,
-          child: Text(
-            result,
-            style: TextStyle(
-                color: Colors.red, fontSize: 14.0, fontWeight: FontWeight.w600),
-          ),
+          child: _buildStateText(result),
         )
       ],
     ),
