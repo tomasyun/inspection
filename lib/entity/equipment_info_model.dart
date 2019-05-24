@@ -71,7 +71,7 @@ class Data {
       this.nextRepairTime,
       this.scrapTime,
       this.qrCode,
-        this.planId,
+      this.planId,
       this.remark,
       this.createUser,
       this.createDate,
