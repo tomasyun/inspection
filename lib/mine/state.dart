@@ -5,8 +5,7 @@ class MineState implements Cloneable<MineState> {
 
   @override
   MineState clone() {
-    return MineState()
-      ..map = map;
+    return MineState()..map = map;
   }
 }
 
