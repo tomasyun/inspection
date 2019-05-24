@@ -6,8 +6,7 @@ class WarningState implements Cloneable<WarningState> {
 
   @override
   WarningState clone() {
-    return WarningState()
-      ..model = model;
+    return WarningState()..model = model;
   }
 }
 
