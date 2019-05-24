@@ -168,8 +168,8 @@ class Inspect {
       this.equipmentCode,
       this.equipmentName,
       this.equipmentType,
-        this.status,
-        this.equipmentId});
+      this.status,
+      this.equipmentId});
 
   Inspect.fromJson(Map<String, dynamic> json) {
     installArea = json['installArea'];
