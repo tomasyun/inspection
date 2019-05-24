@@ -34,6 +34,7 @@ class Data {
   String planPerson;
   String planName;
   String planStatus;
+  String planId;
   String planCode;
 
   Data(
@@ -43,6 +44,7 @@ class Data {
       this.planPerson,
       this.planName,
       this.planStatus,
+        this.planId,
       this.planCode});
 
   Data.fromJson(Map<String, dynamic> json) {
@@ -52,6 +54,7 @@ class Data {
     planPerson = json['planPerson'];
     planName = json['planName'];
     planStatus = json['planStatus'];
+    planId = json['planId'];
     planCode = json['planCode'];
   }
 
@@ -63,6 +66,7 @@ class Data {
     data['planPerson'] = this.planPerson;
     data['planName'] = this.planName;
     data['planStatus'] = this.planStatus;
+    data['planId'] = this.planId;
     data['planCode'] = this.planCode;
     return data;
   }

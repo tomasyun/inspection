@@ -9,7 +9,7 @@ class PlanAboutActionCreator {
     return const Action(PlanAboutAction.action);
   }
 
-  static Action onGetPlanAbouts(List<PlanAboutModel> list) {
+  static Action onGetPlanAbouts(PlanAboutModel list) {
     return Action(PlanAboutAction.planAbouts, payload: list);
   }
 }

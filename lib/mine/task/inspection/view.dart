@@ -1,5 +1,6 @@
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart';
+import 'package:inspection/entity/inspect_content_model.dart';
 import 'package:inspection/mine/task/inspection/action.dart';
 import 'package:inspection/widget/state_view.dart' as stateView;
 import 'package:inspection/widget/switch_button.dart';
@@ -23,7 +24,9 @@ Widget buildView(
 }
 
 Widget _buildInspectionTaskBody(Dispatch dispatch, InspectionTaskState state) {
-  if (state.tasks.isEmpty) {
+  if (state.model == null ||
+      state.model.data == null ||
+      state.model.data.isEmpty) {
     return Container(
       child: stateView.blackPage(),
     );
@@ -38,7 +41,7 @@ Widget _buildInspectionTaskBody(Dispatch dispatch, InspectionTaskState state) {
                 Container(
                   padding: EdgeInsets.symmetric(vertical: 15.0),
                   child: Text(
-                    '火灾报警控制器',
+                    state.map['deviceName'],
                     style: TextStyle(
                         color: Colors.black,
                         fontSize: 15.0,
@@ -52,7 +55,7 @@ Widget _buildInspectionTaskBody(Dispatch dispatch, InspectionTaskState state) {
           ),
           Container(
             child: Column(
-              children: _buildAllTaskList(dispatch, state.tasks),
+              children: _buildAllTaskList(dispatch, state.model.data),
             ),
           ),
           Container(
@@ -66,13 +69,17 @@ Widget _buildInspectionTaskBody(Dispatch dispatch, InspectionTaskState state) {
   }
 }
 
-List<Widget> _buildAllTaskList(Dispatch dispatch, List<String> list) {
-  return list.map((item) {
-    return _buildInspectionTaskItem(dispatch, item);
-  }).toList();
+List<Widget> _buildAllTaskList(Dispatch dispatch, List<Data> data) {
+  if (data.isNotEmpty) {
+    return data.map((item) {
+      return _buildInspectionTaskItem(dispatch, item);
+    }).toList();
+  } else {
+    return <Widget>[];
+  }
 }
 
-Widget _buildInspectionTaskItem(Dispatch dispatch, String content) {
+Widget _buildInspectionTaskItem(Dispatch dispatch, Data data) {
   return Container(
     padding: EdgeInsets.symmetric(vertical: 15.0, horizontal: 15.0),
     margin: EdgeInsets.only(top: 1),
@@ -84,7 +91,7 @@ Widget _buildInspectionTaskItem(Dispatch dispatch, String content) {
         Expanded(
             child: Container(
           child: Text(
-            content,
+            data.targetName,
             style: TextStyle(
                 fontSize: 14.0,
                 color: Colors.black,
@@ -94,9 +101,10 @@ Widget _buildInspectionTaskItem(Dispatch dispatch, String content) {
         Container(
           margin: EdgeInsets.only(left: 10.0),
           child: SwitchButton(
-            isOpen: true,
+            isOpen: data.isOpen,
             size: Size(60.0, 30.0),
             callback: () {
+              data.isOpen = !data.isOpen;
               dispatch(InspectionTaskActionCreator.onShowBottomSheet());
             },
           ),
@@ -115,7 +123,7 @@ Widget _buildRaisedButton({Dispatch dispatch}) {
           dispatch(InspectionTaskActionCreator.onSubmit());
         },
         child: Text(
-          '提交',
+          '保存',
           style: TextStyle(
               color: Colors.white, fontSize: 14.0, fontWeight: FontWeight.w600),
         ),

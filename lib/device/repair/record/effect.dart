@@ -11,8 +11,7 @@ Effect<RecordState> buildEffect() {
 }
 
 _onAction(Action action, Context<RecordState> ctx) {
-  DicoHttpRepository.doGetRepairRecordRequest(
-          '40288a8a6aba494a016ac398a0240002')
+  DicoHttpRepository.doGetRepairRecordRequest(ctx.state.equipmentId)
       .then((model) {
     if (model.code == 0) {
       ctx.dispatch(RecordActionCreator.initListData(model));

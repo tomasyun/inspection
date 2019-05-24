@@ -150,11 +150,8 @@ Widget _buildHazardInfoItem({String title, String content}) {
 
 Widget _buildSpaceAttachment() {
   return Container(
-    child: Icon(
-      Icons.add,
-      color: Colors.grey[100],
-      size: 80.0,
-    ),
+    child: FadeInImage.assetNetwork(
+        placeholder: 'images/ic_add_on.png', image: '', fit: BoxFit.fill),
     height: 100.0,
     color: Colors.grey,
   );
@@ -163,7 +160,7 @@ Widget _buildSpaceAttachment() {
 Widget _buildAttachment(String url) {
   return Container(
     child: FadeInImage.assetNetwork(
-        placeholder: '',
+        placeholder: 'images/ic_add_on.png',
         image: AppCommons.attachmentBaseUrl + url,
         fit: BoxFit.fill),
     height: 100.0,

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:inspection/device/keep/page.dart';
 import 'package:inspection/device/repair/record/page.dart';
+import 'package:inspection/global/app_common.dart';
 import 'package:inspection/global/dico_http.dart';
 
 import 'action.dart';
@@ -25,7 +26,14 @@ void _onScanQRCode(Action action, Context<InfoState> ctx) async {
     String qrResult = await BarcodeScanner.scan();
     if (qrResult != null && qrResult.isNotEmpty) {
       DicoHttpRepository.scanQRCodeRequest(qrResult).then((model) {
-        ctx.dispatch(InfoActionCreator.onGetDeviceInfoModelAction(model));
+        if (model.code == 0) {
+          ctx.dispatch(InfoActionCreator.onGetDeviceInfoModelAction(model));
+          if (model.data != null && model.data.id != null) {
+            ctx.state.equipmentId = model.data.id;
+          }
+        } else {
+          AppCommons.showToast('获取设备信息失败');
+        }
       });
     }
   } on PlatformException catch (ex) {
@@ -35,13 +43,17 @@ void _onScanQRCode(Action action, Context<InfoState> ctx) async {
 }
 
 void _onSkipRepairRecord(Action action, Context<InfoState> ctx) {
+  Map<String, dynamic> map = Map();
+  map['equipmentId'] = ctx.state.equipmentId;
   Navigator.of(ctx.context).push(MaterialPageRoute(builder: (context) {
-    return RecordPage().buildPage(null);
+    return RecordPage().buildPage(map);
   }));
 }
 
 void _onSkipKeepRecord(Action action, Context<InfoState> ctx) {
+  Map<String, dynamic> map = Map();
+  map['equipmentId'] = ctx.state.equipmentId;
   Navigator.of(ctx.context).push(MaterialPageRoute(builder: (context) {
-    return KeepPage().buildPage(null);
+    return KeepPage().buildPage(map);
   }));
 }

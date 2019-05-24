@@ -6,6 +6,7 @@ import 'package:inspection/entity/home_model.dart' as home;
 import 'package:inspection/global/marquee.dart';
 import 'package:inspection/hazard/info/page.dart';
 import 'package:inspection/home/action.dart';
+import 'package:inspection/mine/task/inspection/page.dart';
 
 import 'state.dart';
 
@@ -144,7 +145,12 @@ Widget buildView(HomeState state, Dispatch dispatch, ViewService viewService) {
                 children: <Widget>[
                   GestureDetector(
                     onTap: () {
-                      dispatch(HomeActionCreator.onScanQRCode());
+                      Map<String, dynamic> map = Map();
+                      map['equipmentId'] = '';
+                      Navigator.of(viewService.context)
+                          .push(MaterialPageRoute(builder: (content) {
+                        return InspectionTaskPage().buildPage(map);
+                      }));
                     },
                     child: _buildContainerItem(
                         asset: 'images/ic_scan.png', title: '设备扫码'),
@@ -231,7 +237,8 @@ Widget buildView(HomeState state, Dispatch dispatch, ViewService viewService) {
                   children: state.model != null &&
                           state.model.data != null &&
                           state.model.data.todos != null
-                      ? _buildToDoWidgets(state: state, dispatch: dispatch)
+                      ? _buildToDoWidgets(
+                      state: state, viewService: viewService)
                       : [],
                 ))
           ],
@@ -266,7 +273,7 @@ Widget _buildContainerItem({String asset, String title}) {
   );
 }
 
-List<Widget> _buildToDoWidgets({HomeState state, Dispatch dispatch}) {
+List<Widget> _buildToDoWidgets({HomeState state, ViewService viewService}) {
   home.Todos todo = state.model.data.todos;
   List<Widget> widgets = [];
   if (todo.rectify != null) {
@@ -276,7 +283,7 @@ List<Widget> _buildToDoWidgets({HomeState state, Dispatch dispatch}) {
     widgets.add(inflateRecheck(state, todo.review));
   }
   if (todo.inspect != null) {
-    widgets.add(inflateInspect(todo.inspect, dispatch));
+    widgets.add(inflateInspect(todo.inspect, viewService));
   }
   return widgets;
 }
@@ -469,7 +476,7 @@ Widget inflateRecheck(HomeState state, home.Review review) {
   );
 }
 
-Widget inflateInspect(home.Inspect inspect, Dispatch dispatch) {
+Widget inflateInspect(home.Inspect inspect, ViewService viewService) {
   return Container(
     padding: EdgeInsets.all(15.0),
     margin: EdgeInsets.only(bottom: 10.0),
@@ -516,7 +523,12 @@ Widget inflateInspect(home.Inspect inspect, Dispatch dispatch) {
                         borderRadius: BorderRadius.all(Radius.circular(20.0))),
                     color: Colors.green,
                     onPressed: () {
-                      dispatch(HomeActionCreator.onScanQRCode());
+                      Map<String, dynamic> map = Map();
+                      map['equipmentId'] = inspect.equipmentId;
+                      Navigator.of(viewService.context)
+                          .push(MaterialPageRoute(builder: (content) {
+                        return InspectionTaskPage().buildPage(map);
+                      }));
                     },
                     child: Text(
                       '扫一扫',

@@ -5,6 +5,9 @@ import 'package:inspection/notice/item/action.dart';
 
 Widget buildView(Data data, Dispatch dispatch, ViewService viewService) {
   return Container(
+    decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.all(Radius.circular(15.0))),
     child: ExpansionPanelList(
         expansionCallback: (int panelIndex, bool isExpanded) {},
         children: [
@@ -46,29 +49,29 @@ Widget buildView(Data data, Dispatch dispatch, ViewService viewService) {
                       children: <Widget>[
                         Expanded(
                             child: GestureDetector(
-                          onTap: () {
-                            dispatch(NoticeItemActionCreator.onDeleteAction());
-                          },
-                          child: Container(
-                            padding: EdgeInsets.all(10.0),
-                            child: Text(
-                              '删除',
-                              style: TextStyle(
-                                  fontSize: 14.0,
-                                  color: Colors.red,
-                                  fontWeight: FontWeight.w600),
-                            ),
-                          ),
-                        )),
+                              onTap: () {
+                                dispatch(NoticeItemActionCreator.onDeleteAction());
+                              },
+                              child: Container(
+                                padding: EdgeInsets.all(10.0),
+                                child: Text(
+                                  '删除',
+                                  style: TextStyle(
+                                      fontSize: 14.0,
+                                      color: Colors.red,
+                                      fontWeight: FontWeight.w600),
+                                ),
+                              ),
+                            )),
                         Expanded(
                             child: Text(
-                          '${data.messageDate}',
-                          style: TextStyle(
-                              fontSize: 14.0,
-                              color: Colors.black,
-                              fontWeight: FontWeight.w600),
-                          textAlign: TextAlign.right,
-                        ))
+                              '${data.messageDate}',
+                              style: TextStyle(
+                                  fontSize: 14.0,
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.w600),
+                              textAlign: TextAlign.right,
+                            ))
                       ],
                     ),
                   )

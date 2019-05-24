@@ -1,7 +1,7 @@
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart';
 import 'package:inspection/entity/plan_model.dart';
-import 'package:inspection/mine/plan/mine/item/action.dart';
+import 'package:inspection/mine/plan/manage/about/page.dart';
 
 Widget buildView(Data data, Dispatch dispatch, ViewService viewService) {
   Map<String, dynamic> map = Map();
@@ -14,10 +14,15 @@ Widget buildView(Data data, Dispatch dispatch, ViewService viewService) {
   }
   return GestureDetector(
     onTap: () {
-      dispatch(MinePlanItemActionCreator.onSkipAbout());
+      Map<String, dynamic> map = Map();
+      map['id'] = data.planId;
+      Navigator.of(viewService.context)
+          .push(MaterialPageRoute(builder: (context) {
+        return PlanAboutPage().buildPage(map);
+      }));
     },
     child: Container(
-      padding: EdgeInsets.all(10.0),
+      padding: EdgeInsets.all(20.0),
       margin: EdgeInsets.only(bottom: 10.0),
       width: double.infinity,
       decoration: BoxDecoration(
@@ -47,7 +52,7 @@ Widget buildView(Data data, Dispatch dispatch, ViewService viewService) {
                 Expanded(
                     child: Column(
                   children: <Widget>[
-                    _buildItem(title: '计划编号', result: '${data.planCode}'),
+                    _buildItem(title: '编号', result: '${data.planCode}'),
                     _buildItem(title: '责任人', result: '${data.planPerson}'),
                     _buildItem(
                         title: '责任部门', result: '${data.planOrganization}'),
@@ -72,7 +77,6 @@ Widget _buildItem({String title, String result}) {
       children: <Widget>[
         Expanded(
           child: Container(
-            margin: EdgeInsets.only(left: 20.0),
             child: Text(
               title,
               style: TextStyle(
@@ -92,7 +96,7 @@ Widget _buildItem({String title, String result}) {
                   fontSize: 14.0,
                   color: Colors.black45,
                   fontWeight: FontWeight.w600),
-              textAlign: TextAlign.left,
+              textAlign: TextAlign.right,
             ),
           ),
           flex: 6,

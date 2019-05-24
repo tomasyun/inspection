@@ -19,6 +19,6 @@ PlanAboutState _onAction(PlanAboutState state, Action action) {
 
 PlanAboutState _onGetPlanAbouts(PlanAboutState state, Action action) {
   PlanAboutState newState = state.clone();
-  newState.list = action.payload;
+  newState.model = action.payload;
   return newState;
 }

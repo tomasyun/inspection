@@ -13,9 +13,11 @@ class PlanAboutAdapter extends DynamicFlowAdapter<PlanAboutState> {
 class _PlanAboutConnector extends ConnOp<PlanAboutState, List<ItemBean>> {
   @override
   List<ItemBean> get(PlanAboutState state) {
-    return state.list.map((item) {
+    return state.model != null && state.model.data != null
+        ? state.model.data.map((item) {
       return ItemBean('about', item);
-    }).toList();
+    }).toList()
+        : <ItemBean>[];
   }
 
   @override

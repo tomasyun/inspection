@@ -28,5 +28,6 @@ void _initState(Action action, Context<WarningState> ctx) {
         depart: '陕西缔科网络科技有限公司',
         pic: '王婷')
   ];
+//  DicoHttpRepository.doGetDeviceWarningRequest();
   ctx.dispatch(WarningActionCreator.initState(list));
 }

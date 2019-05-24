@@ -60,12 +60,37 @@ class SplashPageState extends State<SplashPageWidget>
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Image.asset(
-        "images/img_splash.png",
-        fit: BoxFit.cover,
-      ),
-    );
+    return Scaffold(
+        backgroundColor: Colors.white,
+        body: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Container(
+                  child: Text(
+                    '安全巡检',
+                    style: TextStyle(
+                        fontSize: 18.0,
+                        color: Colors.black,
+                        fontWeight: FontWeight.w700),
+                  ),
+                ),
+                Container(
+                  margin: EdgeInsets.only(top: 5.0),
+                  child: Text(
+                    '移动管理,随时随地',
+                    style: TextStyle(
+                        fontSize: 16.0,
+                        color: Colors.black,
+                        fontWeight: FontWeight.w600),
+                  ),
+                ),
+                Container(
+                  margin: EdgeInsets.only(top: 30.0),
+                  child: Image.asset('images/ic_splash.png'),
+                )
+              ],
+            )));
   }
 
   @override

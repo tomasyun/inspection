@@ -2,6 +2,7 @@ import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart';
 import 'package:inspection/global/app_common.dart';
 import 'package:inspection/hazard/info/action.dart';
+import 'package:inspection/widget/state_view.dart' as stateView;
 
 import 'state.dart';
 
@@ -19,7 +20,8 @@ Widget buildView(
     body: Stack(
       alignment: AlignmentDirectional.bottomCenter,
       children: <Widget>[
-        Container(
+        state.model != null && state.model.data != null
+            ? Container(
           height: double.infinity,
           child: SingleChildScrollView(
             child: Container(
@@ -37,7 +39,8 @@ Widget buildView(
                           offset: Offset(0.0, 3.0),
                           spreadRadius: -7.0)
                     ],
-                    borderRadius: BorderRadius.all(Radius.circular(15.0))),
+                    borderRadius:
+                    BorderRadius.all(Radius.circular(15.0))),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
@@ -53,114 +56,92 @@ Widget buildView(
                     Container(
                         padding: EdgeInsets.symmetric(
                             vertical: 15.0, horizontal: 10.0),
-                        child: state.model != null &&
-                                state.model.data != null &&
-                                state.model.data.dangerRemark != null
+                        child: state.model.data.dangerRemark != null
                             ? Text(
-                                state.model.data.dangerRemark,
-                                style: TextStyle(
-                                    fontSize: 14.0,
-                                    color: Colors.black45,
-                                    fontWeight: FontWeight.w600),
-                              )
+                          state.model.data.dangerRemark,
+                          style: TextStyle(
+                              fontSize: 14.0,
+                              color: Colors.black45,
+                              fontWeight: FontWeight.w600),
+                        )
                             : Text('')),
-                    state.model != null &&
-                            state.model.data != null &&
-                            state.model.data.equipmentName != null
+                    state.model.data.equipmentName != null
                         ? _buildHazardInfoItem(
-                            title: '设备名称',
-                            content: state.model.data.equipmentName)
+                        title: '设备名称',
+                        content: state.model.data.equipmentName)
                         : Container(
-                            height: 0.0,
-                          ),
-                    state.model != null &&
-                            state.model.data != null &&
-                            state.model.data.equipmentCode != null
+                      height: 0.0,
+                    ),
+                    state.model.data.equipmentCode != null
                         ? _buildHazardInfoItem(
-                            title: '设备编号',
-                            content: state.model.data.equipmentCode)
+                        title: '设备编号',
+                        content: state.model.data.equipmentCode)
                         : Container(
-                            height: 0.0,
-                          ),
-                    state.model != null &&
-                            state.model.data != null &&
-                            state.model.data.dangerLevel != null
+                      height: 0.0,
+                    ),
+                    state.model.data.dangerLevel != null
                         ? _buildHazardInfoItem(
-                            title: '隐患等级',
-                            content: state.model.data.dangerLevel)
+                        title: '隐患等级',
+                        content: state.model.data.dangerLevel)
                         : Container(
-                            height: 0.0,
-                          ),
-                    state.model != null &&
-                            state.model.data != null &&
-                            state.model.data.dangerType != null
+                      height: 0.0,
+                    ),
+                    state.model.data.dangerType != null
                         ? _buildHazardInfoItem(
-                            title: '隐患类型', content: state.model.data.dangerType)
+                        title: '隐患类型',
+                        content: state.model.data.dangerType)
                         : Container(
-                            height: 0.0,
-                          ),
-                    state.model != null &&
-                            state.model.data != null &&
-                            state.model.data.repairPerson != null
+                      height: 0.0,
+                    ),
+                    state.model.data.repairPerson != null
                         ? _buildHazardInfoItem(
-                            title: '整改人',
-                            content: state.model.data.repairPerson)
+                        title: '整改人',
+                        content: state.model.data.repairPerson)
                         : Container(
-                            height: 0.0,
-                          ),
-                    state.model != null &&
-                            state.model.data != null &&
-                            state.model.data.repairOrganization != null
+                      height: 0.0,
+                    ),
+                    state.model.data.repairOrganization != null
                         ? _buildHazardInfoItem(
-                            title: '整改部门',
-                            content: state.model.data.repairOrganization)
+                        title: '整改部门',
+                        content: state.model.data.repairOrganization)
                         : Container(
-                            height: 0.0,
-                          ),
-                    state.model != null &&
-                            state.model.data != null &&
-                            state.model.data.reviewPerson != null
+                      height: 0.0,
+                    ),
+                    state.model.data.reviewPerson != null
                         ? _buildHazardInfoItem(
-                            title: '复查人',
-                            content: state.model.data.reviewPerson)
+                        title: '复查人',
+                        content: state.model.data.reviewPerson)
                         : Container(
-                            height: 0.0,
-                          ),
-                    state.model != null &&
-                            state.model.data != null &&
-                            state.model.data.reviewOrganization != null
+                      height: 0.0,
+                    ),
+                    state.model.data.reviewOrganization != null
                         ? _buildHazardInfoItem(
-                            title: '复查部门',
-                            content: state.model.data.reviewOrganization)
+                        title: '复查部门',
+                        content: state.model.data.reviewOrganization)
                         : Container(
-                            height: 0.0,
-                          ),
-                    state.model != null &&
-                            state.model.data != null &&
-                            state.model.data.liablePerson != null
+                      height: 0.0,
+                    ),
+                    state.model.data.liablePerson != null
                         ? _buildHazardInfoItem(
-                            title: '责任人',
-                            content: state.model.data.liablePerson)
+                        title: '责任人',
+                        content: state.model.data.liablePerson)
                         : Container(
-                            height: 0.0,
-                          ),
-                    state.model != null &&
-                            state.model.data != null &&
-                            state.model.data.liableOrganization != null
+                      height: 0.0,
+                    ),
+                    state.model.data.liableOrganization != null
                         ? _buildHazardInfoItem(
-                            title: '责任部门',
-                            content: state.model.data.liableOrganization)
+                        title: '责任部门',
+                        content: state.model.data.liableOrganization)
                         : Container(
-                            height: 0.0,
-                          ),
-                    state.model != null &&
-                            state.model.data != null &&
-                            state.model.data.createDate != null
+                      height: 0.0,
+                    ),
+                    state.model.data.createDate != null
                         ? _buildHazardInfoItem(
-                            title: '上报时间', content: state.model.data.createDate)
+                        title: '上报时间',
+                        content: state.model.data.createDate)
                         : Container(
-                            height: 0.0,
-                          ),
+                      height: 0.0,
+                    ),
                     Container(
                       margin: EdgeInsets.only(top: 15.0),
                       child: Text(
@@ -182,6 +163,9 @@ Widget buildView(
               ),
             ),
           ),
+        )
+            : Container(
+          child: stateView.blackPage(),
         ),
         buildBottomNavigatorJudge(dispatch: dispatch, state: state.state),
       ],
@@ -224,11 +208,8 @@ Widget _buildHazardInfoItem({String title, String content}) {
 
 Widget _buildSpaceAttachment() {
   return Container(
-    child: Icon(
-      Icons.add,
-      color: Colors.grey[100],
-      size: 80.0,
-    ),
+    child: FadeInImage.assetNetwork(
+        placeholder: 'images/ic_add_on.png', image: '', fit: BoxFit.fill),
     height: 100.0,
     color: Colors.grey,
   );
@@ -237,7 +218,7 @@ Widget _buildSpaceAttachment() {
 Widget _buildAttachment(String url) {
   return Container(
     child: FadeInImage.assetNetwork(
-        placeholder: '',
+        placeholder: 'images/ic_add_on.png',
         image: AppCommons.attachmentBaseUrl + url,
         fit: BoxFit.fill),
     height: 100.0,

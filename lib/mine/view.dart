@@ -33,48 +33,52 @@ Widget buildView(MineState state, Dispatch dispatch, ViewService viewService) {
       child: Column(
         children: <Widget>[
           Container(
-            padding: EdgeInsets.symmetric(vertical: 40.0, horizontal: 15.0),
-            color: Colors.blue,
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: <Widget>[
-                FadeInImage.assetNetwork(
-                  placeholder: 'images/ic_avatar.png',
-                  //预览图
-                  fit: BoxFit.cover,
-                  width: 60.0,
-                  height: 60.0,
-                  image: '',
-                ),
-                Container(
-                  margin: EdgeInsets.only(left: 30.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+              padding: EdgeInsets.symmetric(vertical: 40.0, horizontal: 15.0),
+              color: Colors.blue,
+              child: Column(
+                children: <Widget>[
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: <Widget>[
-                      Container(
-                        child: Text(
-                          '张三',
-                          style: TextStyle(
-                              fontSize: 18.0,
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold),
-                        ),
+                      FadeInImage.assetNetwork(
+                        placeholder: 'images/ic_avatar.png',
+                        //预览图
+                        fit: BoxFit.cover,
+                        width: 60.0,
+                        height: 60.0,
+                        image: '',
                       ),
                       Container(
-                        margin: EdgeInsets.only(top: 5.0),
-                        child: Text(
-                          '电力工人',
-                          style: TextStyle(
-                              fontSize: 16.0,
-                              color: Colors.white,
-                              fontWeight: FontWeight.w600),
+                        margin: EdgeInsets.only(left: 30.0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            Container(
+                              child: Text(
+                                state.map['userName'],
+                                style: TextStyle(
+                                    fontSize: 18.0,
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.w600),
+                              ),
+                            ),
+                            Container(
+                              margin: EdgeInsets.only(top: 5.0),
+                              child: Text(
+                                state.map['company'],
+                                style: TextStyle(
+                                    fontSize: 16.0,
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.w600),
+                              ),
+                            ),
+                          ],
                         ),
                       ),
                     ],
                   ),
-                ),
-                Expanded(
-                  child: Container(
+                  Container(
+                    margin: EdgeInsets.only(top: 10.0),
                     alignment: AlignmentDirectional.centerEnd,
                     child: GestureDetector(
                       onTap: () {
@@ -97,11 +101,8 @@ Widget buildView(MineState state, Dispatch dispatch, ViewService viewService) {
                       ),
                     ),
                   ),
-                  flex: 1,
-                ),
-              ],
-            ),
-          ),
+                ],
+              )),
           GestureDetector(
             onTap: () {
               dispatch(MineActionCreator.onSkipMineTask());

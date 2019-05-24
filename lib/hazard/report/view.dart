@@ -269,11 +269,10 @@ Widget buildView(
               },
               child: Container(
                 margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 15.0),
-                child: Icon(
-                  Icons.add,
-                  color: Colors.grey[100],
-                  size: 80.0,
-                ),
+                child: FadeInImage.assetNetwork(
+                    placeholder: 'images/ic_add.png',
+                    image: '',
+                    fit: BoxFit.fill),
                 width: 100.0,
                 height: 100.0,
                 color: Colors.grey,

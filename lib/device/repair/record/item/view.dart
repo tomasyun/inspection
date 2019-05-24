@@ -8,7 +8,7 @@ Widget buildView(Data data, Dispatch dispatch, ViewService viewService) {
 //      dispatch(RecordItemActionCreator.onAction());
     },
     child: Container(
-        padding: EdgeInsets.all(10.0),
+        padding: EdgeInsets.all(20.0),
         width: double.infinity,
         margin: EdgeInsets.only(bottom: 10.0),
         decoration: BoxDecoration(
@@ -50,7 +50,6 @@ Widget _buildItem({String title, String result}) {
       children: <Widget>[
         Expanded(
           child: Container(
-            margin: EdgeInsets.only(left: 10.0),
             child: Text(
               title,
               style: TextStyle(
@@ -70,7 +69,7 @@ Widget _buildItem({String title, String result}) {
                   fontSize: 14.0,
                   color: Colors.black45,
                   fontWeight: FontWeight.w600),
-              textAlign: TextAlign.left,
+              textAlign: TextAlign.right,
             ),
           ),
           flex: 6,

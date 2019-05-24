@@ -41,6 +41,7 @@ class Data {
   String nextRepairTime;
   String scrapTime;
   String qrCode;
+  String planId;
   String remark;
   String createUser;
   String createDate;
@@ -70,6 +71,7 @@ class Data {
       this.nextRepairTime,
       this.scrapTime,
       this.qrCode,
+        this.planId,
       this.remark,
       this.createUser,
       this.createDate,
@@ -99,6 +101,7 @@ class Data {
     nextRepairTime = json['nextRepairTime'];
     scrapTime = json['scrapTime'];
     qrCode = json['qrCode'];
+    planId = json['planId'];
     remark = json['remark'];
     createUser = json['createUser'];
     createDate = json['createDate'];
@@ -148,6 +151,7 @@ class Data {
     data['nextRepairTime'] = this.nextRepairTime;
     data['scrapTime'] = this.scrapTime;
     data['qrCode'] = this.qrCode;
+    data['planId'] = this.planId;
     data['remark'] = this.remark;
     data['createUser'] = this.createUser;
     data['createDate'] = this.createDate;

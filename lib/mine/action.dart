@@ -9,6 +9,7 @@ enum MineAction {
   setting,
   hazardHistory,
   upgradePassword,
+  baseInfo,
 }
 
 class MineActionCreator {
@@ -38,5 +39,9 @@ class MineActionCreator {
 
   static Action onUpdatePasswordAction() {
     return Action(MineAction.upgradePassword);
+  }
+
+  static Action onGetUserInfo(Map<String, String> map) {
+    return Action(MineAction.baseInfo, payload: map);
   }
 }

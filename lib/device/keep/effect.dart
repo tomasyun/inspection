@@ -12,7 +12,7 @@ Effect<KeepState> buildEffect() {
 }
 
 void _onAction(Action action, Context<KeepState> ctx) {
-  DicoHttpRepository.doGetKeepRecordRequest('40288a8a6aba494a016ac398a0240002')
+  DicoHttpRepository.doGetKeepRecordRequest(ctx.state.equipmentId)
       .then((model) {
     if (model.code == 0) {
       ctx.dispatch(KeepActionCreator.onAction(model));

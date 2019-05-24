@@ -1,8 +1,11 @@
+import 'dart:convert' show json;
+
 import 'package:barcode_scan/barcode_scan.dart';
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:inspection/device/repair/report/page.dart';
+import 'package:inspection/entity/inspect_content_req_model.dart';
 import 'package:inspection/global/app_common.dart';
 import 'package:inspection/global/dico_http.dart';
 import 'package:inspection/hazard/report/page.dart';
@@ -14,7 +17,6 @@ Effect<InspectionTaskState> buildEffect() {
   return combineEffects(<Object, Effect<InspectionTaskState>>{
     InspectionTaskAction.action: _onAction,
     Lifecycle.initState: _onScanQRCode,
-    Lifecycle.didChangeDependencies: _onGetInspectionTask,
     InspectionTaskAction.sheet: _onShowBottomSheet,
     InspectionTaskAction.breakdownReport: _onBreakDownReport,
     InspectionTaskAction.hazardReport: _onHazardReport,
@@ -25,7 +27,26 @@ Effect<InspectionTaskState> buildEffect() {
 void _onAction(Action action, Context<InspectionTaskState> ctx) {}
 
 void _onSubmit(Action action, Context<InspectionTaskState> ctx) {
-  AppCommons.showToast('暂未实现');
+  List<TargetResults> targetResults = [];
+  if (ctx.state.model.data.isNotEmpty) {
+    var list = ctx.state.model.data;
+    for (int i = 0; i < list.length; i++) {
+      TargetResults results = TargetResults(
+          inspectionResult: list[i].isOpen,
+          targetContent: list[i].targetName,
+          targetId: list[i].targetId);
+      targetResults.add(results);
+    }
+  }
+  InspectContentReqModel model = InspectContentReqModel(
+      equipmentId: ctx.state.map['deviceId'],
+      planId: ctx.state.equipmentId,
+      targetResults: targetResults);
+
+  DicoHttpRepository.doSaveInspectItemRequest(json.encode(model.toJson()))
+      .then((map) {
+    AppCommons.showToast(map['data']);
+  });
 }
 
 void _onBreakDownReport(Action action, Context<InspectionTaskState> ctx) {
@@ -91,17 +112,87 @@ void _onShowBottomSheet(Action action, Context<InspectionTaskState> ctx) {
       });
 }
 
-void _onGetInspectionTask(Action action, Context<InspectionTaskState> ctx) {
-  List<String> tasks = ['检查设备是否干净', '检查设备预警时间', '检查消防设施是否健全'];
-  ctx.dispatch(InspectionTaskActionCreator.onGetInspectionTasks(tasks));
-}
-
 void _onScanQRCode(Action action, Context<InspectionTaskState> ctx) async {
   try {
     String qrResult = await BarcodeScanner.scan();
-    DicoHttpRepository.scanQRCodeRequest(qrResult);
+    if (ctx.state.equipmentId != null) {
+      ctx.state.equipmentId == ''
+          ? DicoHttpRepository.scanQRCodeRequest(qrResult).then((model) {
+        if (model.code == 0) {
+          if (model.data != null) {
+            Map<String, String> map = Map();
+            map['deviceId'] = '';
+            map['deviceName'] = '';
+            map['deviceTypeId'] = '';
+            map['planId'] = '';
+            if (model.data.id != null) {
+              map['deviceId'] = model.data.id;
+            }
+            if (model.data.equipmentName != null) {
+              map['deviceName'] = model.data.equipmentName;
+            }
+            if (model.data.equipmentType != null &&
+                model.data.planId != null) {
+              map['deviceTypeId'] = model.data.equipmentType;
+              map['planId'] = model.data.planId;
+              DicoHttpRepository.doGetInspectItemRequest(
+                  model.data.equipmentType, model.data.planId)
+                  .then((model) {
+                if (model.code == 0) {
+                  ctx.dispatch(
+                      InspectionTaskActionCreator.onGetInspectionTasks(
+                          model));
+                } else {
+                  AppCommons.showToast('获取巡检内容失败');
+                }
+              });
+            }
+            ctx.dispatch(
+                InspectionTaskActionCreator.onGetDeviceInfoAction(map));
+          }
+        }
+      })
+          : DicoHttpRepository.scanQRCodeRequest(qrResult).then((model) {
+        if (model.code == 0) {
+          if (model.data != null) {
+            Map<String, String> map = Map();
+            map['deviceId'] = '';
+            map['deviceName'] = '';
+            map['deviceTypeId'] = '';
+            if (model.data.id != null) {
+              map['deviceId'] = model.data.id;
+              if (model.data.id == ctx.state.equipmentId) {
+                if (model.data.equipmentType != null) {
+                  map['deviceTypeId'] = model.data.equipmentType;
+                  DicoHttpRepository.doGetInspectItemRequest(
+                      model.data.equipmentType, model.data.planId)
+                      .then((model) {
+                    if (model.code == 0) {
+                      ctx.dispatch(InspectionTaskActionCreator
+                          .onGetInspectionTasks(model));
+                    } else {
+                      AppCommons.showToast('获取巡检内容失败');
+                    }
+                  });
+                }
+                if (model.data.planId != null) {
+                  map['planId'] = model.data.planId;
+                }
+                if (model.data.equipmentName != null) {
+                  map['deviceName'] = model.data.equipmentName;
+                }
+                ctx.dispatch(
+                    InspectionTaskActionCreator.onGetDeviceInfoAction(
+                        map));
+              } else {
+                AppCommons.showToast('获取巡检内容失败');
+              }
+            }
+          }
+        }
+      });
+    }
   } on PlatformException catch (ex) {
-    if (ex.code == BarcodeScanner.CameraAccessDenied) {
-    } else {}
+    if (ex.code == BarcodeScanner.CameraAccessDenied) {} else {}
   } on FormatException {} catch (e) {}
 }

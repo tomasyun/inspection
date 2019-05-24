@@ -2,7 +2,7 @@ import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart';
 import 'package:inspection/entity/task_model.dart';
 import 'package:inspection/hazard/info/page.dart';
-import 'package:inspection/mine/task/action.dart';
+import 'package:inspection/mine/task/inspection/page.dart';
 import 'package:inspection/widget/state_view.dart' as StateView;
 
 import 'state.dart';
@@ -24,7 +24,7 @@ Widget buildView(TaskState state, Dispatch dispatch, ViewService viewService) {
               padding: EdgeInsets.only(bottom: 50.0),
               child: Column(
                 children: _buildToDoWidgets(
-                    state: state, model: state.model, dispatch: dispatch),
+                    state: state, model: state.model, viewService: viewService),
               ),
             ),
           )
@@ -35,7 +35,7 @@ Widget buildView(TaskState state, Dispatch dispatch, ViewService viewService) {
 }
 
 List<Widget> _buildToDoWidgets(
-    {TaskState state, TaskModel model, Dispatch dispatch}) {
+    {TaskState state, TaskModel model, ViewService viewService}) {
   List<Widget> list = [];
   if (model.data.rectify != null && model.data.rectify.isNotEmpty) {
     model.data.rectify.map((item) {
@@ -51,7 +51,7 @@ List<Widget> _buildToDoWidgets(
 
   if (model.data.inspect != null && model.data.inspect.isNotEmpty) {
     model.data.inspect.map((item) {
-      list.add(_inspect(item, dispatch));
+      list.add(_inspect(item, viewService));
     }).toList();
   }
   return list;
@@ -256,7 +256,7 @@ Widget _rectify(TaskState state, Rectify rectify) {
   );
 }
 
-Widget _inspect(Inspect inspect, Dispatch dispatch) {
+Widget _inspect(Inspect inspect, ViewService viewService) {
   return Container(
     padding: EdgeInsets.all(15.0),
     margin: EdgeInsets.only(bottom: 10.0),
@@ -305,7 +305,12 @@ Widget _inspect(Inspect inspect, Dispatch dispatch) {
                         borderRadius: BorderRadius.all(Radius.circular(20.0))),
                     color: Colors.green,
                     onPressed: () {
-                      dispatch(TaskActionCreator.onScanQRCode());
+                      Map<String, dynamic> map = Map();
+                      map['equipmentId'] = inspect.equipmentId;
+                      Navigator.of(viewService.context)
+                          .push(MaterialPageRoute(builder: (content) {
+                        return InspectionTaskPage().buildPage(map);
+                      }));
                     },
                     child: Text(
                       '扫一扫',

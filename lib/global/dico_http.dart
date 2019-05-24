@@ -4,9 +4,11 @@ import 'package:inspection/entity/filter_model.dart';
 import 'package:inspection/entity/hazard_info_model.dart';
 import 'package:inspection/entity/hazard_model.dart';
 import 'package:inspection/entity/home_model.dart';
+import 'package:inspection/entity/inspect_content_model.dart';
 import 'package:inspection/entity/keep_record_model.dart';
 import 'package:inspection/entity/login_model.dart';
 import 'package:inspection/entity/notice_model.dart';
+import 'package:inspection/entity/plan_about_model.dart';
 import 'package:inspection/entity/plan_model.dart';
 import 'package:inspection/entity/recheck_info_model.dart';
 import 'package:inspection/entity/rectify_form_model.dart';
@@ -24,7 +26,7 @@ class DicoHttpRepository {
   static final String hazardType = 'sms-interface/danger/findDangerType';
   static final String hazardManage = 'sms-interface/danger/findDnagerList';
   static final String repairReport = 'sms-interface/equipment/saveRepairInfo';
-  static final String warningRecord = '';
+  static final String warningRecord = 'sms-interface/equipment/findWarningAll';
   static final String repairRecord = 'sms-interface/equipment/findRepairList';
   static final String keepRecord = 'sms-interface/equipment/findMaintainList';
   static final String hazardInfo = 'sms-interface/danger/findDnagerInfo';
@@ -43,13 +45,17 @@ class DicoHttpRepository {
   static final String deleteNotice = 'sms-interface/message/deleteMessage';
   static final String inspectPlan =
       'sms-interface/inspectionPlan/findInspectionPlanList';
-  static final String aboutPlan = '';
+  static final String aboutPlan =
+      'sms-interface/inspectionPlan/findInspectionEquipmentList';
+  static final String inspectItem =
+      'sms-interface/inspectionPlan/findInspectionTargetList';
+  static final String saveInspectItem =
+      'sms-interface/inspectionPlan/saveInspectionResult';
   static final String depart =
       'sms-interface/organization/findOrganizationList';
   static final String pic =
       'sms-interface/organization/findSysUserByOrganizationId';
   static final String repairMan = 'sms-interface/organization/findSysUserAll';
-
   static final String historyHazard =
       'sms-interface/danger/findDnagerFinishList';
 
@@ -191,7 +197,18 @@ class DicoHttpRepository {
       PlanModel.fromJson(await HttpUtil().get(inspectPlan + search));
 
   ///关于计划
-  static Future doAboutPlanRequest() async {
-    return await HttpUtil().get(aboutPlan);
-  }
+  static Future<PlanAboutModel> doAboutPlanRequest(String planId) async =>
+      PlanAboutModel.fromJson(
+          await HttpUtil().get(aboutPlan + '?planId=$planId'));
+
+  ///获取巡检项
+  static Future<InspectContentModel> doGetInspectItemRequest(
+      String equipmentTypeId, String planId) async =>
+      InspectContentModel.fromJson(await HttpUtil().get(
+          inspectItem + '?equipmentTypeId=$equipmentTypeId&planId=$planId'));
+
+  ///保存巡检结果
+  static Future<Map<String, dynamic>> doSaveInspectItemRequest(
+      String data) async =>
+      await HttpUtil().post(saveInspectItem, data: data);
 }

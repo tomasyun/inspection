@@ -1,10 +1,15 @@
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart';
 import 'package:inspection/entity/plan_about_model.dart';
-import 'package:inspection/mine/plan/manage/about/item/action.dart';
+import 'package:inspection/mine/task/inspection/page.dart';
 
-Widget buildView(
-    PlanAboutModel state, Dispatch dispatch, ViewService viewService) {
+Widget buildView(Data data, Dispatch dispatch, ViewService viewService) {
+  Map<String, String> map = Map();
+  if (data.inspectionStatus == '0') {
+    map['state'] = '待巡检';
+  } else if (data.inspectionStatus == '1') {
+    map['state'] = '已巡检';
+  }
   return Container(
     child: Column(
       children: <Widget>[
@@ -19,14 +24,14 @@ Widget buildView(
                   color: Colors.grey[800],
                   blurRadius: 10.0,
                   offset: Offset(0.0, 2.0),
-                  spreadRadius: -7.0)
+                  spreadRadius: -9.0)
             ],
             borderRadius: BorderRadius.all(Radius.circular(15.0)),
           ),
           child: Column(
             children: <Widget>[
               commonHeader(
-                  title: '${state.deviceName}', result: state.taskState),
+                  title: '${data.equipmentName}', result: '${map['state']}'),
               Container(
                 margin: EdgeInsets.only(top: 10.0),
                 width: double.infinity,
@@ -40,10 +45,14 @@ Widget buildView(
                         flex: 8,
                         child: Column(
                           children: <Widget>[
-                            commonRow(title: '位置', result: '${state.location}'),
-                            commonRow(title: '编号', result: '${state.deviceNo}'),
                             commonRow(
-                                title: '设备类型', result: '${state.deviceType}'),
+                                title: '位置',
+                                result: '${data.equipmentAddress}'),
+                            commonRow(
+                                title: '编号', result: '${data.equipmentCode}'),
+                            commonRow(
+                                title: '设备类型',
+                                result: '${data.equipmentClass}'),
                           ],
                         )),
                     Expanded(
@@ -55,14 +64,23 @@ Widget buildView(
                                   BorderRadius.all(Radius.circular(20.0))),
                           color: Colors.green,
                           onPressed: () {
-                            dispatch(PlanAboutItemActionCreator.onScanQRCode());
+                            Map<String, dynamic> map = Map();
+                            map['equipmentId'] = data.equipmentId;
+                            Navigator.of(viewService.context)
+                                .push(MaterialPageRoute(builder: (content) {
+                              return InspectionTaskPage().buildPage(map);
+                            }));
                           },
-                          child: Text(
+                          child: data.inspectionStatus == '0'
+                              ? Text(
                             '扫一扫',
                             style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 13.0,
                                 fontWeight: FontWeight.w600),
+                          )
+                              : Container(
+                            height: 0.0,
                           ),
                           padding: EdgeInsets.symmetric(
                               vertical: 3.0, horizontal: 5.0),

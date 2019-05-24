@@ -6,7 +6,6 @@ import 'package:inspection/entity/home_model.dart';
 enum HomeAction {
   banner,
   action,
-  scan,
   hazardReport,
   breakdownReport,
   notice,
@@ -26,10 +25,6 @@ class HomeActionCreator {
 
   static Action onGetHomeModels(HomeModel model) {
     return Action(HomeAction.getModels, payload: model);
-  }
-
-  static Action onScanQRCode() {
-    return Action(HomeAction.scan);
   }
 
   static Action onHazardReport() {

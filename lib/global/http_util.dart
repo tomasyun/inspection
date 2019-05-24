@@ -72,7 +72,7 @@ class HttpUtil {
   ///返回一个map的future类型
   Future get(
     String url, {
-    Map data,
+        data,
     Options options,
     NetworkError onError,
   }) async {
@@ -83,7 +83,7 @@ class HttpUtil {
   ///post方法
   Future post(
     String url, {
-    Map data,
+        data,
     Options options,
     NetworkError onError,
   }) async {
@@ -94,7 +94,7 @@ class HttpUtil {
   ///put方法
   Future put(
     String url, {
-    Map data,
+        data,
     Options options,
     NetworkError onError,
   }) async {
@@ -105,7 +105,7 @@ class HttpUtil {
   ///delete方法
   Future delete(
     String url, {
-    Map data,
+        data,
     Options options,
     NetworkError onError,
   }) async {
@@ -153,7 +153,7 @@ class HttpUtil {
   }
 
   Future _request(String url, String type,
-      {Map data, Options options, NetworkError onError}) async {
+      {data, Options options, NetworkError onError}) async {
     try {
       String token;
       await SpUtils().getString('token').then((value) {

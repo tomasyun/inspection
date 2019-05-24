@@ -1,5 +1,6 @@
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart';
+import 'package:inspection/global/sharedpreferences.dart';
 import 'package:inspection/mine/hazard/page.dart';
 import 'package:inspection/mine/profile/page.dart';
 import 'package:inspection/mine/report/page.dart';
@@ -19,10 +20,25 @@ Effect<MineState> buildEffect() {
     MineAction.setting: _onSkipSetting,
     MineAction.hazardHistory: _onSkipHazardHistory,
     MineAction.upgradePassword: _onUpdatePasswordAction,
+    Lifecycle.initState: _onGetUserBaseInfo,
   });
 }
 
 void _onAction(Action action, Context<MineState> ctx) {}
+
+void _onGetUserBaseInfo(Action action, Context<MineState> ctx) async {
+  Map<String, String> map = Map();
+  map['userName'] = '张三';
+  map['company'] = '陕西缔科网络科技有限公司';
+  await SpUtils().getString('name').then((value) {
+    map['userName'] = value;
+  });
+
+  await SpUtils().getString('company').then((value) {
+    map['company'] = value;
+  });
+  ctx.dispatch(MineActionCreator.onGetUserInfo(map));
+}
 
 void _onUpdatePasswordAction(Action action, Context<MineState> ctx) {
   Navigator.of(ctx.context).push(MaterialPageRoute(builder: (context) {

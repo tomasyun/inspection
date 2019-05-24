@@ -161,13 +161,15 @@ class Inspect {
   String equipmentName;
   String equipmentType;
   int status;
+  String equipmentId;
 
   Inspect(
       {this.installArea,
       this.equipmentCode,
       this.equipmentName,
       this.equipmentType,
-      this.status});
+        this.status,
+        this.equipmentId});
 
   Inspect.fromJson(Map<String, dynamic> json) {
     installArea = json['installArea'];
@@ -175,6 +177,7 @@ class Inspect {
     equipmentName = json['equipmentName'];
     equipmentType = json['equipmentType'];
     status = json['status'];
+    equipmentId = json['equipmentId'];
   }
 
   Map<String, dynamic> toJson() {
@@ -184,6 +187,7 @@ class Inspect {
     data['equipmentName'] = this.equipmentName;
     data['equipmentType'] = this.equipmentType;
     data['status'] = this.status;
+    data['equipmentId'] = this.equipmentId;
     return data;
   }
 }

@@ -72,11 +72,10 @@ Widget buildView(
                 },
                 child: Container(
                   color: Colors.grey,
-                  child: Icon(
-                    Icons.add,
-                    color: Colors.grey[100],
-                    size: 80.0,
-                  ),
+                  child: FadeInImage.assetNetwork(
+                      placeholder: 'images/ic_add.png',
+                      image: '',
+                      fit: BoxFit.fill),
                   width: 100.0,
                   height: 100.0,
                 ),
