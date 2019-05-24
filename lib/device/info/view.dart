@@ -17,121 +17,121 @@ Widget buildView(InfoState state, Dispatch dispatch, ViewService viewService) {
       ),
       body: state.model != null && state.model.data != null
           ? Stack(
-        alignment: AlignmentDirectional.bottomCenter,
-        children: <Widget>[
-          buildBottomNavigator(dispatch),
-          Container(
-            height: double.infinity,
-            padding: EdgeInsets.only(bottom: 60),
-            child: SingleChildScrollView(
-              child: Container(
-                padding: EdgeInsets.only(
-                    top: 15.0, left: 15.0, right: 15.0, bottom: 60),
-                child: Column(
-                  children: <Widget>[
+              alignment: AlignmentDirectional.bottomCenter,
+              children: <Widget>[
+                buildBottomNavigator(dispatch),
+                Container(
+                  height: double.infinity,
+                  padding: EdgeInsets.only(bottom: 60),
+                  child: SingleChildScrollView(
+                    child: Container(
+                      padding: EdgeInsets.only(
+                          top: 15.0, left: 15.0, right: 15.0, bottom: 60),
+                      child: Column(
+                        children: <Widget>[
                           state.model.data.equipmentName != null
                               ? _buildDeviceInfoItem(
-                              title: '设备名称',
-                              content: state.model.data.equipmentName)
+                                  title: '设备名称',
+                                  content: state.model.data.equipmentName)
                               : Container(
-                            height: 0.0,
-                          ),
+                                  height: 0.0,
+                                ),
                           state.model.data.equipmentName != null
                               ? _buildDeviceInfoItem(
-                              title: '设备编号',
-                              content: state.model.data.equipmentCode)
+                                  title: '设备编号',
+                                  content: state.model.data.equipmentCode)
                               : Container(
-                            height: 0.0,
-                          ),
+                                  height: 0.0,
+                                ),
                           state.model.data.companyName != null
                               ? _buildDeviceInfoItem(
-                              title: '所属单位',
-                              content: state.model.data.companyName)
+                                  title: '所属单位',
+                                  content: state.model.data.companyName)
                               : Container(
-                            height: 0.0,
-                          ),
+                                  height: 0.0,
+                                ),
                           state.model.data.organizationName != null
                               ? _buildDeviceInfoItem(
-                              title: '所属部门',
-                              content: state.model.data.organizationName)
+                                  title: '所属部门',
+                                  content: state.model.data.organizationName)
                               : Container(
-                            height: 0.0,
-                          ),
+                                  height: 0.0,
+                                ),
                           state.model.data.equipmentPersonLiableName != null
                               ? _buildDeviceInfoItem(
-                              title: '设备负责人',
-                              content: state
-                                  .model.data.equipmentPersonLiableName)
+                                  title: '设备负责人',
+                                  content: state
+                                      .model.data.equipmentPersonLiableName)
                               : Container(
-                            height: 0.0,
-                          ),
+                                  height: 0.0,
+                                ),
                           state.model.data.equipmentType != null
                               ? _buildDeviceInfoItem(
-                              title: '设备分类',
-                              content: state.model.data.equipmentType)
+                                  title: '设备分类',
+                                  content: state.model.data.equipmentType)
                               : Container(
-                            height: 0.0,
-                          ),
+                                  height: 0.0,
+                                ),
                           state.model.data.equipmentModel != null
                               ? _buildDeviceInfoItem(
-                              title: '设备型号',
-                              content: state.model.data.equipmentModel)
+                                  title: '设备型号',
+                                  content: state.model.data.equipmentModel)
                               : Container(
-                            height: 0.0,
-                          ),
+                                  height: 0.0,
+                                ),
                           state.model.data.installArea != null
                               ? _buildDeviceInfoItem(
-                              title: '安装区域',
-                              content: state.model.data.installArea)
+                                  title: '安装区域',
+                                  content: state.model.data.installArea)
                               : Container(
-                            height: 0.0,
-                          ),
+                                  height: 0.0,
+                                ),
                           state.model.data.equipmentManufacturer != null
                               ? _buildDeviceInfoItem(
-                              title: '厂家',
-                              content:
-                              state.model.data.equipmentManufacturer)
+                                  title: '厂家',
+                                  content:
+                                      state.model.data.equipmentManufacturer)
                               : Container(
-                            height: 0.0,
-                          ),
+                                  height: 0.0,
+                                ),
                           state.model.data.equipmentManufactureTime != null
                               ? _buildDeviceInfoItem(
-                              title: '生产日期',
-                              content:
-                              state.model.data.equipmentManufactureTime)
+                                  title: '生产日期',
+                                  content:
+                                      state.model.data.equipmentManufactureTime)
                               : Container(
-                            height: 0.0,
-                          ),
+                                  height: 0.0,
+                                ),
                           state.model.data.nextRepairTime != null
                               ? _buildDeviceInfoItem(
-                              title: '下次维修时间',
-                              content: state.model.data.nextRepairTime)
+                                  title: '下次维修时间',
+                                  content: state.model.data.nextRepairTime)
                               : Container(
-                            height: 0.0,
-                          ),
+                                  height: 0.0,
+                                ),
                           state.model.data.scrapTime != null
                               ? _buildDeviceInfoItem(
-                              title: '报废日期',
-                              content: state.model.data.scrapTime)
+                                  title: '报废日期',
+                                  content: state.model.data.scrapTime)
                               : Container(
-                            height: 0.0,
-                          ),
+                                  height: 0.0,
+                                ),
                           state.model.data.remark != null
                               ? _buildDeviceInfoItem(
-                              title: '备注', content: state.model.data.remark)
+                                  title: '备注', content: state.model.data.remark)
                               : Container(
-                            height: 0.0,
-                          ),
-                  ],
+                                  height: 0.0,
+                                ),
+                        ],
+                      ),
+                    ),
+                  ),
                 ),
-              ),
-            ),
-          ),
-        ],
-      )
+              ],
+            )
           : Container(
-        child: stateView.blackPage(),
-      ));
+              child: stateView.blackPage(),
+            ));
 }
 
 Widget _buildDeviceInfoItem({String title, String content}) {

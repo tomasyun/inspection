@@ -22,151 +22,151 @@ Widget buildView(
       children: <Widget>[
         state.model != null && state.model.data != null
             ? Container(
-          height: double.infinity,
-          child: SingleChildScrollView(
-            child: Container(
-              color: Colors.grey[100],
-              padding: EdgeInsets.only(
-                  top: 15.0, left: 15.0, right: 15.0, bottom: 100.0),
-              child: Container(
-                padding: EdgeInsets.all(15.0),
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    boxShadow: [
-                      BoxShadow(
-                          color: Colors.grey[800],
-                          blurRadius: 10.0,
-                          offset: Offset(0.0, 3.0),
-                          spreadRadius: -7.0)
-                    ],
-                    borderRadius:
-                    BorderRadius.all(Radius.circular(15.0))),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Container(
-                      child: Text(
-                        '隐患描述 :',
-                        style: TextStyle(
-                            fontSize: 14.0,
-                            color: Colors.black,
-                            fontWeight: FontWeight.w700),
+                height: double.infinity,
+                child: SingleChildScrollView(
+                  child: Container(
+                    color: Colors.grey[100],
+                    padding: EdgeInsets.only(
+                        top: 15.0, left: 15.0, right: 15.0, bottom: 100.0),
+                    child: Container(
+                      padding: EdgeInsets.all(15.0),
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          boxShadow: [
+                            BoxShadow(
+                                color: Colors.grey[800],
+                                blurRadius: 10.0,
+                                offset: Offset(0.0, 3.0),
+                                spreadRadius: -7.0)
+                          ],
+                          borderRadius:
+                              BorderRadius.all(Radius.circular(15.0))),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          Container(
+                            child: Text(
+                              '隐患描述 :',
+                              style: TextStyle(
+                                  fontSize: 14.0,
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.w700),
+                            ),
+                          ),
+                          Container(
+                              padding: EdgeInsets.symmetric(
+                                  vertical: 15.0, horizontal: 10.0),
+                              child: state.model.data.dangerRemark != null
+                                  ? Text(
+                                      state.model.data.dangerRemark,
+                                      style: TextStyle(
+                                          fontSize: 14.0,
+                                          color: Colors.black45,
+                                          fontWeight: FontWeight.w600),
+                                    )
+                                  : Text('')),
+                          state.model.data.equipmentName != null
+                              ? _buildHazardInfoItem(
+                                  title: '设备名称',
+                                  content: state.model.data.equipmentName)
+                              : Container(
+                                  height: 0.0,
+                                ),
+                          state.model.data.equipmentCode != null
+                              ? _buildHazardInfoItem(
+                                  title: '设备编号',
+                                  content: state.model.data.equipmentCode)
+                              : Container(
+                                  height: 0.0,
+                                ),
+                          state.model.data.dangerLevel != null
+                              ? _buildHazardInfoItem(
+                                  title: '隐患等级',
+                                  content: state.model.data.dangerLevel)
+                              : Container(
+                                  height: 0.0,
+                                ),
+                          state.model.data.dangerType != null
+                              ? _buildHazardInfoItem(
+                                  title: '隐患类型',
+                                  content: state.model.data.dangerType)
+                              : Container(
+                                  height: 0.0,
+                                ),
+                          state.model.data.repairPerson != null
+                              ? _buildHazardInfoItem(
+                                  title: '整改人',
+                                  content: state.model.data.repairPerson)
+                              : Container(
+                                  height: 0.0,
+                                ),
+                          state.model.data.repairOrganization != null
+                              ? _buildHazardInfoItem(
+                                  title: '整改部门',
+                                  content: state.model.data.repairOrganization)
+                              : Container(
+                                  height: 0.0,
+                                ),
+                          state.model.data.reviewPerson != null
+                              ? _buildHazardInfoItem(
+                                  title: '复查人',
+                                  content: state.model.data.reviewPerson)
+                              : Container(
+                                  height: 0.0,
+                                ),
+                          state.model.data.reviewOrganization != null
+                              ? _buildHazardInfoItem(
+                                  title: '复查部门',
+                                  content: state.model.data.reviewOrganization)
+                              : Container(
+                                  height: 0.0,
+                                ),
+                          state.model.data.liablePerson != null
+                              ? _buildHazardInfoItem(
+                                  title: '责任人',
+                                  content: state.model.data.liablePerson)
+                              : Container(
+                                  height: 0.0,
+                                ),
+                          state.model.data.liableOrganization != null
+                              ? _buildHazardInfoItem(
+                                  title: '责任部门',
+                                  content: state.model.data.liableOrganization)
+                              : Container(
+                                  height: 0.0,
+                                ),
+                          state.model.data.createDate != null
+                              ? _buildHazardInfoItem(
+                                  title: '上报时间',
+                                  content: state.model.data.createDate)
+                              : Container(
+                                  height: 0.0,
+                                ),
+                          Container(
+                            margin: EdgeInsets.only(top: 15.0),
+                            child: Text(
+                              '附件 :',
+                              style: TextStyle(
+                                  fontSize: 14.0,
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.w700),
+                            ),
+                          ),
+                          Container(
+                            margin: EdgeInsets.only(top: 15.0),
+                            child: _buildGridView(state),
+                            constraints: BoxConstraints.tightFor(
+                                width: double.infinity, height: 90.0),
+                          ),
+                        ],
                       ),
                     ),
-                    Container(
-                        padding: EdgeInsets.symmetric(
-                            vertical: 15.0, horizontal: 10.0),
-                        child: state.model.data.dangerRemark != null
-                            ? Text(
-                          state.model.data.dangerRemark,
-                          style: TextStyle(
-                              fontSize: 14.0,
-                              color: Colors.black45,
-                              fontWeight: FontWeight.w600),
-                        )
-                            : Text('')),
-                    state.model.data.equipmentName != null
-                        ? _buildHazardInfoItem(
-                        title: '设备名称',
-                        content: state.model.data.equipmentName)
-                        : Container(
-                      height: 0.0,
-                    ),
-                    state.model.data.equipmentCode != null
-                        ? _buildHazardInfoItem(
-                        title: '设备编号',
-                        content: state.model.data.equipmentCode)
-                        : Container(
-                      height: 0.0,
-                    ),
-                    state.model.data.dangerLevel != null
-                        ? _buildHazardInfoItem(
-                        title: '隐患等级',
-                        content: state.model.data.dangerLevel)
-                        : Container(
-                      height: 0.0,
-                    ),
-                    state.model.data.dangerType != null
-                        ? _buildHazardInfoItem(
-                        title: '隐患类型',
-                        content: state.model.data.dangerType)
-                        : Container(
-                      height: 0.0,
-                    ),
-                    state.model.data.repairPerson != null
-                        ? _buildHazardInfoItem(
-                        title: '整改人',
-                        content: state.model.data.repairPerson)
-                        : Container(
-                      height: 0.0,
-                    ),
-                    state.model.data.repairOrganization != null
-                        ? _buildHazardInfoItem(
-                        title: '整改部门',
-                        content: state.model.data.repairOrganization)
-                        : Container(
-                      height: 0.0,
-                    ),
-                    state.model.data.reviewPerson != null
-                        ? _buildHazardInfoItem(
-                        title: '复查人',
-                        content: state.model.data.reviewPerson)
-                        : Container(
-                      height: 0.0,
-                    ),
-                    state.model.data.reviewOrganization != null
-                        ? _buildHazardInfoItem(
-                        title: '复查部门',
-                        content: state.model.data.reviewOrganization)
-                        : Container(
-                      height: 0.0,
-                    ),
-                    state.model.data.liablePerson != null
-                        ? _buildHazardInfoItem(
-                        title: '责任人',
-                        content: state.model.data.liablePerson)
-                        : Container(
-                      height: 0.0,
-                    ),
-                    state.model.data.liableOrganization != null
-                        ? _buildHazardInfoItem(
-                        title: '责任部门',
-                        content: state.model.data.liableOrganization)
-                        : Container(
-                      height: 0.0,
-                    ),
-                    state.model.data.createDate != null
-                        ? _buildHazardInfoItem(
-                        title: '上报时间',
-                        content: state.model.data.createDate)
-                        : Container(
-                      height: 0.0,
-                    ),
-                    Container(
-                      margin: EdgeInsets.only(top: 15.0),
-                      child: Text(
-                        '附件 :',
-                        style: TextStyle(
-                            fontSize: 14.0,
-                            color: Colors.black,
-                            fontWeight: FontWeight.w700),
-                      ),
-                    ),
-                    Container(
-                      margin: EdgeInsets.only(top: 15.0),
-                      child: _buildGridView(state),
-                      constraints: BoxConstraints.tightFor(
-                          width: double.infinity, height: 90.0),
-                    ),
-                  ],
+                  ),
                 ),
-              ),
-            ),
-          ),
-        )
+              )
             : Container(
-          child: stateView.blackPage(),
-        ),
+                child: stateView.blackPage(),
+              ),
         buildBottomNavigatorJudge(dispatch: dispatch, state: state.state),
       ],
     ),

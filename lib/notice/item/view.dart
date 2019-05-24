@@ -50,7 +50,8 @@ Widget buildView(Data data, Dispatch dispatch, ViewService viewService) {
                         Expanded(
                             child: GestureDetector(
                               onTap: () {
-                                dispatch(NoticeItemActionCreator.onDeleteAction());
+                                dispatch(
+                                    NoticeItemActionCreator.onDeleteAction());
                               },
                               child: Container(
                                 padding: EdgeInsets.all(10.0),
