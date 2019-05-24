@@ -35,12 +35,13 @@ class Data {
   String warningLevel;
   int days;
 
-  Data({this.organization,
-    this.equipmentCode,
-    this.equipmentName,
-    this.person,
-    this.warningLevel,
-    this.days});
+  Data(
+      {this.organization,
+      this.equipmentCode,
+      this.equipmentName,
+      this.person,
+      this.warningLevel,
+      this.days});
 
   Data.fromJson(Map<String, dynamic> json) {
     organization = json['organization'];
