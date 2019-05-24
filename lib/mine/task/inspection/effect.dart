@@ -118,81 +118,82 @@ void _onScanQRCode(Action action, Context<InspectionTaskState> ctx) async {
     if (ctx.state.equipmentId != null) {
       ctx.state.equipmentId == ''
           ? DicoHttpRepository.scanQRCodeRequest(qrResult).then((model) {
-        if (model.code == 0) {
-          if (model.data != null) {
-            Map<String, String> map = Map();
-            map['deviceId'] = '';
-            map['deviceName'] = '';
-            map['deviceTypeId'] = '';
-            map['planId'] = '';
-            if (model.data.id != null) {
-              map['deviceId'] = model.data.id;
-            }
-            if (model.data.equipmentName != null) {
-              map['deviceName'] = model.data.equipmentName;
-            }
-            if (model.data.equipmentType != null &&
-                model.data.planId != null) {
-              map['deviceTypeId'] = model.data.equipmentType;
-              map['planId'] = model.data.planId;
-              DicoHttpRepository.doGetInspectItemRequest(
-                  model.data.equipmentType, model.data.planId)
-                  .then((model) {
-                if (model.code == 0) {
+              if (model.code == 0) {
+                if (model.data != null) {
+                  Map<String, String> map = Map();
+                  map['deviceId'] = '';
+                  map['deviceName'] = '';
+                  map['deviceTypeId'] = '';
+                  map['planId'] = '';
+                  if (model.data.id != null) {
+                    map['deviceId'] = model.data.id;
+                  }
+                  if (model.data.equipmentName != null) {
+                    map['deviceName'] = model.data.equipmentName;
+                  }
+                  if (model.data.equipmentType != null &&
+                      model.data.planId != null) {
+                    map['deviceTypeId'] = model.data.equipmentType;
+                    map['planId'] = model.data.planId;
+                    DicoHttpRepository.doGetInspectItemRequest(
+                            model.data.equipmentType, model.data.planId)
+                        .then((model) {
+                      if (model.code == 0) {
+                        ctx.dispatch(
+                            InspectionTaskActionCreator.onGetInspectionTasks(
+                                model));
+                      } else {
+                        AppCommons.showToast('获取巡检内容失败');
+                      }
+                    });
+                  }
                   ctx.dispatch(
-                      InspectionTaskActionCreator.onGetInspectionTasks(
-                          model));
-                } else {
-                  AppCommons.showToast('获取巡检内容失败');
+                      InspectionTaskActionCreator.onGetDeviceInfoAction(map));
                 }
-              });
-            }
-            ctx.dispatch(
-                InspectionTaskActionCreator.onGetDeviceInfoAction(map));
-          }
-        }
-      })
+              }
+            })
           : DicoHttpRepository.scanQRCodeRequest(qrResult).then((model) {
-        if (model.code == 0) {
-          if (model.data != null) {
-            Map<String, String> map = Map();
-            map['deviceId'] = '';
-            map['deviceName'] = '';
-            map['deviceTypeId'] = '';
-            if (model.data.id != null) {
-              map['deviceId'] = model.data.id;
-              if (model.data.id == ctx.state.equipmentId) {
-                if (model.data.equipmentType != null) {
-                  map['deviceTypeId'] = model.data.equipmentType;
-                  DicoHttpRepository.doGetInspectItemRequest(
-                      model.data.equipmentType, model.data.planId)
-                      .then((model) {
-                    if (model.code == 0) {
-                      ctx.dispatch(InspectionTaskActionCreator
-                          .onGetInspectionTasks(model));
+              if (model.code == 0) {
+                if (model.data != null) {
+                  Map<String, String> map = Map();
+                  map['deviceId'] = '';
+                  map['deviceName'] = '';
+                  map['deviceTypeId'] = '';
+                  if (model.data.id != null) {
+                    map['deviceId'] = model.data.id;
+                    if (model.data.id == ctx.state.equipmentId) {
+                      if (model.data.equipmentType != null) {
+                        map['deviceTypeId'] = model.data.equipmentType;
+                        DicoHttpRepository.doGetInspectItemRequest(
+                                model.data.equipmentType, model.data.planId)
+                            .then((model) {
+                          if (model.code == 0) {
+                            ctx.dispatch(InspectionTaskActionCreator
+                                .onGetInspectionTasks(model));
+                          } else {
+                            AppCommons.showToast('获取巡检内容失败');
+                          }
+                        });
+                      }
+                      if (model.data.planId != null) {
+                        map['planId'] = model.data.planId;
+                      }
+                      if (model.data.equipmentName != null) {
+                        map['deviceName'] = model.data.equipmentName;
+                      }
+                      ctx.dispatch(
+                          InspectionTaskActionCreator.onGetDeviceInfoAction(
+                              map));
                     } else {
                       AppCommons.showToast('获取巡检内容失败');
                     }
-                  });
+                  }
                 }
-                if (model.data.planId != null) {
-                  map['planId'] = model.data.planId;
-                }
-                if (model.data.equipmentName != null) {
-                  map['deviceName'] = model.data.equipmentName;
-                }
-                ctx.dispatch(
-                    InspectionTaskActionCreator.onGetDeviceInfoAction(
-                        map));
-              } else {
-                AppCommons.showToast('获取巡检内容失败');
               }
-            }
-          }
-        }
-      });
+            });
     }
   } on PlatformException catch (ex) {
-    if (ex.code == BarcodeScanner.CameraAccessDenied) {} else {}
+    if (ex.code == BarcodeScanner.CameraAccessDenied) {
+    } else {}
   } on FormatException {} catch (e) {}
 }

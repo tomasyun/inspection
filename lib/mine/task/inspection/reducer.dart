@@ -18,8 +18,8 @@ InspectionTaskState _onAction(InspectionTaskState state, Action action) {
   return newState;
 }
 
-InspectionTaskState _onGetDeviceInfoAction(InspectionTaskState state,
-    Action action) {
+InspectionTaskState _onGetDeviceInfoAction(
+    InspectionTaskState state, Action action) {
   InspectionTaskState newState = state.clone();
   newState.map = action.payload;
   return newState;
