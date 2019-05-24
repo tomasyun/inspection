@@ -72,7 +72,7 @@ class HttpUtil {
   ///返回一个map的future类型
   Future get(
     String url, {
-        data,
+    data,
     Options options,
     NetworkError onError,
   }) async {
@@ -83,7 +83,7 @@ class HttpUtil {
   ///post方法
   Future post(
     String url, {
-        data,
+    data,
     Options options,
     NetworkError onError,
   }) async {
@@ -94,7 +94,7 @@ class HttpUtil {
   ///put方法
   Future put(
     String url, {
-        data,
+    data,
     Options options,
     NetworkError onError,
   }) async {
@@ -105,7 +105,7 @@ class HttpUtil {
   ///delete方法
   Future delete(
     String url, {
-        data,
+    data,
     Options options,
     NetworkError onError,
   }) async {
