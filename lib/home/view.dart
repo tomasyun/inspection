@@ -238,7 +238,7 @@ Widget buildView(HomeState state, Dispatch dispatch, ViewService viewService) {
                           state.model.data != null &&
                           state.model.data.todos != null
                       ? _buildToDoWidgets(
-                      state: state, viewService: viewService)
+                          state: state, viewService: viewService)
                       : [],
                 ))
           ],
