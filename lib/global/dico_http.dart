@@ -204,12 +204,12 @@ class DicoHttpRepository {
 
   ///获取巡检项
   static Future<InspectContentModel> doGetInspectItemRequest(
-      String equipmentTypeId, String planId) async =>
+          String equipmentTypeId, String planId) async =>
       InspectContentModel.fromJson(await HttpUtil().get(
           inspectItem + '?equipmentTypeId=$equipmentTypeId&planId=$planId'));
 
   ///保存巡检结果
   static Future<Map<String, dynamic>> doSaveInspectItemRequest(
-      String data) async =>
+          String data) async =>
       await HttpUtil().post(saveInspectItem, data: data);
 }
