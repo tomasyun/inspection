@@ -3,10 +3,10 @@ import 'package:inspection/entity/warning_model.dart';
 
 import 'action.dart';
 
-Effect<WarningModel> buildEffect() {
-  return combineEffects(<Object, Effect<WarningModel>>{
+Effect<Data> buildEffect() {
+  return combineEffects(<Object, Effect<Data>>{
     WarningItemAction.action: _onAction,
   });
 }
 
-void _onAction(Action action, Context<WarningModel> ctx) {}
+void _onAction(Action action, Context<Data> ctx) {}

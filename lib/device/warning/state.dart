@@ -2,11 +2,12 @@ import 'package:fish_redux/fish_redux.dart';
 import 'package:inspection/entity/warning_model.dart';
 
 class WarningState implements Cloneable<WarningState> {
-  List<WarningModel> list = List<WarningModel>();
+  WarningModel model;
 
   @override
   WarningState clone() {
-    return WarningState()..list = list;
+    return WarningState()
+      ..model = model;
   }
 }
 

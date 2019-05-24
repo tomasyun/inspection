@@ -13,9 +13,11 @@ class WarningAdapter extends DynamicFlowAdapter<WarningState> {
 class _WarningConnector extends ConnOp<WarningState, List<ItemBean>> {
   @override
   List<ItemBean> get(WarningState state) {
-    return state.list.map((item) {
+    return state.model != null && state.model.data != null
+        ? state.model.data.map((item) {
       return ItemBean('warning', item);
-    }).toList();
+    }).toList()
+        : <ItemBean>[];
   }
 
   @override

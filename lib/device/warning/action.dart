@@ -9,7 +9,7 @@ class WarningActionCreator {
     return const Action(WarningAction.action);
   }
 
-  static Action initState(List<WarningModel> list) {
-    return Action(WarningAction.init, payload: list);
+  static Action initState(WarningModel model) {
+    return Action(WarningAction.init, payload: model);
   }
 }

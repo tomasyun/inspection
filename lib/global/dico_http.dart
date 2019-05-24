@@ -16,6 +16,7 @@ import 'package:inspection/entity/rectify_info_model.dart';
 import 'package:inspection/entity/repair_record_model.dart';
 import 'package:inspection/entity/task_model.dart';
 import 'package:inspection/entity/user_model.dart';
+import 'package:inspection/entity/warning_model.dart';
 import 'package:inspection/global/http_util.dart';
 
 class DicoHttpRepository {
@@ -153,8 +154,8 @@ class DicoHttpRepository {
   }
 
   ///设备预警
-  static Future doGetDeviceWarningRequest() async {
-    return await HttpUtil().get(warningRecord);
+  static Future<WarningModel> doGetDeviceWarningRequest() async {
+    return WarningModel.fromJson(await HttpUtil().get(warningRecord));
   }
 
   ///维修记录

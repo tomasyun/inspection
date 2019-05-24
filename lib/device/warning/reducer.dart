@@ -13,6 +13,6 @@ Reducer<WarningState> buildReducer() {
 
 WarningState _onAction(WarningState state, Action action) {
   WarningState newState = state.clone();
-  newState.list = action.payload;
+  newState.model = action.payload;
   return newState;
 }

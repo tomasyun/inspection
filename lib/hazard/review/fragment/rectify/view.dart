@@ -17,7 +17,7 @@ Widget buildView(
                   color: Colors.grey[800],
                   blurRadius: 10.0,
                   offset: Offset(0.0, 3.0),
-                  spreadRadius: -7.0),
+                  spreadRadius: -9.0),
             ],
             borderRadius: BorderRadius.all(Radius.circular(15.0))),
         margin: EdgeInsets.all(15.0),

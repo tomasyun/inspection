@@ -2,16 +2,23 @@ import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart';
 import 'package:inspection/entity/warning_model.dart';
 
-Widget buildView(
-    WarningModel state, Dispatch dispatch, ViewService viewService) {
+Widget buildView(Data state, Dispatch dispatch, ViewService viewService) {
+  Map<String, String> map = Map();
+  if (state.warningLevel == '0') {
+    map['level'] = '一般';
+  } else if (state.warningLevel == '1') {
+    map['level'] = '紧急';
+  } else if (state.warningLevel == '2') {
+    map['level'] = '已过期';
+  }
   return GestureDetector(
     onTap: () {
 //      dispatch(RecordItemActionCreator.onAction());
     },
     child: Container(
-      padding: EdgeInsets.all(10.0),
-      margin: EdgeInsets.all(15.0),
+      padding: EdgeInsets.all(20.0),
       width: double.infinity,
+      margin: EdgeInsets.only(bottom: 10.0),
       decoration: BoxDecoration(
         color: Colors.white,
         boxShadow: [
@@ -25,7 +32,8 @@ Widget buildView(
       ),
       child: Column(
         children: <Widget>[
-          _buildItemHeader(title: '火灾报警控制器', result: '${state.level}'),
+          _buildItemHeader(
+              title: '${state.equipmentName}', result: '${map['level']}'),
           Container(
             margin: EdgeInsets.only(top: 10.0),
             width: double.infinity,
@@ -38,9 +46,14 @@ Widget buildView(
                 Expanded(
                     child: Column(
                   children: <Widget>[
-                    _buildItem(title: '预警原因 :', result: '${state.reason}'),
-                    _buildItem(title: '责任部门 :', result: '${state.depart}'),
-                    _buildItem(title: '责任人 :', result: '${state.pic}'),
+                    _buildItem(
+                        title: '预警原因 :',
+                        result: state.warningLevel == '2'
+                            ? '设备已过期'
+                            : '设备${state.days}天后过期'),
+                    _buildItem(title: '责任人 :', result: '${state.person}'),
+                    _buildItem(
+                        title: '责任部门 :', result: '${state.organization}'),
                   ],
                 )),
               ],
@@ -54,7 +67,7 @@ Widget buildView(
 
 Widget _buildItem({String title, String result}) {
   return Container(
-    margin: EdgeInsets.only(top: 10.0),
+    margin: EdgeInsets.only(top: 5.0),
     child: Row(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: <Widget>[
@@ -69,7 +82,7 @@ Widget _buildItem({String title, String result}) {
               textAlign: TextAlign.left,
             ),
           ),
-          flex: 3,
+          flex: 4,
         ),
         Expanded(
           child: Container(
@@ -77,12 +90,12 @@ Widget _buildItem({String title, String result}) {
               result,
               style: TextStyle(
                   fontSize: 14.0,
-                  color: Colors.black,
+                  color: Colors.black45,
                   fontWeight: FontWeight.w600),
-              textAlign: TextAlign.left,
+              textAlign: TextAlign.right,
             ),
           ),
-          flex: 7,
+          flex: 6,
         ),
       ],
     ),
@@ -99,9 +112,9 @@ Widget _buildItemHeader({String title, String result}) {
             child: Text(
               title,
               style: TextStyle(
-                  fontWeight: FontWeight.w700,
                   color: Colors.black,
-                  fontSize: 16.0),
+                  fontSize: 16.0,
+                  fontWeight: FontWeight.w700),
               maxLines: 1,
             ),
           ),
@@ -111,9 +124,7 @@ Widget _buildItemHeader({String title, String result}) {
           child: Text(
             result,
             style: TextStyle(
-                color: Colors.black45,
-                fontSize: 14.0,
-                fontWeight: FontWeight.w600),
+                color: Colors.red, fontSize: 14.0, fontWeight: FontWeight.w600),
           ),
         )
       ],

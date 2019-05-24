@@ -1,28 +1,64 @@
 class WarningModel {
-  String level;
-  String deviceName;
-  String reason;
-  String depart;
-  String pic;
+  int code;
+  String msg;
+  List<Data> data;
 
-  WarningModel(
-      {this.level, this.deviceName, this.reason, this.depart, this.pic});
+  WarningModel({this.code, this.msg, this.data});
 
   WarningModel.fromJson(Map<String, dynamic> json) {
-    level = json['level'];
-    deviceName = json['devname'];
-    reason = json['reason'];
-    depart = json['depart'];
-    pic = json['pic'];
+    code = json['code'];
+    msg = json['msg'];
+    if (json['data'] != null) {
+      data = new List<Data>();
+      json['data'].forEach((v) {
+        data.add(new Data.fromJson(v));
+      });
+    }
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['level'] = this.level;
-    data['devname'] = this.deviceName;
-    data['reason'] = this.reason;
-    data['depart'] = this.depart;
-    data['pic'] = this.pic;
+    data['code'] = this.code;
+    data['msg'] = this.msg;
+    if (this.data != null) {
+      data['data'] = this.data.map((v) => v.toJson()).toList();
+    }
+    return data;
+  }
+}
+
+class Data {
+  String organization;
+  String equipmentCode;
+  String equipmentName;
+  String person;
+  String warningLevel;
+  int days;
+
+  Data({this.organization,
+    this.equipmentCode,
+    this.equipmentName,
+    this.person,
+    this.warningLevel,
+    this.days});
+
+  Data.fromJson(Map<String, dynamic> json) {
+    organization = json['organization'];
+    equipmentCode = json['equipmentCode'];
+    equipmentName = json['equipmentName'];
+    person = json['person'];
+    warningLevel = json['warningLevel'];
+    days = json['days'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['organization'] = this.organization;
+    data['equipmentCode'] = this.equipmentCode;
+    data['equipmentName'] = this.equipmentName;
+    data['person'] = this.person;
+    data['warningLevel'] = this.warningLevel;
+    data['days'] = this.days;
     return data;
   }
 }
