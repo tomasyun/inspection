@@ -49,30 +49,29 @@ Widget buildView(Data data, Dispatch dispatch, ViewService viewService) {
                       children: <Widget>[
                         Expanded(
                             child: GestureDetector(
-                              onTap: () {
-                                dispatch(
-                                    NoticeItemActionCreator.onDeleteAction());
-                              },
-                              child: Container(
-                                padding: EdgeInsets.all(10.0),
-                                child: Text(
-                                  '删除',
-                                  style: TextStyle(
-                                      fontSize: 14.0,
-                                      color: Colors.red,
-                                      fontWeight: FontWeight.w600),
-                                ),
-                              ),
-                            )),
-                        Expanded(
+                          onTap: () {
+                            dispatch(NoticeItemActionCreator.onDeleteAction());
+                          },
+                          child: Container(
+                            padding: EdgeInsets.all(10.0),
                             child: Text(
-                              '${data.messageDate}',
+                              '删除',
                               style: TextStyle(
                                   fontSize: 14.0,
-                                  color: Colors.black,
+                                  color: Colors.red,
                                   fontWeight: FontWeight.w600),
-                              textAlign: TextAlign.right,
-                            ))
+                            ),
+                          ),
+                        )),
+                        Expanded(
+                            child: Text(
+                          '${data.messageDate}',
+                          style: TextStyle(
+                              fontSize: 14.0,
+                              color: Colors.black,
+                              fontWeight: FontWeight.w600),
+                          textAlign: TextAlign.right,
+                        ))
                       ],
                     ),
                   )
