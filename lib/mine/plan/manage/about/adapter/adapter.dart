@@ -15,8 +15,8 @@ class _PlanAboutConnector extends ConnOp<PlanAboutState, List<ItemBean>> {
   List<ItemBean> get(PlanAboutState state) {
     return state.model != null && state.model.data != null
         ? state.model.data.map((item) {
-      return ItemBean('about', item);
-    }).toList()
+            return ItemBean('about', item);
+          }).toList()
         : <ItemBean>[];
   }
 
