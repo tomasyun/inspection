@@ -76,7 +76,7 @@ Widget buildView(LoginState state, Dispatch dispatch, ViewService viewService) {
                   hintText: '请输入密码',
                   border: OutlineInputBorder(borderSide: BorderSide.none),
                   contentPadding:
-                  new EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
+                      new EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
                 ),
               ),
             ),
