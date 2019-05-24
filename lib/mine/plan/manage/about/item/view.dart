@@ -73,15 +73,15 @@ Widget buildView(Data data, Dispatch dispatch, ViewService viewService) {
                           },
                           child: data.inspectionStatus == '0'
                               ? Text(
-                            '扫一扫',
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 13.0,
-                                fontWeight: FontWeight.w600),
-                          )
+                                  '扫一扫',
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 13.0,
+                                      fontWeight: FontWeight.w600),
+                                )
                               : Container(
-                            height: 0.0,
-                          ),
+                                  height: 0.0,
+                                ),
                           padding: EdgeInsets.symmetric(
                               vertical: 3.0, horizontal: 5.0),
                         ),
