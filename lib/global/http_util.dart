@@ -35,29 +35,29 @@ class HttpUtil {
       dio = Dio(options);
       dio.interceptors
           .add(InterceptorsWrapper(onRequest: (RequestOptions options) {
-        print("\n================== 请求数据 ==========================");
-        print("url = ${options.uri.toString()}");
-        print("headers = ${options.headers}");
-        print("params = ${options.data}");
+//        print("\n================== 请求数据 ==========================");
+//        print("url = ${options.uri.toString()}");
+//        print("headers = ${options.headers}");
+//        print("params = ${options.data}");
       }, onResponse: (Response response) {
-        print("\n================== 响应数据 ==========================");
-        print("code = ${response.statusCode}");
-        print("data = ${response.data}");
-        print("\n");
+//        print("\n================== 响应数据 ==========================");
+//        print("code = ${response.statusCode}");
+//        print("data = ${response.data}");
+//        print("\n");
       }, onError: (DioError e) {
-        print("\n================== 错误响应数据 ======================");
-        print("type = ${e.type}");
-        print("message = ${e.message}");
-        print("stackTrace = ${e.stackTrace}");
-        print("\n");
+//        print("\n================== 错误响应数据 ======================");
+//        print("type = ${e.type}");
+//        print("message = ${e.message}");
+//        print("stackTrace = ${e.stackTrace}");
+//        print("\n");
       }));
 
-      (dio.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate =
-          (client) {
-        client.findProxy = (uri) {
-          return "PROXY 192.168.10.24:8888";
-        };
-      };
+//      (dio.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate =
+//          (client) {
+//        client.findProxy = (uri) {
+//          return "PROXY 192.168.10.24:8888";
+//        };
+//      };
     }
   }
 
