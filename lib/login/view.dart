@@ -47,7 +47,7 @@ Widget buildView(LoginState state, Dispatch dispatch, ViewService viewService) {
                   hintText: '请输入用户名',
                   border: OutlineInputBorder(borderSide: BorderSide.none),
                   contentPadding:
-                  EdgeInsets.only(top: 10.0, right: 20.0, bottom: 10.0),
+                      EdgeInsets.only(top: 10.0, right: 20.0, bottom: 10.0),
                 ),
               ),
             ),
@@ -85,7 +85,7 @@ Widget buildView(LoginState state, Dispatch dispatch, ViewService viewService) {
                         decoration: InputDecoration(
                           hintText: '请输入密码',
                           border:
-                          OutlineInputBorder(borderSide: BorderSide.none),
+                              OutlineInputBorder(borderSide: BorderSide.none),
                           contentPadding: EdgeInsets.only(
                               top: 10.0, right: 20.0, bottom: 10.0),
                         ),
