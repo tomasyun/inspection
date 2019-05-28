@@ -58,11 +58,9 @@ void _onScanQRCode(Action action, Context<HazardReportState> ctx) async {
 }
 
 void _onReport(Action action, Context<HazardReportState> ctx) async {
-  if (ctx.state.deviceNoController.text.isEmpty ||
-      ctx.state.locationController.text.isEmpty) {
-    AppCommons.showToast('请选扫码获取设备编号和隐患位置');
-  } else if (ctx.state.deviceNoController.text.isEmpty) {
-    AppCommons.showToast('设备编号不能为空');
+  if (ctx.state.map['deviceCode'] == '扫码获取' ||
+      ctx.state.map['deviceLocation'] == '隐患具体位置') {
+    AppCommons.showToast('请先扫码获取设备编号和隐患位置');
   } else if (ctx.state.levelRst['name'] == '请选择') {
     AppCommons.showToast('请选择隐患等级');
   } else if (ctx.state.typeRst['name'] == '请选择') {

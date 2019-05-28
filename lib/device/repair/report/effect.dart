@@ -79,9 +79,9 @@ Future<bool> _onGoBack(Action action, Context<ReportState> ctx) {
 }
 
 void _onReport(Action action, Context<ReportState> ctx) {
-  if (ctx.state.deviceNameController.text.isEmpty ||
-      ctx.state.deviceNoController.text.isEmpty) {
-    AppCommons.showToast('请选扫码获取设备名称和设备编号');
+  if (ctx.state.deviceInfo['deviceName'] == '扫码获取' ||
+      ctx.state.deviceInfo['deviceCode'] == '扫码获取') {
+    AppCommons.showToast('请先扫码获取设备名称和设备编号');
   } else if (ctx.state.departRst['name'] == '请选择') {
     AppCommons.showToast('请选择责任部门');
   } else if (ctx.state.picRst['name'] == '请选择') {

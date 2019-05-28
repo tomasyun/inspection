@@ -13,7 +13,7 @@ Widget blackPage() {
         ),
         Container(
           child: Text(
-            '抱歉!咩有相关数据哟...',
+            '抱歉!没有相关数据...',
             style: TextStyle(
                 fontSize: 15.0, color: Colors.black, letterSpacing: 2.0),
           ),

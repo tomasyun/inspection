@@ -52,12 +52,12 @@ class HttpUtil {
         print("\n");
       }));
 
-//      (dio.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate =
-//          (client) {
-//        client.findProxy = (uri) {
-//          return "PROXY 192.168.10.24:8888";
-//        };
-//      };
+      (dio.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate =
+          (client) {
+        client.findProxy = (uri) {
+          return "PROXY 192.168.10.24:8888";
+        };
+      };
     }
   }
 

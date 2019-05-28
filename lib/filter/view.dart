@@ -13,7 +13,7 @@ Widget buildView(
     appBar: AppBar(
       title: _buildFilterTitle(flag: state.flag),
       leading: Container(),
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.blue,
       centerTitle: true,
     ),
     body: Container(
@@ -37,8 +37,7 @@ Widget _buildFilterTitle({String flag, String content = ''}) {
   }
   return Text(
     content,
-    style: TextStyle(
-        fontSize: 16.0, color: Colors.black, fontWeight: FontWeight.bold),
+    style: TextStyle(fontSize: 18.0, color: Colors.white),
   );
 }
 
