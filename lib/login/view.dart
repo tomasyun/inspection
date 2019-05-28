@@ -28,23 +28,26 @@ Widget buildView(LoginState state, Dispatch dispatch, ViewService viewService) {
                 '用户名',
                 style: TextStyle(
                     fontSize: 16.0,
+                    letterSpacing: 1.0,
                     color: Colors.black,
                     fontWeight: FontWeight.w600),
               ),
             ),
             Container(
+              margin: EdgeInsets.only(top: 15.0),
               child: TextField(
                 controller: state.userNameController,
                 keyboardType: TextInputType.text,
                 style: TextStyle(
                     fontSize: 15,
                     color: Colors.black,
-                    letterSpacing: 5.0,
+                    letterSpacing: 3.0,
                     fontWeight: FontWeight.w600),
                 decoration: InputDecoration(
                   hintText: '请输入用户名',
                   border: OutlineInputBorder(borderSide: BorderSide.none),
-                  contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
+                  contentPadding:
+                  EdgeInsets.only(top: 10.0, right: 20.0, bottom: 10.0),
                 ),
               ),
             ),
@@ -54,33 +57,53 @@ Widget buildView(LoginState state, Dispatch dispatch, ViewService viewService) {
               width: double.infinity,
             ),
             Container(
-              margin: EdgeInsets.only(top: 10.0),
+              margin: EdgeInsets.only(top: 30.0),
               child: Text(
                 '密码',
                 style: TextStyle(
-                    letterSpacing: 10.0,
+                    letterSpacing: 3.0,
                     fontSize: 16.0,
                     color: Colors.black,
                     fontWeight: FontWeight.w600),
               ),
             ),
             Container(
-              margin: EdgeInsets.only(top: 15.0),
-              child: TextField(
-                obscureText: true,
-                controller: state.passwordController,
-                keyboardType: TextInputType.text,
-                style: TextStyle(
-                    fontSize: 15,
-                    letterSpacing: 5.0,
-                    color: Colors.black,
-                    fontWeight: FontWeight.w600),
-                decoration: InputDecoration(
-                  hintText: '请输入密码',
-                  border: OutlineInputBorder(borderSide: BorderSide.none),
-                  contentPadding:
-                  new EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
-                ),
+              child: Row(
+                children: <Widget>[
+                  Expanded(
+                    child: Container(
+                      margin: EdgeInsets.only(top: 15.0),
+                      child: TextField(
+                        obscureText: state.isClose,
+                        controller: state.passwordController,
+                        keyboardType: TextInputType.text,
+                        style: TextStyle(
+                            fontSize: 15,
+                            letterSpacing: 3.0,
+                            color: Colors.black,
+                            fontWeight: FontWeight.w600),
+                        decoration: InputDecoration(
+                          hintText: '请输入密码',
+                          border:
+                          OutlineInputBorder(borderSide: BorderSide.none),
+                          contentPadding: EdgeInsets.only(
+                              top: 10.0, right: 20.0, bottom: 10.0),
+                        ),
+                      ),
+                    ),
+                    flex: 1,
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      dispatch(LoginActionCreator.onSwitchEyeAction();)
+                    },
+                    child: Container(
+                      margin: EdgeInsets.only(top: 10.0),
+                      padding: EdgeInsets.all(5.0),
+                      child: _buildEyeIcon(state.isClose),
+                    ),
+                  )
+                ],
               ),
             ),
             Container(
@@ -112,4 +135,18 @@ Widget buildView(LoginState state, Dispatch dispatch, ViewService viewService) {
       ),
     ),
   );
+}
+
+Widget _buildEyeIcon(bool isClose) {
+  if (isClose) {
+    return Icon(
+      Icons.remove_red_eye,
+      color: Colors.grey,
+    );
+  } else {
+    return Icon(
+      Icons.remove_red_eye,
+      color: Colors.black,
+    );
+  }
 }

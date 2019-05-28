@@ -12,10 +12,15 @@ Effect<LoginState> buildEffect() {
   return combineEffects(<Object, Effect<LoginState>>{
     LoginAction.action: _onAction,
     LoginAction.login: _onLogin,
+    LoginAction.switchEye: _onSwitchEyeAction,
   });
 }
 
 void _onAction(Action action, Context<LoginState> ctx) {}
+
+void _onSwitchEyeAction(Action action, Context<LoginState> ctx) {
+  ctx.dispatch(LoginActionCreator.onGetEyeStateAction(!ctx.state.isClose));
+}
 
 void _onLogin(Action action, Context<LoginState> ctx) {
   if (ctx.state.userNameController.text.isEmpty) {
