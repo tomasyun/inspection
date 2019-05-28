@@ -14,7 +14,7 @@ typedef NetworkError();
 typedef NetworkSuccess(Map<String, dynamic> data);
 
 class HttpUtil {
-  static const String BASE_URL = 'http://192.168.10.19:8080/';
+  static const String BASE_URL = 'http://180.76.150.16:8080/';
   static const String TYPE_GET = 'get';
   static const String TYPE_POST = 'post';
   static const String TYPE_PUT = 'put';
@@ -35,21 +35,21 @@ class HttpUtil {
       dio = Dio(options);
       dio.interceptors
           .add(InterceptorsWrapper(onRequest: (RequestOptions options) {
-//        print("\n================== 请求数据 ==========================");
-//        print("url = ${options.uri.toString()}");
-//        print("headers = ${options.headers}");
-//        print("params = ${options.data}");
+        print("\n================== 请求数据 ==========================");
+        print("url = ${options.uri.toString()}");
+        print("headers = ${options.headers}");
+        print("params = ${options.data}");
       }, onResponse: (Response response) {
-//        print("\n================== 响应数据 ==========================");
-//        print("code = ${response.statusCode}");
-//        print("data = ${response.data}");
-//        print("\n");
+        print("\n================== 响应数据 ==========================");
+        print("code = ${response.statusCode}");
+        print("data = ${response.data}");
+        print("\n");
       }, onError: (DioError e) {
-//        print("\n================== 错误响应数据 ======================");
-//        print("type = ${e.type}");
-//        print("message = ${e.message}");
-//        print("stackTrace = ${e.stackTrace}");
-//        print("\n");
+        print("\n================== 错误响应数据 ======================");
+        print("type = ${e.type}");
+        print("message = ${e.message}");
+        print("stackTrace = ${e.stackTrace}");
+        print("\n");
       }));
 
 //      (dio.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate =

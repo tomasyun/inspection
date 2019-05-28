@@ -24,6 +24,8 @@ void _onLogin(Action action, Context<LoginState> ctx) {
     AppCommons.showToast('密码不能空');
   } else {
     Map<String, String> map = Map();
+    map['username'] = ctx.state.userNameController.text;
+    map['password'] = ctx.state.passwordController.text;
     DicoHttpRepository.userLogin(map).then((model) {
       if (model.code == 0) {
         AppCommons.showToast(model.msg);
