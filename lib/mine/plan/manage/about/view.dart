@@ -18,15 +18,15 @@ Widget buildView(
     ),
     body: listAdapter.itemCount != 0
         ? Container(
-      child: ListView.builder(
-        padding: EdgeInsets.only(bottom: 50.0),
-        itemBuilder: listAdapter.itemBuilder,
-        itemCount: listAdapter.itemCount,
-      ),
-      margin: EdgeInsets.all(15.0),
-    )
+            child: ListView.builder(
+              padding: EdgeInsets.only(bottom: 50.0),
+              itemBuilder: listAdapter.itemBuilder,
+              itemCount: listAdapter.itemCount,
+            ),
+            margin: EdgeInsets.all(15.0),
+          )
         : Container(
-      child: StateView.blackPage(),
-    ),
+            child: StateView.blackPage(),
+          ),
   );
 }

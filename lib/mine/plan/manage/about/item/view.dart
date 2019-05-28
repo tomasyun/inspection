@@ -14,8 +14,8 @@ Widget buildView(Data data, Dispatch dispatch, ViewService viewService) {
     child: Column(
       children: <Widget>[
         Container(
-          padding: EdgeInsets.all(10.0),
-          margin: EdgeInsets.all(15.0),
+          padding: EdgeInsets.all(20.0),
+          margin: EdgeInsets.only(bottom: 10.0),
           width: double.infinity,
           decoration: BoxDecoration(
             color: Colors.white,
