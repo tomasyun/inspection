@@ -1,5 +1,6 @@
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart';
+import 'package:inspection/widget/state_view.dart' as StateView;
 
 import 'state.dart';
 
@@ -15,10 +16,17 @@ Widget buildView(
       backgroundColor: Colors.blue,
       centerTitle: true,
     ),
-    body: ListView.builder(
-      padding: EdgeInsets.only(bottom: 50.0),
-      itemBuilder: listAdapter.itemBuilder,
-      itemCount: listAdapter.itemCount,
+    body: listAdapter.itemCount != 0
+        ? Container(
+      child: ListView.builder(
+        padding: EdgeInsets.only(bottom: 50.0),
+        itemBuilder: listAdapter.itemBuilder,
+        itemCount: listAdapter.itemCount,
+      ),
+      margin: EdgeInsets.all(15.0),
+    )
+        : Container(
+      child: StateView.blackPage(),
     ),
   );
 }
