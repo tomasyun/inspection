@@ -22,9 +22,17 @@ Widget buildView(TaskState state, Dispatch dispatch, ViewService viewService) {
             child: Container(
               margin: EdgeInsets.all(15.0),
               padding: EdgeInsets.only(bottom: 50.0),
-              child: Column(
+              child: state.model.data.inspect != null &&
+                  state.model.data.rectify != null &&
+                  state.model.data.review != null
+                  ? Column(
                 children: _buildToDoWidgets(
-                    state: state, model: state.model, viewService: viewService),
+                    state: state,
+                    model: state.model,
+                    viewService: viewService),
+              )
+                  : Container(
+                child: StateView.blackPage(),
               ),
             ),
           )

@@ -39,6 +39,7 @@ Widget buildView(LoginState state, Dispatch dispatch, ViewService viewService) {
                 style: TextStyle(
                     fontSize: 15,
                     color: Colors.black,
+                    letterSpacing: 5.0,
                     fontWeight: FontWeight.w600),
                 decoration: InputDecoration(
                   hintText: '请输入用户名',
@@ -66,17 +67,19 @@ Widget buildView(LoginState state, Dispatch dispatch, ViewService viewService) {
             Container(
               margin: EdgeInsets.only(top: 15.0),
               child: TextField(
+                obscureText: true,
                 controller: state.passwordController,
                 keyboardType: TextInputType.text,
                 style: TextStyle(
                     fontSize: 15,
+                    letterSpacing: 5.0,
                     color: Colors.black,
                     fontWeight: FontWeight.w600),
                 decoration: InputDecoration(
                   hintText: '请输入密码',
                   border: OutlineInputBorder(borderSide: BorderSide.none),
                   contentPadding:
-                      new EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
+                  new EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
                 ),
               ),
             ),
