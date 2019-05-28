@@ -97,7 +97,7 @@ void _onReport(Action action, Context<ReportState> ctx) {
   } else if (ctx.state.descController.text.isEmpty) {
     AppCommons.showToast('请填写故障描述');
   } else {
-    String deviceName = ctx.state.deviceNameController.text;
+    String deviceName = ctx.state.deviceInfo['deviceName'];
     String deviceNo = ctx.state.deviceInfo['deviceId'];
     String departName = ctx.state.departRst['name'];
     String departId = ctx.state.departRst['id'];

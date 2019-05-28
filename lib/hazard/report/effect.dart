@@ -36,12 +36,16 @@ void _onScanQRCode(Action action, Context<HazardReportState> ctx) async {
             Map<String, String> map = Map();
             map['deviceCode'] = '扫码获取';
             map['deviceId'] = '';
+            map['deviceName'] = '';
             map['deviceLocation'] = '隐患具体位置';
             if (model.data.equipmentCode != null) {
               map['deviceCode'] = model.data.equipmentCode;
             }
             if (model.data.id != null) {
               map['deviceId'] = model.data.id;
+            }
+            if (model.data.equipmentName != null) {
+              map['deviceName'] = model.data.equipmentName;
             }
             if (model.data.installArea != null) {
               map['deviceLocation'] = model.data.installArea;
@@ -72,6 +76,7 @@ void _onReport(Action action, Context<HazardReportState> ctx) async {
   } else {
     String location = ctx.state.map['deviceLocation'];
     String deviceNo = ctx.state.map['deviceId'];
+    String deviceName = ctx.state.map['deviceName'];
     String level = ctx.state.levelRst['id'];
     String levelName = ctx.state.levelRst['name'];
     String type = ctx.state.typeRst['id'];
@@ -80,7 +85,7 @@ void _onReport(Action action, Context<HazardReportState> ctx) async {
     Map<String, String> map = Map();
     map['dangerAddress'] = location;
     map['equipmentId'] = deviceNo;
-    map['equipmentName'] = deviceNo;
+    map['equipmentName'] = deviceName;
     map['dangerLevelId'] = level;
     map['dangerLevelName'] = levelName;
     map['dangerTypeId'] = type;
@@ -99,7 +104,7 @@ void _onReport(Action action, Context<HazardReportState> ctx) async {
         FormData.from({'smsDangerInfoStr': json.encode(map), 'file': files});
     DicoHttpRepository.hazardReportRequest(data).then((map) {
       if (map['code'] == 0) {
-        AppCommons.showToast('上传成功');
+        AppCommons.showToast('保存成功');
       } else {
         AppCommons.showToast(map['msg']);
       }

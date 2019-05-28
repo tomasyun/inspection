@@ -35,5 +35,6 @@ HazardReportState initState(Map<String, dynamic> args) {
   state.map['deviceCode'] = '扫码获取';
   state.map['deviceId'] = '';
   state.map['deviceLocation'] = '隐患具体位置';
+  state.map['deviceName'] = '';
   return state;
 }
