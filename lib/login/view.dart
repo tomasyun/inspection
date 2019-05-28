@@ -95,7 +95,7 @@ Widget buildView(LoginState state, Dispatch dispatch, ViewService viewService) {
                   ),
                   GestureDetector(
                     onTap: () {
-                      dispatch(LoginActionCreator.onSwitchEyeAction();)
+                      dispatch(LoginActionCreator.onSwitchEyeAction());
                     },
                     child: Container(
                       margin: EdgeInsets.only(top: 10.0),
