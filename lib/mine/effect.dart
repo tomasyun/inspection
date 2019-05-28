@@ -30,12 +30,16 @@ void _onGetUserBaseInfo(Action action, Context<MineState> ctx) async {
   Map<String, String> map = Map();
   map['userName'] = '张三';
   map['company'] = '陕西缔科网络科技有限公司';
+  map['avatar'] = '';
   await SpUtils().getString('name').then((value) {
     map['userName'] = value;
   });
 
   await SpUtils().getString('company').then((value) {
     map['company'] = value;
+  });
+  await SpUtils().getString('avatar').then((value) {
+    map['avatar'] = value;
   });
   ctx.dispatch(MineActionCreator.onGetUserInfo(map));
 }

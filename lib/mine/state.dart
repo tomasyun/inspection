@@ -13,5 +13,6 @@ MineState initState(Map<String, dynamic> args) {
   MineState state = MineState();
   state.map['userName'] = '张三';
   state.map['company'] = '陕西缔科网络科技有限公司';
+  state.map['avatar'] = '';
   return state;
 }

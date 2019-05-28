@@ -1,5 +1,6 @@
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart';
+import 'package:inspection/global/app_common.dart';
 import 'package:inspection/mine/action.dart';
 
 import 'state.dart';
@@ -40,13 +41,16 @@ Widget buildView(MineState state, Dispatch dispatch, ViewService viewService) {
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: <Widget>[
-                      FadeInImage.assetNetwork(
-                        placeholder: 'images/ic_avatar.png',
-                        //预览图
-                        fit: BoxFit.cover,
-                        width: 60.0,
-                        height: 60.0,
-                        image: '',
+                      ClipOval(
+                        child: FadeInImage.assetNetwork(
+                          placeholder: 'images/ic_avatar.png',
+                          //预览图
+                          fit: BoxFit.fitWidth,
+                          image: AppCommons.attachmentBaseUrl +
+                              state.map['avatar'],
+                          width: 60.0,
+                          height: 60.0,
+                        ),
                       ),
                       Container(
                         margin: EdgeInsets.only(left: 30.0),
