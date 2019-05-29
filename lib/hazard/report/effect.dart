@@ -62,8 +62,8 @@ void _onScanQRCode(Action action, Context<HazardReportState> ctx) async {
 }
 
 void _onReport(Action action, Context<HazardReportState> ctx) async {
-  if (ctx.state.map['deviceCode'] == '扫码获取' ||
-      ctx.state.map['deviceLocation'] == '隐患具体位置') {
+  if (ctx.state.deviceInfo['deviceCode'] == '扫码获取' ||
+      ctx.state.deviceInfo['deviceLocation'] == '隐患具体位置') {
     AppCommons.showToast('请先扫码获取设备编号和隐患位置');
   } else if (ctx.state.levelRst['name'] == '请选择') {
     AppCommons.showToast('请选择隐患等级');
@@ -74,9 +74,9 @@ void _onReport(Action action, Context<HazardReportState> ctx) async {
   } else if (ctx.state.assets.isEmpty) {
     AppCommons.showToast('请上传相关附件');
   } else {
-    String location = ctx.state.map['deviceLocation'];
-    String deviceNo = ctx.state.map['deviceId'];
-    String deviceName = ctx.state.map['deviceName'];
+    String location = ctx.state.deviceInfo['deviceLocation'];
+    String deviceNo = ctx.state.deviceInfo['deviceId'];
+    String deviceName = ctx.state.deviceInfo['deviceName'];
     String level = ctx.state.levelRst['id'];
     String levelName = ctx.state.levelRst['name'];
     String type = ctx.state.typeRst['id'];

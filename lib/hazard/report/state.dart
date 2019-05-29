@@ -9,7 +9,7 @@ class HazardReportState implements Cloneable<HazardReportState> {
   TextEditingController deviceNoController;
   TextEditingController locationController;
   TextEditingController decsController;
-  Map<String, String> map = Map();
+  Map<String, String> deviceInfo = Map();
 
   @override
   HazardReportState clone() {
@@ -20,7 +20,7 @@ class HazardReportState implements Cloneable<HazardReportState> {
       ..deviceNoController = deviceNoController
       ..locationController = locationController
       ..decsController = decsController
-      ..map = map;
+      ..deviceInfo = deviceInfo;
   }
 }
 
@@ -32,9 +32,9 @@ HazardReportState initState(Map<String, dynamic> args) {
   state.deviceNoController = TextEditingController();
   state.locationController = TextEditingController();
   state.decsController = TextEditingController();
-  state.map['deviceCode'] = '扫码获取';
-  state.map['deviceId'] = '';
-  state.map['deviceLocation'] = '隐患具体位置';
-  state.map['deviceName'] = '';
+  state.deviceInfo['deviceCode'] = '扫码获取';
+  state.deviceInfo['deviceId'] = '';
+  state.deviceInfo['deviceLocation'] = '隐患具体位置';
+  state.deviceInfo['deviceName'] = '';
   return state;
 }

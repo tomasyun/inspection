@@ -20,7 +20,8 @@ class ReportState implements Cloneable<ReportState> {
       ..departRst = departRst
       ..picRst = picRst
       ..repairManRst = repairManRst
-      ..repairDateRst = repairDateRst;
+      ..repairDateRst = repairDateRst
+      ..deviceInfo = deviceInfo;
   }
 }
 

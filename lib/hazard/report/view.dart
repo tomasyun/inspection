@@ -54,7 +54,7 @@ Widget buildView(
                       decoration: InputDecoration(
                           contentPadding: EdgeInsets.symmetric(
                               vertical: 10.0, horizontal: 10.0),
-                          hintText: state.map['deviceCode'],
+                          hintText: state.deviceInfo['deviceCode'],
                           border:
                               OutlineInputBorder(borderSide: BorderSide.none)),
                     ),
@@ -112,7 +112,7 @@ Widget buildView(
                       decoration: InputDecoration(
                           contentPadding: EdgeInsets.symmetric(
                               vertical: 10.0, horizontal: 10.0),
-                          hintText: state.map['deviceLocation'],
+                          hintText: state.deviceInfo['deviceLocation'],
                           border:
                               OutlineInputBorder(borderSide: BorderSide.none)),
                     ),

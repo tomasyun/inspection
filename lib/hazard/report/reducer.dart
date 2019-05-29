@@ -22,7 +22,7 @@ HazardReportState _onAction(HazardReportState state, Action action) {
 
 HazardReportState _onGetDeviceName(HazardReportState state, Action action) {
   HazardReportState newState = state.clone();
-  newState.map = action.payload;
+  newState.deviceInfo = action.payload;
   return newState;
 }
 
