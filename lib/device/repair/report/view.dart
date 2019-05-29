@@ -35,9 +35,9 @@ Widget buildView(
                     child: Text(
                       '设备名称',
                       style: TextStyle(
-                        fontSize: 14.0,
-                        color: Colors.black,
-                      ),
+                          fontSize: 14.0,
+                          color: Colors.black,
+                          fontWeight: FontWeight.w600),
                     ),
                   ),
                   Expanded(
@@ -49,7 +49,10 @@ Widget buildView(
                       enabled: false,
                       cursorWidth: 2.0,
                       cursorColor: Colors.grey,
-                      style: TextStyle(fontSize: 14.0, color: Colors.black),
+                      style: TextStyle(
+                          fontSize: 14.0,
+                          color: Colors.black,
+                          fontWeight: FontWeight.w600),
                       decoration: InputDecoration(
                           contentPadding: EdgeInsets.symmetric(
                               vertical: 10.0, horizontal: 10.0),
