@@ -37,6 +37,5 @@ ReportState initState(Map<String, dynamic> args) {
   state.deviceInfo['deviceName'] = '扫码获取';
   state.deviceInfo['deviceCode'] = '扫码获取';
   state.deviceInfo['deviceId'] = '';
-
   return state;
 }
