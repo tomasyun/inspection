@@ -65,6 +65,7 @@ Widget _buildContainer(EdgeInsetsGeometry edge, String text, String hintText,
           child: Text(
             text,
             style: TextStyle(
+                letterSpacing: 2.0,
                 fontSize: 14.0,
                 color: Colors.black,
                 fontWeight: FontWeight.w600),
@@ -73,7 +74,11 @@ Widget _buildContainer(EdgeInsetsGeometry edge, String text, String hintText,
         ),
         Expanded(
           child: TextField(
-            style: TextStyle(fontSize: 14.0, fontWeight: FontWeight.w600),
+            style: TextStyle(
+              fontSize: 14.0,
+              fontWeight: FontWeight.w600,
+              letterSpacing: 3.0,
+            ),
             controller: controller,
             maxLines: 1,
             cursorColor: Colors.red,

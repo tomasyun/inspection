@@ -242,11 +242,12 @@ Widget buildView(
                 cursorWidth: 1.0,
                 cursorColor: Colors.grey,
                 style: TextStyle(
+                    letterSpacing: 1.0,
                     fontSize: 14.0,
                     color: Colors.black,
                     fontWeight: FontWeight.w600),
                 decoration: InputDecoration(
-                    hintText: "请输入隐患描述",
+                    hintText: '请输入隐患描述',
                     contentPadding: EdgeInsets.all(15.0),
                     border: OutlineInputBorder(borderSide: BorderSide.none)),
               ),

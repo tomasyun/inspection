@@ -17,7 +17,6 @@ Widget buildView(
       backgroundColor: Colors.blue,
     ),
     body: Container(
-      padding: EdgeInsets.symmetric(vertical: 15.0),
       child: Column(
         children: <Widget>[
 //          GestureDetector(
@@ -37,7 +36,7 @@ Widget buildView(
                 edge: EdgeInsets.only(top: 10.0)),
           ),
           Container(
-            margin: EdgeInsets.only(top: 50.0),
+            margin: EdgeInsets.only(top: 100.0),
             child: _buildRaisedButton(dispatch: dispatch),
           )
         ],
@@ -97,20 +96,22 @@ Widget _buildMineNavigatorItem(
 }
 
 Widget _buildRaisedButton({Dispatch dispatch}) {
-  return RaisedButton(
-    onPressed: () {
-      dispatch(SettingActionCreator.onLogout());
-    },
-    child: Text(
-      '退出登录',
-      style: TextStyle(
-          color: Colors.red, fontSize: 14.0, fontWeight: FontWeight.w600),
-    ),
-    color: Colors.white,
-    padding:
-        EdgeInsets.only(top: 15.0, bottom: 15.0, left: 135.0, right: 135.0),
-//      shape: RoundedRectangleBorder(
-//        borderRadius: BorderRadius.circular(10.0),
-//      )
+  return Container(
+    width: double.infinity,
+    margin: EdgeInsets.only(left: 15.0, right: 15.0),
+    child: RaisedButton(
+        onPressed: () {
+          dispatch(SettingActionCreator.onLogout());
+        },
+        child: Text(
+          '退出登录',
+          style: TextStyle(
+              color: Colors.red, fontSize: 14.0, fontWeight: FontWeight.w600),
+        ),
+        color: Colors.white,
+        padding: EdgeInsets.only(top: 15.0, bottom: 15.0),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10.0),
+        )),
   );
 }

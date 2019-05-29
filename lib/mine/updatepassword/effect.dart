@@ -29,7 +29,7 @@ void _onUpdate(Action action, Context<UpdatePasswordState> ctx) {
     });
     DicoHttpRepository.doUpdatePasswordRequest(data).then((value) {
       if (value['code'] == 0) {
-        AppCommons.showToast(value['msg']);
+        AppCommons.showToast('修改成功');
       } else {
         AppCommons.showToast(value['msg']);
       }
