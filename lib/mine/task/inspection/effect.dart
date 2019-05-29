@@ -149,7 +149,10 @@ void _onScanQRCode(Action action, Context<InspectionTaskState> ctx) async {
                   }
                   ctx.dispatch(
                       InspectionTaskActionCreator.onGetDeviceInfoAction(map));
+                  AppCommons.showToast('改设备暂未添加巡检任务');
                 }
+              } else {
+                AppCommons.showToast('扫码失败');
               }
             })
           : DicoHttpRepository.scanQRCodeRequest(qrResult).then((model) {
@@ -189,6 +192,8 @@ void _onScanQRCode(Action action, Context<InspectionTaskState> ctx) async {
                     }
                   }
                 }
+              } else {
+                AppCommons.showToast('扫码失败');
               }
             });
     }
