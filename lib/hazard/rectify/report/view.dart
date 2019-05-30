@@ -73,7 +73,7 @@ Widget buildView(
                       color: Colors.black,
                       fontWeight: FontWeight.w600),
                   decoration: InputDecoration(
-                      hintText: "请输入复查情况",
+                      hintText: "请输入整改情况",
                       contentPadding: EdgeInsets.all(15.0),
                       border: OutlineInputBorder(borderSide: BorderSide.none)),
                 ),
