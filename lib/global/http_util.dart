@@ -14,7 +14,7 @@ typedef NetworkError();
 typedef NetworkSuccess(Map<String, dynamic> data);
 
 class HttpUtil {
-  static const String BASE_URL = 'http://180.76.150.16:8080/';
+  static const String BASE_URL = 'http://180.76.250.117:8080/';
   static const String TYPE_GET = 'get';
   static const String TYPE_POST = 'post';
   static const String TYPE_PUT = 'put';
