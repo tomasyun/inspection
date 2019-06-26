@@ -45,13 +45,11 @@ Widget buildView(Data data, Dispatch dispatch, ViewService viewService) {
                   flex: 8,
                   child: Column(
                     children: <Widget>[
+                      _buildItem(title: '位置:', result: '${data.dangerAddress}'),
                       _buildItem(
-                          title: '位置 :', result: '${data.dangerAddress}'),
-                      _buildItem(
-                          title: '隐患描述 :', result: '${data.dangerRemark}'),
-                      _buildItem(title: '隐患类型 :', result: '${data.dangerType}'),
-                      _buildItem(
-                          title: '编号 :', result: '${data.equipmentCode}'),
+                          title: '隐患描述:', result: '${data.dangerRemark}'),
+                      _buildItem(title: '隐患类型:', result: '${data.dangerType}'),
+                      _buildItem(title: '编号:', result: '${data.equipmentCode}'),
                     ],
                   )),
               Expanded(

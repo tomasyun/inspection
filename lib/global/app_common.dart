@@ -24,5 +24,5 @@ class AppCommons {
     else if (connectivityResult == ConnectivityResult.none) return false;
   }
 
-  static String attachmentBaseUrl = 'http://180.76.250.117:8080/';
+  static String attachmentBaseUrl = 'http://180.76.113.146:8080/';
 }

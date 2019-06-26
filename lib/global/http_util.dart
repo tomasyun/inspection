@@ -3,6 +3,7 @@ import 'dart:convert' show json;
 import 'dart:typed_data';
 
 import "package:dio/dio.dart";
+import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:http_parser/http_parser.dart';
 import 'package:inspection/global/app_common.dart';
@@ -14,7 +15,7 @@ typedef NetworkError();
 typedef NetworkSuccess(Map<String, dynamic> data);
 
 class HttpUtil {
-  static const String BASE_URL = 'http://180.76.250.117:8080/';
+  static const String BASE_URL = 'http://180.76.113.146:8080/';
   static const String TYPE_GET = 'get';
   static const String TYPE_POST = 'post';
   static const String TYPE_PUT = 'put';
@@ -75,9 +76,15 @@ class HttpUtil {
     data,
     Options options,
     NetworkError onError,
+    BuildContext context,
   }) async {
-    return _request(url, TYPE_GET,
-        data: data, options: options, onError: onError);
+    return _request(
+      url,
+      TYPE_GET,
+      data: data,
+      options: options,
+      onError: onError,
+    );
   }
 
   ///post方法
@@ -86,9 +93,15 @@ class HttpUtil {
     data,
     Options options,
     NetworkError onError,
+    BuildContext context,
   }) async {
-    return _request(url, TYPE_POST,
-        data: data, options: options, onError: onError);
+    return _request(
+      url,
+      TYPE_POST,
+      data: data,
+      options: options,
+      onError: onError,
+    );
   }
 
   ///put方法
@@ -97,9 +110,15 @@ class HttpUtil {
     data,
     Options options,
     NetworkError onError,
+    BuildContext context,
   }) async {
-    return _request(url, TYPE_PUT,
-        data: data, options: options, onError: onError);
+    return _request(
+      url,
+      TYPE_PUT,
+      data: data,
+      options: options,
+      onError: onError,
+    );
   } //
 
   ///delete方法
@@ -108,14 +127,23 @@ class HttpUtil {
     data,
     Options options,
     NetworkError onError,
+    BuildContext context,
   }) async {
-    return _request(url, TYPE_DELETE,
-        data: data, options: options, onError: onError);
+    return _request(
+      url,
+      TYPE_DELETE,
+      data: data,
+      options: options,
+      onError: onError,
+    );
   } //
 
   ///多部分上传（包括图片、参数）
-  Future<String> onMultipartRequest(
-      {List<Asset> assets, Map<String, String> map, String url}) async {
+  Future<String> onMultipartRequest({
+    List<Asset> assets,
+    Map<String, String> map,
+    String url,
+  }) async {
     Completer<String> completer = Completer();
     Uri uri = Uri.parse(BASE_URL + url);
     http.MultipartRequest request = http.MultipartRequest('post', uri);
@@ -152,8 +180,13 @@ class HttpUtil {
     return completer.future;
   }
 
-  Future _request(String url, String type,
-      {data, Options options, NetworkError onError}) async {
+  Future _request(
+    String url,
+    String type, {
+    data,
+    Options options,
+    NetworkError onError,
+  }) async {
     try {
       String token;
       await SpUtils().getString('token').then((value) {
