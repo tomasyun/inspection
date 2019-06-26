@@ -24,9 +24,15 @@ Effect<HazardReportState> buildEffect() {
   });
 }
 
-void _onAction(Action action, Context<HazardReportState> ctx) {}
+void _onAction(
+  Action action,
+  Context<HazardReportState> ctx,
+) {}
 
-void _onScanQRCode(Action action, Context<HazardReportState> ctx) async {
+void _onScanQRCode(
+  Action action,
+  Context<HazardReportState> ctx,
+) async {
   try {
     String qrResult = await BarcodeScanner.scan();
     if (qrResult != null && qrResult.isNotEmpty) {
@@ -61,7 +67,10 @@ void _onScanQRCode(Action action, Context<HazardReportState> ctx) async {
   } on FormatException {} catch (e) {}
 }
 
-void _onReport(Action action, Context<HazardReportState> ctx) async {
+void _onReport(
+  Action action,
+  Context<HazardReportState> ctx,
+) async {
   if (ctx.state.deviceInfo['deviceCode'] == '扫码获取' ||
       ctx.state.deviceInfo['deviceLocation'] == '隐患具体位置') {
     AppCommons.showToast('请先扫码获取设备编号和隐患位置');
@@ -113,7 +122,9 @@ void _onReport(Action action, Context<HazardReportState> ctx) async {
 }
 
 void _onAddAttachmentClick(
-    Action action, Context<HazardReportState> ctx) async {
+  Action action,
+  Context<HazardReportState> ctx,
+) async {
   List<Asset> assets = [];
   try {
     assets = await MultiImagePicker.pickImages(
@@ -146,7 +157,10 @@ void _onLevelSkipFilter(Action action, Context<HazardReportState> ctx) {
   });
 }
 
-void _onTypeSkipFilter(Action action, Context<HazardReportState> ctx) {
+void _onTypeSkipFilter(
+  Action action,
+  Context<HazardReportState> ctx,
+) {
   Future future =
       Navigator.of(ctx.context).push(MaterialPageRoute(builder: (context) {
     Map<String, dynamic> map = {'flag': 'type'};

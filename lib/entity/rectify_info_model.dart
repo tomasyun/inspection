@@ -3,7 +3,11 @@ class RectifyInfoModel {
   String msg;
   Data data;
 
-  RectifyInfoModel({this.code, this.msg, this.data});
+  RectifyInfoModel({
+    this.code,
+    this.msg,
+    this.data,
+  });
 
   RectifyInfoModel.fromJson(Map<String, dynamic> json) {
     code = json['code'];
@@ -33,16 +37,17 @@ class Data {
   String reviewDate;
   String reviewOrganization;
 
-  Data(
-      {this.repairOrganization,
-      this.repairResult,
-      this.repairAttachments,
-      this.repairUser,
-      this.repairOpinion,
-      this.repairDate,
-      this.reviewUser,
-      this.reviewDate,
-      this.reviewOrganization});
+  Data({
+    this.repairOrganization,
+    this.repairResult,
+    this.repairAttachments,
+    this.repairUser,
+    this.repairOpinion,
+    this.repairDate,
+    this.reviewUser,
+    this.reviewDate,
+    this.reviewOrganization,
+  });
 
   Data.fromJson(Map<String, dynamic> json) {
     repairOrganization = json['repairOrganization'];

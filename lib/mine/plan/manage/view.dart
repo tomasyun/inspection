@@ -5,7 +5,10 @@ import 'package:inspection/mine/plan/manage/state.dart';
 import 'package:inspection/widget/state_view.dart' as StateView;
 
 Widget buildView(
-    InspectPlanState state, Dispatch dispatch, ViewService viewService) {
+  InspectPlanState state,
+  Dispatch dispatch,
+  ViewService viewService,
+) {
   ListAdapter listAdapter = viewService.buildAdapter();
   return Scaffold(
     key: state.scaffoldKey,

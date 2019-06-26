@@ -12,7 +12,10 @@ Reducer<HazardInfoFragState> buildReducer() {
   );
 }
 
-HazardInfoFragState _onAction(HazardInfoFragState state, Action action) {
+HazardInfoFragState _onAction(
+  HazardInfoFragState state,
+  Action action,
+) {
   final HazardInfoFragState newState = state.clone();
   return newState;
 }

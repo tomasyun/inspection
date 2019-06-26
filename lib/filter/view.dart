@@ -7,7 +7,10 @@ import 'package:inspection/widget/state_view.dart' as stateView;
 import 'state.dart';
 
 Widget buildView(
-    FilterState state, Dispatch dispatch, ViewService viewService) {
+  FilterState state,
+  Dispatch dispatch,
+  ViewService viewService,
+) {
   return Scaffold(
     backgroundColor: Colors.grey[100],
     appBar: AppBar(
@@ -23,7 +26,10 @@ Widget buildView(
   );
 }
 
-Widget _buildFilterTitle({String flag, String content = ''}) {
+Widget _buildFilterTitle({
+  String flag,
+  String content = '',
+}) {
   if (flag == 'level') {
     content = '隐患等级';
   } else if (flag == 'type') {

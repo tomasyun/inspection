@@ -7,7 +7,10 @@ import 'package:inspection/login/page.dart';
 import 'state.dart';
 
 Widget buildView(
-    SplashState state, Dispatch dispatch, ViewService viewService) {
+  SplashState state,
+  Dispatch dispatch,
+  ViewService viewService,
+) {
   return SplashPageWidget();
 }
 

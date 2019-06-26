@@ -9,4 +9,7 @@ Effect<SaveAnalyseState> buildEffect() {
   });
 }
 
-void _onAction(Action action, Context<SaveAnalyseState> ctx) {}
+void _onAction(
+  Action action,
+  Context<SaveAnalyseState> ctx,
+) {}

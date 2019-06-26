@@ -19,9 +19,15 @@ Effect<RectifyReportState> buildEffect() {
   });
 }
 
-void _onAction(Action action, Context<RectifyReportState> ctx) {}
+void _onAction(
+  Action action,
+  Context<RectifyReportState> ctx,
+) {}
 
-void _onInit(Action action, Context<RectifyReportState> ctx) {
+void _onInit(
+  Action action,
+  Context<RectifyReportState> ctx,
+) {
   DicoHttpRepository.doGetRectifyFormRequest(ctx.state.id).then((model) {
     if (model.code == 0) {
       if (model.data != null) {
@@ -34,7 +40,10 @@ void _onInit(Action action, Context<RectifyReportState> ctx) {
   });
 }
 
-void _onReport(Action action, Context<RectifyReportState> ctx) async {
+void _onReport(
+  Action action,
+  Context<RectifyReportState> ctx,
+) async {
   if (ctx.state.controller.text.isEmpty) {
     AppCommons.showToast('请填写整改情况');
   } else if (ctx.state.assets.isEmpty) {
@@ -69,7 +78,9 @@ void _onReport(Action action, Context<RectifyReportState> ctx) async {
 }
 
 void _onAddAttachmentClick(
-    Action action, Context<RectifyReportState> ctx) async {
+  Action action,
+  Context<RectifyReportState> ctx,
+) async {
   List<Asset> assets = [];
   try {
     assets = await MultiImagePicker.pickImages(

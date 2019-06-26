@@ -13,18 +13,27 @@ Reducer<RectifyReportState> buildReducer() {
   );
 }
 
-RectifyReportState _onAction(RectifyReportState state, Action action) {
+RectifyReportState _onAction(
+  RectifyReportState state,
+  Action action,
+) {
   final RectifyReportState newState = state.clone();
   return newState;
 }
 
-RectifyReportState _onGetRectifyForm(RectifyReportState state, Action action) {
+RectifyReportState _onGetRectifyForm(
+  RectifyReportState state,
+  Action action,
+) {
   RectifyReportState newState = state.clone();
   newState.map = action.payload;
   return newState;
 }
 
-RectifyReportState _onPickImages(RectifyReportState state, Action action) {
+RectifyReportState _onPickImages(
+  RectifyReportState state,
+  Action action,
+) {
   RectifyReportState newState = state.clone();
   newState.assets = action.payload;
   return newState;

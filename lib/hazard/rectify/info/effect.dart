@@ -12,9 +12,15 @@ Effect<RectifyInfoState> buildEffect() {
   });
 }
 
-void _onAction(Action action, Context<RectifyInfoState> ctx) {}
+void _onAction(
+  Action action,
+  Context<RectifyInfoState> ctx,
+) {}
 
-void _init(Action action, Context<RectifyInfoState> ctx) {
+void _init(
+  Action action,
+  Context<RectifyInfoState> ctx,
+) {
   DicoHttpRepository.doGetRectifyInfoRequest(ctx.state.id).then((model) {
     if (model.code == 0) {
       ctx.dispatch(RectifyInfoActionCreator.onGetRectifyInfoAction(model));

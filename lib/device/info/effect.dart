@@ -19,9 +19,15 @@ Effect<InfoState> buildEffect() {
   });
 }
 
-void _onAction(Action action, Context<InfoState> ctx) {}
+void _onAction(
+  Action action,
+  Context<InfoState> ctx,
+) {}
 
-void _onScanQRCode(Action action, Context<InfoState> ctx) async {
+void _onScanQRCode(
+  Action action,
+  Context<InfoState> ctx,
+) async {
   try {
     String qrResult = await BarcodeScanner.scan();
     if (qrResult != null && qrResult.isNotEmpty) {
@@ -42,7 +48,10 @@ void _onScanQRCode(Action action, Context<InfoState> ctx) async {
   } on FormatException {} catch (e) {}
 }
 
-void _onSkipRepairRecord(Action action, Context<InfoState> ctx) {
+void _onSkipRepairRecord(
+  Action action,
+  Context<InfoState> ctx,
+) {
   Map<String, dynamic> map = Map();
   map['equipmentId'] = ctx.state.equipmentId;
   Navigator.of(ctx.context).push(MaterialPageRoute(builder: (context) {
@@ -50,7 +59,10 @@ void _onSkipRepairRecord(Action action, Context<InfoState> ctx) {
   }));
 }
 
-void _onSkipKeepRecord(Action action, Context<InfoState> ctx) {
+void _onSkipKeepRecord(
+  Action action,
+  Context<InfoState> ctx,
+) {
   Map<String, dynamic> map = Map();
   map['equipmentId'] = ctx.state.equipmentId;
   Navigator.of(ctx.context).push(MaterialPageRoute(builder: (context) {

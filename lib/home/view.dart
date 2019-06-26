@@ -10,7 +10,11 @@ import 'package:inspection/mine/task/inspection/page.dart';
 
 import 'state.dart';
 
-Widget buildView(HomeState state, Dispatch dispatch, ViewService viewService) {
+Widget buildView(
+  HomeState state,
+  Dispatch dispatch,
+  ViewService viewService,
+) {
   if (state.model != null &&
       state.model.data != null &&
       state.model.data.banner.isNotEmpty) {

@@ -12,12 +12,18 @@ Reducer<PlanAboutState> buildReducer() {
   );
 }
 
-PlanAboutState _onAction(PlanAboutState state, Action action) {
+PlanAboutState _onAction(
+  PlanAboutState state,
+  Action action,
+) {
   final PlanAboutState newState = state.clone();
   return newState;
 }
 
-PlanAboutState _onGetPlanAbouts(PlanAboutState state, Action action) {
+PlanAboutState _onGetPlanAbouts(
+  PlanAboutState state,
+  Action action,
+) {
   PlanAboutState newState = state.clone();
   newState.model = action.payload;
   return newState;

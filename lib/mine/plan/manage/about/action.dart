@@ -10,6 +10,9 @@ class PlanAboutActionCreator {
   }
 
   static Action onGetPlanAbouts(PlanAboutModel list) {
-    return Action(PlanAboutAction.planAbouts, payload: list);
+    return Action(
+      PlanAboutAction.planAbouts,
+      payload: list,
+    );
   }
 }

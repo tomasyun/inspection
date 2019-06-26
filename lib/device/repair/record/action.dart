@@ -6,6 +6,9 @@ enum RecordAction { action }
 
 class RecordActionCreator {
   static Action initListData(RepairRecordModel model) {
-    return Action(RecordAction.action, payload: model);
+    return Action(
+      RecordAction.action,
+      payload: model,
+    );
   }
 }

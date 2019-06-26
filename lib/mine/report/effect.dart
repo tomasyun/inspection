@@ -9,4 +9,7 @@ Effect<ReportRecordState> buildEffect() {
   });
 }
 
-void _onAction(Action action, Context<ReportRecordState> ctx) {}
+void _onAction(
+  Action action,
+  Context<ReportRecordState> ctx,
+) {}

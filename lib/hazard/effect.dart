@@ -18,9 +18,15 @@ Effect<HazardState> buildEffect() {
   });
 }
 
-void _onAction(Action action, Context<HazardState> ctx) {}
+void _onAction(
+  Action action,
+  Context<HazardState> ctx,
+) {}
 
-void _onResearch(Action action, Context<HazardState> ctx) {
+void _onResearch(
+  Action action,
+  Context<HazardState> ctx,
+) {
   String research = '';
   StringBuffer buffer = StringBuffer();
   if (ctx.state.map.isNotEmpty) {
@@ -42,7 +48,10 @@ void _onResearch(Action action, Context<HazardState> ctx) {
   });
 }
 
-void _onReset(Action action, Context<HazardState> ctx) {
+void _onReset(
+  Action action,
+  Context<HazardState> ctx,
+) {
   ctx.dispatch(HazardActionCreator.getStartDate('请选择'));
   ctx.dispatch(HazardActionCreator.getEndDate('请选择'));
   ctx.dispatch(HazardActionCreator.getHazardState('请选择'));
@@ -52,7 +61,10 @@ void _onReset(Action action, Context<HazardState> ctx) {
   });
 }
 
-void _onSelectState(Action action, Context<HazardState> ctx) {
+void _onSelectState(
+  Action action,
+  Context<HazardState> ctx,
+) {
   Map<String, String> map = Map();
   map['待整改'] = '1';
   map['待审批'] = '0';
@@ -70,9 +82,12 @@ void _onSelectState(Action action, Context<HazardState> ctx) {
       }).showDialog(ctx.context);
 }
 
-void _onSelectStartDate(Action action, Context<HazardState> ctx) {
-  new Picker(
-    adapter: new DateTimePickerAdapter(
+void _onSelectStartDate(
+  Action action,
+  Context<HazardState> ctx,
+) {
+  Picker(
+    adapter: DateTimePickerAdapter(
         type: PickerDateTimeType.kYMD,
         isNumberMonth: true,
         yearSuffix: '年',
@@ -89,9 +104,12 @@ void _onSelectStartDate(Action action, Context<HazardState> ctx) {
   ).showDialog(ctx.context);
 }
 
-void _onSelectEndDate(Action action, Context<HazardState> ctx) {
-  new Picker(
-    adapter: new DateTimePickerAdapter(
+void _onSelectEndDate(
+  Action action,
+  Context<HazardState> ctx,
+) {
+  Picker(
+    adapter: DateTimePickerAdapter(
         type: PickerDateTimeType.kYMD,
         isNumberMonth: true,
         yearSuffix: '年',
@@ -108,7 +126,10 @@ void _onSelectEndDate(Action action, Context<HazardState> ctx) {
   ).showDialog(ctx.context);
 }
 
-void _initHazardListData(Action action, Context<HazardState> ctx) {
+void _initHazardListData(
+  Action action,
+  Context<HazardState> ctx,
+) {
   ctx.dispatch(HazardActionCreator.onGetContext(ctx.context));
   DicoHttpRepository.doGetHazardManageRequest('').then((model) {
     if (model.code == 0) {

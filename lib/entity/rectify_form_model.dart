@@ -3,7 +3,11 @@ class RectifyFormModel {
   String msg;
   Data data;
 
-  RectifyFormModel({this.code, this.msg, this.data});
+  RectifyFormModel({
+    this.code,
+    this.msg,
+    this.data,
+  });
 
   RectifyFormModel.fromJson(Map<String, dynamic> json) {
     code = json['code'];
@@ -26,7 +30,10 @@ class Data {
   String repairOpinion;
   String id;
 
-  Data({this.repairOpinion, this.id});
+  Data({
+    this.repairOpinion,
+    this.id,
+  });
 
   Data.fromJson(Map<String, dynamic> json) {
     repairOpinion = json['repairOpinion'];

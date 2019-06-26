@@ -3,7 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:inspection/entity/notice_model.dart';
 import 'package:inspection/notice/item/action.dart';
 
-Widget buildView(Data data, Dispatch dispatch, ViewService viewService) {
+Widget buildView(
+  Data data,
+  Dispatch dispatch,
+  ViewService viewService,
+) {
   return Container(
     decoration: BoxDecoration(
         color: Colors.white,

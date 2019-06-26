@@ -12,9 +12,15 @@ Effect<WarningState> buildEffect() {
   });
 }
 
-void _onAction(Action action, Context<WarningState> ctx) {}
+void _onAction(
+  Action action,
+  Context<WarningState> ctx,
+) {}
 
-void _initState(Action action, Context<WarningState> ctx) {
+void _initState(
+  Action action,
+  Context<WarningState> ctx,
+) {
   DicoHttpRepository.doGetDeviceWarningRequest().then((model) {
     if (model.code == 0) {
       ctx.dispatch(WarningActionCreator.initState(model));

@@ -1,7 +1,12 @@
 import 'package:fish_redux/fish_redux.dart';
 
 //TODO replace with your own action
-enum LoginAction { action, login, switchEye, eyeState }
+enum LoginAction {
+  action,
+  login,
+  switchEye,
+  eyeState,
+}
 
 class LoginActionCreator {
   static Action onAction() {

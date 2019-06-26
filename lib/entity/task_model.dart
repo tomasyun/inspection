@@ -3,7 +3,11 @@ class TaskModel {
   String msg;
   Data data;
 
-  TaskModel({this.code, this.msg, this.data});
+  TaskModel({
+    this.code,
+    this.msg,
+    this.data,
+  });
 
   TaskModel.fromJson(Map<String, dynamic> json) {
     code = json['code'];
@@ -27,7 +31,11 @@ class Data {
   List<Review> review;
   List<Inspect> inspect;
 
-  Data({this.rectify, this.review, this.inspect});
+  Data({
+    this.rectify,
+    this.review,
+    this.inspect,
+  });
 
   Data.fromJson(Map<String, dynamic> json) {
     if (json['rectify'] != null) {
@@ -75,15 +83,16 @@ class Rectify {
   String equipmentName;
   String dangerId;
 
-  Rectify(
-      {this.dangerRemark,
-      this.dangerAddress,
-      this.dangerType,
-      this.todoType,
-      this.equipmentCode,
-      this.dangerLevel,
-      this.equipmentName,
-      this.dangerId});
+  Rectify({
+    this.dangerRemark,
+    this.dangerAddress,
+    this.dangerType,
+    this.todoType,
+    this.equipmentCode,
+    this.dangerLevel,
+    this.equipmentName,
+    this.dangerId,
+  });
 
   Rectify.fromJson(Map<String, dynamic> json) {
     dangerRemark = json['dangerRemark'];
@@ -120,15 +129,16 @@ class Review {
   String equipmentName;
   String dangerId;
 
-  Review(
-      {this.dangerRemark,
-      this.dangerAddress,
-      this.dangerType,
-      this.todoType,
-      this.equipmentCode,
-      this.dangerLevel,
-      this.equipmentName,
-      this.dangerId});
+  Review({
+    this.dangerRemark,
+    this.dangerAddress,
+    this.dangerType,
+    this.todoType,
+    this.equipmentCode,
+    this.dangerLevel,
+    this.equipmentName,
+    this.dangerId,
+  });
 
   Review.fromJson(Map<String, dynamic> json) {
     dangerRemark = json['dangerRemark'];
@@ -163,13 +173,14 @@ class Inspect {
   int status;
   String equipmentId;
 
-  Inspect(
-      {this.installArea,
-      this.equipmentCode,
-      this.equipmentName,
-      this.equipmentType,
-      this.status,
-      this.equipmentId});
+  Inspect({
+    this.installArea,
+    this.equipmentCode,
+    this.equipmentName,
+    this.equipmentType,
+    this.status,
+    this.equipmentId,
+  });
 
   Inspect.fromJson(Map<String, dynamic> json) {
     installArea = json['installArea'];

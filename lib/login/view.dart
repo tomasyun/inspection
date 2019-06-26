@@ -4,7 +4,11 @@ import 'package:inspection/login/action.dart';
 
 import 'state.dart';
 
-Widget buildView(LoginState state, Dispatch dispatch, ViewService viewService) {
+Widget buildView(
+  LoginState state,
+  Dispatch dispatch,
+  ViewService viewService,
+) {
   return Scaffold(
     backgroundColor: Colors.grey[100],
     body: SingleChildScrollView(

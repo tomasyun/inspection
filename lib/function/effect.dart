@@ -22,38 +22,57 @@ Effect<FunctionState> buildEffect() {
   });
 }
 
-void _onAction(Action action, Context<FunctionState> ctx) {}
+void _onAction(
+  Action action,
+  Context<FunctionState> ctx,
+) {}
+
 void _onSkipSaveAnalyse(Action action, Context<FunctionState> ctx) {
   Navigator.of(ctx.context).push(MaterialPageRoute(builder: (context) {
     return SaveAnalysePage().buildPage(null);
   }));
 }
 
-void _onSkipMinePlan(Action action, Context<FunctionState> ctx) {
+void _onSkipMinePlan(
+  Action action,
+  Context<FunctionState> ctx,
+) {
   Navigator.of(ctx.context).push(MaterialPageRoute(builder: (context) {
     return MinePlanPage().buildPage(null);
   }));
 }
 
-void _onDeviceScanQRCode(Action action, Context<FunctionState> ctx) {
+void _onDeviceScanQRCode(
+  Action action,
+  Context<FunctionState> ctx,
+) {
   Navigator.of(ctx.context).push(MaterialPageRoute(builder: (context) {
     return InfoPage().buildPage(null);
   }));
 }
 
-void _onDeviceWarning(Action action, Context<FunctionState> ctx) {
+void _onDeviceWarning(
+  Action action,
+  Context<FunctionState> ctx,
+) {
   Navigator.of(ctx.context).push(MaterialPageRoute(builder: (context) {
     return WarningPage().buildPage(null);
   }));
 }
 
-void _onHazardReview(Action action, Context<FunctionState> ctx) {
+void _onHazardReview(
+  Action action,
+  Context<FunctionState> ctx,
+) {
   Navigator.of(ctx.context).push(MaterialPageRoute(builder: (context) {
     return HazardPage().buildPage(null);
   }));
 }
 
-void _onInspectionPlan(Action action, Context<FunctionState> ctx) {
+void _onInspectionPlan(
+  Action action,
+  Context<FunctionState> ctx,
+) {
   Navigator.of(ctx.context).push(MaterialPageRoute(builder: (context) {
     return InspectPlanPage().buildPage(null);
   }));

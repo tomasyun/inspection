@@ -12,9 +12,15 @@ Effect<PlanAboutState> buildEffect() {
   });
 }
 
-void _onAction(Action action, Context<PlanAboutState> ctx) {}
+void _onAction(
+  Action action,
+  Context<PlanAboutState> ctx,
+) {}
 
-void _onGetPlanAbouts(Action action, Context<PlanAboutState> ctx) {
+void _onGetPlanAbouts(
+  Action action,
+  Context<PlanAboutState> ctx,
+) {
   DicoHttpRepository.doAboutPlanRequest(ctx.state.id).then((model) {
     if (model.code == 0) {
       ctx.dispatch(PlanAboutActionCreator.onGetPlanAbouts(model));

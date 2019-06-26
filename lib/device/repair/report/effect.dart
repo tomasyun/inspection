@@ -23,9 +23,15 @@ Effect<ReportState> buildEffect() {
   });
 }
 
-void _onAction(Action action, Context<ReportState> ctx) {}
+void _onAction(
+  Action action,
+  Context<ReportState> ctx,
+) {}
 
-Future _onScanQRCode(Action action, Context<ReportState> ctx) async {
+Future _onScanQRCode(
+  Action action,
+  Context<ReportState> ctx,
+) async {
   try {
     String qrResult = await BarcodeScanner.scan();
     if (qrResult != null && qrResult.isNotEmpty) {
@@ -56,7 +62,10 @@ Future _onScanQRCode(Action action, Context<ReportState> ctx) async {
   } on FormatException {} catch (e) {}
 }
 
-void _onShowRepairDate(Action action, Context<ReportState> ctx) {
+void _onShowRepairDate(
+  Action action,
+  Context<ReportState> ctx,
+) {
   new Picker(
     adapter: new DateTimePickerAdapter(
         type: PickerDateTimeType.kYMD,
@@ -74,7 +83,10 @@ void _onShowRepairDate(Action action, Context<ReportState> ctx) {
   ).showDialog(ctx.context);
 }
 
-Future<bool> _onGoBack(Action action, Context<ReportState> ctx) {
+Future<bool> _onGoBack(
+  Action action,
+  Context<ReportState> ctx,
+) {
   return Future<bool>.value(true);
 }
 
@@ -128,7 +140,10 @@ void _onReport(Action action, Context<ReportState> ctx) {
   }
 }
 
-void _onDepartSkipFilter(Action action, Context<ReportState> ctx) {
+void _onDepartSkipFilter(
+  Action action,
+  Context<ReportState> ctx,
+) {
   Future future =
       Navigator.of(ctx.context).push(MaterialPageRoute(builder: (context) {
     Map<String, dynamic> map = {'flag': 'depart'};
@@ -141,7 +156,10 @@ void _onDepartSkipFilter(Action action, Context<ReportState> ctx) {
   });
 }
 
-void _onPicSkipFilter(Action action, Context<ReportState> ctx) {
+void _onPicSkipFilter(
+  Action action,
+  Context<ReportState> ctx,
+) {
   Future future =
       Navigator.of(ctx.context).push(MaterialPageRoute(builder: (context) {
     Map<String, dynamic> map = Map();
@@ -156,7 +174,10 @@ void _onPicSkipFilter(Action action, Context<ReportState> ctx) {
   });
 }
 
-void _onRepairManSkipFilter(Action action, Context<ReportState> ctx) {
+void _onRepairManSkipFilter(
+  Action action,
+  Context<ReportState> ctx,
+) {
   Future future =
       Navigator.of(ctx.context).push(MaterialPageRoute(builder: (context) {
     Map<String, dynamic> map = {'flag': 'repairman'};

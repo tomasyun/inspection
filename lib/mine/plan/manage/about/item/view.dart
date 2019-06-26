@@ -3,7 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:inspection/entity/plan_about_model.dart';
 import 'package:inspection/mine/task/inspection/page.dart';
 
-Widget buildView(Data data, Dispatch dispatch, ViewService viewService) {
+Widget buildView(
+  Data data,
+  Dispatch dispatch,
+  ViewService viewService,
+) {
   Map<String, String> map = Map();
   if (data.inspectionStatus == '0') {
     map['state'] = '待巡检';

@@ -5,7 +5,10 @@ import 'package:inspection/global/app_common.dart';
 import 'state.dart';
 
 Widget buildView(
-    RectifyInfoFragState state, Dispatch dispatch, ViewService viewService) {
+  RectifyInfoFragState state,
+  Dispatch dispatch,
+  ViewService viewService,
+) {
   return Container(
     color: Colors.grey[100],
     child: SingleChildScrollView(

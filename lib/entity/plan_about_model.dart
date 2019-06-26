@@ -3,7 +3,11 @@ class PlanAboutModel {
   String msg;
   List<Data> data;
 
-  PlanAboutModel({this.code, this.msg, this.data});
+  PlanAboutModel({
+    this.code,
+    this.msg,
+    this.data,
+  });
 
   PlanAboutModel.fromJson(Map<String, dynamic> json) {
     code = json['code'];
@@ -36,14 +40,15 @@ class Data {
   String equipmentId;
   String planId;
 
-  Data(
-      {this.inspectionStatus,
-      this.equipmentCode,
-      this.equipmentAddress,
-      this.equipmentClass,
-      this.equipmentName,
-      this.equipmentId,
-      this.planId});
+  Data({
+    this.inspectionStatus,
+    this.equipmentCode,
+    this.equipmentAddress,
+    this.equipmentClass,
+    this.equipmentName,
+    this.equipmentId,
+    this.planId,
+  });
 
   Data.fromJson(Map<String, dynamic> json) {
     inspectionStatus = json['inspectionStatus'];

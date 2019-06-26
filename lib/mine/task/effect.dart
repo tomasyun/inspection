@@ -11,9 +11,15 @@ Effect<TaskState> buildEffect() {
   });
 }
 
-void _onAction(Action action, Context<TaskState> ctx) {}
+void _onAction(
+  Action action,
+  Context<TaskState> ctx,
+) {}
 
-void _onGetToDos(Action action, Context<TaskState> ctx) {
+void _onGetToDos(
+  Action action,
+  Context<TaskState> ctx,
+) {
   ctx.state.context = ctx.context;
   DicoHttpRepository.doGetTodosRequest().then((model) {
     if (model.code == 0) {

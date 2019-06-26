@@ -13,18 +13,27 @@ Reducer<FilterState> buildReducer() {
   );
 }
 
-FilterState _onAction(FilterState state, Action action) {
+FilterState _onAction(
+  FilterState state,
+  Action action,
+) {
   FilterState newState = state.clone();
   return newState;
 }
 
-FilterState _onGetFilterModel(FilterState state, Action action) {
+FilterState _onGetFilterModel(
+  FilterState state,
+  Action action,
+) {
   FilterState newState = state.clone();
   newState.model = action.payload;
   return newState;
 }
 
-FilterState _onInitContext(FilterState state, Action action) {
+FilterState _onInitContext(
+  FilterState state,
+  Action action,
+) {
   FilterState newState = state.clone();
   newState.context = action.payload;
   return newState;

@@ -3,7 +3,11 @@ class EquipmentInfoModel {
   String msg;
   Data data;
 
-  EquipmentInfoModel({this.code, this.msg, this.data});
+  EquipmentInfoModel({
+    this.code,
+    this.msg,
+    this.data,
+  });
 
   EquipmentInfoModel.fromJson(Map<String, dynamic> json) {
     code = json['code'];

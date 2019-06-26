@@ -12,7 +12,10 @@ Effect<FilterState> buildEffect() {
   });
 }
 
-void _init(Action action, Context<FilterState> ctx) {
+void _init(
+  Action action,
+  Context<FilterState> ctx,
+) {
   ctx.dispatch(FilterActionCreator.onInitContext(ctx.context));
   if (ctx.state.flag == 'level') {
     DicoHttpRepository.doGetHazardLevelRequest().then((model) {
@@ -57,4 +60,7 @@ void _init(Action action, Context<FilterState> ctx) {
   }
 }
 
-void _onAction(Action action, Context<FilterState> ctx) {}
+void _onAction(
+  Action action,
+  Context<FilterState> ctx,
+) {}

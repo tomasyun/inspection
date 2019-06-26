@@ -12,9 +12,15 @@ Effect<RectifyInfoFragState> buildEffect() {
   });
 }
 
-void _onAction(Action action, Context<RectifyInfoFragState> ctx) {}
+void _onAction(
+  Action action,
+  Context<RectifyInfoFragState> ctx,
+) {}
 
-void _onInit(Action action, Context<RectifyInfoFragState> ctx) {
+void _onInit(
+  Action action,
+  Context<RectifyInfoFragState> ctx,
+) {
   DicoHttpRepository.doGetRectifyInfoRequest(ctx.state.id).then((model) {
     if (model.code == 0) {
       ctx.dispatch(RectifyInfoFragActionCreator.onGetRectifyInfoModel(model));

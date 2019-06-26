@@ -15,31 +15,46 @@ Reducer<HazardState> buildReducer() {
   );
 }
 
-HazardState _onAction(HazardState state, Action action) {
+HazardState _onAction(
+  HazardState state,
+  Action action,
+) {
   HazardState newState = state.clone();
   newState.model = action.payload;
   return newState;
 }
 
-HazardState _onGetContext(HazardState state, Action action) {
+HazardState _onGetContext(
+  HazardState state,
+  Action action,
+) {
   HazardState newState = state.clone();
   newState.context = action.payload;
   return newState;
 }
 
-HazardState _getStartDate(HazardState state, Action action) {
+HazardState _getStartDate(
+  HazardState state,
+  Action action,
+) {
   HazardState newState = state.clone();
   newState.startDate = action.payload;
   return newState;
 }
 
-HazardState _getEndDate(HazardState state, Action action) {
+HazardState _getEndDate(
+  HazardState state,
+  Action action,
+) {
   HazardState newState = state.clone();
   newState.endDate = action.payload;
   return newState;
 }
 
-HazardState _getHazardState(HazardState state, Action action) {
+HazardState _getHazardState(
+  HazardState state,
+  Action action,
+) {
   HazardState newState = state.clone();
   newState.state = action.payload;
   return newState;

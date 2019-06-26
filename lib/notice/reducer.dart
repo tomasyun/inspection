@@ -14,18 +14,27 @@ Reducer<NoticeState> buildReducer() {
   );
 }
 
-NoticeState _onAction(NoticeState state, Action action) {
+NoticeState _onAction(
+  NoticeState state,
+  Action action,
+) {
   final NoticeState newState = state.clone();
   return newState;
 }
 
-NoticeState _onDeleteAction(NoticeState state, Action action) {
+NoticeState _onDeleteAction(
+  NoticeState state,
+  Action action,
+) {
   NoticeState newState = state.clone();
   newState.model = action.payload;
   return newState;
 }
 
-NoticeState _onGetNotices(NoticeState state, Action action) {
+NoticeState _onGetNotices(
+  NoticeState state,
+  Action action,
+) {
   NoticeState newState = state.clone();
   newState.model = action.payload;
   return newState;

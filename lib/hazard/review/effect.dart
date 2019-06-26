@@ -9,4 +9,7 @@ Effect<ReviewState> buildEffect() {
   });
 }
 
-void _onAction(Action action, Context<ReviewState> ctx) {}
+void _onAction(
+  Action action,
+  Context<ReviewState> ctx,
+) {}

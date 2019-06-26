@@ -12,9 +12,15 @@ Effect<HazardInfoFragState> buildEffect() {
   });
 }
 
-void _onAction(Action action, Context<HazardInfoFragState> ctx) {}
+void _onAction(
+  Action action,
+  Context<HazardInfoFragState> ctx,
+) {}
 
-void _onInit(Action action, Context<HazardInfoFragState> ctx) {
+void _onInit(
+  Action action,
+  Context<HazardInfoFragState> ctx,
+) {
   DicoHttpRepository.doGetHazardInfoRequest(ctx.state.id).then((model) {
     if (model.code == 0) {
       ctx.dispatch(HazardInfoFragActionCreator.onGetHazardModelAction(model));

@@ -12,18 +12,27 @@ Reducer<InspectPlanState> buildReducer() {
   );
 }
 
-InspectPlanState _onAction(InspectPlanState state, Action action) {
+InspectPlanState _onAction(
+  InspectPlanState state,
+  Action action,
+) {
   final InspectPlanState newState = state.clone();
   return newState;
 }
 
-InspectPlanState _onGetInspectPlanState(InspectPlanState state, Action action) {
+InspectPlanState _onGetInspectPlanState(
+  InspectPlanState state,
+  Action action,
+) {
   InspectPlanState newState = state.clone();
   newState.planState = action.payload;
   return newState;
 }
 
-InspectPlanState _onGetInspectPlans(InspectPlanState state, Action action) {
+InspectPlanState _onGetInspectPlans(
+  InspectPlanState state,
+  Action action,
+) {
   InspectPlanState newState = state.clone();
   newState.model = action.payload;
   return newState;

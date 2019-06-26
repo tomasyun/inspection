@@ -3,7 +3,11 @@ class InspectContentModel {
   String msg;
   List<Data> data;
 
-  InspectContentModel({this.code, this.msg, this.data});
+  InspectContentModel({
+    this.code,
+    this.msg,
+    this.data,
+  });
 
   InspectContentModel.fromJson(Map<String, dynamic> json) {
     code = json['code'];
@@ -32,7 +36,11 @@ class Data {
   String targetId;
   bool isOpen = true;
 
-  Data({this.targetName, this.targetId, this.isOpen});
+  Data({
+    this.targetName,
+    this.targetId,
+    this.isOpen,
+  });
 
   Data.fromJson(Map<String, dynamic> json) {
     targetName = json['targetName'];

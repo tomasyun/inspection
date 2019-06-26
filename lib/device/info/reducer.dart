@@ -12,12 +12,18 @@ Reducer<InfoState> buildReducer() {
   );
 }
 
-InfoState _onAction(InfoState state, Action action) {
+InfoState _onAction(
+  InfoState state,
+  Action action,
+) {
   final InfoState newState = state.clone();
   return newState;
 }
 
-InfoState _onGetEquipmentInfoModels(InfoState state, Action action) {
+InfoState _onGetEquipmentInfoModels(
+  InfoState state,
+  Action action,
+) {
   InfoState newState = state.clone();
   newState.model = action.payload;
   return newState;

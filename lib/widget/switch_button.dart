@@ -6,12 +6,12 @@ import 'package:inspection/widget/switch_button_printer.dart';
 
 // ignore: must_be_immutable
 class SwitchButton extends StatefulWidget {
-  SwitchButton(
-      {Key key,
-      this.size = const Size(50.0, 30.0),
-      this.isOpen = true,
-      this.callback})
-      : super(key: key);
+  SwitchButton({
+    Key key,
+    this.size = const Size(50.0, 30.0),
+    this.isOpen = true,
+    this.callback,
+  }) : super(key: key);
   Size size;
   bool isOpen;
   VoidCallback callback;
@@ -44,7 +44,11 @@ class _SwitchButtonState extends State<SwitchButton>
     });
   }
 
-  bool _isInCircle(double radius, Offset circleCenter, Offset point) =>
+  bool _isInCircle(
+    double radius,
+    Offset circleCenter,
+    Offset point,
+  ) =>
       pow(point.dx - circleCenter.dx, 2) + pow(point.dy - circleCenter.dy, 2) <=
       pow(radius, 2);
 

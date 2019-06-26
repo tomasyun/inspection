@@ -11,9 +11,15 @@ Effect<ProfileState> buildEffect() {
   });
 }
 
-void _onAction(Action action, Context<ProfileState> ctx) {}
+void _onAction(
+  Action action,
+  Context<ProfileState> ctx,
+) {}
 
-void _onGetUserInfo(Action action, Context<ProfileState> ctx) {
+void _onGetUserInfo(
+  Action action,
+  Context<ProfileState> ctx,
+) {
   DicoHttpRepository.doGetUserInfoRequest().then((model) {
     if (model.code == 0) {
       ctx.dispatch(ProfileActionCreator.onGetUserInfo(model));

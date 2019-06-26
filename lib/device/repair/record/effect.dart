@@ -10,7 +10,10 @@ Effect<RecordState> buildEffect() {
   });
 }
 
-_onAction(Action action, Context<RecordState> ctx) {
+_onAction(
+  Action action,
+  Context<RecordState> ctx,
+) {
   DicoHttpRepository.doGetRepairRecordRequest(ctx.state.equipmentId)
       .then((model) {
     if (model.code == 0) {

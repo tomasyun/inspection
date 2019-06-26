@@ -5,7 +5,10 @@ import 'package:inspection/charts/simple_line_chart.dart';
 import 'state.dart';
 
 Widget buildView(
-    SaveAnalyseState state, Dispatch dispatch, ViewService viewService) {
+  SaveAnalyseState state,
+  Dispatch dispatch,
+  ViewService viewService,
+) {
   return Scaffold(
     appBar: AppBar(
       title: Text(

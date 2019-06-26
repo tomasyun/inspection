@@ -15,7 +15,10 @@ Effect<InspectPlanState> buildEffect() {
   });
 }
 
-void _onAction(Action action, Context<InspectPlanState> ctx) {}
+void _onAction(
+  Action action,
+  Context<InspectPlanState> ctx,
+) {}
 
 void _onSelectPlanState(Action action, Context<InspectPlanState> ctx) {
   Map<String, String> map = Map();
@@ -35,7 +38,10 @@ void _onSelectPlanState(Action action, Context<InspectPlanState> ctx) {
       }).showDialog(ctx.context);
 }
 
-void _onSearchAction(Action action, Context<InspectPlanState> ctx) {
+void _onSearchAction(
+  Action action,
+  Context<InspectPlanState> ctx,
+) {
   if (ctx.state.controller.text.isNotEmpty) {
     ctx.state.map['planName'] = ctx.state.controller.text;
   }
@@ -58,7 +64,10 @@ void _onSearchAction(Action action, Context<InspectPlanState> ctx) {
   });
 }
 
-void _onResetAction(Action action, Context<InspectPlanState> ctx) {
+void _onResetAction(
+  Action action,
+  Context<InspectPlanState> ctx,
+) {
   ctx.dispatch(InspectPlanActionCreator.onGetPlanStateAction('请选择'));
   ctx.state.map.clear();
   String research = '?isSelf=false';
@@ -71,7 +80,10 @@ void _onResetAction(Action action, Context<InspectPlanState> ctx) {
   });
 }
 
-void _onGetInspectPlans(Action action, Context<InspectPlanState> ctx) {
+void _onGetInspectPlans(
+  Action action,
+  Context<InspectPlanState> ctx,
+) {
   String research = '?isSelf=false';
   DicoHttpRepository.doInspectPlanRequest(research).then((model) {
     if (model.code == 0) {

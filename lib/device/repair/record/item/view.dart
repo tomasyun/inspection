@@ -2,7 +2,11 @@ import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart';
 import 'package:inspection/entity/repair_record_model.dart';
 
-Widget buildView(Data data, Dispatch dispatch, ViewService viewService) {
+Widget buildView(
+  Data data,
+  Dispatch dispatch,
+  ViewService viewService,
+) {
   return GestureDetector(
     onTap: () {
 //      dispatch(RecordItemActionCreator.onAction());
@@ -42,7 +46,10 @@ Widget buildView(Data data, Dispatch dispatch, ViewService viewService) {
   );
 }
 
-Widget _buildItem({String title, String result}) {
+Widget _buildItem({
+  String title,
+  String result,
+}) {
   return Container(
     margin: EdgeInsets.only(top: 5.0),
     child: Row(
@@ -79,7 +86,10 @@ Widget _buildItem({String title, String result}) {
   );
 }
 
-Widget _buildItemHeader({String title, String result}) {
+Widget _buildItemHeader({
+  String title,
+  String result,
+}) {
   return Container(
     child: Row(
       crossAxisAlignment: CrossAxisAlignment.end,

@@ -3,7 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:inspection/entity/hazard_model.dart';
 import 'package:inspection/hazard/info/page.dart';
 
-Widget buildView(Data data, Dispatch dispatch, ViewService viewService) {
+Widget buildView(
+  Data data,
+  Dispatch dispatch,
+  ViewService viewService,
+) {
   Map<String, dynamic> map = Map();
   map['id'] = data.dangerId;
   if (data.todoType == '0') {

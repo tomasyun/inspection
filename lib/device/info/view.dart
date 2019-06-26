@@ -5,7 +5,11 @@ import 'package:inspection/widget/state_view.dart' as stateView;
 
 import 'state.dart';
 
-Widget buildView(InfoState state, Dispatch dispatch, ViewService viewService) {
+Widget buildView(
+  InfoState state,
+  Dispatch dispatch,
+  ViewService viewService,
+) {
   return Scaffold(
       appBar: AppBar(
         title: Text(

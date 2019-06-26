@@ -15,30 +15,45 @@ Reducer<HazardReportState> buildReducer() {
   );
 }
 
-HazardReportState _onAction(HazardReportState state, Action action) {
+HazardReportState _onAction(
+  HazardReportState state,
+  Action action,
+) {
   HazardReportState newState = state.clone();
   return newState;
 }
 
-HazardReportState _onGetDeviceName(HazardReportState state, Action action) {
+HazardReportState _onGetDeviceName(
+  HazardReportState state,
+  Action action,
+) {
   HazardReportState newState = state.clone();
   newState.deviceInfo = action.payload;
   return newState;
 }
 
-HazardReportState _onPickImages(HazardReportState state, Action action) {
+HazardReportState _onPickImages(
+  HazardReportState state,
+  Action action,
+) {
   HazardReportState newState = state.clone();
   newState.assets = action.payload;
   return newState;
 }
 
-HazardReportState _onGetLevelRst(HazardReportState state, Action action) {
+HazardReportState _onGetLevelRst(
+  HazardReportState state,
+  Action action,
+) {
   HazardReportState newState = state.clone();
   newState.levelRst = action.payload;
   return newState;
 }
 
-HazardReportState _onGetTypeRst(HazardReportState state, Action action) {
+HazardReportState _onGetTypeRst(
+  HazardReportState state,
+  Action action,
+) {
   HazardReportState newState = state.clone();
   newState.typeRst = action.payload;
   return newState;

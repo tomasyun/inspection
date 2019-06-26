@@ -11,7 +11,10 @@ Reducer<CostApplyState> buildReducer() {
   );
 }
 
-CostApplyState _onAction(CostApplyState state, Action action) {
+CostApplyState _onAction(
+  CostApplyState state,
+  Action action,
+) {
   final CostApplyState newState = state.clone();
   return newState;
 }

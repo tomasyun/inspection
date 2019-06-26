@@ -12,7 +12,10 @@ Reducer<RectifyInfoFragState> buildReducer() {
   );
 }
 
-RectifyInfoFragState _onAction(RectifyInfoFragState state, Action action) {
+RectifyInfoFragState _onAction(
+  RectifyInfoFragState state,
+  Action action,
+) {
   final RectifyInfoFragState newState = state.clone();
   return newState;
 }

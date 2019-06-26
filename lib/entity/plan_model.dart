@@ -3,7 +3,11 @@ class PlanModel {
   String msg;
   List<Data> data;
 
-  PlanModel({this.code, this.msg, this.data});
+  PlanModel({
+    this.code,
+    this.msg,
+    this.data,
+  });
 
   PlanModel.fromJson(Map<String, dynamic> json) {
     code = json['code'];
@@ -37,15 +41,16 @@ class Data {
   String planId;
   String planCode;
 
-  Data(
-      {this.beginDate,
-      this.planOrganization,
-      this.endDate,
-      this.planPerson,
-      this.planName,
-      this.planStatus,
-        this.planId,
-      this.planCode});
+  Data({
+    this.beginDate,
+    this.planOrganization,
+    this.endDate,
+    this.planPerson,
+    this.planName,
+    this.planStatus,
+    this.planId,
+    this.planCode,
+  });
 
   Data.fromJson(Map<String, dynamic> json) {
     beginDate = json['beginDate'];

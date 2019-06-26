@@ -11,9 +11,15 @@ Effect<MinePlanState> buildEffect() {
   });
 }
 
-void _onAction(Action action, Context<MinePlanState> ctx) {}
+void _onAction(
+  Action action,
+  Context<MinePlanState> ctx,
+) {}
 
-void _onGetMinePlans(Action action, Context<MinePlanState> ctx) {
+void _onGetMinePlans(
+  Action action,
+  Context<MinePlanState> ctx,
+) {
   String search = '?isSelf=true';
   DicoHttpRepository.doInspectPlanRequest(search).then((model) {
     ctx.dispatch(MinePlanActionCreator.onGetMinePlans(model));

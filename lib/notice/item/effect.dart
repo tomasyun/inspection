@@ -12,9 +12,15 @@ Effect<Data> buildEffect() {
   });
 }
 
-void _onAction(Action action, Context<Data> ctx) {}
+void _onAction(
+  Action action,
+  Context<Data> ctx,
+) {}
 
-Future _onDeleteAction(Action action, Context<Data> ctx) async {
+Future _onDeleteAction(
+  Action action,
+  Context<Data> ctx,
+) async {
   final String select = await showDialog<String>(
       context: ctx.context,
       builder: (BuildContext buildContext) {

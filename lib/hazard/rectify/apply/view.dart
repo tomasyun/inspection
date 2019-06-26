@@ -5,7 +5,10 @@ import 'package:inspection/hazard/rectify/apply/action.dart';
 import 'state.dart';
 
 Widget buildView(
-    CostApplyState state, Dispatch dispatch, ViewService viewService) {
+  CostApplyState state,
+  Dispatch dispatch,
+  ViewService viewService,
+) {
   return Scaffold(
     backgroundColor: Colors.grey[100],
     appBar: AppBar(

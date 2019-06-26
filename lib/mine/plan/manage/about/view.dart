@@ -5,7 +5,10 @@ import 'package:inspection/widget/state_view.dart' as StateView;
 import 'state.dart';
 
 Widget buildView(
-    PlanAboutState state, Dispatch dispatch, ViewService viewService) {
+  PlanAboutState state,
+  Dispatch dispatch,
+  ViewService viewService,
+) {
   ListAdapter listAdapter = viewService.buildAdapter();
   return Scaffold(
     appBar: AppBar(

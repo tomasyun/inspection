@@ -6,6 +6,9 @@ enum KeepAction { action }
 
 class KeepActionCreator {
   static Action onAction(KeepRecordModel list) {
-    return Action(KeepAction.action, payload: list);
+    return Action(
+      KeepAction.action,
+      payload: list,
+    );
   }
 }

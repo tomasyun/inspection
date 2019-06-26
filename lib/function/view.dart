@@ -5,7 +5,10 @@ import 'package:inspection/function/action.dart';
 import 'state.dart';
 
 Widget buildView(
-    FunctionState state, Dispatch dispatch, ViewService viewService) {
+  FunctionState state,
+  Dispatch dispatch,
+  ViewService viewService,
+) {
   return Scaffold(
     backgroundColor: Colors.white,
     appBar: AppBar(

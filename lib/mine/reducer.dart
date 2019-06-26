@@ -12,12 +12,18 @@ Reducer<MineState> buildReducer() {
   );
 }
 
-MineState _onAction(MineState state, Action action) {
+MineState _onAction(
+  MineState state,
+  Action action,
+) {
   final MineState newState = state.clone();
   return newState;
 }
 
-MineState _onGetUserBaseInfo(MineState state, Action action) {
+MineState _onGetUserBaseInfo(
+  MineState state,
+  Action action,
+) {
   MineState newState = state.clone();
   newState.map = action.payload;
   return newState;

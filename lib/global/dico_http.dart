@@ -62,7 +62,10 @@ class DicoHttpRepository {
 
   ///登录
   static Future<LoginModel> userLogin(Map<String, String> map) async =>
-      LoginModel.fromJson(await HttpUtil().post(login, data: map));
+      LoginModel.fromJson(await HttpUtil().post(
+        login,
+        data: map,
+      ));
 
   ///首页
   static Future<HomeModel> homeRequest() async =>
@@ -71,7 +74,10 @@ class DicoHttpRepository {
   /// 隐患上报
   static Future<Map<String, dynamic>> hazardReportRequest(
           FormData data) async =>
-      await HttpUtil().post(hazardReport, data: data);
+      await HttpUtil().post(
+        hazardReport,
+        data: data,
+      );
 
   ///获取隐患等级
   static Future<FilterModel> doGetHazardLevelRequest() async =>
@@ -109,7 +115,10 @@ class DicoHttpRepository {
   ///密码修改
   static Future<Map<String, dynamic>> doUpdatePasswordRequest(
           FormData data) async =>
-      await HttpUtil().post(updatePassword, data: data);
+      await HttpUtil().post(
+        updatePassword,
+        data: data,
+      );
 
   ///代办任务
   static Future<TaskModel> doGetTodosRequest() async =>
@@ -150,7 +159,10 @@ class DicoHttpRepository {
   ///维修上报
   static Future<Map<String, dynamic>> repairReportRequest(
       Map<String, String> map) async {
-    return await HttpUtil().post(repairReport, data: map);
+    return await HttpUtil().post(
+      repairReport,
+      data: map,
+    );
   }
 
   ///设备预警
@@ -175,7 +187,10 @@ class DicoHttpRepository {
   ///整改上报
   static Future<Map<String, dynamic>> doSendRectifyReport(
           FormData data) async =>
-      await HttpUtil().post(rectifyReport, data: data);
+      await HttpUtil().post(
+        rectifyReport,
+        data: data,
+      );
 
   ///获取整改单信息
   static Future<RectifyFormModel> doGetRectifyFormRequest(
@@ -191,7 +206,10 @@ class DicoHttpRepository {
   ///复查上报
   static Future<Map<String, dynamic>> doSendRecheckReport(
           FormData data) async =>
-      await HttpUtil().post(recheckReport, data: data);
+      await HttpUtil().post(
+        recheckReport,
+        data: data,
+      );
 
   ///检查计划
   static Future<PlanModel> doInspectPlanRequest(String search) async =>
@@ -211,5 +229,8 @@ class DicoHttpRepository {
   ///保存巡检结果
   static Future<Map<String, dynamic>> doSaveInspectItemRequest(
           String data) async =>
-      await HttpUtil().post(saveInspectItem, data: data);
+      await HttpUtil().post(
+        saveInspectItem,
+        data: data,
+      );
 }

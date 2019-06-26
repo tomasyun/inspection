@@ -11,7 +11,10 @@ Reducer<WarningState> buildReducer() {
   );
 }
 
-WarningState _onAction(WarningState state, Action action) {
+WarningState _onAction(
+  WarningState state,
+  Action action,
+) {
   WarningState newState = state.clone();
   newState.model = action.payload;
   return newState;

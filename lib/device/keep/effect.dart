@@ -11,7 +11,10 @@ Effect<KeepState> buildEffect() {
   });
 }
 
-void _onAction(Action action, Context<KeepState> ctx) {
+void _onAction(
+  Action action,
+  Context<KeepState> ctx,
+) {
   DicoHttpRepository.doGetKeepRecordRequest(ctx.state.equipmentId)
       .then((model) {
     if (model.code == 0) {

@@ -24,9 +24,15 @@ Effect<InspectionTaskState> buildEffect() {
   });
 }
 
-void _onAction(Action action, Context<InspectionTaskState> ctx) {}
+void _onAction(
+  Action action,
+  Context<InspectionTaskState> ctx,
+) {}
 
-void _onSubmit(Action action, Context<InspectionTaskState> ctx) {
+void _onSubmit(
+  Action action,
+  Context<InspectionTaskState> ctx,
+) {
   List<TargetResults> targetResults = [];
   if (ctx.state.model.data.isNotEmpty) {
     var list = ctx.state.model.data;
@@ -49,19 +55,28 @@ void _onSubmit(Action action, Context<InspectionTaskState> ctx) {
   });
 }
 
-void _onBreakDownReport(Action action, Context<InspectionTaskState> ctx) {
+void _onBreakDownReport(
+  Action action,
+  Context<InspectionTaskState> ctx,
+) {
   Navigator.of(ctx.context).push(MaterialPageRoute(builder: (context) {
     return ReportPage().buildPage(null);
   }));
 }
 
-void _onHazardReport(Action action, Context<InspectionTaskState> ctx) {
+void _onHazardReport(
+  Action action,
+  Context<InspectionTaskState> ctx,
+) {
   Navigator.of(ctx.context).push(MaterialPageRoute(builder: (context) {
     return HazardReportPage().buildPage(null);
   }));
 }
 
-void _onShowBottomSheet(Action action, Context<InspectionTaskState> ctx) {
+void _onShowBottomSheet(
+  Action action,
+  Context<InspectionTaskState> ctx,
+) {
   showModalBottomSheet(
       context: ctx.context,
       builder: (builder) {
@@ -112,7 +127,10 @@ void _onShowBottomSheet(Action action, Context<InspectionTaskState> ctx) {
       });
 }
 
-void _onScanQRCode(Action action, Context<InspectionTaskState> ctx) async {
+void _onScanQRCode(
+  Action action,
+  Context<InspectionTaskState> ctx,
+) async {
   try {
     String qrResult = await BarcodeScanner.scan();
     if (ctx.state.equipmentId != null) {

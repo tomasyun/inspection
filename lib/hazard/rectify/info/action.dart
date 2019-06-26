@@ -10,6 +10,9 @@ class RectifyInfoActionCreator {
   }
 
   static Action onGetRectifyInfoAction(RectifyInfoModel model) {
-    return Action(RectifyInfoAction.info, payload: model);
+    return Action(
+      RectifyInfoAction.info,
+      payload: model,
+    );
   }
 }

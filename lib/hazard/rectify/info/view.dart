@@ -5,7 +5,10 @@ import 'package:inspection/global/app_common.dart';
 import 'state.dart';
 
 Widget buildView(
-    RectifyInfoState state, Dispatch dispatch, ViewService viewService) {
+  RectifyInfoState state,
+  Dispatch dispatch,
+  ViewService viewService,
+) {
   return Scaffold(
     backgroundColor: Colors.grey[100],
     appBar: AppBar(

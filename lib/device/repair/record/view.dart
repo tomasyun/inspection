@@ -4,7 +4,10 @@ import 'package:inspection/device/repair/record/state.dart';
 import 'package:inspection/widget/state_view.dart' as StateView;
 
 Widget buildView(
-    RecordState state, Dispatch dispatch, ViewService viewService) {
+  RecordState state,
+  Dispatch dispatch,
+  ViewService viewService,
+) {
   ListAdapter listAdapter = viewService.buildAdapter();
   return Scaffold(
     appBar: AppBar(

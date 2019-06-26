@@ -64,6 +64,7 @@ class SimpleBarChart extends StatelessWidget {
       )
     ];
   }
+
   // EXCLUDE_FROM_GALLERY_DOCS_END
 
   @override

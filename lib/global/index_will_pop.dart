@@ -9,11 +9,15 @@ class IndexWillPop extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(child: child, onWillPop: doubleClickBack);
+    return WillPopScope(
+      child: child,
+      onWillPop: doubleClickBack,
+    );
   }
 
   //双击home键退出应用程序
   int _lastClickTime = 0;
+
   Future<bool> doubleClickBack() {
     int nowTime = DateTime.now().microsecondsSinceEpoch;
     if (_lastClickTime != 0 && nowTime - _lastClickTime > 1500) {

@@ -13,20 +13,27 @@ Reducer<InspectionTaskState> buildReducer() {
   );
 }
 
-InspectionTaskState _onAction(InspectionTaskState state, Action action) {
+InspectionTaskState _onAction(
+  InspectionTaskState state,
+  Action action,
+) {
   final InspectionTaskState newState = state.clone();
   return newState;
 }
 
 InspectionTaskState _onGetDeviceInfoAction(
-    InspectionTaskState state, Action action) {
+  InspectionTaskState state,
+  Action action,
+) {
   InspectionTaskState newState = state.clone();
   newState.map = action.payload;
   return newState;
 }
 
 InspectionTaskState _onGetInspectionTasks(
-    InspectionTaskState state, Action action) {
+  InspectionTaskState state,
+  Action action,
+) {
   InspectionTaskState newState = state.clone();
   newState.model = action.payload;
   return newState;

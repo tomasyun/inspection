@@ -11,7 +11,10 @@ Reducer<SplashState> buildReducer() {
   );
 }
 
-SplashState _onAction(SplashState state, Action action) {
+SplashState _onAction(
+  SplashState state,
+  Action action,
+) {
   final SplashState newState = state.clone();
   return newState;
 }

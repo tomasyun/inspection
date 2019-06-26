@@ -4,8 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:inspection/widget/switch_button_lerp.dart';
 
 class SwitchButtonTween extends Tween<SwitchButtonLerp> {
-  SwitchButtonTween(SwitchButtonLerp begin, SwitchButtonLerp end)
-      : super(begin: begin, end: end);
+  SwitchButtonTween(
+    SwitchButtonLerp begin,
+    SwitchButtonLerp end,
+  ) : super(begin: begin, end: end);
 
   @override
   SwitchButtonLerp lerp(double fraction) =>
@@ -20,7 +22,10 @@ class SwitchButtonPainter extends CustomPainter {
   Animation<SwitchButtonLerp> animation;
 
   @override
-  void paint(Canvas canvas, Size size) {
+  void paint(
+    Canvas canvas,
+    Size size,
+  ) {
     final double animationValue = animation.value.fraction;
     final bool openState = animation.value.isOpen;
     final paint = Paint()

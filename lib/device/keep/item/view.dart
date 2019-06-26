@@ -2,7 +2,11 @@ import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart';
 import 'package:inspection/entity/keep_record_model.dart';
 
-Widget buildView(Data data, Dispatch dispatch, ViewService viewService) {
+Widget buildView(
+  Data data,
+  Dispatch dispatch,
+  ViewService viewService,
+) {
   return GestureDetector(
     onTap: () {
 //      dispatch(RecordItemActionCreator.onAction());

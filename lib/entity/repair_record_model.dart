@@ -3,7 +3,11 @@ class RepairRecordModel {
   String msg;
   List<Data> data;
 
-  RepairRecordModel({this.code, this.msg, this.data});
+  RepairRecordModel({
+    this.code,
+    this.msg,
+    this.data,
+  });
 
   RepairRecordModel.fromJson(Map<String, dynamic> json) {
     code = json['code'];
@@ -34,12 +38,13 @@ class Data {
   String equipmentName;
   String repairDate;
 
-  Data(
-      {this.organizationName,
-      this.personLiableName,
-      this.repairPersonName,
-      this.equipmentName,
-      this.repairDate});
+  Data({
+    this.organizationName,
+    this.personLiableName,
+    this.repairPersonName,
+    this.equipmentName,
+    this.repairDate,
+  });
 
   Data.fromJson(Map<String, dynamic> json) {
     organizationName = json['organizationName'];

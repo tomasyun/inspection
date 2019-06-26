@@ -11,7 +11,10 @@ Reducer<SettingState> buildReducer() {
   );
 }
 
-SettingState _onAction(SettingState state, Action action) {
+SettingState _onAction(
+  SettingState state,
+  Action action,
+) {
   final SettingState newState = state.clone();
   return newState;
 }

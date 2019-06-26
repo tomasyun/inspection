@@ -2,7 +2,10 @@ import 'package:fish_redux/fish_redux.dart';
 import 'package:inspection/entity/user_model.dart';
 
 //TODO replace with your own action
-enum ProfileAction { action, userInfo }
+enum ProfileAction {
+  action,
+  userInfo,
+}
 
 class ProfileActionCreator {
   static Action onAction() {
@@ -10,6 +13,9 @@ class ProfileActionCreator {
   }
 
   static Action onGetUserInfo(UserModel model) {
-    return Action(ProfileAction.userInfo, payload: model);
+    return Action(
+      ProfileAction.userInfo,
+      payload: model,
+    );
   }
 }

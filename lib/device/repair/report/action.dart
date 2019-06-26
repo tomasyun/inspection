@@ -39,19 +39,31 @@ class ReportActionCreator {
   }
 
   static Action onGetDepartRst(Map<String, String> map) {
-    return Action(ReportAction.departRst, payload: map);
+    return Action(
+      ReportAction.departRst,
+      payload: map,
+    );
   }
 
   static Action onGetPicRst(Map<String, String> map) {
-    return Action(ReportAction.picRst, payload: map);
+    return Action(
+      ReportAction.picRst,
+      payload: map,
+    );
   }
 
   static Action onGetRepairManRst(Map<String, String> map) {
-    return Action(ReportAction.repairmanRst, payload: map);
+    return Action(
+      ReportAction.repairmanRst,
+      payload: map,
+    );
   }
 
   static Action onGetRepairDateRst(String repairDate) {
-    return Action(ReportAction.repairDateRst, payload: repairDate);
+    return Action(
+      ReportAction.repairDateRst,
+      payload: repairDate,
+    );
   }
 
   static Action onReport() {
@@ -67,6 +79,9 @@ class ReportActionCreator {
   }
 
   static Action onGetDeviceInfo(Map<String, String> map) {
-    return Action(ReportAction.deviceInfo, payload: map);
+    return Action(
+      ReportAction.deviceInfo,
+      payload: map,
+    );
   }
 }

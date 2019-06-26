@@ -11,9 +11,15 @@ Effect<CostApplyState> buildEffect() {
   });
 }
 
-void _onAction(Action action, Context<CostApplyState> ctx) {}
+void _onAction(
+  Action action,
+  Context<CostApplyState> ctx,
+) {}
 
-void _onReport(Action action, Context<CostApplyState> ctx) {
+void _onReport(
+  Action action,
+  Context<CostApplyState> ctx,
+) {
 //  AppToast.showToast('暂未实现');
   if (ctx.state.costController.text.isEmpty) {
     AppCommons.showToast('请输入整改金额');

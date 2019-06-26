@@ -12,12 +12,18 @@ Reducer<HazardHistoryState> buildReducer() {
   );
 }
 
-HazardHistoryState _onAction(HazardHistoryState state, Action action) {
+HazardHistoryState _onAction(
+  HazardHistoryState state,
+  Action action,
+) {
   final HazardHistoryState newState = state.clone();
   return newState;
 }
 
-HazardHistoryState _init(HazardHistoryState state, Action action) {
+HazardHistoryState _init(
+  HazardHistoryState state,
+  Action action,
+) {
   HazardHistoryState newState = state.clone();
   newState.model = action.payload;
   return newState;

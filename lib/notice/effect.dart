@@ -11,9 +11,15 @@ Effect<NoticeState> buildEffect() {
   });
 }
 
-void _onAction(Action action, Context<NoticeState> ctx) {}
+void _onAction(
+  Action action,
+  Context<NoticeState> ctx,
+) {}
 
-void _onGetNotices(Action action, Context<NoticeState> ctx) {
+void _onGetNotices(
+  Action action,
+  Context<NoticeState> ctx,
+) {
   DicoHttpRepository.doGetNotice().then((model) {
     ctx.dispatch(NoticeActionCreator.onGetNotices(model));
   });

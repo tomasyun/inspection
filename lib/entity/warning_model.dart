@@ -3,7 +3,11 @@ class WarningModel {
   String msg;
   List<Data> data;
 
-  WarningModel({this.code, this.msg, this.data});
+  WarningModel({
+    this.code,
+    this.msg,
+    this.data,
+  });
 
   WarningModel.fromJson(Map<String, dynamic> json) {
     code = json['code'];
@@ -35,13 +39,14 @@ class Data {
   String warningLevel;
   int days;
 
-  Data(
-      {this.organization,
-      this.equipmentCode,
-      this.equipmentName,
-      this.person,
-      this.warningLevel,
-      this.days});
+  Data({
+    this.organization,
+    this.equipmentCode,
+    this.equipmentName,
+    this.person,
+    this.warningLevel,
+    this.days,
+  });
 
   Data.fromJson(Map<String, dynamic> json) {
     organization = json['organization'];

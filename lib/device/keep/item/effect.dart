@@ -9,4 +9,7 @@ Effect<Data> buildEffect() {
   });
 }
 
-void _onAction(Action action, Context<Data> ctx) {}
+void _onAction(
+  Action action,
+  Context<Data> ctx,
+) {}

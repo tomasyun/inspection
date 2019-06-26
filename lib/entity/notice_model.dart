@@ -1,22 +1,13 @@
-/**
- * {
-    "code": 0,
-    "msg": "成功",
-    "data": [{
-    "messageId": "40288a9f6ab0743c016ab07a17f60000",
-    "messageTitle": "习近平的一天如何度过？",
-    "messageDate": "2019-05-13",
-    "messageContent": "7987987"
-    }]
-    }
- */
-
 class NoticeModel {
   int code;
   String msg;
   List<Data> data;
 
-  NoticeModel({this.code, this.msg, this.data});
+  NoticeModel({
+    this.code,
+    this.msg,
+    this.data,
+  });
 
   NoticeModel.fromJson(Map<String, dynamic> json) {
     code = json['code'];
@@ -46,11 +37,12 @@ class Data {
   String messageDate;
   String messageContent;
 
-  Data(
-      {this.messageTitle,
-      this.messageId,
-      this.messageDate,
-      this.messageContent});
+  Data({
+    this.messageTitle,
+    this.messageId,
+    this.messageDate,
+    this.messageContent,
+  });
 
   Data.fromJson(Map<String, dynamic> json) {
     messageTitle = json['messageTitle'];

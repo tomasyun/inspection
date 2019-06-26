@@ -16,13 +16,19 @@ Effect<LoginState> buildEffect() {
   });
 }
 
-void _onAction(Action action, Context<LoginState> ctx) {}
+void _onAction(
+  Action action,
+  Context<LoginState> ctx,
+) {}
 
 void _onSwitchEyeAction(Action action, Context<LoginState> ctx) {
   ctx.dispatch(LoginActionCreator.onGetEyeStateAction(!ctx.state.isClose));
 }
 
-void _onLogin(Action action, Context<LoginState> ctx) {
+void _onLogin(
+  Action action,
+  Context<LoginState> ctx,
+) {
   if (ctx.state.userNameController.text.isEmpty) {
     AppCommons.showToast('用户名不能为空');
   } else if (ctx.state.passwordController.text.isEmpty) {

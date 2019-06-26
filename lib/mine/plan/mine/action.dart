@@ -10,6 +10,9 @@ class MinePlanActionCreator {
   }
 
   static Action onGetMinePlans(PlanModel list) {
-    return Action(MinePlanAction.plans, payload: list);
+    return Action(
+      MinePlanAction.plans,
+      payload: list,
+    );
   }
 }

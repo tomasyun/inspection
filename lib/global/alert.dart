@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 
 class AlertGlobal {
-  static void showAlert(
-      {String title,
-      String desc,
-      BuildContext context,
-      VoidCallback callback}) {
+  static void showAlert({
+    String title,
+    String desc,
+    BuildContext context,
+    VoidCallback callback,
+  }) {
     NavigatorState navigator =
         context.rootAncestorStateOfType(const TypeMatcher<NavigatorState>());
     Alert(

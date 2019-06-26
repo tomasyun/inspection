@@ -6,7 +6,10 @@ import 'package:multi_image_picker/multi_image_picker.dart';
 import 'state.dart';
 
 Widget buildView(
-    HazardReportState state, Dispatch dispatch, ViewService viewService) {
+  HazardReportState state,
+  Dispatch dispatch,
+  ViewService viewService,
+) {
   return Scaffold(
     backgroundColor: Colors.white,
     appBar: AppBar(

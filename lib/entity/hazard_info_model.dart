@@ -1,44 +1,13 @@
-/**
- *{
-    "code": 0,
-    "msg": "",
-    "data": {
-    "attachments": [
-    {
-    "fileName": "c64990ffd2b949fd9157ff1845adc7d1.jpg",
-    "fileUrl": "/img/d6afcd23ba764cfa8cda6508298ef213.jpg"
-    },
-    {
-    "fileName": "c64990ffd2b949fd9157ff1845adc7d1.jpg",
-    "fileUrl": "/img/789c4e0c4da04c20b013ced2a02278b4.jpg"
-    },
-    {
-    "fileName": "c64990ffd2b949fd9157ff1845adc7d1.jpg",
-    "fileUrl": "/img/03e37314a83e409689d19359c69ebb0a.jpg"
-    }
-    ],
-    "liableOrganization": "研发部",
-    "equipmentCode": "001",
-    "reviewOrganization": "研发部",
-    "dangerLevel": "一般隐患",
-    "reviewPerson": "系统管理员",
-    "liablePerson": "席沛锋",
-    "repairOrganization": "研发部",
-    "repairPerson": "系统管理员",
-    "dangerRemark": "隐患描述",
-    "dangerType": "消防隐患",
-    "equipmentName": "灭火器001",
-    "createDate": "2019-05-14"
-    }
-    }
- */
-
 class HazardInfoModel {
   int code;
   String msg;
   Data data;
 
-  HazardInfoModel({this.code, this.msg, this.data});
+  HazardInfoModel({
+    this.code,
+    this.msg,
+    this.data,
+  });
 
   HazardInfoModel.fromJson(Map<String, dynamic> json) {
     code = json['code'];

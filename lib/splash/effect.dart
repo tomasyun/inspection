@@ -9,4 +9,7 @@ Effect<SplashState> buildEffect() {
   });
 }
 
-void _onAction(Action action, Context<SplashState> ctx) {}
+void _onAction(
+  Action action,
+  Context<SplashState> ctx,
+) {}

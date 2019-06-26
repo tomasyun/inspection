@@ -7,7 +7,11 @@ import 'package:inspection/widget/state_view.dart' as StateView;
 
 import 'state.dart';
 
-Widget buildView(TaskState state, Dispatch dispatch, ViewService viewService) {
+Widget buildView(
+  TaskState state,
+  Dispatch dispatch,
+  ViewService viewService,
+) {
   return Scaffold(
     appBar: AppBar(
       title: Text(
@@ -42,8 +46,11 @@ Widget buildView(TaskState state, Dispatch dispatch, ViewService viewService) {
   );
 }
 
-List<Widget> _buildToDoWidgets(
-    {TaskState state, TaskModel model, ViewService viewService}) {
+List<Widget> _buildToDoWidgets({
+  TaskState state,
+  TaskModel model,
+  ViewService viewService,
+}) {
   List<Widget> list = [];
   if (model.data.rectify != null && model.data.rectify.isNotEmpty) {
     model.data.rectify.map((item) {
@@ -65,7 +72,10 @@ List<Widget> _buildToDoWidgets(
   return list;
 }
 
-Widget _recheck(TaskState state, Review review) {
+Widget _recheck(
+  TaskState state,
+  Review review,
+) {
   Map<String, dynamic> map = Map();
   map['id'] = review.dangerId;
   if (review.todoType == '0') {
@@ -164,7 +174,10 @@ Widget _recheck(TaskState state, Review review) {
   );
 }
 
-Widget _rectify(TaskState state, Rectify rectify) {
+Widget _rectify(
+  TaskState state,
+  Rectify rectify,
+) {
   Map<String, dynamic> map = Map();
   map['id'] = rectify.dangerId;
   if (rectify.todoType == '0') {
@@ -264,7 +277,10 @@ Widget _rectify(TaskState state, Rectify rectify) {
   );
 }
 
-Widget _inspect(Inspect inspect, ViewService viewService) {
+Widget _inspect(
+  Inspect inspect,
+  ViewService viewService,
+) {
   return Container(
     padding: EdgeInsets.all(15.0),
     margin: EdgeInsets.only(bottom: 10.0),
@@ -341,7 +357,10 @@ Widget _inspect(Inspect inspect, ViewService viewService) {
   );
 }
 
-Widget _buildItem({String title, String result}) {
+Widget _buildItem({
+  String title,
+  String result,
+}) {
   return Container(
     margin: EdgeInsets.only(top: 5.0),
     child: Row(
@@ -379,7 +398,10 @@ Widget _buildItem({String title, String result}) {
   );
 }
 
-Widget _buildItemHeader({String title, String result}) {
+Widget _buildItemHeader({
+  String title,
+  String result,
+}) {
   return Container(
     child: Row(
       crossAxisAlignment: CrossAxisAlignment.end,

@@ -5,8 +5,14 @@ import 'package:inspection/banner/banner_item.dart';
 
 const CountMax = 0x7fffffff;
 
-typedef void OnPress(int position, BannerItem item);
-typedef Widget Build(int position, BannerItem item);
+typedef void OnPress(
+  int position,
+  BannerItem item,
+);
+typedef Widget Build(
+  int position,
+  BannerItem item,
+);
 
 class BannerWidget extends StatefulWidget {
   final OnPress onPress;
@@ -15,15 +21,15 @@ class BannerWidget extends StatefulWidget {
   final int height; // 高度
   final int delayTime; // 时间 (毫秒)
   final int duration; // pageView切换速度 (毫秒)
-  BannerWidget(
-      {Key key,
-      @required this.entity,
-      this.height = 180,
-      this.delayTime = 1500,
-      this.duration = 1500,
-      this.onPress,
-      this.build})
-      : super(key: key);
+  BannerWidget({
+    Key key,
+    @required this.entity,
+    this.height = 180,
+    this.delayTime = 1500,
+    this.duration = 1500,
+    this.onPress,
+    this.build,
+  }) : super(key: key);
 
   @override
   State<StatefulWidget> createState() => BannerState();

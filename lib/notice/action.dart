@@ -2,7 +2,10 @@ import 'package:fish_redux/fish_redux.dart';
 import 'package:inspection/entity/notice_model.dart';
 
 //TODO replace with your own action
-enum NoticeAction { action, notices }
+enum NoticeAction {
+  action,
+  notices,
+}
 
 class NoticeActionCreator {
   static Action onAction() {

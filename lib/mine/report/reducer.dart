@@ -11,7 +11,10 @@ Reducer<ReportRecordState> buildReducer() {
   );
 }
 
-ReportRecordState _onAction(ReportRecordState state, Action action) {
+ReportRecordState _onAction(
+  ReportRecordState state,
+  Action action,
+) {
   final ReportRecordState newState = state.clone();
   return newState;
 }

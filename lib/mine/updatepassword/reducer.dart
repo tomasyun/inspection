@@ -11,7 +11,10 @@ Reducer<UpdatePasswordState> buildReducer() {
   );
 }
 
-UpdatePasswordState _onAction(UpdatePasswordState state, Action action) {
+UpdatePasswordState _onAction(
+  UpdatePasswordState state,
+  Action action,
+) {
   final UpdatePasswordState newState = state.clone();
   return newState;
 }

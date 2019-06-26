@@ -11,7 +11,10 @@ Reducer<SaveAnalyseState> buildReducer() {
   );
 }
 
-SaveAnalyseState _onAction(SaveAnalyseState state, Action action) {
+SaveAnalyseState _onAction(
+  SaveAnalyseState state,
+  Action action,
+) {
   final SaveAnalyseState newState = state.clone();
   return newState;
 }

@@ -8,7 +8,11 @@ import 'package:inspection/mine/page.dart';
 
 import 'state.dart';
 
-Widget buildView(IndexState state, Dispatch dispatch, ViewService viewService) {
+Widget buildView(
+  IndexState state,
+  Dispatch dispatch,
+  ViewService viewService,
+) {
   return IndexPageWidget();
 }
 

@@ -10,6 +10,9 @@ class WarningActionCreator {
   }
 
   static Action initState(WarningModel model) {
-    return Action(WarningAction.init, payload: model);
+    return Action(
+      WarningAction.init,
+      payload: model,
+    );
   }
 }

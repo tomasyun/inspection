@@ -1,7 +1,12 @@
 import 'package:fish_redux/fish_redux.dart';
 
 //TODO replace with your own action
-enum SettingAction { action, upgradePassword, upgradeVersion, logout }
+enum SettingAction {
+  action,
+  upgradePassword,
+  upgradeVersion,
+  logout,
+}
 
 class SettingActionCreator {
   static Action onAction() {

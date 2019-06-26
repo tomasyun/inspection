@@ -3,7 +3,11 @@ class InspectContentReqModel {
   String planId;
   List<TargetResults> targetResults;
 
-  InspectContentReqModel({this.equipmentId, this.planId, this.targetResults});
+  InspectContentReqModel({
+    this.equipmentId,
+    this.planId,
+    this.targetResults,
+  });
 
   InspectContentReqModel.fromJson(Map<String, dynamic> json) {
     equipmentId = json['equipmentId'];
@@ -33,7 +37,11 @@ class TargetResults {
   String targetContent;
   String targetId;
 
-  TargetResults({this.inspectionResult, this.targetContent, this.targetId});
+  TargetResults({
+    this.inspectionResult,
+    this.targetContent,
+    this.targetId,
+  });
 
   TargetResults.fromJson(Map<String, dynamic> json) {
     inspectionResult = json['inspectionResult'];

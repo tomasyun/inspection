@@ -5,8 +5,14 @@ class NavItem {
   final Widget title;
   final TickerProvider vsync;
 
-  NavItem({this.icon, this.title, this.vsync})
-      : item = new BottomNavigationBarItem(icon: icon, title: title),
+  NavItem({
+    this.icon,
+    this.title,
+    this.vsync,
+  })  : item = new BottomNavigationBarItem(
+          icon: icon,
+          title: title,
+        ),
         controller = new AnimationController(vsync: vsync);
 
   final BottomNavigationBarItem item;

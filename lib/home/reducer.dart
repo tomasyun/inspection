@@ -13,18 +13,27 @@ Reducer<HomeState> buildReducer() {
   );
 }
 
-HomeState _onAction(HomeState state, Action action) {
+HomeState _onAction(
+  HomeState state,
+  Action action,
+) {
   final HomeState newState = state.clone();
   return newState;
 }
 
-HomeState _onGetHomeModels(HomeState state, Action action) {
+HomeState _onGetHomeModels(
+  HomeState state,
+  Action action,
+) {
   HomeState newState = state.clone();
   newState.model = action.payload;
   return newState;
 }
 
-HomeState _initBannerData(HomeState state, Action action) {
+HomeState _initBannerData(
+  HomeState state,
+  Action action,
+) {
   HomeState newState = state.clone();
   newState.banners = action.payload;
   return newState;

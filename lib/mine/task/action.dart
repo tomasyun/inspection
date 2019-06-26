@@ -10,6 +10,9 @@ class TaskActionCreator {
   }
 
   static Action onGetToDos(TaskModel model) {
-    return Action(TaskAction.toDos, payload: model);
+    return Action(
+      TaskAction.toDos,
+      payload: model,
+    );
   }
 }

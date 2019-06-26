@@ -7,7 +7,10 @@ import 'package:inspection/device/repair/record/page.dart';
 import 'state.dart';
 
 Widget buildView(
-    DeviceState state, Dispatch dispatch, ViewService viewService) {
+  DeviceState state,
+  Dispatch dispatch,
+  ViewService viewService,
+) {
   return DevicePageWidget();
 }
 

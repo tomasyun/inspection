@@ -19,7 +19,10 @@ Effect<RecheckReportState> buildEffect() {
   });
 }
 
-void _onAction(Action action, Context<RecheckReportState> ctx) {}
+void _onAction(
+  Action action,
+  Context<RecheckReportState> ctx,
+) {}
 
 void _onInit(Action action, Context<RecheckReportState> ctx) {
   DicoHttpRepository.doGetRecheckFormRequest(ctx.state.id).then((map) {
@@ -34,7 +37,10 @@ void _onInit(Action action, Context<RecheckReportState> ctx) {
   });
 }
 
-void _onReport(Action action, Context<RecheckReportState> ctx) async {
+void _onReport(
+  Action action,
+  Context<RecheckReportState> ctx,
+) async {
   if (ctx.state.controller.text.isEmpty) {
     AppCommons.showToast('请填写复查情况');
   } else if (ctx.state.assets.isEmpty) {
@@ -68,7 +74,9 @@ void _onReport(Action action, Context<RecheckReportState> ctx) async {
 }
 
 void _onAddAttachmentClick(
-    Action action, Context<RecheckReportState> ctx) async {
+  Action action,
+  Context<RecheckReportState> ctx,
+) async {
   List<Asset> assets = [];
   try {
     assets = await MultiImagePicker.pickImages(

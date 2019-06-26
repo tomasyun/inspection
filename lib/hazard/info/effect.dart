@@ -35,7 +35,10 @@ void _init(Action action, Context<HazardInfoState> ctx) {
   });
 }
 
-void _onSkipRectifyReport(Action action, Context<HazardInfoState> ctx) {
+void _onSkipRectifyReport(
+  Action action,
+  Context<HazardInfoState> ctx,
+) {
   Map<String, dynamic> map = Map();
   map['id'] = ctx.state.id;
   Navigator.of(ctx.context).push(MaterialPageRoute(builder: (content) {
@@ -43,7 +46,10 @@ void _onSkipRectifyReport(Action action, Context<HazardInfoState> ctx) {
   }));
 }
 
-void _onSkipRectifyInfo(Action action, Context<HazardInfoState> ctx) {
+void _onSkipRectifyInfo(
+  Action action,
+  Context<HazardInfoState> ctx,
+) {
   Map<String, dynamic> map = Map();
   map['id'] = ctx.state.id;
   Navigator.of(ctx.context).push(MaterialPageRoute(builder: (content) {
@@ -51,13 +57,19 @@ void _onSkipRectifyInfo(Action action, Context<HazardInfoState> ctx) {
   }));
 }
 
-void _onSkipRectifyCostApply(Action action, Context<HazardInfoState> ctx) {
+void _onSkipRectifyCostApply(
+  Action action,
+  Context<HazardInfoState> ctx,
+) {
   Navigator.of(ctx.context).push(MaterialPageRoute(builder: (content) {
     return CostApplyPage().buildPage(null);
   }));
 }
 
-void _onSkipRecheckReport(Action action, Context<HazardInfoState> ctx) {
+void _onSkipRecheckReport(
+  Action action,
+  Context<HazardInfoState> ctx,
+) {
   Map<String, dynamic> map = Map();
   map['id'] = ctx.state.id;
   Navigator.of(ctx.context).push(MaterialPageRoute(builder: (content) {
@@ -65,7 +77,10 @@ void _onSkipRecheckReport(Action action, Context<HazardInfoState> ctx) {
   }));
 }
 
-void _onSkipHazardAllInfo(Action action, Context<HazardInfoState> ctx) {
+void _onSkipHazardAllInfo(
+  Action action,
+  Context<HazardInfoState> ctx,
+) {
   Map<String, dynamic> map = Map();
   map['id'] = ctx.state.id;
   Navigator.of(ctx.context).push(MaterialPageRoute(builder: (content) {

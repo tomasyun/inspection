@@ -24,7 +24,10 @@ Effect<MineState> buildEffect() {
   });
 }
 
-void _onAction(Action action, Context<MineState> ctx) {}
+void _onAction(
+  Action action,
+  Context<MineState> ctx,
+) {}
 
 void _onGetUserBaseInfo(Action action, Context<MineState> ctx) async {
   Map<String, String> map = Map();
@@ -44,37 +47,55 @@ void _onGetUserBaseInfo(Action action, Context<MineState> ctx) async {
   ctx.dispatch(MineActionCreator.onGetUserInfo(map));
 }
 
-void _onUpdatePasswordAction(Action action, Context<MineState> ctx) {
+void _onUpdatePasswordAction(
+  Action action,
+  Context<MineState> ctx,
+) {
   Navigator.of(ctx.context).push(MaterialPageRoute(builder: (context) {
     return UpdatePasswordPage().buildPage(null);
   }));
 }
 
-void _onSkipHazardHistory(Action action, Context<MineState> ctx) {
+void _onSkipHazardHistory(
+  Action action,
+  Context<MineState> ctx,
+) {
   Navigator.of(ctx.context).push(MaterialPageRoute(builder: (context) {
     return HazardHistoryPage().buildPage(null);
   }));
 }
 
-void _onSkipUserInfo(Action action, Context<MineState> ctx) {
+void _onSkipUserInfo(
+  Action action,
+  Context<MineState> ctx,
+) {
   Navigator.of(ctx.context).push(MaterialPageRoute(builder: (context) {
     return ProfilePage().buildPage(null);
   }));
 }
 
-void _onSkipMineTask(Action action, Context<MineState> ctx) {
+void _onSkipMineTask(
+  Action action,
+  Context<MineState> ctx,
+) {
   Navigator.of(ctx.context).push(MaterialPageRoute(builder: (context) {
     return TaskPage().buildPage(null);
   }));
 }
 
-void _onSkipMineReport(Action action, Context<MineState> ctx) {
+void _onSkipMineReport(
+  Action action,
+  Context<MineState> ctx,
+) {
   Navigator.of(ctx.context).push(MaterialPageRoute(builder: (context) {
     return ReportRecordPage().buildPage(null);
   }));
 }
 
-void _onSkipSetting(Action action, Context<MineState> ctx) {
+void _onSkipSetting(
+  Action action,
+  Context<MineState> ctx,
+) {
   Navigator.of(ctx.context).push(MaterialPageRoute(builder: (context) {
     return SettingPage().buildPage(null);
   }));

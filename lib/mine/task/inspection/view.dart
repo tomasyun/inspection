@@ -8,7 +8,10 @@ import 'package:inspection/widget/switch_button.dart';
 import 'state.dart';
 
 Widget buildView(
-    InspectionTaskState state, Dispatch dispatch, ViewService viewService) {
+  InspectionTaskState state,
+  Dispatch dispatch,
+  ViewService viewService,
+) {
   return Scaffold(
     backgroundColor: Colors.grey[100],
     appBar: AppBar(
@@ -23,7 +26,10 @@ Widget buildView(
   );
 }
 
-Widget _buildInspectionTaskBody(Dispatch dispatch, InspectionTaskState state) {
+Widget _buildInspectionTaskBody(
+  Dispatch dispatch,
+  InspectionTaskState state,
+) {
   if (state.model == null ||
       state.model.data == null ||
       state.model.data.isEmpty) {
@@ -69,7 +75,10 @@ Widget _buildInspectionTaskBody(Dispatch dispatch, InspectionTaskState state) {
   }
 }
 
-List<Widget> _buildAllTaskList(Dispatch dispatch, List<Data> data) {
+List<Widget> _buildAllTaskList(
+  Dispatch dispatch,
+  List<Data> data,
+) {
   if (data.isNotEmpty) {
     return data.map((item) {
       return _buildInspectionTaskItem(dispatch, item);
@@ -79,7 +88,10 @@ List<Widget> _buildAllTaskList(Dispatch dispatch, List<Data> data) {
   }
 }
 
-Widget _buildInspectionTaskItem(Dispatch dispatch, Data data) {
+Widget _buildInspectionTaskItem(
+  Dispatch dispatch,
+  Data data,
+) {
   return Container(
     padding: EdgeInsets.symmetric(vertical: 15.0, horizontal: 15.0),
     margin: EdgeInsets.only(top: 1),

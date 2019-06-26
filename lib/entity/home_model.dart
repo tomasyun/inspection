@@ -1,58 +1,13 @@
-/**
- * {
-    "code": 0,
-    "msg": "成功",
-    "data": {
-    "banner": [
-    {
-    "title": "访问学者申请，求指导",
-    "url": "https://t12.baidu.com/it/u=4274442233,3886453010&fm=76"
-    },
-    {
-    "title": "客流统计",
-    "url": "https://t12.baidu.com/it/u=200946914,1200544386&fm=76"
-    }
-    ],
-    "todos": {
-    "rectify": {
-    "dangerRemark": "隐患描述111",
-    "dangerAddress": "汇鑫IBC B座1050",
-    "dangerType": "消防隐患",
-    "todoType": "1",
-    "equipmentCode": "001",
-    "dangerLevel": "重大隐患",
-    "equipmentName": "灭火器001",
-    "dangerId": "3"
-    },
-    "review": {
-    "dangerRemark": "隐患描述",
-    "dangerAddress": "汇鑫IBC B座1050",
-    "dangerType": "消防隐患",
-    "todoType": "2",
-    "equipmentCode": "001",
-    "dangerLevel": "一般隐患",
-    "equipmentName": "灭火器001",
-    "dangerId": "2"
-    },
-    "inspect": {
-    "installArea": "汇鑫IBC B座1005室",
-    "equipmentCode": "001",
-    "equipmentName": "灭火器001",
-    "equipmentType": "灭火器",
-    "status": 0
-    }
-    },
-    "notice": "7987987"
-    }
-    }
- */
-
 class HomeModel {
   int code;
   String msg;
   Data data;
 
-  HomeModel({this.code, this.msg, this.data});
+  HomeModel({
+    this.code,
+    this.msg,
+    this.data,
+  });
 
   HomeModel.fromJson(Map<String, dynamic> json) {
     code = json['code'];
@@ -76,7 +31,11 @@ class Data {
   Todos todos;
   String notice;
 
-  Data({this.banner, this.todos, this.notice});
+  Data({
+    this.banner,
+    this.todos,
+    this.notice,
+  });
 
   Data.fromJson(Map<String, dynamic> json) {
     if (json['banner'] != null) {
@@ -106,7 +65,10 @@ class Banner {
   String title;
   String url;
 
-  Banner({this.title, this.url});
+  Banner({
+    this.title,
+    this.url,
+  });
 
   Banner.fromJson(Map<String, dynamic> json) {
     title = json['title'];

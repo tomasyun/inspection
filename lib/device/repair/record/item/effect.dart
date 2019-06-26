@@ -10,6 +10,9 @@ Effect<Data> buildEffect() {
   });
 }
 
-void _onAction(Action action, Context<Data> ctx) {
+void _onAction(
+  Action action,
+  Context<Data> ctx,
+) {
   AppCommons.showToast("陕西缔科网络科技有限公司");
 }

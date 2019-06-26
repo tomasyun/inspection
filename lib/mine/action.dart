@@ -42,6 +42,9 @@ class MineActionCreator {
   }
 
   static Action onGetUserInfo(Map<String, String> map) {
-    return Action(MineAction.baseInfo, payload: map);
+    return Action(
+      MineAction.baseInfo,
+      payload: map,
+    );
   }
 }

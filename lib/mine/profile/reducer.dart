@@ -12,12 +12,18 @@ Reducer<ProfileState> buildReducer() {
   );
 }
 
-ProfileState _onAction(ProfileState state, Action action) {
+ProfileState _onAction(
+  ProfileState state,
+  Action action,
+) {
   final ProfileState newState = state.clone();
   return newState;
 }
 
-ProfileState _onGetUserInfo(ProfileState state, Action action) {
+ProfileState _onGetUserInfo(
+  ProfileState state,
+  Action action,
+) {
   ProfileState newState = state.clone();
   newState.model = action.payload;
   return newState;

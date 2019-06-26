@@ -23,39 +23,60 @@ Effect<HomeState> buildEffect() {
   });
 }
 
-void _onAction(Action action, Context<HomeState> ctx) {}
+void _onAction(
+  Action action,
+  Context<HomeState> ctx,
+) {}
 
-void _onSkipMoreNotice(Action action, Context<HomeState> ctx) {
+void _onSkipMoreNotice(
+  Action action,
+  Context<HomeState> ctx,
+) {
   Navigator.of(ctx.context).push(MaterialPageRoute(builder: (context) {
     return NoticePage().buildPage(null);
   }));
 }
 
-void _onSkipMoreTask(Action action, Context<HomeState> ctx) {
+void _onSkipMoreTask(
+  Action action,
+  Context<HomeState> ctx,
+) {
   Navigator.of(ctx.context).push(MaterialPageRoute(builder: (context) {
     return TaskPage().buildPage(null);
   }));
 }
 
-void _onSkipNoticePage(Action action, Context<HomeState> ctx) {
+void _onSkipNoticePage(
+  Action action,
+  Context<HomeState> ctx,
+) {
   Navigator.of(ctx.context).push(MaterialPageRoute(builder: (context) {
     return NoticePage().buildPage(null);
   }));
 }
 
-void _onHazardReport(Action action, Context<HomeState> ctx) {
+void _onHazardReport(
+  Action action,
+  Context<HomeState> ctx,
+) {
   Navigator.of(ctx.context).push(MaterialPageRoute(builder: (content) {
     return HazardReportPage().buildPage(null);
   }));
 }
 
-void _onBreakDownReport(Action action, Context<HomeState> ctx) {
+void _onBreakDownReport(
+  Action action,
+  Context<HomeState> ctx,
+) {
   Navigator.of(ctx.context).push(MaterialPageRoute(builder: (content) {
     return ReportPage().buildPage(null);
   }));
 }
 
-void _init(Action action, Context<HomeState> ctx) {
+void _init(
+  Action action,
+  Context<HomeState> ctx,
+) {
   ctx.state.context = ctx.context;
   List<BannerModel> list = [];
   ctx.dispatch(HomeActionCreator.initBannerData(list));

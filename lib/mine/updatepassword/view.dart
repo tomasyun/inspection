@@ -5,7 +5,10 @@ import 'package:inspection/mine/updatepassword/action.dart';
 import 'state.dart';
 
 Widget buildView(
-    UpdatePasswordState state, Dispatch dispatch, ViewService viewService) {
+  UpdatePasswordState state,
+  Dispatch dispatch,
+  ViewService viewService,
+) {
   return Scaffold(
     appBar: AppBar(
       title: Text(
@@ -52,8 +55,12 @@ Widget _buildRaisedButton({Dispatch dispatch}) {
       ));
 }
 
-Widget _buildContainer(EdgeInsetsGeometry edge, String text, String hintText,
-    TextEditingController controller) {
+Widget _buildContainer(
+  EdgeInsetsGeometry edge,
+  String text,
+  String hintText,
+  TextEditingController controller,
+) {
   return Container(
     margin: edge,
     color: Colors.white,

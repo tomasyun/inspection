@@ -5,13 +5,14 @@ import 'package:fluttertoast/fluttertoast.dart';
 class AppCommons {
   static void showToast(String msg) {
     Fluttertoast.showToast(
-        msg: msg,
-        gravity: ToastGravity.BOTTOM,
-        toastLength: Toast.LENGTH_LONG,
-        timeInSecForIos: 1,
-        backgroundColor: Colors.black,
-        textColor: Colors.white,
-        fontSize: 14.0);
+      msg: msg,
+      gravity: ToastGravity.BOTTOM,
+      toastLength: Toast.LENGTH_LONG,
+      timeInSecForIos: 1,
+      backgroundColor: Colors.black,
+      textColor: Colors.white,
+      fontSize: 14.0,
+    );
   }
 
   ///判断当前移动设备网络是否可用

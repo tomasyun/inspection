@@ -3,7 +3,11 @@ class KeepRecordModel {
   String msg;
   List<Data> data;
 
-  KeepRecordModel({this.code, this.msg, this.data});
+  KeepRecordModel({
+    this.code,
+    this.msg,
+    this.data,
+  });
 
   KeepRecordModel.fromJson(Map<String, dynamic> json) {
     code = json['code'];

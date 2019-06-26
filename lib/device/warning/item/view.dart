@@ -2,7 +2,11 @@ import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart';
 import 'package:inspection/entity/warning_model.dart';
 
-Widget buildView(Data state, Dispatch dispatch, ViewService viewService) {
+Widget buildView(
+  Data state,
+  Dispatch dispatch,
+  ViewService viewService,
+) {
   Map<String, String> map = Map();
   if (state.warningLevel == '0') {
     map['level'] = '一般';

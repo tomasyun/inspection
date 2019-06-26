@@ -2,7 +2,10 @@ import 'package:fish_redux/fish_redux.dart';
 import 'package:inspection/entity/recheck_info_model.dart';
 
 //TODO replace with your own action
-enum RecheckInfoFragAction { action, model }
+enum RecheckInfoFragAction {
+  action,
+  model,
+}
 
 class RecheckInfoFragActionCreator {
   static Action onAction() {
@@ -10,6 +13,9 @@ class RecheckInfoFragActionCreator {
   }
 
   static Action onGetRecheckInfoModel(RecheckInfoModel model) {
-    return Action(RecheckInfoFragAction.model, payload: model);
+    return Action(
+      RecheckInfoFragAction.model,
+      payload: model,
+    );
   }
 }

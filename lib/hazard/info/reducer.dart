@@ -12,12 +12,18 @@ Reducer<HazardInfoState> buildReducer() {
   );
 }
 
-HazardInfoState _onAction(HazardInfoState state, Action action) {
+HazardInfoState _onAction(
+  HazardInfoState state,
+  Action action,
+) {
   final HazardInfoState newState = state.clone();
   return newState;
 }
 
-HazardInfoState _onGetHazardInfo(HazardInfoState state, Action action) {
+HazardInfoState _onGetHazardInfo(
+  HazardInfoState state,
+  Action action,
+) {
   HazardInfoState newState = state.clone();
   newState.model = action.payload;
   return newState;

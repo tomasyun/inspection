@@ -16,36 +16,54 @@ Reducer<ReportState> buildReducer() {
   );
 }
 
-ReportState _onAction(ReportState state, Action action) {
+ReportState _onAction(
+  ReportState state,
+  Action action,
+) {
   ReportState newState = state.clone();
   return newState;
 }
 
-ReportState _onGetDeviceInfoAction(ReportState state, Action action) {
+ReportState _onGetDeviceInfoAction(
+  ReportState state,
+  Action action,
+) {
   ReportState newState = state.clone();
   newState.deviceInfo = action.payload;
   return newState;
 }
 
-ReportState _onGetRepairDateRst(ReportState state, Action action) {
+ReportState _onGetRepairDateRst(
+  ReportState state,
+  Action action,
+) {
   ReportState newState = state.clone();
   newState.repairDateRst = action.payload;
   return newState;
 }
 
-ReportState _onGetDepartRst(ReportState state, Action action) {
+ReportState _onGetDepartRst(
+  ReportState state,
+  Action action,
+) {
   ReportState newState = state.clone();
   newState.departRst = action.payload;
   return newState;
 }
 
-ReportState _onGetPicRst(ReportState state, Action action) {
+ReportState _onGetPicRst(
+  ReportState state,
+  Action action,
+) {
   ReportState newState = state.clone();
   newState.picRst = action.payload;
   return newState;
 }
 
-ReportState _onGetRepairManRst(ReportState state, Action action) {
+ReportState _onGetRepairManRst(
+  ReportState state,
+  Action action,
+) {
   ReportState newState = state.clone();
   newState.repairManRst = action.payload;
   return newState;

@@ -5,7 +5,10 @@ import 'package:inspection/device/repair/report/action.dart';
 import 'state.dart';
 
 Widget buildView(
-    ReportState state, Dispatch dispatch, ViewService viewService) {
+  ReportState state,
+  Dispatch dispatch,
+  ViewService viewService,
+) {
   return Scaffold(
     backgroundColor: Colors.grey[100],
     appBar: AppBar(

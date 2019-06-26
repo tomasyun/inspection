@@ -7,7 +7,10 @@ import 'package:inspection/hazard/review/fragment/rectify/page.dart';
 import 'state.dart';
 
 Widget buildView(
-    ReviewState state, Dispatch dispatch, ViewService viewService) {
+  ReviewState state,
+  Dispatch dispatch,
+  ViewService viewService,
+) {
   return ReviewPageWidget(state);
 }
 

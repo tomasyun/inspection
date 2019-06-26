@@ -7,7 +7,10 @@ import 'package:inspection/widget/state_view.dart' as stateView;
 import 'state.dart';
 
 Widget buildView(
-    HazardInfoState state, Dispatch dispatch, ViewService viewService) {
+  HazardInfoState state,
+  Dispatch dispatch,
+  ViewService viewService,
+) {
   return Scaffold(
     appBar: AppBar(
       title: Text(

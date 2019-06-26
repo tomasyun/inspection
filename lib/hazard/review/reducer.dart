@@ -11,7 +11,10 @@ Reducer<ReviewState> buildReducer() {
   );
 }
 
-ReviewState _onAction(ReviewState state, Action action) {
+ReviewState _onAction(
+  ReviewState state,
+  Action action,
+) {
   final ReviewState newState = state.clone();
   return newState;
 }

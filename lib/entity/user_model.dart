@@ -3,7 +3,11 @@ class UserModel {
   String msg;
   Data data;
 
-  UserModel({this.code, this.msg, this.data});
+  UserModel({
+    this.code,
+    this.msg,
+    this.data,
+  });
 
   UserModel.fromJson(Map<String, dynamic> json) {
     code = json['code'];
@@ -28,7 +32,12 @@ class Data {
   String company;
   String userName;
 
-  Data({this.organization, this.name, this.company, this.userName});
+  Data({
+    this.organization,
+    this.name,
+    this.company,
+    this.userName,
+  });
 
   Data.fromJson(Map<String, dynamic> json) {
     organization = json['organization'];
