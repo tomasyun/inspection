@@ -13,7 +13,7 @@ Widget buildView(
     backgroundColor: Colors.grey[100],
     body: SingleChildScrollView(
       child: Container(
-        margin: EdgeInsets.only(left: 20.0, right: 20.0, top: 100.0),
+        margin: EdgeInsets.only(left: 20.0, right: 20.0, top: 80.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
@@ -32,7 +32,6 @@ Widget buildView(
                 '用户名',
                 style: TextStyle(
                     fontSize: 16.0,
-                    letterSpacing: 1.0,
                     color: Colors.black,
                     fontWeight: FontWeight.w600),
               ),
@@ -45,7 +44,6 @@ Widget buildView(
                 style: TextStyle(
                     fontSize: 15,
                     color: Colors.black,
-                    letterSpacing: 3.0,
                     fontWeight: FontWeight.w600),
                 decoration: InputDecoration(
                   hintText: '请输入用户名',
@@ -57,7 +55,7 @@ Widget buildView(
             ),
             Container(
               height: 0.5,
-              color: Colors.grey[300],
+              color: Colors.grey[500],
               width: double.infinity,
             ),
             Container(
@@ -65,7 +63,6 @@ Widget buildView(
               child: Text(
                 '密码',
                 style: TextStyle(
-                    letterSpacing: 3.0,
                     fontSize: 16.0,
                     color: Colors.black,
                     fontWeight: FontWeight.w600),
@@ -83,7 +80,6 @@ Widget buildView(
                         keyboardType: TextInputType.text,
                         style: TextStyle(
                             fontSize: 15,
-                            letterSpacing: 3.0,
                             color: Colors.black,
                             fontWeight: FontWeight.w600),
                         decoration: InputDecoration(
@@ -112,7 +108,7 @@ Widget buildView(
             ),
             Container(
               height: 0.5,
-              color: Colors.grey[300],
+              color: Colors.grey[500],
               width: double.infinity,
             ),
             Container(
@@ -130,7 +126,7 @@ Widget buildView(
                         color: Colors.white,
                         fontWeight: FontWeight.w600),
                   ),
-                  padding: EdgeInsets.symmetric(vertical: 16.0),
+                  padding: EdgeInsets.symmetric(vertical: 15.0),
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10.0))),
             )

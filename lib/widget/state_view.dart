@@ -23,6 +23,12 @@ Widget blackPage() {
   );
 }
 
+Widget preLoadPage() {
+  return Center(
+    child: CircularProgressIndicator(),
+  );
+}
+
 Widget netMissPage() {
   return Center(
     child: Column(

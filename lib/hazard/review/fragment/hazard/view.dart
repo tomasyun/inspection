@@ -198,7 +198,6 @@ Widget _buildSpaceAttachment() {
     child: FadeInImage.assetNetwork(
         placeholder: 'images/ic_add_on.png', image: '', fit: BoxFit.fill),
     height: 100.0,
-    color: Colors.grey,
   );
 }
 

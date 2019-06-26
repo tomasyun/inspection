@@ -277,7 +277,6 @@ Widget buildView(
                     fit: BoxFit.fill),
                 width: 100.0,
                 height: 100.0,
-                color: Colors.grey,
               ),
             ),
             Container(

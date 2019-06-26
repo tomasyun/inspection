@@ -39,20 +39,24 @@ Widget buildView(
 }
 
 Widget _buildRaisedButton({Dispatch dispatch}) {
-  return RaisedButton(
-      onPressed: () {
-        dispatch(UpdatePasswordActionCreator.onUpdate());
-      },
-      child: Text(
-        '确认修改',
-        style: TextStyle(color: Colors.white, fontSize: 14.0),
-      ),
-      color: Colors.blue,
-      padding:
-          EdgeInsets.only(top: 15.0, bottom: 15.0, left: 130.0, right: 130.0),
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(10.0),
-      ));
+  return Container(
+    width: double.infinity,
+    margin: EdgeInsets.only(left: 15.0, right: 15.0),
+    child: RaisedButton(
+        onPressed: () {
+          dispatch(UpdatePasswordActionCreator.onUpdate());
+        },
+        child: Text(
+          '确认修改',
+          style: TextStyle(
+              color: Colors.white, fontSize: 14.0, fontWeight: FontWeight.w600),
+        ),
+        color: Colors.blue,
+        padding: EdgeInsets.only(top: 15.0, bottom: 15.0),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10.0),
+        )),
+  );
 }
 
 Widget _buildContainer(

@@ -74,7 +74,6 @@ Widget buildView(
                   dispatch(RecheckReportActionCreator.onAddAttachment());
                 },
                 child: Container(
-                  color: Colors.grey,
                   child: FadeInImage.assetNetwork(
                       placeholder: 'images/ic_add.png',
                       image: '',
