@@ -4,7 +4,10 @@ class BannerModel extends BannerItem {
   String link;
   String desc;
 
-  BannerModel({this.link, this.desc,});
+  BannerModel({
+    this.link,
+    this.desc,
+  });
 
   @override
   get title => desc;
