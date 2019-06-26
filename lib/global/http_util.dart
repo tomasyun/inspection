@@ -5,6 +5,7 @@ import 'dart:typed_data';
 import "package:dio/dio.dart";
 import 'package:http/http.dart' as http;
 import 'package:http_parser/http_parser.dart';
+import 'package:inspection/global/app_common.dart';
 import 'package:inspection/global/sharedpreferences.dart';
 import 'package:multi_image_picker/multi_image_picker.dart';
 
@@ -172,11 +173,13 @@ class HttpUtil {
       }
       if (response.statusCode != 200) {
         var error = '服务器出错,状态码:${response.statusCode}';
+        AppCommons.showToast(error);
         return onError;
       } else {
         return response.data;
       }
     } catch (e) {
+      AppCommons.showToast(e.toString());
       return onError;
     }
   }
