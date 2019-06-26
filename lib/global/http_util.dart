@@ -73,7 +73,7 @@ class HttpUtil {
     String url, {
     data,
     Options options,
-        Error onError,
+    Error onError,
   }) async {
     return _request(
       url,
@@ -89,7 +89,7 @@ class HttpUtil {
     String url, {
     data,
     Options options,
-        Error onError,
+    Error onError,
   }) async {
     return _request(
       url,
@@ -105,7 +105,7 @@ class HttpUtil {
     String url, {
     data,
     Options options,
-        Error onError,
+    Error onError,
   }) async {
     return _request(
       url,
@@ -121,7 +121,7 @@ class HttpUtil {
     String url, {
     data,
     Options options,
-        Error onError,
+    Error onError,
   }) async {
     return _request(
       url,
@@ -132,19 +132,20 @@ class HttpUtil {
     );
   }
 
-  Future _request(String url,
-      String type, {
-        data,
-        Options options,
-        Error onError,
-      }) async {
+  Future _request(
+    String url,
+    String type, {
+    data,
+    Options options,
+    Error onError,
+  }) async {
     try {
       String token;
       await SpUtils().getString('token').then((value) {
         token = value;
       });
       Options options =
-      Options(headers: {'Authorization': token, 'user-agent': 'android'});
+          Options(headers: {'Authorization': token, 'user-agent': 'android'});
       Response response;
       if (type == TYPE_GET) {
         response = await dio.get(
