@@ -76,7 +76,6 @@ class HttpUtil {
     data,
     Options options,
     NetworkError onError,
-    BuildContext context,
   }) async {
     return _request(
       url,
@@ -110,7 +109,6 @@ class HttpUtil {
     data,
     Options options,
     NetworkError onError,
-    BuildContext context,
   }) async {
     return _request(
       url,
@@ -127,7 +125,6 @@ class HttpUtil {
     data,
     Options options,
     NetworkError onError,
-    BuildContext context,
   }) async {
     return _request(
       url,
