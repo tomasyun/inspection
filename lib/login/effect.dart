@@ -4,6 +4,7 @@ import 'package:inspection/global/app_common.dart';
 import 'package:inspection/global/dico_http.dart';
 import 'package:inspection/global/sharedpreferences.dart';
 import 'package:inspection/index/page.dart';
+import 'package:inspection/widget/loading_page.dart';
 
 import 'action.dart';
 import 'state.dart';
@@ -37,9 +38,13 @@ void _onLogin(
     Map<String, String> map = Map();
     map['username'] = ctx.state.userNameController.text;
     map['password'] = ctx.state.passwordController.text;
-    DicoHttpRepository.userLogin(map).then((model) {
+    LoadingPage loading = LoadingPage(ctx.context);
+    loading.show();
+    DicoHttpRepository.userLogin(map, () {
+      loading.close();
+    }).then((model) {
+      loading.close();
       if (model.code == 0) {
-        AppCommons.showToast(model.msg);
         SpUtils sp = SpUtils();
         sp.putString('token', 'Bearer' + ' ${model.data.token}');
         sp.putString('name', '${model.data.name}');

@@ -61,10 +61,12 @@ class DicoHttpRepository {
       'sms-interface/danger/findDnagerFinishList';
 
   ///登录
-  static Future<LoginModel> userLogin(Map<String, String> map) async =>
+  static Future<LoginModel> userLogin(Map<String, String> map,
+      Error onError,) async =>
       LoginModel.fromJson(await HttpUtil().post(
         login,
         data: map,
+        onError: onError,
       ));
 
   ///首页
@@ -88,9 +90,10 @@ class DicoHttpRepository {
       FilterModel.fromJson(await HttpUtil().get(hazardType));
 
   ///隐患管理
-  static Future<HazardModel> doGetHazardManageRequest(String research) async =>
+  static Future<HazardModel> doGetHazardManageRequest(String research,) async =>
       HazardModel.fromJson(await HttpUtil().get(hazardManage + research));
 
+  ///获取历史隐患
   static Future<HazardModel> doGetHistoryHazardRequest() async =>
       HazardModel.fromJson(await HttpUtil().get(historyHazard));
 

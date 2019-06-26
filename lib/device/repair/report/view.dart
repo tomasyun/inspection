@@ -40,7 +40,7 @@ Widget buildView(
                       style: TextStyle(
                           fontSize: 14.0,
                           color: Colors.black,
-                          fontWeight: FontWeight.w600),
+                          fontWeight: FontWeight.w700),
                     ),
                   ),
                   Expanded(
@@ -54,7 +54,7 @@ Widget buildView(
                       cursorColor: Colors.grey,
                       style: TextStyle(
                           fontSize: 14.0,
-                          color: Colors.black,
+                          color: Colors.black45,
                           fontWeight: FontWeight.w600),
                       decoration: InputDecoration(
                           contentPadding: EdgeInsets.symmetric(
@@ -99,7 +99,7 @@ Widget buildView(
                       style: TextStyle(
                           fontSize: 14.0,
                           color: Colors.black,
-                          fontWeight: FontWeight.w600),
+                          fontWeight: FontWeight.w700),
                     ),
                   ),
                   Expanded(
@@ -113,7 +113,7 @@ Widget buildView(
                       cursorColor: Colors.grey,
                       style: TextStyle(
                           fontSize: 14.0,
-                          color: Colors.black,
+                          color: Colors.black45,
                           fontWeight: FontWeight.w600),
                       decoration: InputDecoration(
                           contentPadding: EdgeInsets.symmetric(
@@ -149,7 +149,7 @@ Widget buildView(
                         style: TextStyle(
                             fontSize: 14.0,
                             color: Colors.black,
-                            fontWeight: FontWeight.w600),
+                            fontWeight: FontWeight.w700),
                       ),
                     ),
                     Expanded(
@@ -161,7 +161,7 @@ Widget buildView(
                             child: Text(
                               state.departRst['name'],
                               style: TextStyle(
-                                  fontSize: 13.0,
+                                  fontSize: 14.0,
                                   color: Colors.black45,
                                   fontWeight: FontWeight.w600),
                             ),
@@ -203,7 +203,7 @@ Widget buildView(
                         style: TextStyle(
                             fontSize: 14.0,
                             color: Colors.black,
-                            fontWeight: FontWeight.w600),
+                            fontWeight: FontWeight.w700),
                       ),
                     ),
                     Expanded(
@@ -215,7 +215,7 @@ Widget buildView(
                             child: Text(
                               state.picRst['name'],
                               style: TextStyle(
-                                  fontSize: 13.0,
+                                  fontSize: 14.0,
                                   color: Colors.black45,
                                   fontWeight: FontWeight.w600),
                             ),
@@ -257,7 +257,7 @@ Widget buildView(
                         style: TextStyle(
                             fontSize: 14.0,
                             color: Colors.black,
-                            fontWeight: FontWeight.w600),
+                            fontWeight: FontWeight.w700),
                       ),
                     ),
                     Expanded(
@@ -269,7 +269,7 @@ Widget buildView(
                             child: Text(
                               state.repairManRst['name'],
                               style: TextStyle(
-                                  fontSize: 13.0,
+                                  fontSize: 14.0,
                                   color: Colors.black45,
                                   fontWeight: FontWeight.w600),
                             ),
@@ -311,7 +311,7 @@ Widget buildView(
                         style: TextStyle(
                             fontSize: 14.0,
                             color: Colors.black,
-                            fontWeight: FontWeight.w600),
+                            fontWeight: FontWeight.w700),
                       ),
                     ),
                     Expanded(
@@ -323,7 +323,7 @@ Widget buildView(
                             child: Text(
                               state.repairDateRst,
                               style: TextStyle(
-                                  fontSize: 13.0,
+                                  fontSize: 14.0,
                                   color: Colors.black45,
                                   fontWeight: FontWeight.w600),
                             ),
@@ -351,7 +351,7 @@ Widget buildView(
                 style: TextStyle(
                     fontSize: 14.0,
                     color: Colors.black,
-                    fontWeight: FontWeight.w600),
+                    fontWeight: FontWeight.w700),
               ),
             ),
             Container(
@@ -364,7 +364,6 @@ Widget buildView(
                 cursorWidth: 2.0,
                 cursorColor: Colors.grey,
                 style: TextStyle(
-                    letterSpacing: 1.0,
                     fontSize: 14.0,
                     color: Colors.black,
                     fontWeight: FontWeight.w600),

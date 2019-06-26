@@ -3,16 +3,13 @@ import 'dart:convert' show json;
 import 'dart:typed_data';
 
 import "package:dio/dio.dart";
-import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:http_parser/http_parser.dart';
-import 'package:inspection/global/app_common.dart';
 import 'package:inspection/global/sharedpreferences.dart';
 import 'package:multi_image_picker/multi_image_picker.dart';
 
-///定义一个网络请求出错的回调
-typedef NetworkError();
-typedef NetworkSuccess(Map<String, dynamic> data);
+typedef Error();
+typedef Complete(Map<String, dynamic> data);
 
 class HttpUtil {
   static const String BASE_URL = 'http://180.76.113.146:8080/';
@@ -36,21 +33,21 @@ class HttpUtil {
       dio = Dio(options);
       dio.interceptors
           .add(InterceptorsWrapper(onRequest: (RequestOptions options) {
-        print("\n================== 请求数据 ==========================");
-        print("url = ${options.uri.toString()}");
-        print("headers = ${options.headers}");
-        print("params = ${options.data}");
+        print('\n==== 请求数据 ====');
+        print('url = ${options.uri.toString()}');
+        print('headers = ${options.headers}');
+        print('params = ${options.data}');
       }, onResponse: (Response response) {
-        print("\n================== 响应数据 ==========================");
-        print("code = ${response.statusCode}");
-        print("data = ${response.data}");
-        print("\n");
+        print('\n==== 响应数据 ====');
+        print('code = ${response.statusCode}');
+        print('data = ${response.data}');
+        print('\n');
       }, onError: (DioError e) {
-        print("\n================== 错误响应数据 ======================");
-        print("type = ${e.type}");
-        print("message = ${e.message}");
-        print("stackTrace = ${e.stackTrace}");
-        print("\n");
+        print('\n==== 错误响应数据 ====');
+        print('type = ${e.type}');
+        print('message = ${e.message}');
+        print('stackTrace = ${e.stackTrace}');
+        print('\n');
       }));
 
 //      (dio.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate =
@@ -75,7 +72,7 @@ class HttpUtil {
     String url, {
     data,
     Options options,
-    NetworkError onError,
+        Error onError,
   }) async {
     return _request(
       url,
@@ -91,8 +88,7 @@ class HttpUtil {
     String url, {
     data,
     Options options,
-    NetworkError onError,
-    BuildContext context,
+        Error onError,
   }) async {
     return _request(
       url,
@@ -108,7 +104,7 @@ class HttpUtil {
     String url, {
     data,
     Options options,
-    NetworkError onError,
+        Error onError,
   }) async {
     return _request(
       url,
@@ -117,14 +113,14 @@ class HttpUtil {
       options: options,
       onError: onError,
     );
-  } //
+  }
 
   ///delete方法
   Future delete(
     String url, {
     data,
     Options options,
-    NetworkError onError,
+        Error onError,
   }) async {
     return _request(
       url,
@@ -133,7 +129,57 @@ class HttpUtil {
       options: options,
       onError: onError,
     );
-  } //
+  }
+
+  Future _request(String url,
+      String type, {
+        data,
+        Options options,
+        Error onError,
+      }) async {
+    try {
+      String token;
+      await SpUtils().getString('token').then((value) {
+        token = value;
+      });
+      Options options =
+      Options(headers: {'Authorization': token, 'user-agent': 'android'});
+      Response response;
+      if (type == TYPE_GET) {
+        response = await dio.get(
+          url,
+          queryParameters: data,
+          options: options,
+        );
+      } else if (type == TYPE_POST) {
+        response = await dio.post(
+          url,
+          options: options,
+          data: data,
+        );
+      } else if (type == TYPE_PUT) {
+        response = await dio.put(
+          url,
+          options: options,
+          queryParameters: data,
+        );
+      } else if (type == TYPE_DELETE) {
+        response = await dio.delete(
+          url,
+          queryParameters: data,
+          options: options,
+        );
+      }
+      if (response.statusCode != 200) {
+        var error = '服务器出错,状态码:${response.statusCode}';
+        return onError;
+      } else {
+        return response.data;
+      }
+    } catch (e) {
+      return onError;
+    }
+  }
 
   ///多部分上传（包括图片、参数）
   Future<String> onMultipartRequest({
@@ -175,43 +221,5 @@ class HttpUtil {
       completer.completeError(err);
     });
     return completer.future;
-  }
-
-  Future _request(
-    String url,
-    String type, {
-    data,
-    Options options,
-    NetworkError onError,
-  }) async {
-    try {
-      String token;
-      await SpUtils().getString('token').then((value) {
-        token = value;
-      });
-      Options options =
-          Options(headers: {'Authorization': token, 'user-agent': 'android'});
-      Response response;
-      if (type == TYPE_GET) {
-        response = await dio.get(url, queryParameters: data, options: options);
-      } else if (type == TYPE_POST) {
-        response = await dio.post(url, options: options, data: data);
-      } else if (type == TYPE_PUT) {
-        response = await dio.put(url, options: options, queryParameters: data);
-      } else if (type == TYPE_DELETE) {
-        response =
-            await dio.delete(url, queryParameters: data, options: options);
-      }
-      if (response.statusCode != 200) {
-        var errorMsg = '服务器出错,状态码:${response.statusCode}';
-        AppCommons.showToast(errorMsg);
-        return Future.error(errorMsg);
-      } else {
-        return response.data;
-      }
-    } catch (e) {
-      AppCommons.showToast('服务器异常');
-      return Future.error(e.toString());
-    }
   }
 }

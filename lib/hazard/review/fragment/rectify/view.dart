@@ -45,7 +45,10 @@ Widget buildView(
                         state.model.data.repairResult != null
                     ? '${state.model.data.repairResult}'
                     : '',
-                style: TextStyle(fontSize: 14.0, color: Colors.black45),
+                style: TextStyle(
+                    fontSize: 14.0,
+                    color: Colors.black45,
+                    fontWeight: FontWeight.w600),
               ),
             ),
             state.model != null &&

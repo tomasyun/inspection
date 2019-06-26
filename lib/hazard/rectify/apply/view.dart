@@ -47,7 +47,6 @@ Widget buildView(
                     cursorWidth: 2.0,
                     cursorColor: Colors.grey,
                     style: TextStyle(
-                        letterSpacing: 1.0,
                         fontSize: 14.0,
                         color: Colors.black,
                         fontWeight: FontWeight.w600),
@@ -83,7 +82,6 @@ Widget buildView(
               cursorWidth: 1.0,
               cursorColor: Colors.grey,
               style: TextStyle(
-                  letterSpacing: 1.0,
                   fontSize: 14.0,
                   color: Colors.black,
                   fontWeight: FontWeight.w600),

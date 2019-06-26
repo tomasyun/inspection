@@ -75,7 +75,7 @@ Widget _buildContainer(
                 letterSpacing: 2.0,
                 fontSize: 14.0,
                 color: Colors.black,
-                fontWeight: FontWeight.w600),
+                fontWeight: FontWeight.w700),
           ),
           flex: 3,
         ),

@@ -38,7 +38,7 @@ Widget buildView(
                       style: TextStyle(
                           fontSize: 14.0,
                           color: Colors.black,
-                          fontWeight: FontWeight.w600),
+                          fontWeight: FontWeight.w700),
                     ),
                   ),
                   Expanded(
@@ -67,12 +67,11 @@ Widget buildView(
                       dispatch(HazardReportActionCreator.onScanQRCode());
                     },
                     child: Container(
-                      margin: EdgeInsets.only(left: 10.0),
                       padding: EdgeInsets.all(5.0),
                       child: Image.asset(
                         'images/ic_scan_small.png',
-                        width: 30.0,
-                        height: 30.0,
+                        width: 20.0,
+                        height: 20.0,
                       ),
                     ),
                   )
@@ -97,7 +96,7 @@ Widget buildView(
                       style: TextStyle(
                           fontSize: 14.0,
                           color: Colors.black,
-                          fontWeight: FontWeight.w600),
+                          fontWeight: FontWeight.w700),
                     ),
                   ),
                   Expanded(
@@ -145,7 +144,7 @@ Widget buildView(
                         style: TextStyle(
                             fontSize: 14.0,
                             color: Colors.black,
-                            fontWeight: FontWeight.w600),
+                            fontWeight: FontWeight.w700),
                       ),
                     ),
                     Expanded(
@@ -195,7 +194,7 @@ Widget buildView(
                         style: TextStyle(
                             fontSize: 14.0,
                             color: Colors.black,
-                            fontWeight: FontWeight.w600),
+                            fontWeight: FontWeight.w700),
                       ),
                     ),
                     Expanded(
@@ -233,7 +232,7 @@ Widget buildView(
                 style: TextStyle(
                     fontSize: 14.0,
                     color: Colors.black,
-                    fontWeight: FontWeight.w600),
+                    fontWeight: FontWeight.w700),
               ),
             ),
             Container(
@@ -245,7 +244,6 @@ Widget buildView(
                 cursorWidth: 1.0,
                 cursorColor: Colors.grey,
                 style: TextStyle(
-                    letterSpacing: 1.0,
                     fontSize: 14.0,
                     color: Colors.black,
                     fontWeight: FontWeight.w600),
@@ -264,7 +262,7 @@ Widget buildView(
                 style: TextStyle(
                     fontSize: 14.0,
                     color: Colors.black,
-                    fontWeight: FontWeight.w600),
+                    fontWeight: FontWeight.w700),
               ),
             ),
             GestureDetector(
