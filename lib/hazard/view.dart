@@ -67,9 +67,10 @@ Widget buildView(
                     child: Text(
                       '时间查询',
                       style: TextStyle(
-                          fontSize: 15.0,
-                          color: Colors.black,
-                          fontWeight: FontWeight.w700),
+                        fontSize: 15.0,
+                        color: Colors.black,
+                        fontWeight: FontWeight.w700,
+                      ),
                     ),
                   ),
                   _buildSearchItem(
@@ -119,11 +120,12 @@ Widget buildView(
   );
 }
 
-Widget buildBottomNavigatorDouble(
-    {String leftLabel = '',
-    String rightLabel = '',
-    VoidCallback callbackLeftBtn,
-    VoidCallback callbackRightBtn}) {
+Widget buildBottomNavigatorDouble({
+  String leftLabel = '',
+  String rightLabel = '',
+  VoidCallback callbackLeftBtn,
+  VoidCallback callbackRightBtn,
+}) {
   return Container(
     height: 60.0,
     width: double.infinity,
