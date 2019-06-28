@@ -122,9 +122,10 @@ Widget buildView(
                   child: Text(
                     "立即登录",
                     style: TextStyle(
-                        fontSize: 14.0,
-                        color: Colors.white,
-                        fontWeight: FontWeight.w600),
+                      fontSize: 14.0,
+                      color: Colors.white,
+                      fontWeight: FontWeight.w600,
+                    ),
                   ),
                   padding: EdgeInsets.symmetric(vertical: 15.0),
                   shape: RoundedRectangleBorder(
